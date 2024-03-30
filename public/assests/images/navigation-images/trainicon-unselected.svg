@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28.674" height="24.887" viewBox="0 0 28.674 24.887">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_95006" data-name="Path 95006" d="M25.8,42.21s2.273,3.03,2.739,5a1.464,1.464,0,0,1-2.273,1.652,53.629,53.629,0,0,1-3.818-4.584S25.184,44.547,25.8,42.21Z" transform="translate(-22.445 -42.21)" fill="#c3c3c3"/>
+    </clipPath>
+  </defs>
+  <g id="Train_Grey" data-name="Train Grey" transform="translate(0.342 0.341)">
+    <g id="Layer_1" data-name="Layer 1" transform="translate(0 0)">
+      <line id="Line_213" data-name="Line 213" x2="23.436" y2="13.444" transform="translate(0 9.689)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94987" data-name="Path 94987" d="M37.85,23.141,51.158,30.82A7.427,7.427,0,0,1,54.2,34.945" transform="translate(-37.094 -19.259)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <line id="Line_214" data-name="Line 214" x2="15.071" y2="8.612" transform="translate(4.844)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <line id="Line_215" data-name="Line 215" x2="4.187" y2="2.449" transform="translate(23.803 15.315)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <line id="Line_216" data-name="Line 216" x2="2.997" y2="1.824" transform="translate(23.917 17.016)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <line id="Line_217" data-name="Line 217" x2="22.36" y2="12.901" transform="translate(0 11.304)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94988" data-name="Path 94988" d="M21.359,37.143l.273.157.473.448a13.317,13.317,0,0,1,2.241,3.222c.962,1.852,1.928,4.042.61,6.231-1.515,2.5-4.962,1.64-4.962,1.64" transform="translate(-1.728 -28.711)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94989" data-name="Path 94989" d="M52.921,27.83l-5.2,3.14v6.14" transform="translate(-39.554 -22.815)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94991" data-name="Path 94991" d="M61.3,24.933l-.595.345a1.136,1.136,0,0,1-1.136,0L57.71,24.16" transform="translate(-52.548 -20.488)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94994" data-name="Path 94994" d="M65.522,37.968,68.1,39.4l.14-2.5-2.508-1.372Z" transform="translate(-61.563 -27.798)" fill="#c3c3c3"/>
+      <path id="Path_95081" data-name="Path 95081" d="M65.522,37.968,68.1,39.4l.14-2.5-2.508-1.372Z" transform="translate(-64.767 -29.567)" fill="#c3c3c3"/>
+      <path id="Path_95080" data-name="Path 95080" d="M65.38,39.406l2.005.937.106-2.916-2-.937Z" transform="translate(-55.256 -25.462)" fill="#c3c3c3" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_94995" data-name="Path 94995" d="M51.352,47.044l.7.36a.652.652,0,0,0,.951-.58V44.874a.655.655,0,0,0-.352-.583l-.7-.36a.652.652,0,0,0-.951.58v1.951A.655.655,0,0,0,51.352,47.044Z" transform="translate(-40.875 -32.771)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Path_95002" data-name="Path 95002" d="M25.8,42.21s2.273,3.03,2.739,5a1.464,1.464,0,0,1-2.273,1.652,53.629,53.629,0,0,1-3.818-4.584S25.184,44.547,25.8,42.21Z" transform="translate(-5.665 -31.747)" fill="#c3c3c3"/>
+      <g id="Mask_Group_161" data-name="Mask Group 161" transform="translate(16.78 10.462)" clip-path="url(#clip-path)">
+        <path id="Path_95005" data-name="Path 95005" d="M26.6,42.21s2.817,3.608,3.395,5.949-1.878,2.643-2.817,1.967a64.507,64.507,0,0,1-4.733-5.458S25.84,44.993,26.6,42.21Z" transform="translate(-24.801 -45.227)" fill="#c3c3c3" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="0.5"/>
+      </g>
+    </g>
+  </g>
+</svg>
