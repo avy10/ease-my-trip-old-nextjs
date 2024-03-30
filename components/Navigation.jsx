@@ -8,12 +8,6 @@ export default function Navigation() {
 	const authorisationContextData = useContext(AuthorisationContext);
 	const { isLoggedIn } = authorisationContextData;
 
-	const router = useRouter();
-
-	useEffect(() => {
-		console.log(router.pathname);
-	});
-
 	return (
 		<nav>
 			<div className="emtIcon">
@@ -26,50 +20,105 @@ export default function Navigation() {
 					/>
 				</Link>
 			</div>
-			<div className="pageNavigations">
-				<ul>
-					<li id="flightNav">
-						<Link href="/">
-							<div
-								className={
-									router.pathname == "/" ? "active" : ""
-								}
-							></div>
-							<span>FLIGHTS</span>
-						</Link>
-					</li>
-					<li id="hotelNav">
-						<Link href="/hotels">
-							<div
-								className={
-									router.pathname == "/hotels" ? "active" : ""
-								}
-							></div>
-							<span>HOTELS</span>
-						</Link>
-					</li>
-					<li id="trainNav">
-						<Link href="/trains">
-							<div
-								className={
-									router.pathname == "/trains" ? "active" : ""
-								}
-							></div>
-							<span>TRAINS</span>
-						</Link>
-					</li>
-					<li id="busNav">
-						<Link href="/buses">
-							<div
-								className={
-									router.pathname == "/buses" ? "active" : ""
-								}
-							></div>
-							<span>BUSES</span>
-						</Link>
-					</li>
-				</ul>
-			</div>
+			<PageNavigations />
+			<div className="loginPortal"> HI I AM USER</div>
 		</nav>
+	);
+}
+
+function PageNavigations() {
+	const router = useRouter();
+	return (
+		<div className="pageNavigations">
+			<ul>
+				<li id="flightNav">
+					<Link href="/">
+						<div
+							className={
+								router.pathname == "/"
+									? "navContainer active"
+									: "navContainer"
+							}
+						>
+							<div className="blankSpace"></div>
+							<div
+								className={
+									router.pathname == "/" ? "navText" : ""
+								}
+							>
+								FLIGHTS
+							</div>
+						</div>
+					</Link>
+				</li>
+
+				<li id="hotelNav">
+					<Link href="/hotels">
+						<div
+							className={
+								router.pathname == "/hotels"
+									? "navContainer active"
+									: "navContainer"
+							}
+						>
+							<div className="blankSpace"></div>
+							<div
+								className={
+									router.pathname == "/hotels"
+										? "navText"
+										: ""
+								}
+							>
+								HOTELS
+							</div>
+						</div>
+					</Link>
+				</li>
+
+				<li id="trainNav">
+					<Link href="/trains">
+						<div
+							className={
+								router.pathname == "/trains"
+									? "navContainer active"
+									: "navContainer"
+							}
+						>
+							<div className="blankSpace"></div>
+							<div
+								className={
+									router.pathname == "/trains"
+										? "navText"
+										: ""
+								}
+							>
+								TRAINS
+							</div>
+						</div>
+					</Link>
+				</li>
+
+				<li id="busNav">
+					<Link href="/buses">
+						<div
+							className={
+								router.pathname == "/buses"
+									? "navContainer active"
+									: "navContainer"
+							}
+						>
+							<div className="blankSpace"></div>
+							<div
+								className={
+									router.pathname == "/buses" ? "navText" : ""
+								}
+							>
+								BUSES
+							</div>
+						</div>
+					</Link>
+				</li>
+			</ul>
+		</div>
 	);
 }

@@ -1,3 +1,3 @@
 export default function Hotels() {
-	return <div>HOTELS</div>;
+	return <div> I AM IN HOTELS</div>;
 }

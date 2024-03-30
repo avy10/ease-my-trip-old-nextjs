@@ -3,31 +3,3 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-.emtIcon {
-	height: 70px;
-	width: 200px;
-	background-image: url(../public/assests/images/navigation-images/emtlogo_new8.svg);
-	/* border: 2px solid black; */
-}
-
-#flightNav div {
-	background: url(../public/assests/images/navigation-images/flighticon-unselected.svg);
-	background-repeat: no-repeat;
-	background-size: 40px 40px;
-	height: 50px;
-	width: 50px;
-	border: 2px solid aquamarine;
-}
-
-#flightNav div:hover {
-	background: url(../public/assests/images/navigation-images/flight-icon-selected.svg);
-	background-size: 40px 40px;
-	background-repeat: no-repeat;
-}
-
-#flightNav .active {
-	background: url(../public/assests/images/navigation-images/flight-icon-selected.svg);
-	background-size: 40px 40px;
-	background-repeat: no-repeat;
-}
