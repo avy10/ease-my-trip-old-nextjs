@@ -1,3 +1,3 @@
 export default function Buses() {
-	return <div>I AM IN BUSES</div>;
+	return <div className="avy">I AM IN BUSES</div>;
 }

@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react";
 import AuthorisationContext from "@/contexts/AuthorisationContext";
 
+import Divider from "@mui/material/Divider";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -52,6 +54,7 @@ function PageNavigations() {
 					</Link>
 				</li>
 
+				<Divider orientation="vertical" variant="middle" />
 				<li id="hotelNav">
 					<Link href="/hotels">
 						<div
@@ -74,7 +77,7 @@ function PageNavigations() {
 						</div>
 					</Link>
 				</li>
-
+				<Divider orientation="vertical" variant="middle" />
 				<li id="trainNav">
 					<Link href="/trains">
 						<div
@@ -97,7 +100,7 @@ function PageNavigations() {
 						</div>
 					</Link>
 				</li>
-
+				<Divider orientation="vertical" variant="middle" size="small" />
 				<li id="busNav">
 					<Link href="/buses">
 						<div

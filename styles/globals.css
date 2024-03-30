@@ -3,3 +3,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+.avy {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}

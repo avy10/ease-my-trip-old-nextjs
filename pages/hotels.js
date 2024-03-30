@@ -1,3 +1,3 @@
 export default function Hotels() {
-	return <div> I AM IN HOTELS</div>;
+	return <div className="avy"> I AM IN HOTELS</div>;
 }
