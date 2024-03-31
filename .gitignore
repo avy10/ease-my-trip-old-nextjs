@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#codesandbox ignore
+/.codesandbox
+/.devcontainer
+/.github
 # testing
 /coverage
 
