@@ -1,9 +1,9 @@
-import App from "../components/App";
+import FlightHome from "../components/FlightHome";
 
 export default function Home() {
-  return (
-    <>
-      <App />
-    </>
-  );
+	return (
+		<>
+			<FlightHome />
+		</>
+	);
 }

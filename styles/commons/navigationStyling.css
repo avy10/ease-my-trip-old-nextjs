@@ -5,11 +5,18 @@ nav {
 	margin-left: 12vw;
 	margin-right: 12vw;
 	width: 76vw;
-	margin-top: 10px;
+	padding-top: 10px;
+	position: fixed;
+	z-index: 3;
+	background-color: white;
+	border: 2px solid black;
 }
 nav a {
 	text-decoration: none;
 	color: black;
+}
+.miniNav {
+	height: 6vh;
 }
 .pageNavigations ul {
 	list-style-type: none;

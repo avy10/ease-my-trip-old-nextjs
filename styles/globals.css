@@ -8,4 +8,9 @@
 	margin-top: 50px;
 	display: flex;
 	justify-content: center;
+	height: 110vh;
+	border: 2px solid black;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
 }
