@@ -54,11 +54,11 @@ function MainBox() {
 				);
 			});
 	}, []);
-	useEffect(() => {
-		console.log(airportNames);
-		console.log(source);
-		console.log(destination);
-	}, [airportNames]);
+	// useEffect(() => {
+	// 	console.log(airportNames);
+	// 	console.log(source);
+	// 	console.log(destination);
+	// }, [airportNames]);
 	return (
 		<div className="mainBox">
 			<AirportSearchBoxes
@@ -71,6 +71,7 @@ function MainBox() {
 				target={destination}
 				labelText="TO"
 			/>
+			<DatePicker />
 		</div>
 	);
 }

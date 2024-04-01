@@ -32,7 +32,7 @@ export default function AirportAutoCompleteMUI({
 				},
 			},
 		});
-	console.log("airportSelection", airportSelection);
+	// console.log("airportSelection", airportSelection);
 	const outerTheme = useTheme();
 	const [val, setVal] = useState(airportSelection);
 	return (
