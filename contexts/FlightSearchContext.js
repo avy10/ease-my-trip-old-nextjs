@@ -1,8 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 const FlightSearchContext = createContext();
-
 export default FlightSearchContext;
-
 export function FlightSearchProvider({ children }) {
 	const [source, setSource] = useState({
 		coordinates: {
@@ -40,9 +38,9 @@ export function FlightSearchProvider({ children }) {
 	});
 	const [day, setDay] = useState("");
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
-
+	const [isTwoWay, setIsTwoWay] = useState(false);
 	function updateFlightSearchStates(text, val) {
-		console.log(text, val);
+		// console.log(text, val);
 		if (text == "source" || text == "FROM") {
 			setSource(val);
 		} else if (text == "destination" || text == "TO") {
@@ -55,7 +53,12 @@ export function FlightSearchProvider({ children }) {
 			return;
 		}
 	}
-
+	function updateTwoWay(val) {
+		setIsTwoWay(val);
+	}
+	useEffect(() => {
+		console.log("isTwoWay", isTwoWay);
+	}, [isTwoWay]);
 	return (
 		<FlightSearchContext.Provider
 			value={{
@@ -64,6 +67,8 @@ export function FlightSearchProvider({ children }) {
 				day,
 				numberOfPassengers,
 				updateFlightSearchStates,
+				isTwoWay,
+				updateTwoWay,
 			}}
 		>
 			{children}

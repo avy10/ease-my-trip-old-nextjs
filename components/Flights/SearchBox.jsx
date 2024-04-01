@@ -2,12 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { domain, allTheAirports } from "@/public/utils/apiFetch";
 import AirportAutoCompleteMUI from "../Custom-MUI-Components/AirportAutoCompleteMUI";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
+import RadioButtons from "./RadioButtons";
+
+//date imports
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers";
+
 export default function SearchBox() {
 	return (
 		<div className="flightSearchBox">
 			<div className="innerBox">
-				<div className="boxTitle poppins-extrabold">
-					Search Lowest Price
+				<div className="flight-pre-info">
+					<RadioButtons />
+					<div className="boxTitle poppins-extrabold">
+						Search Lowest Price
+					</div>
 				</div>
 				<MainBox />
 			</div>
@@ -91,5 +103,3 @@ function AirportSearchBoxes({
 		</>
 	);
 }
-
-function AirportSearchDateBox() {}
