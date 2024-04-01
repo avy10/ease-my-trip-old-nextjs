@@ -2,6 +2,7 @@ import { useContext } from "react";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 // radio imports
 import Radio from "@mui/material/Radio";
+import { pink } from "@mui/material/colors";
 export default function RadioButtons() {
 	const searchData = useContext(FlightSearchContext);
 	const { isTwoWay, updateTwoWay } = searchData;
@@ -15,8 +16,22 @@ export default function RadioButtons() {
 				value="oneWay"
 				name="radio-buttons"
 				inputProps={{ "aria-label": "one way" }}
+				sx={{
+					color: pink[50],
+					"&.Mui-checked": {
+						color: pink[50],
+					},
+				}}
 			/>
-			<label>One-Way</label>
+			<label
+				style={{
+					color: pink[50],
+					fontSize: "1.15rem",
+					fontWeight: "600",
+				}}
+			>
+				One-Way
+			</label>
 			<Radio
 				checked={isTwoWay}
 				onChange={() => {
@@ -25,8 +40,22 @@ export default function RadioButtons() {
 				value="twoWay"
 				name="radio-buttons"
 				inputProps={{ "aria-label": "two way" }}
+				sx={{
+					color: pink[50],
+					"&.Mui-checked": {
+						color: pink[50],
+					},
+				}}
 			/>
-			<label>Two-Way</label>
+			<label
+				style={{
+					color: pink[50],
+					fontSize: "1.15rem",
+					fontWeight: "600",
+				}}
+			>
+				Two-Way
+			</label>
 		</div>
 	);
 }
