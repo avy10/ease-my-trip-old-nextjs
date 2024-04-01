@@ -49,24 +49,26 @@ function MainBox() {
 	}, [airportNames]);
 	return (
 		<div className="mainBox">
-			<SearchBoxes
+			<AirportSearchBoxes
 				airportNames={airportNames}
 				target={source}
 				labelText="FROM"
 			/>
-			<SearchBoxes
+			<AirportSearchBoxes
 				airportNames={airportNames}
 				target={destination}
 				labelText="TO"
 			/>
-
-			<div>aa</div>
-			<div>aa</div>
 		</div>
 	);
 }
 
-function SearchBoxes({ airportNames, target, labelText }) {
+function AirportSearchBoxes({
+	airportNames,
+	target,
+	labelText,
+	updateFlightSearchStates,
+}) {
 	return (
 		<>
 			<div className="singleSearchComponent">
@@ -74,9 +76,20 @@ function SearchBoxes({ airportNames, target, labelText }) {
 				<AirportAutoCompleteMUI
 					optionsName={airportNames}
 					airportSelection={target}
+					labelText={labelText}
 				/>
-				<p>{target.name}</p>
+				<p>
+					{target?.name ? (
+						target.name
+					) : (
+						<span className="errorAirportName">
+							Select an Airport
+						</span>
+					)}
+				</p>
 			</div>
 		</>
 	);
 }
+
+function AirportSearchDateBox() {}

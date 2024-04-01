@@ -42,9 +42,10 @@ export function FlightSearchProvider({ children }) {
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 
 	function updateFlightSearchStates(text, val) {
-		if (text == "source") {
+		console.log(text, val);
+		if (text == "source" || text == "FROM") {
 			setSource(val);
-		} else if (text == "destination") {
+		} else if (text == "destination" || text == "TO") {
 			setDestination(val);
 		} else if (text == "day") {
 			setDay(val);

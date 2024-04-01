@@ -2,12 +2,16 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import FlightSearchContext from "@/contexts/FlightSearchContext";
 
 export default function AirportAutoCompleteMUI({
 	optionsName,
 	airportSelection,
+	labelText,
 }) {
+	const searchData = useContext(FlightSearchContext);
+	const { updateFlightSearchStates } = searchData;
 	const customTheme = (outerTheme) =>
 		createTheme({
 			palette: {
@@ -38,6 +42,7 @@ export default function AirportAutoCompleteMUI({
 				onChange={(event, newValue) => {
 					console.log(newValue);
 					setVal(newValue);
+					updateFlightSearchStates(labelText, newValue);
 				}}
 				autoComplete={true}
 				clearOnEscape={true}
@@ -67,7 +72,7 @@ export default function AirportAutoCompleteMUI({
 						className="airportsSelection"
 						{...params}
 						label="Search Airports"
-						placeholder="FROM"
+						placeholder={labelText}
 						inputProps={{
 							...params.inputProps,
 							// autoComplete: "new-password", // disable autocomplete and autofill
