@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import "@/styles/commons/navigationStyling.css";
 
 import "@/styles/flights/flightsHome.css";
+import "@/styles/fonts.css";
 
 export default function App({ Component, pageProps }) {
 	return (

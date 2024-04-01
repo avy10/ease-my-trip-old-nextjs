@@ -10,13 +10,22 @@
 	width: 100vw;
 	background-image: linear-gradient(to right, #2f80ed, #56ccf2);
 	background-color: #2f81ed;
+	padding: 4vh 8vw;
 }
 
 .boxTitle {
 	text-align: right;
 	padding-right: 10vw;
+	color: white;
+	font-weight: 800;
+	font-size: 1.35rem;
 }
 
 .airportsSelection {
 	background-color: rgba(255, 255, 255, 0.671);
+}
+
+.mainBox {
+	background-color: white;
+	display: flex;
 }

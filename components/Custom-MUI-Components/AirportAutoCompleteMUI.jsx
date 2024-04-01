@@ -1,54 +1,13 @@
-import React, { useEffect, useState } from "react";
-
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { domain, allTheAirports } from "@/public/utils/apiFetch";
-export default function FlightHome() {
-	return (
-		<div className="flightHomeContainer">
-			<SearchBox />
-		</div>
-	);
-}
+import { useState } from "react";
 
-function SearchBox() {
-	return (
-		<div className="flightSearchBox">
-			<div className="innerBox">
-				<div className="boxTitle">Search Lowest Price</div>
-				<MainBox />
-			</div>
-		</div>
-	);
-}
-
-function MainBox() {
-	const [airportNames, setAirportNames] = useState([]);
-	useEffect(() => {
-		fetch(`${domain}${allTheAirports}`, {
-			method: "GET",
-			headers: {
-				projectID: "4xh7gn2pv8it",
-			},
-		})
-			.then((res) => res.json())
-			.then((apiData) => setAirportNames(apiData?.data?.airports));
-	}, []);
-	useEffect(() => {
-		console.log(airportNames);
-	}, [airportNames]);
-	return (
-		<div className="mainBox">
-			<AutoCompleteMUI airportNames={airportNames} />
-			<div>aa</div>
-			<div>aa</div>
-		</div>
-	);
-}
-
-function AutoCompleteMUI({ airportNames }) {
+export default function AirportAutoCompleteMUI({
+	optionsName,
+	airportSelection,
+}) {
 	const customTheme = (outerTheme) =>
 		createTheme({
 			palette: {
@@ -63,30 +22,37 @@ function AutoCompleteMUI({ airportNames }) {
 							"--TextField-brandBorderFocusedColor": "#E0E3E7",
 							"& label.Mui-focused, label ": {
 								color: "black",
-								backgroundColor: "rgb(255, 255, 255)",
-								fontWeight: "600",
 							},
 						},
 					},
 				},
 			},
 		});
-
+	console.log("airportSelection", airportSelection);
 	const outerTheme = useTheme();
-
+	const [val, setVal] = useState(airportSelection);
 	return (
 		<ThemeProvider theme={customTheme(outerTheme)}>
 			<Autocomplete
+				value={val}
+				onChange={(event, newValue) => {
+					console.log(newValue);
+					setVal(newValue);
+				}}
+				autoComplete={true}
+				clearOnEscape={true}
 				className="airportsSelection"
 				id="airport-select"
 				sx={{ width: 300 }}
-				options={airportNames}
+				options={optionsName}
 				autoHighlight
-				getOptionLabel={(option) =>
-					`${option.iata_code}, ${option.name}, ${option.city}`
+				getOptionLabel={(option) => `${option.iata_code}`}
+				isOptionEqualToValue={(option, value) =>
+					option.iata_code === value.iata_code
 				}
 				renderOption={(props, option) => (
 					<Box
+						value={airportSelection}
 						className="airportsSelection"
 						component="li"
 						sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
@@ -100,7 +66,8 @@ function AutoCompleteMUI({ airportNames }) {
 						required
 						className="airportsSelection"
 						{...params}
-						label="FROM"
+						label="Search Airports"
+						placeholder="FROM"
 						inputProps={{
 							...params.inputProps,
 							// autoComplete: "new-password", // disable autocomplete and autofill
