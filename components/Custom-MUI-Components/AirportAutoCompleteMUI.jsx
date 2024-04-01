@@ -24,6 +24,7 @@ export default function AirportAutoCompleteMUI({
 							"--TextField-brandBorderColor": "#E0E3E7",
 							"--TextField-brandBorderHoverColor": "#E0E3E7",
 							"--TextField-brandBorderFocusedColor": "#E0E3E7",
+
 							"& label.Mui-focused, label ": {
 								color: "black",
 							},
@@ -35,6 +36,7 @@ export default function AirportAutoCompleteMUI({
 	// console.log("airportSelection", airportSelection);
 	const outerTheme = useTheme();
 	const [val, setVal] = useState(airportSelection);
+	const [airportNameError, setAirportNameError] = useState(false);
 	return (
 		<ThemeProvider theme={customTheme(outerTheme)}>
 			<Autocomplete
@@ -52,9 +54,14 @@ export default function AirportAutoCompleteMUI({
 				options={optionsName}
 				autoHighlight
 				getOptionLabel={(option) => `${option.iata_code}`}
-				isOptionEqualToValue={(option, value) =>
-					option.iata_code === value.iata_code
-				}
+				isOptionEqualToValue={(option, value) => {
+					if (option.iata_code === value.iata_code) {
+						setAirportNameError(false);
+					} else {
+						setAirportNameError(true);
+					}
+					return option.iata_code === value.iata_code;
+				}}
 				renderOption={(props, option) => (
 					<Box
 						value={airportSelection}
@@ -69,6 +76,7 @@ export default function AirportAutoCompleteMUI({
 				renderInput={(params) => (
 					<TextField
 						required
+						error={airportNameError}
 						className="airportsSelection"
 						{...params}
 						label="Search Airports"

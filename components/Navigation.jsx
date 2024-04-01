@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 const ROUTES = [
 	{
 		id: "flightNav",
-		path: "/",
+		path: "/flights",
 		name: "FLIGHTS",
 	},
 	{

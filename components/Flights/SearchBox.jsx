@@ -3,14 +3,13 @@ import { domain, allTheAirports } from "@/public/utils/apiFetch";
 import AirportAutoCompleteMUI from "../Custom-MUI-Components/AirportAutoCompleteMUI";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import RadioButtons from "./RadioButtons";
-
-//date imports
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { DesktopDatePicker } from "@mui/x-date-pickers";
-
+import BasicDatePicker from "../Custom-MUI-Components/DatePicker";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import dayjs from "dayjs";
 export default function SearchBox() {
 	return (
 		<div className="flightSearchBox">
@@ -30,13 +29,18 @@ export default function SearchBox() {
 function MainBox() {
 	const [airportNames, setAirportNames] = useState([]);
 	const searchData = useContext(FlightSearchContext);
+
 	const {
 		source,
 		destination,
 		day,
+		returnDay,
 		numberOfPassengers,
 		updateFlightSearchStates,
+		isTwoWay,
+		updateDay,
 	} = searchData;
+	const finalFlightBooking = dayjs().add(8, "months");
 	useEffect(() => {
 		fetch(`${domain}${allTheAirports}`, {
 			method: "GET",
@@ -71,7 +75,28 @@ function MainBox() {
 				target={destination}
 				labelText="TO"
 			/>
-			<DatePicker />
+			<BasicDatePicker
+				targetVALUE={day}
+				labelText={"Choose your Departure date"}
+				paraText="DEPARTURE DATE"
+				updateTarget="day"
+				updateState={updateDay}
+			/>
+			{isTwoWay && (
+				<BasicDatePicker
+					targetVALUE={returnDay}
+					labelText={"Choose your Return date"}
+					paraText="RETURN DATE"
+					minReturnDay={day}
+					updateTarget="returnDay"
+					updateState={updateDay}
+					finalFlightBooking={finalFlightBooking}
+				/>
+			)}
+			<div className="travellerNums">
+				<p>No. of Travellers</p>
+				<SelectTravellersNumber />
+			</div>
 		</div>
 	);
 }
@@ -102,5 +127,32 @@ function AirportSearchBoxes({
 				</p>
 			</div>
 		</>
+	);
+}
+
+function SelectTravellersNumber() {
+	const [number, setNumber] = useState(1);
+	return (
+		<Box sx={{ minWidth: 120 }}>
+			<FormControl fullWidth>
+				<InputLabel id="demo-simple-select-label">
+					Number of Travellers
+				</InputLabel>
+				<Select
+					labelId="demo-simple-select-label"
+					id="demo-simple-select"
+					value={number}
+					label="Select a number"
+					onChange={(e) => setNumber(e.target.value)}
+				>
+					<MenuItem value={1}>1</MenuItem>
+					<MenuItem value={2}>2</MenuItem>
+					<MenuItem value={3}>3</MenuItem>
+					<MenuItem value={4}>4</MenuItem>
+					<MenuItem value={5}>5</MenuItem>
+					<MenuItem value={6}>6</MenuItem>
+				</Select>
+			</FormControl>
+		</Box>
 	);
 }

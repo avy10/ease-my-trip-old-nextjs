@@ -1,13 +1,14 @@
-import FlightHome from "@/components/Flights/FlightsHome";
-// import FlightHome from "../components/FlightHome3";
-import { FlightSearchProvider } from "@/contexts/FlightSearchContext";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-export default function Home() {
-	return (
-		<FlightSearchProvider>
-			<>
-				<FlightHome />
-			</>
-		</FlightSearchProvider>
-	);
-}
+const IndexPage = () => {
+	const router = useRouter();
+
+	useEffect(() => {
+		router.push("/flights");
+	}, []);
+
+	return null;
+};
+
+export default IndexPage;

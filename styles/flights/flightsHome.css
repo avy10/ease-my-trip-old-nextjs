@@ -7,14 +7,20 @@
 }
 .flightSearchBox {
 	width: 100vw;
+	height: 40vh;
 	/* background-image: linear-gradient(to right, #2f80ed, #56ccf2); */
 	background: url("https://www.easemytrip.com/images/offer-img/rroyals-hp-main-banner-2.png");
 	background-color: #2f81ed;
-	padding: 4vh 8vw;
+	padding: 4vh 4vw;
+}
+.innerBox {
+	position: relative;
+	top: 120px;
 }
 .flight-pre-info {
 	display: flex;
 	justify-content: space-between;
+	row-gap: 10px;
 }
 .boxTitle {
 	text-align: right;
@@ -29,8 +35,32 @@
 .mainBox {
 	background-color: white;
 	display: flex;
+	padding: 20px;
 }
 .dateComponent {
 	display: flex;
 	flex-direction: column;
+	row-gap: 10px;
+	column-gap: 10px;
+}
+.dateContainer {
+	display: flex;
+	flex-direction: column;
+	column-gap: 10px;
+	row-gap: 10px;
+}
+.MuiTextField-root {
+	width: 250px;
+}
+.errorAirportName {
+	color: red;
+	font-size: 1.1rem;
+	font-weight: 500;
+}
+
+.singleSearchComponent {
+	display: flex;
+	flex-direction: column;
+	column-gap: 20px;
+	row-gap: 10px;
 }

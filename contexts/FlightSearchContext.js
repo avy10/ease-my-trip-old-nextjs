@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import dayjs, { Dayjs } from "dayjs";
 const FlightSearchContext = createContext();
 export default FlightSearchContext;
 export function FlightSearchProvider({ children }) {
@@ -36,7 +37,8 @@ export function FlightSearchProvider({ children }) {
 		icao_code: "VABB",
 		__v: 0,
 	});
-	const [day, setDay] = useState("");
+	const [day, setDay] = useState(dayjs());
+	const [returnDay, setReturnDay] = useState(dayjs());
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 	const [isTwoWay, setIsTwoWay] = useState(false);
 	function updateFlightSearchStates(text, val) {
@@ -56,6 +58,17 @@ export function FlightSearchProvider({ children }) {
 	function updateTwoWay(val) {
 		setIsTwoWay(val);
 	}
+	function updateDay(text, val) {
+		console.log("DATE VALUE", val);
+		if (text == "day") {
+			setDay(val);
+		} else if (text == "returnDay") {
+			setReturnDay(val);
+		} else {
+			console.log("aayein");
+			return;
+		}
+	}
 	useEffect(() => {
 		console.log("isTwoWay", isTwoWay);
 	}, [isTwoWay]);
@@ -65,10 +78,12 @@ export function FlightSearchProvider({ children }) {
 				source,
 				destination,
 				day,
+				returnDay,
 				numberOfPassengers,
 				updateFlightSearchStates,
 				isTwoWay,
 				updateTwoWay,
+				updateDay,
 			}}
 		>
 			{children}
