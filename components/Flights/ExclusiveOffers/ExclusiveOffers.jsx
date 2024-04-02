@@ -1,13 +1,61 @@
 import { useEffect, useState } from "react";
 import OfferTypeTab from "./OfferTypeTab";
-
+import { domain, offersURL } from "@/public/utils/apiFetch";
+import OfferCards from "./OfferCards";
+import Skeleton from "@mui/material/Skeleton";
 export default function ExclusiveOffers() {
 	const [offers, setOffers] = useState([]);
 	const [activeTab, setActiveTab] = useState(0);
-	const [loading, isLoading] = useState(true);
-
+	const [isloading, setIsLoading] = useState(true);
+	/* 
+fetch(`${domain}${allTheAirports}`, {
+			method: "GET",
+			headers: {
+				projectID: "4xh7gn2pv8it",
+			},
+		})
+			.then((res) => res.json())
+			.then((apiData) => {
+				setAirportNames(apiData?.data?.airports);
+				updateFlightSearchStates("source", apiData?.data?.airports[7]);
+				updateFlightSearchStates(
+					"destination",
+					apiData?.data?.airports[8]
+				);
+			});
+*/
 	useEffect(() => {
-		const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS", "BUSES"];
+		// const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS", "BUSES"];
+		setIsLoading(true);
+		const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS"];
+		const myHeaders = new Headers();
+		myHeaders.append("projectID", "${projectID}");
+		myHeaders.append("random", "adsaav");
+
+		const requestOptions = {
+			method: "GET",
+			headers: myHeaders,
+			redirect: "follow",
+		};
+		const URL =
+			`${domain}${offersURL}?filter={` +
+			'"' +
+			"type" +
+			'"' +
+			":" +
+			'"' +
+			`${types[activeTab]}` +
+			'"' +
+			"}";
+		console.log(URL);
+		fetch(`${URL}`, requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				setOffers(result?.data?.offers);
+				console.log(result);
+				setIsLoading(false);
+			})
+			.catch((error) => console.error(error));
 	}, [activeTab]);
 	return (
 		<>
@@ -19,6 +67,31 @@ export default function ExclusiveOffers() {
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
+				{!isloading && <OfferCards offers={offers} />}
+				{isloading && (
+					<div className="offerSkeletonDiv">
+						<Skeleton
+							variant="rectangular"
+							width={210}
+							height={118}
+						/>
+						<Skeleton
+							variant="rectangular"
+							width={210}
+							height={118}
+						/>
+						<Skeleton
+							variant="rectangular"
+							width={210}
+							height={118}
+						/>
+						<Skeleton
+							variant="rectangular"
+							width={210}
+							height={118}
+						/>
+					</div>
+				)}
 			</div>
 		</>
 	);

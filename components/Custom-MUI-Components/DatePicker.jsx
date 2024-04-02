@@ -16,7 +16,7 @@ export default function BasicDatePicker({
 
 	const [selectedDate, setSelectedDate] = useState(dayjs());
 	useEffect(() => {
-		console.log(selectedDate.$d);
+		// console.log(selectedDate.$d);
 		updateState(updateTarget, selectedDate);
 	}, [selectedDate]);
 	return (

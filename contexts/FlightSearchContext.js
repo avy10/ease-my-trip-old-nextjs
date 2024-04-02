@@ -59,7 +59,7 @@ export function FlightSearchProvider({ children }) {
 		setIsTwoWay(val);
 	}
 	function updateDay(text, val) {
-		console.log("DATE VALUE", val);
+		// console.log("DATE VALUE", val);
 		if (text == "day") {
 			setDay(val);
 		} else if (text == "returnDay") {
@@ -70,7 +70,7 @@ export function FlightSearchProvider({ children }) {
 		}
 	}
 	useEffect(() => {
-		console.log("isTwoWay", isTwoWay);
+		// console.log("isTwoWay", isTwoWay);
 	}, [isTwoWay]);
 	return (
 		<FlightSearchContext.Provider
