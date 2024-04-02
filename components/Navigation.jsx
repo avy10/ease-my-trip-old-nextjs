@@ -32,7 +32,7 @@ export default function Navigation() {
 	const { isLoggedIn } = authorisationContextData;
 	const [scrollLengthY, setScrollLengthY] = useState(false);
 	const handleChange = () => {
-		if (window.scrollY >= 100) {
+		if (window.scrollY >= 40) {
 			setScrollLengthY(true);
 		} else {
 			setScrollLengthY(false);

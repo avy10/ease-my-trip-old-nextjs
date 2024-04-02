@@ -1,0 +1,70 @@
+.offerCardsDiv {
+	display: flex;
+	flex-direction: row;
+	margin: 20px 50px;
+	overflow-x: scroll;
+	max-width: 90vw;
+	flex-wrap: nowrap;
+	position: relative;
+}
+
+.offerCards {
+	width: 450px;
+	height: 350px;
+	border: 1px solid white;
+	background-color: white;
+	/* background-color: rgba(249, 231, 197, 0.812); */
+	box-shadow: 2px 2px 2px 2px rgb(212, 211, 211);
+	margin: 10px;
+	border-radius: 10px;
+	position: relative;
+}
+
+.offerImageDIV {
+	height: 220px;
+	width: 350px;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.offerImageDIV img {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.offerPersuasion {
+	/* border: 2px solid violet; */
+	position: absolute;
+	top: 0;
+	right: 0;
+	/* background-color: rgb(241, 0, 0); */
+	background-color: aqua;
+	/* color: white; */
+	color: black;
+	font-size: 1rem;
+	padding: 2px 10px;
+	border-radius: 30px;
+	font-family: "poppins";
+}
+
+.offerTextDIV {
+	padding: 12px;
+	border-radius: 10px;
+}
+
+/* .offerTextDIV p:first-child {
+	font-weight: 600;
+} */
+.headerOfferText {
+	font-weight: 600;
+	display: inline;
+}
+.expandedOfferText {
+	display: inline;
+	font-weight: 400;
+}
+
+.offerTextDIV span:nth-child(1) {
+	font-weight: 800;
+}

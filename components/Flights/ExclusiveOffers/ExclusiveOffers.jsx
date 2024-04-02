@@ -7,23 +7,7 @@ export default function ExclusiveOffers() {
 	const [offers, setOffers] = useState([]);
 	const [activeTab, setActiveTab] = useState(0);
 	const [isloading, setIsLoading] = useState(true);
-	/* 
-fetch(`${domain}${allTheAirports}`, {
-			method: "GET",
-			headers: {
-				projectID: "4xh7gn2pv8it",
-			},
-		})
-			.then((res) => res.json())
-			.then((apiData) => {
-				setAirportNames(apiData?.data?.airports);
-				updateFlightSearchStates("source", apiData?.data?.airports[7]);
-				updateFlightSearchStates(
-					"destination",
-					apiData?.data?.airports[8]
-				);
-			});
-*/
+
 	useEffect(() => {
 		// const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS", "BUSES"];
 		setIsLoading(true);

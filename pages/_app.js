@@ -7,6 +7,7 @@ import "@/styles/commons/navigationStyling.css";
 import "@/styles/flights/flightsHome.css";
 import "@/styles/fonts.css";
 import "@/styles/flights/exclusiveOffers.css";
+import "@/styles/flights/offerCard.css";
 
 export default function App({ Component, pageProps }) {
 	return (
