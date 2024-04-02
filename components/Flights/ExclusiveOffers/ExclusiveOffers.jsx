@@ -76,6 +76,7 @@ export default function ExclusiveOffers() {
 						/>
 					</div>
 				)}
+				<div className="showAllOffersBTN ">View All Offers</div>
 			</div>
 		</>
 	);
