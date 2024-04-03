@@ -9,6 +9,7 @@ import "@/styles/fonts.css";
 import "@/styles/flights/exclusiveOffers.css";
 import "@/styles/flights/offerCard.css";
 import "@/styles/flights/refund.css";
+import "@/styles/flights/topFlightDivs.css";
 export default function App({ Component, pageProps }) {
 	return (
 		<AuthorisationProvider>

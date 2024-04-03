@@ -1,0 +1,51 @@
+.topFlightsDIV {
+	background: url(https://www.easemytrip.com/images/desk-img/bg-world-map.jpg);
+	width: 100%;
+	background-size: 90%;
+	background-position: top;
+	background-repeat: no-repeat;
+	padding: 20px 0;
+}
+
+.topFlightGRID {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 20px;
+	position: relative;
+	left: 22vw;
+	right: 10vw;
+	width: 66vw;
+}
+
+.topFlightELEMENT {
+	display: flex;
+	align-items: center;
+	/* border: 2px solid black; */
+	width: max-content;
+}
+.topFlightTEXT {
+	margin: 5px 15px;
+	padding: 5px 10px;
+	margin-top: 10px;
+}
+.topFlightTEXT p {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+.topFlightTEXT p:nth-child(2) {
+	/* color: aqua; */
+	color: #2196f3;
+}
+
+.topFlightAirportsICON {
+	margin: 0px 5px;
+	font-weight: 600;
+	color: blueviolet;
+	position: relative;
+	top: 8px;
+}
+
+.topFlightICON {
+	font-size: 50px;
+	color: #0166b8;
+}
