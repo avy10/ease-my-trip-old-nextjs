@@ -1,0 +1,36 @@
+.refundSection {
+	background-image: linear-gradient(
+		to right,
+		#76c6f5,
+		#62aceb,
+		#31d2c2,
+		#12c29f
+	);
+	display: flex;
+	column-gap: 20px;
+	width: 60vw;
+	position: relative;
+	left: 20vw;
+	margin: 20px;
+	padding: 10px;
+	border-radius: 20px;
+}
+/* .termsnconditionICON {
+
+} */
+.refundIcon,
+.refundText,
+.termsnconditionICON {
+	margin: 10px;
+}
+.refundText ul {
+	padding: 10px;
+	list-style-type: circle;
+}
+.refundTextTitle {
+	display: flex;
+	justify-content: space-between;
+}
+.termsnconditionTEXT {
+	color: white;
+}
