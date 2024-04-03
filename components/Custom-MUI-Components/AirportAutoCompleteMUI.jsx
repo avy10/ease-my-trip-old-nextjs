@@ -53,7 +53,9 @@ export default function AirportAutoCompleteMUI({
 				sx={{ width: 300 }}
 				options={optionsName}
 				autoHighlight
-				getOptionLabel={(option) => `${option.iata_code}`}
+				getOptionLabel={(option) =>
+					`${option.iata_code}, ${option.city}`
+				}
 				isOptionEqualToValue={(option, value) => {
 					if (option.iata_code === value.iata_code) {
 						setAirportNameError(false);

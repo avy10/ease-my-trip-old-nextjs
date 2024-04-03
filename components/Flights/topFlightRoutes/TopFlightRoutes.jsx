@@ -1,6 +1,6 @@
 import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
-import { topFlightsARR } from "@/public/utils/topFlights";
+import { topFlightsARR } from "@/public/utils/FlightUtils/topFlights";
 export default function TopFlightRoutes() {
 	return (
 		<div className="topFlightsDIV">
@@ -9,7 +9,7 @@ export default function TopFlightRoutes() {
 			</div>
 			<div className="topFlightGRID">
 				{topFlightsARR.map((ele, index) => (
-					<div className="topFlightELEMENT">
+					<div className="topFlightELEMENT" key={index}>
 						<AirplaneTicketIcon
 							className="topFlightICON"
 							fontSize="large"

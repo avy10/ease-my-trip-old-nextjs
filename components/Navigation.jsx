@@ -64,7 +64,7 @@ function PageNavigations() {
 	const router = useRouter();
 	return (
 		<div className="pageNavigations">
-			<ul>
+			<ul className="pageNavigationsUL">
 				{ROUTES.map((ele) => (
 					<li id={ele.id} key={ele.id}>
 						<Link href={ele.path}>
@@ -98,7 +98,7 @@ function MiniPageNavigations() {
 	const router = useRouter();
 	return (
 		<div className="pageNavigations">
-			<ul>
+			<ul className="pageNavigationsUL">
 				{ROUTES.map((ele) => (
 					<li id={ele.id} key={ele.id}>
 						<Link href={ele.path}>

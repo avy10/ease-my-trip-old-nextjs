@@ -1,0 +1,35 @@
+.aboutHomePage {
+	background: #f2f2f266;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+}
+
+.aboutHomePage p {
+	margin: 10px 250px;
+	font-size: 1.15rem;
+}
+
+.bottomBorder {
+	width: 100vw;
+	/* height: 4vh; */
+	display: flex;
+	margin: 0;
+}
+
+.darkBottom {
+	margin: 0;
+	background: #4263c1;
+	width: 24%;
+	float: left;
+	height: 11px;
+}
+
+.lightBottom {
+	background: #468be8;
+	width: 76%;
+	float: left;
+	height: 11px;
+}

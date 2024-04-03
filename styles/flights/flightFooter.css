@@ -1,0 +1,17 @@
+.flightFooter {
+	background-color: black;
+	color: white;
+	/* margin: 50px; */
+}
+
+.flightFooter ul {
+	margin: 0px 50px;
+	padding: 20px;
+}
+
+.leftFooter li {
+	margin: 7px;
+	font-size: 1.25rem;
+	border-bottom: 2px solid grey;
+	width: max-content;
+}

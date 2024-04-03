@@ -18,11 +18,11 @@ nav a {
 .miniNav {
 	height: 6vh;
 }
-.pageNavigations ul {
+.pageNavigationsUL {
 	list-style-type: none;
 	display: flex;
 }
-.pageNavigations ul li {
+.pageNavigationsUL li {
 	font-size: 0.75rem;
 	font-weight: 500;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
