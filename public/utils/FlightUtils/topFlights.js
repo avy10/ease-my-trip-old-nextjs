@@ -9,3 +9,4 @@ export const topFlightsARR = [
 	{ from: "Delhi", to: "Patna", from_iata: "DEL", to_iata: "PAT" },
 	{ from: "Hyderabad", to: "Bangalore", from_iata: "HYD", to_iata: "BLR" },
 ];
+// CAPITALISE THE VARIABLE NAMES

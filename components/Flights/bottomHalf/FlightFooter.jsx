@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const listItems = [
 	"OUR OFFERINGS",
 	"QUICK LINKS",
@@ -7,6 +9,7 @@ const listItems = [
 ];
 
 export default function FlightFooter() {
+	const [rightElementToDisplay, setRightElementToDisplay] = useState([]);
 	return (
 		<div className="flightFooter">
 			<LeftFooter />
