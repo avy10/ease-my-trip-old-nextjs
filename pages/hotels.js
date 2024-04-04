@@ -5,13 +5,13 @@ export default function Hotels() {
 			I AM IN HOTELS
 			<p>
 				window.navigator.userAgentData.mobile,{" "}
-				{window.navigator.userAgentData.mobile
+				{window?.navigator?.userAgentData?.mobile
 					? "mobile"
 					: "not mobile"}
 			</p>
 			<p>
 				window.navigator.userAgentData.platform,{" "}
-				{window.navigator.userAgentData.platform}
+				{window?.navigator?.userAgentData?.platform}
 			</p>
 		</div>
 	);
