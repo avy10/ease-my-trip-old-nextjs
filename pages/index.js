@@ -5,7 +5,6 @@ const IndexPage = () => {
 	const router = useRouter();
 
 	useEffect(() => {
-		window.alert(window.navigator.userAgent);
 		router.push("/flights");
 	}, []);
 
