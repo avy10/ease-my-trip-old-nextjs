@@ -9,6 +9,10 @@ export default function Hotels() {
 					? "mobile"
 					: "not mobile"}
 			</p>
+			<p>
+				window.navigator.userAgentData.platform,{" "}
+				{window.navigator.userAgentData.platform}
+			</p>
 		</div>
 	);
 }
