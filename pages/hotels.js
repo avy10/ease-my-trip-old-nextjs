@@ -3,16 +3,20 @@ export default function Hotels() {
 		<div className="avy">
 			{" "}
 			I AM IN HOTELS
-			<p>
+			{/* <p>
 				window.navigator.userAgentData.mobile,{" "}
-				{window?.navigator?.userAgentData?.mobile
-					? "mobile"
-					: "not mobile"}
+				{window
+					? window?.navigator?.userAgentData?.mobile
+						? "mobile"
+						: "not mobile"
+					: "window not found"}
 			</p>
 			<p>
 				window.navigator.userAgentData.platform,{" "}
-				{window?.navigator?.userAgentData?.platform}
-			</p>
+				{window
+					? window?.navigator?.userAgentData?.platform
+					: "window not found"}
+			</p> */}
 		</div>
 	);
 }

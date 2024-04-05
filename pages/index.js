@@ -5,7 +5,8 @@ const IndexPage = () => {
 	const router = useRouter();
 
 	useEffect(() => {
-		router.push("/flights");
+		console.log("Am I Rendering twice");
+		router.replace("/flights");
 	}, []);
 
 	return null;
