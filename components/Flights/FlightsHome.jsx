@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SearchBox from "./SearchBox";
 import ExclusiveOffers from "./ExclusiveOffers/ExclusiveOffers";
 import Refund from "./Refund/Refund";
@@ -9,7 +9,7 @@ import FlightFooter from "./bottomHalf/FlightFooter";
 
 export default function FlightHome() {
 	return (
-		<div className="flightHomeContainer">
+		<div className="flight-home-container">
 			<SearchBox />
 			<ExclusiveOffers />
 			<Refund />

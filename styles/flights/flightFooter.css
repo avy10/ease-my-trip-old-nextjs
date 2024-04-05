@@ -1,18 +1,22 @@
-.flightFooter {
+.flight-footer {
 	background-color: black;
 	color: white;
 	/* margin: 50px; */
 	width: 100%;
+	display: flex;
 }
 
-.flightFooter ul {
+.flight-footer ul {
 	margin: 0px 50px;
 	padding: 20px;
 }
 
-.leftFooter li {
+.left-footer li {
 	margin: 7px;
 	font-size: 1.25rem;
 	border-bottom: 2px solid grey;
 	width: max-content;
+}
+.right-footer {
+	padding: 20px;
 }
