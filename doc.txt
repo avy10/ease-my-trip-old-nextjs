@@ -1,0 +1,83 @@
+responsiveness is coded at the end of creation of each webpage and not at the end of project completion
+all the css styling are present in the styles folder, with file name matching the page or component name
+
+DEFAULT FILES OF /pages :
+    pages -> index.jsx
+    redirects to "/flights" because that is supposed to be the default home-page
+    instead of router.push I am using router.replace. This makes sure the path "/" is removed from browser history. so when we try to go back from "/flights", we do not go back to "/" and get redirected again
+
+pages -> \_app.jsx
+    contains the layout for the entire app
+    the purpose is to render the Navigation and Footer on all the webpages
+    the entire App is wrapped by Authorisation Context Provider
+    due to next.js rules, all the css are being imported here
+
+CONTEXT PROVIDERS 
+    1. AUTHORISATION CONTEXT PROVIDER
+        contains the isLoggedIn state and function to set it to true
+
+        future requirements:
+            - because I can toggle this state to true or false on inspecting, a check needs to be performed
+				whenever this state is updated a useEffect will run which will check for presence of JWT Bearer Token in the localstorage
+					if JWT Bearer Token is not present, then isLoggedIn is set back to false again
+				This JWT Bearer Token is provided to us by the newton-API. This token will be used by the POST-method to perform booking actions
+
+			- store the JWT Bearer Token in localstorage on login, clear the JWT Bearer Token from localstorage on logout
+
+	2. FLIGHT SEARCH CONTEXT
+
+		FlightSearchContext only wraps the "/flights" section of the app
+		THE PURPOSE IS THAT EACH SECTION TO HAVE ITS OWN CONTEXT, WHICH MAKES DATA HANDLING EASIER
+
+		It contains state that is required to perform the flight-search
+			source => default value is Delhi Airport
+			destination => default value is Mumbai Airport
+			day => defaults to current day using dayjs()
+			returnDay => defaults to current day using dayjs()
+			numberOfPassengers => default is 1
+			isTwoWay => default is false
+				checks if the user is booking a return trip, 
+				the target page for one-way flights page and two-way flights are different on purpose
+				it makes designing of webpage easier
+		
+		Functions to update the state conditionally
+			updateFlightSearchStates
+			updateTwoWay
+			updateDay
+
+COMPONENTS
+	0. components\discarded
+	1. components\Custom-MUI-Components
+	2. components\Custom-User-Components
+	3. components\Flights
+	4. components\Navigation.jsx
+
+	BREIF DESCRIPTION
+
+		0. components\discarded
+			contains any older component which is no longer in use
+		
+		1. components\Custom-MUI-Components
+			contains MUI-components that has been customised to cater the design needs of this project
+		
+		2. components\Custom-User-Components
+			contains any re-usable custom component
+		3. components\Flights
+			contains components for "/flights" route
+		4. components\Navigation.jsx
+
+	DETAILS
+		4. components\Navigation.jsx
+			this component contains the Navigation section of the entire App
+			Logo -- Navigation Tabs -- User Access
+			!! UPDATED !!on Scroll size of the component is reduced which is achieved by conditional rendering of MiniPageNavigation
+				~ Instead of conditionally rendering a different component altogether, I am simply conditionally rendering the name of the navigation Tabs
+				~ window has an EventListener which sets the state scrollLengthY true when scroll length is >= 40 indicating the user has scrolled vertically down 
+				and false, when user has scrolled up
+				
+				~ Earlier => there were two different components being rendered based on setScrollLengthY state
+				~ In the UPDATE => the 
+
+			without the div.blank-space the name of the navigation links appears on top of image
+			it is a hackey way of rendering the name of navigation link below the icons
+			Most probably this could have been achieved by using position, but creating this blank div was a hackey attempt

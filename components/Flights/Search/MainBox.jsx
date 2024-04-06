@@ -4,6 +4,7 @@ import { domain, allTheAirports } from "@/public/utils/apiFetch";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import AirportSearchBoxes from "./AirportSearchBoxes";
+
 import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
 import SelectTravellersNumber from "./SelectTravellersNumber";
 export default function MainBox() {
@@ -44,7 +45,7 @@ export default function MainBox() {
 	// 	console.log(destination);
 	// }, [airportNames]);
 	return (
-		<div className="mainBox">
+		<div className="main-box">
 			<AirportSearchBoxes
 				airportNames={airportNames}
 				target={source}
@@ -73,7 +74,7 @@ export default function MainBox() {
 					finalFlightBooking={finalFlightBooking}
 				/>
 			)}
-			<div className="travellerNums">
+			<div className="no-of-travellers">
 				<p>No. of Travellers</p>
 				<SelectTravellersNumber />
 			</div>

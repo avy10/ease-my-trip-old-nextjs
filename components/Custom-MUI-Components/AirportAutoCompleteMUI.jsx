@@ -48,7 +48,7 @@ export default function AirportAutoCompleteMUI({
 				}}
 				autoComplete={true}
 				clearOnEscape={true}
-				className="airportsSelection"
+				className="airport-selection"
 				id="airport-select"
 				sx={{ width: 300 }}
 				options={optionsName}
@@ -79,6 +79,7 @@ export default function AirportAutoCompleteMUI({
 					<TextField
 						required
 						error={airportNameError}
+						color={airportNameError ? "error" : "primary"}
 						className="airportsSelection"
 						{...params}
 						label="Search Airports"

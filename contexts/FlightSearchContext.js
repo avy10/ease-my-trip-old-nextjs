@@ -65,13 +65,10 @@ export function FlightSearchProvider({ children }) {
 		} else if (text == "returnDay") {
 			setReturnDay(val);
 		} else {
-			console.log("aayein");
 			return;
 		}
 	}
-	useEffect(() => {
-		// console.log("isTwoWay", isTwoWay);
-	}, [isTwoWay]);
+
 	return (
 		<FlightSearchContext.Provider
 			value={{

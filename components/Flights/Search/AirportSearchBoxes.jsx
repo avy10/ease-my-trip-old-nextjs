@@ -7,18 +7,18 @@ export default function AirportSearchBoxes({
 }) {
 	return (
 		<>
-			<div className="singleSearchComponent">
+			<div className="single-search-component">
 				<label>{labelText}</label>
 				<AirportAutoCompleteMUI
 					optionsName={airportNames}
 					airportSelection={target}
 					labelText={labelText}
 				/>
-				<p>
+				<p className="selected-airport-name">
 					{target?.name ? (
 						target.name
 					) : (
-						<span className="errorAirportName">
+						<span className="error-airport-name">
 							Select an Airport
 						</span>
 					)}

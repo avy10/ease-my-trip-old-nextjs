@@ -15,19 +15,20 @@ nav a {
 	text-decoration: none;
 	color: black;
 }
-.miniNav {
+.mini-nav {
 	height: 6vh;
 }
-.pageNavigationsUL {
+.page-navigations-ul {
 	list-style-type: none;
 	display: flex;
+	column-gap: 50px;
 }
-.pageNavigationsUL li {
-	font-size: 0.75rem;
+.page-navigations-ul li {
+	/* font-size: 0.75rem; */
 	font-weight: 500;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.emtIcon {
+.emt-icon {
 	height: 70px;
 	width: 200px;
 }
@@ -35,90 +36,95 @@ nav a {
 	width: 40px;
 	height: 40px;
 }
-
-.navText {
+.nav-text {
+	font-weight: 600;
+	font-size: 0.85rem;
+}
+.nav-text-active {
 	/* background-color: #007aff; */
 	/* background-color: #a4d7ff; */
 	text-decoration: underline 3px solid #a4d7ff;
 	padding: 1px;
 	width: fit-content;
+	font-weight: 800;
 }
-
-#flightNav .navContainer {
+/* .nav-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} */
+.nav-container {
+	height: 80px;
+	width: 80px;
+	align-content: center;
+}
+#flight-nav .nav-container {
 	background: url(../../public/assests/images/navigation-images/flighticon-unselected.svg);
 	background-repeat: no-repeat;
 	background-size: 40px 40px;
-	height: 80px;
-	width: 80px;
 }
 
-#flightNav .navContainer:hover {
+#flight-nav .nav-container:hover {
 	background: url(../../public/assests/images/navigation-images/flight-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#flightNav .active {
+#flight-nav .active {
 	background: url(../../public/assests/images/navigation-images/flight-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#hotelNav .navContainer {
+#hotel-nav .nav-container {
 	background: url(../../public/assests/images/navigation-images/hotel-icon-unselected.svg);
 	background-repeat: no-repeat;
 	background-size: 40px 40px;
-	height: 80px;
-	width: 80px;
 }
 
-#hotelNav .navContainer:hover {
+#hotel-nav .nav-container:hover {
 	background: url(../../public/assests/images/navigation-images/hotel-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#hotelNav .active {
+#hotel-nav .active {
 	background: url(../../public/assests/images/navigation-images/hotel-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#trainNav .navContainer {
+#train-nav .nav-container {
 	background: url(../../public/assests/images/navigation-images/trainicon-unselected.svg);
 	background-repeat: no-repeat;
 	background-size: 40px 40px;
-	height: 80px;
-	width: 80px;
 }
 
-#trainNav .navContainer:hover {
+#train-nav .nav-container:hover {
 	background: url(../../public/assests/images/navigation-images/train-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#trainNav .active {
+#train-nav .active {
 	background: url(../../public/assests/images/navigation-images/train-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#busNav .navContainer {
+#bus-nav .nav-container {
 	background: url(../../public/assests/images/navigation-images/busicon-unselected.svg);
 	background-repeat: no-repeat;
 	background-size: 40px 40px;
-	height: 80px;
-	width: 80px;
 }
 
-#busNav .navContainer:hover {
+#bus-nav .nav-container:hover {
 	background: url(../../public/assests/images/navigation-images/bus-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
-#busNav .active {
+#bus-nav .active {
 	background: url(../../public/assests/images/navigation-images/bus-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;

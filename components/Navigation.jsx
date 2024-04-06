@@ -7,22 +7,22 @@ import { useRouter } from "next/router";
 
 const ROUTES = [
 	{
-		id: "flightNav",
+		id: "flight-nav",
 		path: "/flights",
 		name: "FLIGHTS",
 	},
 	{
-		id: "hotelNav",
+		id: "hotel-nav",
 		path: "/hotels",
 		name: "HOTELS",
 	},
 	{
-		id: "trainNav",
+		id: "train-nav",
 		path: "/trains",
 		name: "TRAINS",
 	},
 	{
-		id: "busNav",
+		id: "bus-nav",
 		path: "/buses",
 		name: "BUSES",
 	},
@@ -42,8 +42,8 @@ export default function Navigation() {
 		window.addEventListener("scroll", handleChange);
 	}, []);
 	return (
-		<nav className={scrollLengthY ? "miniNav" : ""}>
-			<div className="emtIcon">
+		<nav className={scrollLengthY ? "mini-nav" : ""}>
+			<div className="emt-icon">
 				<Link href="/">
 					<Image
 						src="https://www.easemytrip.com/images/brandlogo/emtlogo_new8.svg"
@@ -53,63 +53,43 @@ export default function Navigation() {
 					/>
 				</Link>
 			</div>
-			{!scrollLengthY && <PageNavigations />}
-			{scrollLengthY && <MiniPageNavigations />}
-			<div className="loginPortal"> HI I AM USER</div>
+			<PageNavigations scrollLengthY={scrollLengthY} />
+			{/* {!scrollLengthY && (
+				<PageNavigations scrollLengthY={scrollLengthY} />
+			)} */}
+			{/* {scrollLengthY && <MiniPageNavigations />} */}
+			<div className="login-portal"> HI I AM USER</div>
 		</nav>
 	);
 }
 
-function PageNavigations() {
+function PageNavigations({ scrollLengthY }) {
 	const router = useRouter();
 	return (
-		<div className="pageNavigations">
-			<ul className="pageNavigationsUL">
+		<div className="page-navigations">
+			<ul className="page-navigations-ul">
 				{ROUTES.map((ele) => (
 					<li id={ele.id} key={ele.id}>
 						<Link href={ele.path}>
 							<div
 								className={
 									router.pathname == ele.path
-										? "navContainer active"
-										: "navContainer"
+										? "nav-container active"
+										: "nav-container"
 								}
 							>
 								<div className="blankSpace"></div>
-								<div
-									className={
-										router.pathname == ele.path
-											? "navText"
-											: ""
-									}
-								>
-									{ele.name}
-								</div>
-							</div>
-						</Link>
-					</li>
-				))}
-			</ul>
-		</div>
-	);
-}
-
-function MiniPageNavigations() {
-	const router = useRouter();
-	return (
-		<div className="pageNavigations">
-			<ul className="pageNavigationsUL">
-				{ROUTES.map((ele) => (
-					<li id={ele.id} key={ele.id}>
-						<Link href={ele.path}>
-							<div
-								className={
-									router.pathname == ele.path
-										? "navContainer active"
-										: "navContainer"
-								}
-							>
-								<div className="blankSpace"></div>
+								{!scrollLengthY && (
+									<div
+										className={
+											router.pathname == ele.path
+												? "nav-text nav-text-active"
+												: "nav-text"
+										}
+									>
+										{ele.name}
+									</div>
+								)}
 							</div>
 						</Link>
 					</li>
