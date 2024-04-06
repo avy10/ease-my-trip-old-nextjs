@@ -22,7 +22,7 @@ fetch(`https://academics.newtonschool.co/api/v1/bookingportals/city?limit=100`, 
 */
 export default function FlightFooter() {
 	const [rightElementToDisplay, setRightElementToDisplay] = useState(
-		<QuickLinks />
+		<OurOfferings />
 	);
 	return (
 		<div className="flight-footer">

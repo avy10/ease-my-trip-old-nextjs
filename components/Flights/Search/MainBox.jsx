@@ -7,6 +7,10 @@ import AirportSearchBoxes from "./AirportSearchBoxes";
 
 import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
 import SelectTravellersNumber from "./SelectTravellersNumber";
+// MUI ICONS
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import FlightLandIcon from "@mui/icons-material/FlightLand";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 export default function MainBox() {
 	const [airportNames, setAirportNames] = useState([]);
 	const searchData = useContext(FlightSearchContext);
@@ -50,11 +54,13 @@ export default function MainBox() {
 				airportNames={airportNames}
 				target={source}
 				labelText="FROM"
+				children={<FlightTakeoffIcon />}
 			/>
 			<AirportSearchBoxes
 				airportNames={airportNames}
 				target={destination}
 				labelText="TO"
+				children={<FlightLandIcon />}
 			/>
 			<BasicDatePicker
 				targetVALUE={day}
@@ -62,8 +68,9 @@ export default function MainBox() {
 				paraText="DEPARTURE DATE"
 				updateTarget="day"
 				updateState={updateDay}
+				children={<CalendarMonthIcon />}
 			/>
-			{isTwoWay && (
+			{/* {isTwoWay && (
 				<BasicDatePicker
 					targetVALUE={returnDay}
 					labelText={"Choose your Return date"}
@@ -77,7 +84,7 @@ export default function MainBox() {
 			<div className="no-of-travellers">
 				<p>No. of Travellers</p>
 				<SelectTravellersNumber />
-			</div>
+			</div> */}
 		</div>
 	);
 }

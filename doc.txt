@@ -76,7 +76,7 @@ COMPONENTS
 				and false, when user has scrolled up
 				
 				~ Earlier => there were two different components being rendered based on setScrollLengthY state
-				~ In the UPDATE => the 
+				~ In the UPDATE => the name div.nav-text will be rendered conditionally based on the setScrollLengthY state. this removes the use of MiniPageNavigation component altogether
 
 			without the div.blank-space the name of the navigation links appears on top of image
 			it is a hackey way of rendering the name of navigation link below the icons

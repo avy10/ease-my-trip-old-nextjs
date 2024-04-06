@@ -50,7 +50,7 @@ export default function AirportAutoCompleteMUI({
 				clearOnEscape={true}
 				className="airport-selection"
 				id="airport-select"
-				sx={{ width: 300 }}
+				sx={{ width: 200 }}
 				options={optionsName}
 				autoHighlight
 				getOptionLabel={(option) =>

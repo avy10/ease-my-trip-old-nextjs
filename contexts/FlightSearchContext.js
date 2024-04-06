@@ -37,6 +37,7 @@ export function FlightSearchProvider({ children }) {
 		icao_code: "VABB",
 		__v: 0,
 	});
+	dayjs.locale("en-in");
 	const [day, setDay] = useState(dayjs());
 	const [returnDay, setReturnDay] = useState(dayjs());
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);

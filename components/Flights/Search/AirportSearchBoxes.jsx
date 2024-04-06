@@ -1,14 +1,19 @@
 import AirportAutoCompleteMUI from "@/components/Custom-MUI-Components/AirportAutoCompleteMUI";
+
 export default function AirportSearchBoxes({
 	airportNames,
 	target,
 	labelText,
 	updateFlightSearchStates,
+	children,
 }) {
 	return (
 		<>
 			<div className="single-search-component">
-				<label>{labelText}</label>
+				<label className="label-text-user">
+					{labelText}
+					{children}
+				</label>
 				<AirportAutoCompleteMUI
 					optionsName={airportNames}
 					airportSelection={target}
