@@ -49,6 +49,8 @@ export default function MainBox() {
 	// 	console.log(source);
 	// 	console.log(destination);
 	// }, [airportNames]);
+
+	function handleSearchNavigation() {}
 	return (
 		<div className="main-box">
 			<AirportSearchBoxes

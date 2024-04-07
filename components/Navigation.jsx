@@ -65,6 +65,7 @@ export default function Navigation() {
 
 function PageNavigations({ scrollLengthY }) {
 	const router = useRouter();
+	console.log(router.pathname);
 	return (
 		<div className="page-navigations">
 			<ul className="page-navigations-ul">
@@ -73,7 +74,7 @@ function PageNavigations({ scrollLengthY }) {
 						<Link href={ele.path}>
 							<div
 								className={
-									router.pathname == ele.path
+									router.pathname.includes(ele.path)
 										? "nav-container active"
 										: "nav-container"
 								}
@@ -82,7 +83,7 @@ function PageNavigations({ scrollLengthY }) {
 								{!scrollLengthY && (
 									<div
 										className={
-											router.pathname == ele.path
+											router.pathname.includes(ele.path)
 												? "nav-text nav-text-active"
 												: "nav-text"
 										}
@@ -98,3 +99,12 @@ function PageNavigations({ scrollLengthY }) {
 		</div>
 	);
 }
+
+/* 
+logic to match the pathname has been changed from router.pathname == ele.path
+to current iteration
+this ensures that the current section remains highlighted as long as we are on that sub-domain
+the 4 main sub-domain are : flights, hotels, buses, trains
+maybe I will add about later on
+
+*/

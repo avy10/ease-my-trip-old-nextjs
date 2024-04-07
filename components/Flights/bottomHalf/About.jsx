@@ -32,10 +32,10 @@ export default function About() {
 					experience a memorable one.
 				</p>
 			</div>
-			<div className="bottomBorder">
+			{/* <div className="bottomBorder">
 				<div className="darkBottom"></div>
 				<div className="lightBottom"></div>
-			</div>
+			</div> */}
 		</>
 	);
 }

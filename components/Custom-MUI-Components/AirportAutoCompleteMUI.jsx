@@ -40,10 +40,10 @@ export default function AirportAutoCompleteMUI({
 	return (
 		<ThemeProvider theme={customTheme(outerTheme)}>
 			<Autocomplete
-				value={val}
+				value={airportSelection}
 				onChange={(event, newValue) => {
 					console.log(newValue);
-					setVal(newValue);
+					// setVal(newValue);
 					updateFlightSearchStates(labelText, newValue);
 				}}
 				autoComplete={true}

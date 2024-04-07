@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import FlightSearchContext from "@/contexts/FlightSearchContext";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -6,6 +7,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 export default function SelectTravellersNumber() {
 	const [number, setNumber] = useState(1);
+	const searchData = useContext(FlightSearchContext);
+	const { updateFlightSearchStates } = searchData;
 	return (
 		<Box sx={{ minWidth: 120 }}>
 			<FormControl fullWidth>
@@ -17,7 +20,13 @@ export default function SelectTravellersNumber() {
 					id="demo-simple-select"
 					value={number}
 					label="Select a number"
-					onChange={(e) => setNumber(e.target.value)}
+					onChange={(e) => {
+						setNumber(e.target.value);
+						updateFlightSearchStates(
+							"numberOfPassengers",
+							e.target.value
+						);
+					}}
 				>
 					<MenuItem value={1}>1</MenuItem>
 					<MenuItem value={2}>2</MenuItem>

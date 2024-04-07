@@ -43,14 +43,14 @@ export function FlightSearchProvider({ children }) {
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 	const [isTwoWay, setIsTwoWay] = useState(false);
 	function updateFlightSearchStates(text, val) {
-		// console.log(text, val);
+		console.log(text, val);
 		if (text == "source" || text == "FROM") {
 			setSource(val);
 		} else if (text == "destination" || text == "TO") {
 			setDestination(val);
 		} else if (text == "day") {
 			setDay(val);
-		} else if (text == numberOfPassengers) {
+		} else if (text == "numberOfPassengers") {
 			setNumberOfPassengers(val);
 		} else {
 			return;

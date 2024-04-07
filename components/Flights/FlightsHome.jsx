@@ -16,7 +16,7 @@ export default function FlightHome() {
 			<TopFlightRoutes />
 			<WhyUs />
 			<About />
-			<FlightFooter />
+			{/* <FlightFooter /> */}
 		</div>
 	);
 }

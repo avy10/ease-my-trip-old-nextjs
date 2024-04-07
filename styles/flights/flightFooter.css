@@ -1,11 +1,39 @@
-.flight-footer {
-	background-color: black;
-	color: white;
-	/* margin: 50px; */
+.bottomBorder {
 	width: 100%;
 	display: flex;
+	margin: 0;
 }
 
+.darkBottom {
+	margin: 0;
+	background: #4263c1;
+	width: 24%;
+	float: left;
+	height: 11px;
+}
+
+.lightBottom {
+	background: #468be8;
+	width: 76%;
+	float: left;
+	height: 11px;
+}
+.footer {
+	background-color: black;
+	color: white;
+	width: 100%;
+	position: absolute;
+	bottom: 1;
+	height: max-content;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.footer-content {
+	display: flex;
+	margin: 5px 50px;
+	padding: 0px 50px;
+}
 .flight-footer ul {
 	margin: 0px 50px;
 	padding: 20px;
