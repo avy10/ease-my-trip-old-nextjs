@@ -51,8 +51,11 @@ export default function ExclusiveOffers() {
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
-				{!isloading && <OfferCards offers={offers} />}
-				{isloading && (
+				{/* {!isloading && (
+					<OfferCards offers={offers} isloading={isloading} />
+				)} */}
+				<OfferCards offers={offers} isloading={isloading} />
+				{/* {isloading && (
 					<div className="offerSkeletonDiv">
 						<Skeleton
 							variant="rectangular"
@@ -75,7 +78,7 @@ export default function ExclusiveOffers() {
 							height={118}
 						/>
 					</div>
-				)}
+				)} */}
 				<div className="showAllOffersBTN ">View All Offers</div>
 			</div>
 		</>

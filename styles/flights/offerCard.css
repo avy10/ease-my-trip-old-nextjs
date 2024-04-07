@@ -8,6 +8,22 @@
 	position: relative;
 }
 
+.offerCardsDiv::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+	border-radius: 25px;
+}
+.offerCardsDiv::-webkit-scrollbar-track {
+	background: aqua;
+}
+.offerCardsDiv::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 30px;
+}
+.offerCardsDiv::-webkit-scrollbar-thumb:hover {
+	background: #bbb;
+}
+
 .offerCards {
 	width: 450px;
 	height: 350px;

@@ -14,3 +14,19 @@
 	top: 50vh;
 	left: 50vw;
 }
+
+body::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+	border-radius: 25px;
+}
+body::-webkit-scrollbar-track {
+	background: aqua;
+}
+body::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 30px;
+}
+body::-webkit-scrollbar-thumb:hover {
+	background: #bbb;
+}

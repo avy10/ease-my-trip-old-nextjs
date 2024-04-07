@@ -54,7 +54,7 @@ export default function RadioButtons() {
 					fontWeight: "600",
 				}}
 			>
-				Two-Way
+				Round Trip
 			</label>
 		</div>
 	);

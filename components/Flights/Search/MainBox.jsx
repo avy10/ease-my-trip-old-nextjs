@@ -11,6 +11,7 @@ import SelectTravellersNumber from "./SelectTravellersNumber";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
 export default function MainBox() {
 	const [airportNames, setAirportNames] = useState([]);
 	const searchData = useContext(FlightSearchContext);
@@ -70,7 +71,16 @@ export default function MainBox() {
 				updateState={updateDay}
 				children={<CalendarMonthIcon />}
 			/>
-			{/* {isTwoWay && (
+			{!isTwoWay && (
+				<div className="date-container">
+					<div className="avy-date-container"></div>
+					<p className="round-trip-persuasion">
+						Book a Round Trip to save more
+					</p>
+					<div className="avy-date-container"></div>
+				</div>
+			)}
+			{isTwoWay && (
 				<BasicDatePicker
 					targetVALUE={returnDay}
 					labelText={"Choose your Return date"}
@@ -84,7 +94,13 @@ export default function MainBox() {
 			<div className="no-of-travellers">
 				<p>No. of Travellers</p>
 				<SelectTravellersNumber />
-			</div> */}
+				<p></p>
+			</div>
+			<div className="search-button-div">
+				<p></p>
+				<button className="search-button">Search</button>
+				<p></p>
+			</div>
 		</div>
 	);
 }
