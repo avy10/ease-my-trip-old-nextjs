@@ -5,7 +5,6 @@ import Refund from "./Refund/Refund";
 import TopFlightRoutes from "./topFlightRoutes/TopFlightRoutes";
 import WhyUs from "./bottomHalf/WhyUs";
 import About from "./bottomHalf/About";
-import FlightFooter from "./bottomHalf/FlightFooter";
 
 export default function FlightHome() {
 	return (

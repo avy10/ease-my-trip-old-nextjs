@@ -14,6 +14,9 @@ export default function BasicDatePicker({
 	updateState,
 	finalFlightBooking,
 	children,
+	classNameValueForPTag,
+	classNameValueForDivTag,
+	slotPropsValue,
 }) {
 	const today = dayjs();
 
@@ -30,8 +33,8 @@ export default function BasicDatePicker({
 	}, [selectedDate]);
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-in">
-			<div className="date-container">
-				<p className="label-text-user">
+			<div className={classNameValueForDivTag}>
+				<p className={classNameValueForPTag}>
 					{paraText}
 					{children}
 				</p>
@@ -41,6 +44,7 @@ export default function BasicDatePicker({
 					label={labelText}
 					minDate={minReturnDay ? minReturnDay : today}
 					maxDate={finalFlightBooking}
+					slotProps={slotPropsValue}
 				/>
 				<p>
 					{dateError && (

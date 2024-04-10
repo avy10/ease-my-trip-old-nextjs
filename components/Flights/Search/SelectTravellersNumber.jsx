@@ -5,23 +5,22 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
-export default function SelectTravellersNumber() {
-	const [number, setNumber] = useState(1);
+export default function SelectTravellersNumber({ sizeValue }) {
 	const searchData = useContext(FlightSearchContext);
-	const { updateFlightSearchStates } = searchData;
+	const { updateFlightSearchStates, numberOfPassengers } = searchData;
 	return (
 		<Box sx={{ minWidth: 120 }}>
-			<FormControl fullWidth>
+			<FormControl fullWidth size={sizeValue}>
 				<InputLabel id="demo-simple-select-label">
 					Number of Travellers
 				</InputLabel>
 				<Select
 					labelId="demo-simple-select-label"
 					id="demo-simple-select"
-					value={number}
+					value={numberOfPassengers}
 					label="Select a number"
 					onChange={(e) => {
-						setNumber(e.target.value);
+						// setNumber(e.target.value);
 						updateFlightSearchStates(
 							"numberOfPassengers",
 							e.target.value

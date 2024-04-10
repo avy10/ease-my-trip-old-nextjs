@@ -1,13 +1,13 @@
-import RadioButtons from "@/components/Flights/Search/RadioButtons";
+import FspSearchBox from "@/components/FlightSearchPageComponents/FspSearchBox";
+import SearchMainBox from "@/components/FlightSearchPageComponents/SearchPageMainBox";
 import { FlightSearchProvider } from "@/contexts/FlightSearchContext";
 
 export default function FlightSearchHome() {
 	return (
 		<FlightSearchProvider>
 			<div className="flight-search-home">
-				<div className="flight-search-radio-buttons">
-					<RadioButtons />
-				</div>
+				<FspSearchBox />
+				<SearchMainBox />
 			</div>
 		</FlightSearchProvider>
 	);

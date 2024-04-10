@@ -1,0 +1,123 @@
+.fsp-input-fields {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	justify-content: space-around;
+	/* border: 4px solid yellow; */
+	margin: auto auto;
+	position: relative;
+	top: -20px;
+}
+
+.label-text-user-white {
+	color: white;
+}
+
+.fsp-date-container {
+	/* border: 2px solid aqua; */
+}
+
+.white-text-field {
+	border: 2px solid red;
+	color: white;
+}
+
+.fsp-date-container .MuiFormLabel-root {
+	color: white;
+}
+.fsp-date-container .MuiIconButton-root {
+	color: white;
+}
+.fsp-date-container .MuiInputBase-root {
+	color: white;
+}
+.fsp-date-container .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+.fsp-date-container:hover .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+
+.fsp-date-container .MuiTextField-root {
+	width: 180px;
+}
+.fsp-input-fields {
+	margin: 10px;
+	display: flex;
+	flex-direction: row;
+	/* border: 2px solid black; */
+	column-gap: 25px;
+}
+
+.fsp-autocomplete .MuiSvgIcon-root {
+	color: white;
+	/* border: 2px solid yellow; */
+}
+.fsp-autocomplete .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+.fsp-autocomplete:hover .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+.fsp-no-of-travellers {
+	color: white;
+	border-color: white;
+}
+.fsp-no-of-travellers .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+.fsp-no-of-travellers:hover .MuiOutlinedInput-notchedOutline {
+	color: white;
+	border-color: white;
+}
+.fsp-no-of-travellers .MuiIconButton-root {
+	color: white;
+}
+.fsp-no-of-travellers .MuiInputBase-root {
+	color: white;
+}
+.fsp-no-of-travellers .MuiFormLabel-root {
+	color: white;
+}
+.fsp-no-of-travellers .MuiSvgIcon-root {
+	color: white;
+	/* border: 2px solid yellow; */
+}
+
+.fsp-label-text-user {
+	color: white;
+}
+
+.fsp-round-trip-persuasion {
+	height: min-content;
+	padding: 2px;
+	width: fit-content;
+	/* padding: 0; */
+	border: 1px solid white;
+	border-radius: 5px;
+}
+.fsp-search-button-div {
+	height: 32%;
+	width: fit-content;
+	position: relative;
+	/* top: 42px; */
+	/* left: 92%; */
+	margin: 15px 0px;
+}
+.fsp-search-button {
+	height: 50%;
+	width: 100%;
+	background-color: orange;
+	border: none;
+	border-radius: 10px;
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: white;
+	transition: transform 0.5s ease-in-out;
+	padding: 10px;
+}

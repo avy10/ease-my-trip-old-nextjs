@@ -16,6 +16,7 @@ import "@/styles/flights/whyus.css";
 import "@/styles/flights/aboutHome.css";
 import "@/styles/flights/flightFooter.css";
 import "@/styles/flightSearch/flightSearchHome.css";
+import "@/styles/flightSearch/fspInputFields.css";
 import Footer from "@/components/Footer";
 export default function App({ Component, pageProps }) {
 	return (

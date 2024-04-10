@@ -21,7 +21,6 @@ export default function MainBox() {
 		destination,
 		day,
 		returnDay,
-		numberOfPassengers,
 		updateFlightSearchStates,
 		isTwoWay,
 		updateDay,
@@ -72,6 +71,8 @@ export default function MainBox() {
 				updateTarget="day"
 				updateState={updateDay}
 				children={<CalendarMonthIcon />}
+				classNameValueForPTag="label-text-user"
+				classNameValueForDivTag="date-container"
 			/>
 			{!isTwoWay && (
 				<div className="date-container">
@@ -90,7 +91,10 @@ export default function MainBox() {
 					minReturnDay={day}
 					updateTarget="returnDay"
 					updateState={updateDay}
+					children={<CalendarMonthIcon />}
 					finalFlightBooking={finalFlightBooking}
+					classNameValueForPTag="label-text-user"
+					classNameValueForDivTag="date-container"
 				/>
 			)}
 			<div className="no-of-travellers">
