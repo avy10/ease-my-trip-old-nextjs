@@ -17,7 +17,11 @@ import "@/styles/flights/aboutHome.css";
 import "@/styles/flights/flightFooter.css";
 import "@/styles/flightSearch/flightSearchHome.css";
 import "@/styles/flightSearch/fspInputFields.css";
+
 import Footer from "@/components/Footer";
+
+// vercel speed insights
+import { SpeedInsights } from "@vercel/speed-insights/next";
 export default function App({ Component, pageProps }) {
 	return (
 		<AuthorisationProvider>
@@ -25,6 +29,7 @@ export default function App({ Component, pageProps }) {
 				<Navigation />
 				<Component {...pageProps} />
 				<Footer />
+				<SpeedInsights />
 			</>
 		</AuthorisationProvider>
 	);
