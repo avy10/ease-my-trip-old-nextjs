@@ -1,6 +1,76 @@
 FLIGHT SEARCH CONTEXT is explained in doc.txt
 
-PreInfo contains radio buttons and the text : Search Lowest Price
+FlightSearchProvider wraps the entire Flights section and provides states, refs and some logic-Functions
+FlightsHome is the main parent of the flights-home page.
+    FlightsHome renders :
+        1. SearchBox
+        2. ExclusiveOffers
+        3. Refund
+        4. TopFlightRoutes
+        5. WhyUs
+        6. About
+
+    1. SearchBox
+        => it contains the components required which enables the user to enter the query required to performa a flight-search
+
+        renders 
+            1. <PreInfo />
+                - RadioButtons
+            2. <MainBox />
+                
+                1.PreInfo
+                    PreInfo contains radio buttons and the text : Search Lowest Price
+                    The Radio buttons toggles the isTwoWay state,
+                        isTwoWay state is used in navigating the user to the search results page, 
+                            for oneWay search, the search results are rendered on a singular box
+                            but for twoWay search, the search results are rendered on two side by side boxes,
+                                one contains the trip flights, other contains round-trip flights
+
+                    a. Radio Buttons component => <RadioButtons />
+                        uses MUI components : <Radio /> 
+                        -> Props : radioSize, labelStyle, radioSize
+                                radioSize : color of the radio-input
+                                labelStyle : color of the label, fontSize and fontWeight
+                                radioSize : default is medium for the flights-home page and small for search results page
+                        ->Context States : 
+                            variables : isTwoWay
+                            functions : updateTwoWay
+                
+                2. MainBox
+                    renders all the input fields and search button
+
+                    -> Context States :
+                        source,
+                        destination,
+                        day,
+                        returnDay,
+                        updateFlightSearchStates,
+                        isTwoWay,
+                        updateDay,
+                        airportNames,
+                    -> Variables => finalFlightBooking >> generally airlines allow advance booking period of 8 months
+
+                     -> Renders :
+                        <AirportSearchBoxes />
+                        <BasicDatePicker />
+                        <SelectTravellersNumber />
+                        Search Button
+
+                            i. <AirportSearchBoxes />
+                                
+                                -> Props    
+                                    airportNames, => list of airportNames, it is coming as a prop because in earlier version airportNames was being passed as Props
+                                    target,  => target attributes provides the reference to the desired state between source state and destination state
+                                        when a user selects an option, source or destination state gets updated
+
+                                    labelText, for "FROM" and "TO"
+
+
+                                    children, for the <FlightTakeoffIcon />  and <FlightLandIcon />
+
+                                    NOTE : labelText and children are rendered by the <label> tag 
+
+                          
 MainBox contains the input fields that enables user to input values
     these input fields are made from MaterialUI
     

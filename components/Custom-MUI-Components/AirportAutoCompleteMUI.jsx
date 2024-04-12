@@ -14,12 +14,12 @@ export default function AirportAutoCompleteMUI({
 	customSX,
 	classNameValue,
 	sizeValue = "medium",
+	airportNameError,
+	refTarget,
 }) {
 	const searchData = useContext(FlightSearchContext);
 	const { updateFlightSearchStates } = searchData;
 
-	const [val, setVal] = useState(airportSelection);
-	const [airportNameError, setAirportNameError] = useState(false);
 	return (
 		<ThemeProvider theme={customTheme(outerTheme)}>
 			<Autocomplete
@@ -41,11 +41,17 @@ export default function AirportAutoCompleteMUI({
 					`${option.iata_code}, ${option.city}`
 				}
 				isOptionEqualToValue={(option, value) => {
-					if (option.iata_code === value.iata_code) {
-						setAirportNameError(false);
-					} else {
-						setAirportNameError(true);
-					}
+					// if (option.iata_code === value.iata_code) {
+					// 	// console.log(
+					// 	// 	"i am working to set airport name error to false"
+					// 	// );
+					// 	// setAirportNameError(false);
+					// } else {
+					// 	// console.log(
+					// 	// 	"i am working to set airport name error to true"
+					// 	// );
+					// 	// setAirportNameError(true);
+					// }
 					return option.iata_code === value.iata_code;
 				}}
 				renderOption={(props, option) => (
@@ -63,6 +69,8 @@ export default function AirportAutoCompleteMUI({
 				)}
 				renderInput={(params) => (
 					<TextField
+						ref={refTarget}
+						onChange={(e) => console.log(e.target.value)}
 						required
 						error={airportNameError}
 						color={airportNameError ? "error" : "primary"}

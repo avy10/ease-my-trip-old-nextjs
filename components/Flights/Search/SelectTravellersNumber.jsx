@@ -5,11 +5,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
-export default function SelectTravellersNumber({ sizeValue }) {
+export default function SelectTravellersNumber({ sizeValue, refTarget }) {
 	const searchData = useContext(FlightSearchContext);
 	const { updateFlightSearchStates, numberOfPassengers } = searchData;
 	return (
-		<Box sx={{ minWidth: 120 }}>
+		<Box ref={refTarget} sx={{ minWidth: 120 }}>
 			<FormControl fullWidth size={sizeValue}>
 				<InputLabel id="demo-simple-select-label">
 					Number of Travellers
@@ -26,6 +26,7 @@ export default function SelectTravellersNumber({ sizeValue }) {
 							e.target.value
 						);
 					}}
+					ref={refTarget}
 				>
 					<MenuItem value={1}>1</MenuItem>
 					<MenuItem value={2}>2</MenuItem>

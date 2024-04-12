@@ -1,47 +1,58 @@
-import React, { createContext, useEffect, useState } from "react";
-import dayjs, { Dayjs } from "dayjs";
+import React, { createContext, useRef, useState, useEffect } from "react";
+import dayjs from "dayjs";
+import { domain, allTheAirports } from "@/public/utils/apiFetch";
+
+// constant/default values for source and destination
+const SOURCE_DEFAULT = {
+	coordinates: {
+		latitude: 28.5562,
+		longitude: 77.1,
+	},
+	additional_info: {
+		timezone: "IST",
+		elevation: 237,
+	},
+	_id: "6514309e348f6fafa1b86607",
+	name: "Indira Gandhi International Airport",
+	city: "Delhi",
+	country: "India",
+	iata_code: "DEL",
+	icao_code: "VIDP",
+	__v: 0,
+};
+
+const DESTINATION_DEFAULT = {
+	coordinates: {
+		latitude: 19.0896,
+		longitude: 72.8656,
+	},
+	additional_info: {
+		timezone: "IST",
+		elevation: 14,
+	},
+	_id: "6514309e348f6fafa1b86608",
+	name: "Chhatrapati Shivaji Maharaj International Airport",
+	city: "Mumbai",
+	country: "India",
+	iata_code: "BOM",
+	icao_code: "VABB",
+	__v: 0,
+};
+
 const FlightSearchContext = createContext();
 export default FlightSearchContext;
 export function FlightSearchProvider({ children }) {
-	const [source, setSource] = useState({
-		coordinates: {
-			latitude: 28.5562,
-			longitude: 77.1,
-		},
-		additional_info: {
-			timezone: "IST",
-			elevation: 237,
-		},
-		_id: "6514309e348f6fafa1b86607",
-		name: "Indira Gandhi International Airport",
-		city: "Delhi",
-		country: "India",
-		iata_code: "DEL",
-		icao_code: "VIDP",
-		__v: 0,
-	});
-	const [destination, setDestination] = useState({
-		coordinates: {
-			latitude: 19.0896,
-			longitude: 72.8656,
-		},
-		additional_info: {
-			timezone: "IST",
-			elevation: 14,
-		},
-		_id: "6514309e348f6fafa1b86608",
-		name: "Chhatrapati Shivaji Maharaj International Airport",
-		city: "Mumbai",
-		country: "India",
-		iata_code: "BOM",
-		icao_code: "VABB",
-		__v: 0,
-	});
+	// states to facilitate search functionality => Search - states
+	const [source, setSource] = useState(SOURCE_DEFAULT);
+	const [destination, setDestination] = useState(DESTINATION_DEFAULT);
 	dayjs.locale("en-in");
 	const [day, setDay] = useState(dayjs());
 	const [returnDay, setReturnDay] = useState(dayjs());
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 	const [isTwoWay, setIsTwoWay] = useState(false);
+	const [airportNames, setAirportNames] = useState([]);
+
+	// function working on search-states
 	function updateFlightSearchStates(text, val) {
 		console.log(text, val);
 		if (text == "source" || text == "FROM") {
@@ -63,12 +74,75 @@ export function FlightSearchProvider({ children }) {
 		// console.log("DATE VALUE", val);
 		if (text == "day") {
 			setDay(val);
+			setReturnDay(val);
 		} else if (text == "returnDay") {
 			setReturnDay(val);
 		} else {
 			return;
 		}
 	}
+
+	// refs to facilitate autofocus when the search button performs a validation check and gets error
+	const sourceInputRef = useRef();
+	const destinationInputRef = useRef();
+	const dayInputRef = useRef();
+	const returnDayInputRef = useRef();
+	const noOfTravellersInputRef = useRef();
+	const searchButtonRef = useRef();
+
+	// state which tracks errors in form. Earlier there was only one single state in the AirportSearchBox component, but now that i need to perform validation, it is best to maintain individual state for each field
+	const [sourceError, setSourceError] = useState(false);
+	const [destinationError, setDestinationError] = useState(false);
+	const [dayError, setDayError] = useState(false);
+	const [returnDayError, setReturnDayError] = useState(false);
+
+	function updateErrorState(key, val) {
+		if (key == "srcErr") {
+			setSourceError(val);
+		} else if (key == "destErr") {
+			setDestinationError(val);
+		} else if (key == "dayErr") {
+			setDayError(val);
+		} else if (key == "returnDayErr") {
+			setReturnDayError(val);
+		}
+	}
+
+	// fetching names of the airport from the API
+	useEffect(() => {
+		// sourceInputRef?.current?.children[1].children[0].focus();
+		fetch(`${domain}${allTheAirports}`, {
+			method: "GET",
+			headers: {
+				projectID: "4xh7gn2pv8it",
+			},
+		})
+			.then((res) => res.json())
+			.then((apiData) => {
+				setAirportNames(apiData?.data?.airports);
+				// updateFlightSearchStates("source", apiData?.data?.airports[7]);
+				// updateFlightSearchStates(
+				// 	"destination",
+				// 	apiData?.data?.airports[8]
+				// );
+			});
+	}, []);
+
+	useEffect(() => {
+		sourceInputRef?.current?.children[1].children[0].focus();
+	}, []);
+	useEffect(() => {
+		sourceInputRef?.current?.children[1].children[0].value !== "" &&
+			destinationInputRef?.current?.children[1].children[0].focus();
+	}, [source]);
+	useEffect(() => {
+		destinationInputRef?.current?.children[1].children[0].value !== "" &&
+			dayInputRef?.current?.children[1].children[0].focus();
+	}, [destination]);
+
+	useEffect(() => {
+		returnDayInputRef?.current?.children[1].children[0].focus();
+	}, [isTwoWay]);
 
 	return (
 		<FlightSearchContext.Provider
@@ -82,6 +156,18 @@ export function FlightSearchProvider({ children }) {
 				isTwoWay,
 				updateTwoWay,
 				updateDay,
+				sourceInputRef,
+				destinationInputRef,
+				dayInputRef,
+				returnDayInputRef,
+				sourceError,
+				destinationError,
+				dayError,
+				returnDayError,
+				updateErrorState,
+				airportNames,
+				noOfTravellersInputRef,
+				searchButtonRef,
 			}}
 		>
 			{children}

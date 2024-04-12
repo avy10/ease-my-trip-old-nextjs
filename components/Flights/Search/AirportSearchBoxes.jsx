@@ -1,16 +1,28 @@
 import AirportAutoCompleteMUI from "@/components/Custom-MUI-Components/AirportAutoCompleteMUI";
 
 import { createTheme, useTheme } from "@mui/material/styles";
+import { useEffect, useState } from "react";
 export default function AirportSearchBoxes({
 	airportNames,
 	target,
 	labelText,
-
 	children,
+	airportErrorTarget,
+	updateErrorState,
+	keyVal,
+	refTarget,
 }) {
 	// "--TextField-brandBorderColor": "#E0E3E7",
 	// "--TextField-brandBorderHoverColor": "#E0E3E7",
 	// "--TextField-brandBorderFocusedColor": "#E0E3E7",
+
+	useEffect(() => {
+		if (target?.name == null || target == null) {
+			updateErrorState(keyVal, true);
+		} else {
+			updateErrorState(keyVal, false);
+		}
+	}, [target]);
 	const customTheme = (outerTheme) =>
 		createTheme({
 			palette: {
@@ -50,6 +62,8 @@ export default function AirportSearchBoxes({
 					outerTheme={outerTheme}
 					customSX={{ width: 200 }}
 					classNameValue="airport-selection"
+					airportNameError={airportErrorTarget}
+					refTarget={refTarget}
 				/>
 				<p className="selected-airport-name">
 					{target?.name ? (

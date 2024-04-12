@@ -14,7 +14,6 @@ import FlightLandIcon from "@mui/icons-material/FlightLand";
 import { createTheme, useTheme } from "@mui/material/styles";
 import SelectTravellersNumber from "@/components/Flights/Search/SelectTravellersNumber";
 export default function FspInputFields() {
-	const [airportNames, setAirportNames] = useState([]);
 	const searchData = useContext(FlightSearchContext);
 	const {
 		day,
@@ -25,25 +24,9 @@ export default function FspInputFields() {
 		destination,
 		updateFlightSearchStates,
 		finalFlightBooking,
+		airportNames,
 	} = searchData;
-	// make an api call here, see useeffect in MainBox.jsx
-	useEffect(() => {
-		fetch(`${domain}${allTheAirports}`, {
-			method: "GET",
-			headers: {
-				projectID: "4xh7gn2pv8it",
-			},
-		})
-			.then((res) => res.json())
-			.then((apiData) => {
-				setAirportNames(apiData?.data?.airports);
-				updateFlightSearchStates("source", apiData?.data?.airports[7]);
-				updateFlightSearchStates(
-					"destination",
-					apiData?.data?.airports[8]
-				);
-			});
-	}, []);
+
 	const customTheme = (outerTheme) =>
 		createTheme({
 			palette: {
