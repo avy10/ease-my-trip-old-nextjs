@@ -2,7 +2,7 @@ export default function Hotels() {
 	return (
 		<div className="avy">
 			{" "}
-			I AM IN HOTELS
+			Webpage Coming Soon
 			{/* <p>
 				window.navigator.userAgentData.mobile,{" "}
 				{window

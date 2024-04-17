@@ -65,12 +65,18 @@ export default function AirportSearchBoxes({
 					airportNameError={airportErrorTarget}
 					refTarget={refTarget}
 				/>
-				<p className="selected-airport-name">
+				<p
+					className={
+						target?.name
+							? "selected-airport-name"
+							: "selected-airport-name selected-airport-error"
+					}
+				>
 					{target?.name ? (
 						target.name
 					) : (
 						<span className="error-airport-name">
-							Select an Airport
+							Please select an Airport
 						</span>
 					)}
 				</p>

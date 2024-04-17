@@ -19,17 +19,19 @@
 
 /* PreInfo.jsx */
 .flight-pre-info {
+	/* border: 2px solid black; */
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	row-gap: 10px;
 }
-.box-title {
+.pre-info-box-title {
 	text-align: right;
-	padding-right: 10vw;
+	padding-right: 1vw;
 	color: white;
 
 	font-weight: 800;
-	font-size: 1.35rem;
+	font-size: 1.2 5rem;
 }
 
 /* RadioButtons.jsx */
@@ -56,6 +58,9 @@
 	/* column-gap: 20px; */
 	row-gap: 10px;
 }
+.single-search-component input {
+	font-weight: 600;
+}
 .label-text-user {
 	/* label-text-user because MUI forms and TextFields also has label tag */
 	color: rgb(122, 122, 122);
@@ -64,16 +69,35 @@
 }
 .selected-airport-name {
 	max-width: 220px;
+	min-width: 220px;
+	min-height: 48px;
 	/* border: 2px solid aqua; */
 	font-size: 0.85rem;
 	/* padding-left: 12px; */
-	padding: 0px 12px;
+	padding: 0px 10px;
 	border-left: 1px solid silver;
 	border-right: 1px solid silver;
 	border-bottom: 1px solid silver;
 	border-radius: 0px 0px 5px 5px;
-}
 
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.selected-airport-error {
+	border-left: 1px solid red;
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+}
+.selected-airport-name span {
+	/* because I am now using the display flex to align, I have to define min-width or min-height in order to define a shape, else the height : auto of span kicks in */
+	/* border: 2px solid black; */
+	min-width: 200px;
+	min-height: 48px;
+	display: flex;
+	align-items: center;
+	font-size: 1rem;
+}
 .error-airport-name {
 	color: red;
 	font-size: 1.1rem;
@@ -89,6 +113,10 @@
 	/* border: 2px solid slateblue; */
 	width: 220px;
 }
+.date-container input::selection {
+	color: black;
+	background-color: rgb(177, 244, 244);
+}
 
 .avy-date-container {
 	height: 23px;
@@ -102,6 +130,16 @@
 	border: 1px solid silver;
 	border-radius: 5px;
 	padding: 2px 10px;
+}
+/* .date-picker-error .MuiFormLabel-root {
+	color: red;
+}
+.date-picker-error .MuiInputBase-root {
+	color: red;
+} */
+.date-picker-error input::selection {
+	color: red;
+	background-color: rgb(177, 244, 244);
 }
 /* p tag of .date-container uses the class .label-text-user */
 

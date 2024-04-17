@@ -1,3 +1,3 @@
 export default function Trains() {
-	return <div className="avy">I AM IN TRAINS</div>;
+	return <div className="avy">Webpage Coming Soon</div>;
 }

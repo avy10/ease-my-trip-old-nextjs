@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { useState, useContext } from "react";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
-
+import LocalAirportIcon from "@mui/icons-material/LocalAirport";
 export default function AirportAutoCompleteMUI({
 	optionsName,
 	airportSelection,
@@ -25,6 +25,8 @@ export default function AirportAutoCompleteMUI({
 			<Autocomplete
 				value={airportSelection}
 				onChange={(event, newValue) => {
+					// if event is not passed as first argument i.e. (newValue) then JS treats the name newValue as event itself
+					// in order to pass the selection airport-object we need to pass in event as a first argument and then the newer value
 					console.log(newValue);
 					// setVal(newValue);
 					updateFlightSearchStates(labelText, newValue);
@@ -64,7 +66,9 @@ export default function AirportAutoCompleteMUI({
 						}}
 						{...props}
 					>
-						{option.iata_code}, {option.name}, {option.city}
+						<p>
+							{option.iata_code}, {option.name}, {option.city}
+						</p>
 					</Box>
 				)}
 				renderInput={(params) => (

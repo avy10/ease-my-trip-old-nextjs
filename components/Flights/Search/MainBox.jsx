@@ -63,7 +63,8 @@ export default function MainBox() {
 			/>
 			<BasicDatePicker
 				targetVALUE={day}
-				labelText={"Choose your Departure date"}
+				// labelText={"Choose your Departure date"}
+				labelText={"Pick a Departure date"}
 				paraText="DEPARTURE DATE"
 				updateTarget="day"
 				updateState={updateDay}
@@ -75,6 +76,7 @@ export default function MainBox() {
 				refTarget={dayInputRef}
 				keyVal="dayErr"
 				finalFlightBooking={finalFlightBooking}
+				minReturnDay={day}
 			/>
 			{!isTwoWay && (
 				<div className="date-container">
@@ -88,7 +90,8 @@ export default function MainBox() {
 			{isTwoWay && (
 				<BasicDatePicker
 					targetVALUE={returnDay}
-					labelText={"Choose your Return date"}
+					// labelText={"Choose your Return date"}
+					labelText={"Pick a Return date"}
 					paraText="RETURN DATE"
 					minReturnDay={day}
 					updateTarget="returnDay"

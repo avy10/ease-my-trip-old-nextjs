@@ -73,32 +73,22 @@ export default function BasicDatePicker({
 	targetVALUE,
 	labelText,
 	paraText,
-	minReturnDay = null,
 	updateTarget,
 	updateState,
 
-	finalFlightBooking,
 	children,
+
 	classNameValueForPTag,
 	classNameValueForDivTag,
-	slotPropsValue,
-	refTarget,
-	updateErrorState,
+
 	dateErrorTarget,
+	updateErrorState,
+	refTarget,
 	keyVal,
+	finalFlightBooking,
+	slotPropsValue,
+	minReturnDay = null,
 }) {
-	useEffect(() => {
-		if (targetVALUE > finalFlightBooking) {
-			// console.log("I AM RUNNOING FOR ", updateTarget);
-			// console.log("day", targetVALUE);
-			// console.log("finalFlightBooking", finalFlightBooking);
-			updateErrorState(keyVal, true);
-		} else {
-			// console.log("day es", targetVALUE);
-			// console.log("finalFlightBooking es", finalFlightBooking);
-			updateErrorState(keyVal, false);
-		}
-	}, [targetVALUE]);
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-in">
 			<div className={classNameValueForDivTag}>
@@ -109,7 +99,7 @@ export default function BasicDatePicker({
 				<DatePicker
 					value={targetVALUE}
 					onChange={(e) => {
-						// console.log("datepicker ", e);
+						// console.log("datepicker event fire on onChange ", e);
 						updateState(updateTarget, e);
 					}}
 					label={labelText}
@@ -117,6 +107,7 @@ export default function BasicDatePicker({
 					maxDate={finalFlightBooking}
 					slotProps={slotPropsValue}
 					ref={refTarget}
+					className={dateErrorTarget ? "date-picker-error" : ""}
 				/>
 				<p>
 					{dateErrorTarget && (

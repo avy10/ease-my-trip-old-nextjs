@@ -23,8 +23,11 @@ export default function FspInputFields() {
 		source,
 		destination,
 		updateFlightSearchStates,
+		updateErrorState,
 		finalFlightBooking,
+		dateErrorTarget,
 		airportNames,
+		dayError,
 	} = searchData;
 
 	const customTheme = (outerTheme) =>
@@ -108,6 +111,9 @@ export default function FspInputFields() {
 				classNameValueForPTag="label-text-user-white"
 				classNameValueForDivTag="fsp-date-container"
 				className="white-text-field"
+				dateErrorTarget={dayError}
+				updateErrorState={updateErrorState}
+				finalFlightBooking={finalFlightBooking}
 				slotPropsValue={{
 					textField: { size: "small" },
 				}}
@@ -139,6 +145,8 @@ export default function FspInputFields() {
 					classNameValueForPTag="label-text-user-white"
 					classNameValueForDivTag="fsp-date-container"
 					className="white-text-field"
+					dateErrorTarget={dayError}
+					updateErrorState={updateErrorState}
 					slotPropsValue={{
 						textField: { size: "small" },
 					}}

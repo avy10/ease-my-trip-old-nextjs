@@ -19,7 +19,7 @@ export default function PreInfo() {
 					}}
 				/>
 			</div>
-			<div className="box-title poppins-extrabold">
+			<div className="pre-info-box-title poppins-extrabold">
 				Search Lowest Price
 			</div>
 		</div>
