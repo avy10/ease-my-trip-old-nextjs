@@ -131,12 +131,16 @@
 	border-radius: 5px;
 	padding: 2px 10px;
 }
-/* .date-picker-error .MuiFormLabel-root {
+.date-picker-error .MuiFormLabel-root {
 	color: red;
 }
 .date-picker-error .MuiInputBase-root {
 	color: red;
-} */
+}
+.date-picker-error .MuiOutlinedInput-notchedOutline {
+	border-color: red;
+}
+
 .date-picker-error input::selection {
 	color: red;
 	background-color: rgb(177, 244, 244);
@@ -179,4 +183,28 @@
 .search-button:active {
 	transform: scale(0.9);
 	transition: transform 0.5s ease-in-out;
+}
+/* swap button */
+.main-box-swap-button {
+	position: absolute;
+	left: 244px;
+	top: 70px;
+	min-height: 25px;
+	min-width: 25px;
+	/* border: 2px solid black; */
+}
+
+.main-box-swap-button button {
+	min-height: 25px;
+	min-width: 25px;
+	color: black;
+	border: none;
+	background-color: white;
+	transition: transform 0.5s ease-in-out;
+}
+.main-box-swap-button button:hover {
+	transform: scale(1.055);
+}
+.main-box-swap-button button:active {
+	transform: scale(0.95);
 }

@@ -54,7 +54,7 @@ export default function AirportAutoCompleteMUI({
 					// 	// );
 					// 	// setAirportNameError(true);
 					// }
-					return option.iata_code === value.iata_code;
+					return option?.iata_code === value?.iata_code;
 				}}
 				renderOption={(props, option) => (
 					<Box

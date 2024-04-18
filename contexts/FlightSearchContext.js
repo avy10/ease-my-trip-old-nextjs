@@ -1,4 +1,10 @@
-import React, { createContext, useRef, useState, useEffect } from "react";
+import React, {
+	createContext,
+	useRef,
+	useState,
+	useEffect,
+	useContext,
+} from "react";
 import dayjs from "dayjs";
 import { domain, allTheAirports } from "@/public/utils/apiFetch";
 
@@ -42,16 +48,20 @@ const DESTINATION_DEFAULT = {
 const FlightSearchContext = createContext();
 export default FlightSearchContext;
 export function FlightSearchProvider({ children }) {
+	// const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
 	// states to facilitate search functionality => Search - states
 	const [source, setSource] = useState(SOURCE_DEFAULT);
 	const [destination, setDestination] = useState(DESTINATION_DEFAULT);
-	dayjs.locale("en-in");
+	const [userLocale, setUserLocale] = useState("de");
+	// dayjs.locale(userLocale);
 	const [today] = useState(dayjs());
 	const [day, setDay] = useState(dayjs());
 	const [returnDay, setReturnDay] = useState(dayjs());
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 	const [isTwoWay, setIsTwoWay] = useState(false);
 	const [airportNames, setAirportNames] = useState([]);
+
+	// locale
 
 	function resetDefaults() {
 		// when I navigate from a search page which had error due to wrong data, I would redirect to flights-home page
@@ -60,7 +70,39 @@ export function FlightSearchProvider({ children }) {
 	}
 
 	useEffect(() => {
-		console.log("STUDYING DAYJS", dayjs().$D);
+		const newDate = dayjs("19-04-2024", "DD-MM-YYYY", "en-in");
+		// console.log("STUDYING DAYJS", newDate);
+		console.log("STUDYING DAYJS", source.format);
+		// console.log("Week day in german format", dayjs().day(newDate.$W)); // returned new dayjs object
+		console.log("week day in indian format", dayjs(newDate).format("ddd"));
+
+		// setting user locale
+		const language = navigator?.language;
+		// if (language == "en-IN") {
+		// 	setUserLocale("en-in");
+		// }
+		if (language == "it-IT") {
+			setUserLocale("it");
+		}
+
+		// fetching names of the airport from the API
+
+		fetch(`${domain}${allTheAirports}`, {
+			method: "GET",
+			headers: {
+				projectID: "4xh7gn2pv8it",
+			},
+		})
+			.then((res) => res.json())
+			.then((apiData) => {
+				setAirportNames(apiData?.data?.airports);
+				// setIsAirportNamesLoading(false);
+				// updateFlightSearchStates("source", apiData?.data?.airports[7]);
+				// updateFlightSearchStates(
+				// 	"destination",
+				// 	apiData?.data?.airports[8]
+				// );
+			});
 	}, []);
 
 	// function working on search-states
@@ -123,36 +165,12 @@ export function FlightSearchProvider({ children }) {
 		console.log("TODAY", today);
 		console.log("day", day);
 		console.log("return day", returnDay);
-		// const todayString = `${today?.$D}/`;
-		// console.log(todayString);
-		const todayString = dayjs(today).format("DD/MM/YYYY");
-		const dayString = dayjs(day).format("DD/MM/YYYY");
-		const returnDayString = dayjs(returnDay).format("DD/MM/YYYY");
-		// console.log(dayjs(today).format("DD/MM/YYYY"));
-		dayString < todayString && setDayError(true);
-		returnDayString < todayString && setReturnDayError(true);
+		// console.log("day > today ", day > today);
+		console.log("day >= today ", day >= today);
 
-		const maxFlightBookingWindow = today.add(8, "months");
-		const maxFlightBookingWindowString = dayjs(
-			maxFlightBookingWindow
-		).format("DD/MM/YYYY");
-		if (
-			dayString > maxFlightBookingWindowString ||
-			returnDayString > maxFlightBookingWindowString
-		) {
-			setDayError(true);
-			setReturnDayError(true);
-		}
-		if (dayString >= today && dayString > maxFlightBookingWindowString) {
-			setDayError(false);
-		}
-		if (
-			returnDayString >= today &&
-			returnDayString > maxFlightBookingWindowString
-		) {
-			setReturnDayError(false);
-		}
-		/* day < today && setDayError(true);
+		day < today && setDayError(true);
+		// (day.$y < today.$y || day.$m < today.$m || day.$d < today.$d) &&
+		// 	setDayError(true);
 		returnDay < today && setReturnDayError(true);
 		if (
 			day > today.add(8, "months") ||
@@ -161,33 +179,33 @@ export function FlightSearchProvider({ children }) {
 			setDayError(true);
 			setReturnDayError(true);
 		}
-		if (day >= today && day > today.add(8, "months")) {
+		if (day >= today && day < today.add(8, "months")) {
 			setDayError(false);
 		}
-		if (returnDay >= today && returnDay > today.add(8, "months")) {
+		if (returnDay >= today && returnDay < today.add(8, "months")) {
 			setReturnDayError(false);
-		} */
+		}
+		// if (
+		// 	(day.$y >= today.$y || day.$m >= today.$m || day.$d >= today.$d) &&
+		// 	day < today.add(8, "months")
+		// ) {
+		// 	setDayError(false);
+		// }
+		// if (
+		// 	(returnDay.$y >= today.$y ||
+		// 		returnDay.$m >= today.$m ||
+		// 		returnDay.$d >= today.$d) &&
+		// 	returnDay < today.add(8, "months")
+		// ) {
+		// 	setReturnDayError(false);
+		// }
 	}, [day, returnDay]);
 
 	// fetching names of the airport from the API
-	useEffect(() => {
+	/* 	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].focus();
-		fetch(`${domain}${allTheAirports}`, {
-			method: "GET",
-			headers: {
-				projectID: "4xh7gn2pv8it",
-			},
-		})
-			.then((res) => res.json())
-			.then((apiData) => {
-				setAirportNames(apiData?.data?.airports);
-				// updateFlightSearchStates("source", apiData?.data?.airports[7]);
-				// updateFlightSearchStates(
-				// 	"destination",
-				// 	apiData?.data?.airports[8]
-				// );
-			});
-	}, []);
+		
+	}, []); */
 
 	useEffect(() => {
 		sourceInputRef?.current?.children[1].children[0].focus();
@@ -229,9 +247,14 @@ export function FlightSearchProvider({ children }) {
 				airportNames,
 				noOfTravellersInputRef,
 				searchButtonRef,
+				userLocale,
 			}}
 		>
 			{children}
 		</FlightSearchContext.Provider>
 	);
+}
+
+export function useFlightSearch() {
+	return useContext(FlightSearchContext);
 }
