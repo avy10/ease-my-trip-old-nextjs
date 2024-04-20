@@ -1,7 +1,7 @@
 /* SearchBox.jsx */
 .flight-search-box {
 	width: 100%;
-	height: 30vh;
+	height: 250px;
 	background-image: linear-gradient(to right, #2f80ed, #56ccf2);
 	/* background: url("https://www.easemytrip.com/images/offer-img/rroyals-hp-main-banner-2.png"); */
 	background-size: 100%;
@@ -13,7 +13,8 @@
 .inner-box {
 	/* position: relative; */
 	/* top: 22px; */
-	width: 80%;
+	/* width: 80%; */
+	width: 1024px;
 	margin: auto auto;
 }
 
@@ -43,12 +44,14 @@
 /* MainBox.jsx */
 .main-box {
 	background-color: white;
+	height: 170px;
 	display: flex;
-	padding: 20px;
-	column-gap: 30px;
+	padding: 15px;
+	column-gap: 25px;
 	border-radius: 10px;
-	/* border: 2px solid salmon; */
+
 	position: relative;
+	box-shadow: 4px 4px 4px rgb(49 144 140 / 75%);
 }
 
 /* AirportSearchBoxes.jsx */
@@ -58,6 +61,9 @@
 	/* column-gap: 20px; */
 	row-gap: 10px;
 }
+.single-search-component label {
+	font-size: 0.85rem;
+}
 .single-search-component input {
 	font-weight: 600;
 }
@@ -66,13 +72,14 @@
 	color: rgb(122, 122, 122);
 	display: flex;
 	column-gap: 5px;
+	font-weight: 600;
 }
 .selected-airport-name {
-	max-width: 220px;
-	min-width: 220px;
+	max-width: 190px;
+	min-width: 190px;
 	min-height: 48px;
 	/* border: 2px solid aqua; */
-	font-size: 0.85rem;
+	font-size: 0.75rem;
 	/* padding-left: 12px; */
 	padding: 0px 10px;
 	border-left: 1px solid silver;
@@ -111,7 +118,13 @@
 	flex-direction: column;
 	row-gap: 10px;
 	/* border: 2px solid slateblue; */
-	width: 220px;
+	width: 150px;
+}
+.date-container p {
+	font-size: 0.85rem;
+}
+.date-container .MuiFormControl-root {
+	width: 150px;
 }
 .date-container input::selection {
 	color: black;
@@ -125,11 +138,10 @@
 
 .round-trip-persuasion {
 	/* margin: auto auto; */
-	display: flex;
-	flex-direction: column;
 	border: 1px solid silver;
 	border-radius: 5px;
-	padding: 2px 10px;
+	padding: 6px 10px;
+	min-height: 58px;
 }
 .date-picker-error .MuiFormLabel-root {
 	color: red;
@@ -152,13 +164,20 @@
 	flex-direction: column;
 	row-gap: 10px;
 }
+.no-of-travellers p {
+	display: flex;
+	align-items: center;
+	color: rgb(122, 122, 122);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
 
 .search-button-div {
 	height: 32%;
 	width: fit-content;
 	position: absolute;
 	top: 42px;
-	left: 92%;
+	left: 91%;
 	margin: 10px 0px;
 	/* border: 2px solid seagreen; */
 }
@@ -166,44 +185,44 @@
 .search-button {
 	height: 100%;
 	width: 100%;
-	background-color: orange;
+	background-color: #ef6614;
 	border: none;
 	border-radius: 10px;
 	font-size: 1.15rem;
 	font-weight: 600;
 	color: white;
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.3s ease-in-out;
 	padding: 10px;
 }
 
 .search-button:hover {
-	transform: scale(1.1);
-	transition: transform 0.5s ease-in-out;
+	transform: scale(1.05);
+	transition: transform 0.3s ease-in-out;
 }
 .search-button:active {
 	transform: scale(0.9);
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.3s ease-in-out;
 }
 /* swap button */
 .main-box-swap-button {
 	position: absolute;
-	left: 244px;
+	left: 211px;
 	top: 70px;
-	min-height: 25px;
-	min-width: 25px;
+	/* min-height: 25px;
+	min-width: 25px; */
 	/* border: 2px solid black; */
 }
 
 .main-box-swap-button button {
-	min-height: 25px;
-	min-width: 25px;
+	/* min-height: 25px;
+	min-width: 25px; */
 	color: black;
 	border: none;
 	background-color: white;
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.25s ease-in-out;
 }
 .main-box-swap-button button:hover {
-	transform: scale(1.055);
+	transform: scale(1.1);
 }
 .main-box-swap-button button:active {
 	transform: scale(0.95);

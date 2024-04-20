@@ -17,6 +17,8 @@ import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SwapHorizontalCircleIcon from "@mui/icons-material/SwapHorizontalCircle";
+import PersonIcon from "@mui/icons-material/Person";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useRouter } from "next/router";
 export default function MainBox() {
 	const router = useRouter();
@@ -209,7 +211,12 @@ export default function MainBox() {
 				/>
 			)}
 			<div className="no-of-travellers">
-				<p>No. of Travellers</p>
+				{/* <p>No. of Travellers</p> */}
+				<p>
+					TRAVELLERS
+					{numberOfPassengers == "1" && <PersonIcon />}
+					{numberOfPassengers >= "2" && <PeopleAltIcon />}
+				</p>
 				<SelectTravellersNumber refTarget={noOfTravellersInputRef} />
 				<p></p>
 			</div>
