@@ -1,1 +1,3 @@
-export default function SearchResultsModificationContext() {}
+export default function SearchResultsModificationContext() {
+	const singleAirlineSelector = {};
+}
