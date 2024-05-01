@@ -104,16 +104,63 @@ export default function MainBox() {
 		const routerReturnDay = dayjs(returnDay).format("DD-MM-YYYY");
 		// console.log("routerDay", routerDay);
 
-		router.push(
-			`/flights/search?twoway=${isTwoWay}&src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&rday=${routerReturnDay}&notv=${numberOfPassengers}`
-		);
+		isTwoWay &&
+			router.push(
+				`/flights/search?twoway=${isTwoWay}&src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&rday=${routerReturnDay}&notv=${numberOfPassengers}`
+			);
+
+		!isTwoWay &&
+			router.push(
+				`/flights/search?src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&notv=${numberOfPassengers}`
+			);
 	}
 
 	useEffect(() => {
+		if (source?.iata_code == null || source?.iata_code == undefined) {
+			setOpenSnackBar(true);
+			setSnackBarMSG("Source should not be empty");
+			// sourceInputRef?.current?.children[1].children[0].focus();
+			console.log(
+				"sourceInputRef in the validation check",
+				sourceInputRef
+			);
+			sourceInputRef.current.children[1].children[1].children[1] &&
+				sourceInputRef?.current?.children[1].children[1].children[1].click();
+
+			// when the text box is empty the below code works,
+			// there is a change in node structure if the field is empty,
+			// notice the change in array index at the end
+			// sourceInputRef.current.children[1].children[1].children[0] &&
+			// 	sourceInputRef?.current?.children[1].children[1].children[0]?.click();
+			// sourceInputRef?.current?.children[1].children[0]?.dblclick();
+
+			// return;
+		}
+		if (
+			destination?.iata_code == null ||
+			destination?.iata_code == undefined
+		) {
+			setOpenSnackBar(true);
+			setSnackBarMSG("Destination should not be empty");
+			// destinationInputRef?.current?.children[1].children[0].focus();
+			destinationInputRef?.current?.children[1].children[1].children[0]?.click();
+
+			// return;
+		}
 		if (source?.iata_code == destination?.iata_code) {
 			setSourceAndDestinationSame(true);
 			setOpenSnackBar(true);
-			sourceInputRef?.current?.children[1].children[0].focus();
+			// sourceInputRef?.current?.children[1].children[0].focus();
+			// setTimeout(
+			// 	() => {
+			// 		dayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
+
+			// 		sourceInputRef?.current?.children[1].children[1].children[1].click();
+			// 	},
+
+			// 	1000
+			// );
+			// sourceInputRef?.current?.children[1].children[1].children[1].click();
 		} else {
 			setSourceAndDestinationSame(false);
 		}

@@ -103,7 +103,7 @@
 	min-height: 48px;
 	display: flex;
 	align-items: center;
-	font-size: 1rem;
+	font-size: 0.85rem;
 }
 .error-airport-name {
 	color: red;
@@ -173,11 +173,11 @@
 }
 
 .search-button-div {
-	height: 32%;
+	height: 33%;
 	width: fit-content;
 	position: absolute;
-	top: 42px;
-	left: 91%;
+	top: 38px;
+	left: 90%;
 	margin: 10px 0px;
 	/* border: 2px solid seagreen; */
 }
@@ -206,7 +206,7 @@
 /* swap button */
 .main-box-swap-button {
 	position: absolute;
-	left: 211px;
+	left: 205.5px;
 	top: 70px;
 	/* min-height: 25px;
 	min-width: 25px; */

@@ -12,9 +12,9 @@
 	grid-template-columns: repeat(3, 1fr);
 	row-gap: 20px;
 	position: relative;
-	left: 18vw;
+	left: 20vw;
 	right: 10vw;
-	width: 66vw;
+	width: 60vw;
 }
 
 .topFlightELEMENT {

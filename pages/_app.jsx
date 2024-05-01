@@ -18,6 +18,8 @@ import "@/styles/flights/aboutHome.css";
 import "@/styles/flights/flightFooter.css";
 import "@/styles/flightSearch/flightSearchHome.css";
 import "@/styles/flightSearch/fspInputFields.css";
+import "@/styles/flightSearch/searchPageMainBox.css";
+import "@/styles/flightSearch/filterBox.css";
 
 import Footer from "@/components/Footer";
 

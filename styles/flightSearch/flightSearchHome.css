@@ -1,24 +1,20 @@
 .flight-search-home {
 	position: relative;
 	top: 9.5vh;
-	/* left: 0; */
-	/* height: max-content; */
-	/* margin-left: 12vw; */
-	/* margin-right: 12vw; */
-	width: 76vw;
-	/* height: 100vh; */
-	/* padding-top: 10px; */
 
-	display: flex;
-	flex-direction: column;
+	width: 1350px;
+	margin: auto auto;
+
+	/* display: flex;
+	flex-direction: column; */
 }
 .search-page-blue-search-box {
 	background: linear-gradient(to right, #2f80ed, #56ccf2);
 	height: 12vh;
-	width: 100vw;
+	width: 100%;
 	margin: 0;
 
-	padding: 0px 12vw;
+	/* padding: 0px 12vw; */
 }
 .flight-search-radio-buttons {
 	/* border: 2px solid black; */

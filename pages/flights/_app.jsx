@@ -1,19 +1,12 @@
 import FlightHome from "@/components/Flights/FlightsHome";
+import Home from "@/pages/flights/index";
 import { FlightSearchProvider } from "@/contexts/FlightSearchContext";
-import App from "@/pages/flights/_app";
-export default function Home() {
-	/* return (
-		<App>
-			<>
-				<FlightHome />
-			</>
-		</App>
-	); */
-
+export default function App({ Component, pageProps }) {
 	return (
 		<FlightSearchProvider>
 			<>
-				<FlightHome />
+				{/* <Home /> */}
+				<Component {...pageProps} />
 			</>
 		</FlightSearchProvider>
 	);

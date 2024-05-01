@@ -1,12 +1,14 @@
 nav {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
-	/* justify-content: space-between; mrinal asked to demonstrate, could be useful */
-	margin-left: 12vw;
-	margin-right: 12vw;
-	width: 76vw;
-	padding-top: 10px;
+	/* justify-content: space-evenly; */
+	justify-content: space-between;
+	/* mrinal asked to demonstrate, could be useful */
+	margin-left: 18vw;
+	margin-right: 18vw;
+	width: 64vw;
+	padding: 10px 10px 0px 10px;
+	/* padding-top: 10px; */
 	position: fixed;
 	z-index: 3;
 	background-color: white;

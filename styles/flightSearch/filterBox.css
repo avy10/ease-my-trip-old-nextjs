@@ -1,0 +1,11 @@
+.flights-filter-box {
+	float: left;
+	width: 300px;
+	margin-top: 10px;
+	border: 2px solid aqua;
+}
+
+.flights-filter-box h4 {
+	/* border: 2px solid orange; */
+	padding: 10px 5px;
+}

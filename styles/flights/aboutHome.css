@@ -1,13 +1,27 @@
 .aboutHomePage {
+	margin: 30px 0px;
 	background: #f2f2f266;
+	/* background-color: black; */
+	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	width: 60vw;
+	left: 20vw;
 	padding: 30px;
 }
 
 .aboutHomePage p {
-	margin: 10px 250px;
+	/* margin: 10px 250px; */
+	margin: 10px;
 	font-size: 1.15rem;
+	text-align: justify;
+	/* w3schools : 
+	When the text-align property is set to "justify", 
+	each line is stretched so that every line has equal width, 
+	and the left and right margins are straight 
+	(like in magazines and newspapers):  */
+	line-height: 1.75em;
 }

@@ -102,7 +102,8 @@ export function FlightSearchProvider({ children }) {
 				// 	"destination",
 				// 	apiData?.data?.airports[8]
 				// );
-			});
+			})
+			.catch((error) => console.log(error));
 	}, []);
 
 	// function working on search-states
@@ -185,42 +186,58 @@ export function FlightSearchProvider({ children }) {
 		if (returnDay >= today && returnDay < today.add(8, "months")) {
 			setReturnDayError(false);
 		}
-		// if (
-		// 	(day.$y >= today.$y || day.$m >= today.$m || day.$d >= today.$d) &&
-		// 	day < today.add(8, "months")
-		// ) {
-		// 	setDayError(false);
-		// }
-		// if (
-		// 	(returnDay.$y >= today.$y ||
-		// 		returnDay.$m >= today.$m ||
-		// 		returnDay.$d >= today.$d) &&
-		// 	returnDay < today.add(8, "months")
-		// ) {
-		// 	setReturnDayError(false);
-		// }
+		if (
+			day.$y >= today.$y &&
+			day.$M >= today.$M &&
+			day.$D >= today.$D &&
+			day < today.add(8, "months")
+		) {
+			setDayError(false);
+		}
+		if (
+			returnDay.$y >= today.$y &&
+			returnDay.$M >= today.$M &&
+			returnDay.$D >= today.$D &&
+			returnDay < today.add(8, "months")
+		) {
+			setReturnDayError(false);
+		}
 	}, [day, returnDay]);
 
 	// fetching names of the airport from the API
-	/* 	useEffect(() => {
+	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].focus();
-		
-	}, []); */
+
+		console.log("LOOK HERE!!!!!!!!!");
+		console.log(dayjs("10-04-2024").toISOString());
+	}, []);
 
 	useEffect(() => {
-		sourceInputRef?.current?.children[1].children[0].focus();
+		// sourceInputRef?.current?.children[1].children[0].focus();
+		sourceInputRef?.current?.children[1].children[1].children[1].click();
+		// console.log("ON LOAD SOURCEREF", sourceInputRef);
 	}, []);
 	useEffect(() => {
+		// sourceInputRef?.current?.children[1].children[0].value !== "" &&
+		// 	destinationInputRef?.current?.children[1].children[0].focus();
 		sourceInputRef?.current?.children[1].children[0].value !== "" &&
-			destinationInputRef?.current?.children[1].children[0].focus();
+			destinationInputRef?.current?.children[1].children[1].children[1].click();
 	}, [source]);
 	useEffect(() => {
 		destinationInputRef?.current?.children[1].children[0].value !== "" &&
-			dayInputRef?.current?.children[1].children[0].focus();
+			dayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [destination]);
 
 	useEffect(() => {
-		returnDayInputRef?.current?.children[1].children[0].focus();
+		// console.log("RETURN DAY INPUT REF", returnDayInputRef);
+		// console.log(
+		// 	"RETURN DAY INPUT REF",
+		// 	returnDayInputRef?.current?.children[1]?.children[1]?.children[0]
+		// );
+
+		// returnDayInputRef?.current?.children[1].children[0].focus();
+		returnDayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
+		// btn.click();
 	}, [isTwoWay]);
 
 	return (
