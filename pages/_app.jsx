@@ -20,7 +20,13 @@ import "@/styles/flightSearch/flightSearchHome.css";
 import "@/styles/flightSearch/fspInputFields.css";
 import "@/styles/flightSearch/searchPageMainBox.css";
 import "@/styles/flightSearch/filterBox.css";
+import "@/styles/flightSearch/oneWayStyles/oneWayStylesMain.css";
+import "@/styles/flightSearch/oneWayStyles/dateCard.css";
+import "@/styles/flightSearch/oneWayStyles/sortButtons.css";
+import "@/styles/flightSearch/oneWayStyles/flightsList.css";
 
+import "@/styles/flightSearch/quickButtonsFL.css";
+import "@/styles/flightSearch/searchResultsOfferCards.css";
 import Footer from "@/components/Footer";
 
 // vercel speed insights

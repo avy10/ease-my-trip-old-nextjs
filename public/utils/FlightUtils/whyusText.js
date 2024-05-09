@@ -14,14 +14,14 @@ export const whyusARR = [
 		alt: "lowest price booking icon",
 	},
 	{
-		id: 0,
+		id: 2,
 		heading: "Exciting Deals",
 		text: "Enjoy exciting deals on flights, hotels, buses, car rental and tour packages.",
 		icon: "https://www.easemytrip.com/images/nwhomfiles/exc-deal.svg",
 		alt: "exciting deals icon",
 	},
 	{
-		id: 0,
+		id: 3,
 		heading: "24/7 Support",
 		text: "Get assistance 24/7 on any kind of travel related query. We are happy to assist you.",
 		icon: "https://www.easemytrip.com/images/nwhomfiles/support.svg",

@@ -52,7 +52,7 @@ export function FlightSearchProvider({ children }) {
 	// states to facilitate search functionality => Search - states
 	const [source, setSource] = useState(SOURCE_DEFAULT);
 	const [destination, setDestination] = useState(DESTINATION_DEFAULT);
-	const [userLocale, setUserLocale] = useState("de");
+	const [userLocale, setUserLocale] = useState("en-in");
 	// dayjs.locale(userLocale);
 	const [today] = useState(dayjs());
 	const [day, setDay] = useState(dayjs());
@@ -60,7 +60,7 @@ export function FlightSearchProvider({ children }) {
 	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
 	const [isTwoWay, setIsTwoWay] = useState(false);
 	const [airportNames, setAirportNames] = useState([]);
-
+	const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
 	// locale
 
 	function resetDefaults() {
@@ -72,9 +72,9 @@ export function FlightSearchProvider({ children }) {
 	useEffect(() => {
 		const newDate = dayjs("19-04-2024", "DD-MM-YYYY", "en-in");
 		// console.log("STUDYING DAYJS", newDate);
-		console.log("STUDYING DAYJS", source.format);
+		// console.log("STUDYING DAYJS", source.format);
 		// console.log("Week day in german format", dayjs().day(newDate.$W)); // returned new dayjs object
-		console.log("week day in indian format", dayjs(newDate).format("ddd"));
+		// console.log("week day in indian format", dayjs(newDate).format("ddd"));
 
 		// setting user locale
 		const language = navigator?.language;
@@ -102,13 +102,35 @@ export function FlightSearchProvider({ children }) {
 				// 	"destination",
 				// 	apiData?.data?.airports[8]
 				// );
+				setIsAirportNamesLoading(false);
 			})
 			.catch((error) => console.log(error));
 	}, []);
 
 	// function working on search-states
-	function updateFlightSearchStates(text, val) {
-		console.log(text, val);
+	function updateFlightSearchStates(text, val, whoAreYou = "trusty") {
+		// console.log("I AM UPDATING the flight search states");
+		// console.log(text, val);
+		if (whoAreYou == "notTrusty") {
+			if (text == "source" || text == "FROM") {
+				const newVal = airportNames
+					.filter((ele) => ele.iata_code == val)
+					.at(0);
+				console.log(newVal);
+				console.log(airportNames);
+				setSource(newVal);
+			} else if (text == "destination" || text == "TO") {
+				const newVal = airportNames
+					.filter((ele) => ele.iata_code == val)
+					.at(0);
+				setDestination(newVal);
+			} else if (text == "numberOfPassengers") {
+				setNumberOfPassengers(val);
+			} else {
+				return;
+			}
+			return;
+		}
 		if (text == "source" || text == "FROM") {
 			setSource(val);
 		} else if (text == "destination" || text == "TO") {
@@ -163,11 +185,11 @@ export function FlightSearchProvider({ children }) {
 	}
 
 	useEffect(() => {
-		console.log("TODAY", today);
+		// console.log("TODAY", today);
 		console.log("day", day);
 		console.log("return day", returnDay);
 		// console.log("day > today ", day > today);
-		console.log("day >= today ", day >= today);
+		// console.log("day >= today ", day >= today);
 
 		day < today && setDayError(true);
 		// (day.$y < today.$y || day.$m < today.$m || day.$d < today.$d) &&
@@ -207,9 +229,8 @@ export function FlightSearchProvider({ children }) {
 	// fetching names of the airport from the API
 	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].focus();
-
-		console.log("LOOK HERE!!!!!!!!!");
-		console.log(dayjs("10-04-2024").toISOString());
+		// console.log("LOOK HERE!!!!!!!!!");
+		// console.log(dayjs("10-04-2024").toISOString());
 	}, []);
 
 	useEffect(() => {
@@ -262,6 +283,7 @@ export function FlightSearchProvider({ children }) {
 				returnDayError,
 				updateErrorState,
 				airportNames,
+				isAirportNamesLoading,
 				noOfTravellersInputRef,
 				searchButtonRef,
 				userLocale,

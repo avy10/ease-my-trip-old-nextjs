@@ -1,0 +1,78 @@
+.one-way-flights-quick-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+.one-way-flights-quick-buttons div {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	column-gap: 15px;
+}
+.flex-center-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.lhs-sort-buttons {
+	/* float: left; */
+	/* border: 2px solid blue; */
+	padding: 5px;
+}
+
+.rhs-calendar-buttons {
+	margin: 0px 15px;
+}
+.rhs-calendar-buttons span {
+	/* float: right; */
+	/* border: 2px solid red; */
+	padding: 10px;
+	cursor: pointer;
+	transition: transform 0.3s ease-in-out;
+}
+
+.rhs-calendar-buttons span:hover {
+	transform: scale(1.05);
+	transition: transform 0.3s ease-in-out;
+}
+.rhs-calendar-buttons span:active {
+	transform: scale(0.9);
+	transition: transform 0.3s ease-in-out;
+}
+
+.quick-sort-btn {
+	background: #fff;
+	border: 1px solid #9dadba;
+	padding: 5px 10px;
+	margin-left: 10px;
+	border-radius: 5px;
+
+	text-align: center;
+	font-size: 12px;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.cheap-sort-span {
+	content: " ";
+	background: url("https://flight.easemytrip.com/Content/img/cheapest-clr.svg")
+		no-repeat;
+	height: 25px;
+	width: 35px;
+
+	/* border: 2px solid black; */
+}
+
+.fastest-sort-span {
+	content: " ";
+	background: url("https://flight.easemytrip.com/Content/img/fastest-gry.svg")
+		no-repeat;
+	height: 25px;
+	width: 40px;
+	/* color: aqua; */
+}
+
+.active-quick-sort-btn {
+	background: #bdffe9;
+	border: 1px solid #23bf8c;
+}

@@ -31,12 +31,12 @@ export default function ExclusiveOffers() {
 			`${types[activeTab]}` +
 			'"' +
 			"}";
-		console.log(URL);
+		// console.log(URL);
 		fetch(`${URL}`, requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				setOffers(result?.data?.offers);
-				console.log(result);
+				// console.log(result);
 				setIsLoading(false);
 			})
 			.catch((error) => console.error(error));

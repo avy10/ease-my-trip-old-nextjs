@@ -65,7 +65,7 @@ export default function Navigation() {
 
 function PageNavigations({ scrollLengthY }) {
 	const router = useRouter();
-	console.log(router.pathname);
+	// console.log(router.pathname);
 	return (
 		<div className="page-navigations">
 			<ul className="page-navigations-ul">

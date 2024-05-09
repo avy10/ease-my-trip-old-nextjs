@@ -1,0 +1,77 @@
+.emt-flight-results-coupons {
+	/* justify-content: space-around; */
+
+	/* border: 2px solid black; */
+	height: 70px;
+	margin-top: 10px;
+	/* padding-left: 50px; */
+}
+.emt-flight-results-coupons button {
+	width: 25px;
+	height: 25px;
+
+	background: #bdffe9;
+	border: 1px solid #23bf8c;
+	border-radius: 50%;
+	font-size: 1.15rem;
+	font-weight: 600;
+	transition: transform 0.5s ease-in-out;
+	/* border: 2px solid aqua; */
+}
+.emt-flight-results-coupons button:first-child {
+	margin-left: 10px;
+}
+.emt-flight-results-coupons button:last-child {
+	margin-right: 10px;
+	/* border: 3px solid brown; */
+}
+.emt-flight-results-coupons button:active {
+	transform: scale(0.85);
+	transition: transform 0.35s ease-in-out;
+}
+.emt-flight-results-container {
+	margin: auto auto;
+	width: 90%;
+	height: 100%;
+	overflow-x: scroll;
+	display: flex;
+	flex-direction: row;
+	column-gap: 15px;
+	scroll-behavior: smooth;
+	/* border: 2px solid black; */
+}
+.emt-flight-results-coupons::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+}
+.emt-flight-results-container::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+}
+
+.outer-box {
+	margin: auto auto;
+	height: 55px;
+	width: 330px;
+	padding: 10px 15px;
+	border: 2px solid blue;
+	display: flex;
+	column-gap: 15px;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #e4fbf1;
+	border: 1px solid #80f1c1;
+	border-radius: 6px;
+}
+.outer-box .img-container {
+	width: 45px;
+	height: 45px;
+}
+.outer-box .img-container img {
+	height: 100%;
+	width: 100%;
+}
+.text-container {
+	font-size: 0.75rem;
+	width: 280px;
+}

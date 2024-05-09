@@ -1,0 +1,5 @@
+.one-way-flights-list {
+	border: 3px solid pink;
+	float: left;
+	width: calc(100% - 300px);
+}

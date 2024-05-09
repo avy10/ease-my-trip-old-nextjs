@@ -1,0 +1,23 @@
+.date-card-main {
+	border: 1px solid silver;
+	display: flex;
+	justify-content: space-between;
+}
+
+.date-card-main div {
+	/* border: 3px solid aqua; */
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	padding: 8px;
+	width: 100px;
+	text-align: center;
+
+	font-size: 0.85rem;
+}
+
+.date-card-main .active {
+	background: #fffced;
+	border-top: 4px solid #2196f3;
+	/* font-size: 1.15rem; */
+	font-weight: 600;
+}

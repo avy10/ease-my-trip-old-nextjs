@@ -4,20 +4,14 @@ import { useSearchParams } from "next/navigation";
 import { useContext } from "react";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import FilterBox from "./SearchResultsPage/FilterBox";
-import FlightsList from "./SearchResultsPage/FlightsList";
+import OneWay from "./SearchResultsPage/oneWayFlightsList/OneWay";
 export default function SearchMainBox({ paramsAreLoaded }) {
 	const searchData = useContext(FlightSearchContext);
 	const { isTwoWay } = searchData;
 
 	return (
 		<div className="search-results-main-div">
-			<FilterBox />
-			{!isTwoWay && (
-				<>
-					<FlightsList paramsAreLoaded={paramsAreLoaded} />
-					<div className="fsp-main-content-box">I AM ON ONE WAY</div>
-				</>
-			)}
+			{!isTwoWay && <OneWay />}
 			{isTwoWay && (
 				<div className="fsp-main-content-box">I AM ON TWO WAY</div>
 			)}
