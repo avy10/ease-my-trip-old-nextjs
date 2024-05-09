@@ -1,6 +1,6 @@
 import FlightsList from "./oneWayFlightsListComponents/FlightsList";
 import FilterBox from "../FilterBox";
-import OneWayTopBar from "./oneWayFlightsListComponents/oneWayTopBar";
+import OneWayTopBar from "./oneWayFlightsListComponents/OneWayTopBar";
 
 export default function OneWay() {
 	return (
