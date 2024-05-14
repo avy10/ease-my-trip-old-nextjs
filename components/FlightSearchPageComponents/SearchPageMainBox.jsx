@@ -9,6 +9,7 @@ export default function SearchMainBox({ paramsAreLoaded }) {
 	const searchData = useContext(FlightSearchContext);
 	const { isTwoWay } = searchData;
 
+	if (!paramsAreLoaded) return null;
 	return (
 		<div className="search-results-main-div">
 			{!isTwoWay && <OneWay />}

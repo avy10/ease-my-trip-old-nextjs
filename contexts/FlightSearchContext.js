@@ -108,7 +108,7 @@ export function FlightSearchProvider({ children }) {
 	}, []);
 
 	// function working on search-states
-	function updateFlightSearchStates(text, val, whoAreYou = "trusty") {
+	/* function updateFlightSearchStates(text, val, whoAreYou = "trusty") {
 		// console.log("I AM UPDATING the flight search states");
 		// console.log(text, val);
 		if (whoAreYou == "notTrusty") {
@@ -142,7 +142,24 @@ export function FlightSearchProvider({ children }) {
 		} else {
 			return;
 		}
+	} */
+
+	function updateFlightSearchStates(text, val) {
+		console.log("AVYYYYYY I AM RUNNINGGGGGGGGGG");
+		console.log(text, val);
+		if (text == "source" || text == "FROM") {
+			setSource(val);
+		} else if (text == "destination" || text == "TO") {
+			setDestination(val);
+		} else if (text == "day") {
+			setDay(val);
+		} else if (text == "numberOfPassengers" && val >= 1 && val <= 6) {
+			setNumberOfPassengers(val);
+		} else {
+			return;
+		}
 	}
+
 	function updateTwoWay(val) {
 		setIsTwoWay(val);
 	}

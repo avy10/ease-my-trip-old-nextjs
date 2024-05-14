@@ -1,10 +1,18 @@
 .single-flight-data-container {
 	display: flex;
 	flex-direction: column;
-	border: 2px solid black;
-	border-radius: 15px;
+	/* border: 2px solid black; */
+	margin: 10px;
+	margin-top: 15px;
+	border-radius: 7px;
 	justify-content: center;
 	padding: 10px;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.352);
+	transition: all 0.3s ease-out;
+}
+.single-flight-data-container:hover {
+	box-shadow: 0 0 15px 0 rgba(111, 157, 255, 0.873);
+	transition: all 0.3s ease-out;
 }
 
 .single-flight-data-container div {
@@ -26,12 +34,12 @@
 .single-flight-data-container .flight-text-container {
 	/* border: 2px solid red; */
 }
-.flight-logo-container {
+.single-flight-data-container .flight-logo-container {
 	height: 32px;
 	width: 32px;
 }
 
-.flight-logo-container img {
+.single-flight-data-container .flight-logo-container img {
 	height: 100%;
 	width: 100%;
 }
@@ -45,7 +53,7 @@
 	color: #737373;
 }
 
-.arrow-right-direction {
+.single-flight-data-container .arrow-right-direction {
 	background-image: url("https://flight.easemytrip.com/Content/img/arow_main.png");
 	background-repeat: no-repeat;
 	height: 12px;
@@ -53,7 +61,7 @@
 	/* border: 2px solid red; */
 }
 
-.flight-booking-button {
+.single-flight-data-container .flight-booking-button {
 	background-color: #ef6614;
 	text-shadow: none;
 	color: #fff;
@@ -73,7 +81,7 @@
 	width: 120px;
 }
 
-.flight-book-seats .seats-remaining {
+.single-flight-data-container .flight-book-seats .seats-remaining {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -81,10 +89,13 @@
 	color: #2196f3;
 	font-size: 0.75rem;
 }
-.flight-book-seats .low-seats-left {
+.single-flight-data-container .flight-book-seats .low-seats-left {
 	color: red;
 }
-.flight-book-seats .seats-remaining .MuiSvgIcon-root {
+.single-flight-data-container
+	.flight-book-seats
+	.seats-remaining
+	.MuiSvgIcon-root {
 	scale: 0.7;
 }
 
@@ -97,10 +108,18 @@
 	font-size: 1.35rem;
 	/* border: 2px solid teal; */
 }
+.single-flight-data-container .flight-price div {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	/* border: 2px solid teal; */
+}
 .single-flight-data-container .flight-price p {
 	color: black;
 	font-size: 0.85rem;
 	font-weight: 400;
+	padding: 0px 10px;
+	/* border: 2px solid teal; */
 }
 
 .single-flight-data-container .flight-duration-stops {
@@ -110,7 +129,7 @@
 
 .single-flight-data-container .fastest {
 	color: rgb(12, 192, 153);
-	text-shadow: 1px 1px 1px rgb(81, 226, 194);
+	text-shadow: 1px 1px 1px rgb(9, 207, 164);
 	font-size: 1.15rem;
 	/* border-top: 3px solid rgb(81, 226, 194); */
 }
@@ -129,4 +148,16 @@
 .single-flight-data-container .arrival-time p,
 .single-flight-data-container .flight-duration-stops {
 	font-size: 0.85rem;
+}
+
+.single-flight-data-container .bottom-content {
+	/* border-radius: 0px 0px 15px 15px; */
+	border-radius: 0px 0px 7px 7px;
+	background: #f9f9f9;
+	margin-left: -10px;
+	margin-right: -10px;
+	margin-bottom: -10px;
+	padding: 3px 35px;
+	cursor: pointer;
+	color: #2196f3;
 }

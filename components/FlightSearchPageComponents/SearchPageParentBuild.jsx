@@ -34,26 +34,34 @@ export default function SearchPageParentBuild({ loading, setLoading }) {
 	const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
 	// useEffect to get the data from URL search params
 	// ?twoway=true&src=DEL&dest=BOM&day=
-	useEffect(() => {
-		console.log(router.isReady);
-		fetch(`${domain}${allTheAirports}`, {
-			method: "GET",
-			headers: {
-				projectID: "4xh7gn2pv8it",
-			},
-		})
-			.then((res) => res.json())
-			.then((apiData) => {
-				setAirportNames(apiData?.data?.airports);
-				// setIsAirportNamesLoading(false);
-				// updateFlightSearchStates("source", apiData?.data?.airports[7]);
-				// updateFlightSearchStates(
-				// 	"destination",
-				// 	apiData?.data?.airports[8]
-				// );
-				setIsAirportNamesLoading(false);
+	async function fetchAirportnames() {
+		airportNames.length == 0 &&
+			(await fetch(`${domain}${allTheAirports}`, {
+				method: "GET",
+				headers: {
+					projectID: "4xh7gn2pv8it",
+				},
 			})
-			.catch((error) => console.log(error));
+				.then((res) => res.json())
+				.then((apiData) => {
+					setAirportNames(apiData?.data?.airports);
+					// setIsAirportNamesLoading(false);
+					// updateFlightSearchStates("source", apiData?.data?.airports[7]);
+					// updateFlightSearchStates(
+					// 	"destination",
+					// 	apiData?.data?.airports[8]
+					// );
+					setIsAirportNamesLoading(false);
+					setParamsAreLoaded(false);
+
+					return;
+				})
+				.catch((error) => console.log(error)));
+	}
+
+	async function onComponentMount() {
+		setLoading(true);
+		await fetchAirportnames();
 		const isTwoWayURL = searchParams.get("twoway");
 		const sourceURL = searchParams.get("src"); //iata_code
 		const destinationURL = searchParams.get("dest"); ///iata_code
@@ -105,18 +113,40 @@ export default function SearchPageParentBuild({ loading, setLoading }) {
 		}
 		updateFlightSearchStates("numberOfPassengers", +noOfTravellersURL);
 		setLoading(false);
-		setParamsAreLoaded(true);
-	}, [router.isReady, isAirportNamesLoading]);
+		!isAirportNamesLoading && setParamsAreLoaded(true);
+	}
+	useEffect(() => {
+		// console.log(router.isReady);
+		// console.log("isAirportNamesLoading", isAirportNamesLoading);
+		onComponentMount();
+	}, [router.isReady, isAirportNamesLoading, paramsAreLoaded]);
 	return (
-		!loading && (
+		<div className="flight-search-home">
+			<FspSearchBox />
+			{!errorInParams && (
+				<SearchResultsModificationContextProvider>
+					{!isAirportNamesLoading && (
+						<SearchMainBox paramsAreLoaded={paramsAreLoaded} />
+					)}
+				</SearchResultsModificationContextProvider>
+			)}
+		</div>
+	);
+}
+/* 
+	return (
+		!isAirportNamesLoading && (
 			<div className="flight-search-home">
 				<FspSearchBox />
 				{!errorInParams && (
 					<SearchResultsModificationContextProvider>
-						<SearchMainBox paramsAreLoaded={paramsAreLoaded} />
+						{!isAirportNamesLoading && (
+							<SearchMainBox paramsAreLoaded={paramsAreLoaded} />
+						)}
 					</SearchResultsModificationContextProvider>
 				)}
 			</div>
 		)
 	);
-}
+
+*/

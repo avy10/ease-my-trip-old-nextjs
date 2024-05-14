@@ -1,0 +1,216 @@
+.flight-details {
+	/* border: 2px solid rebeccapurple; */
+	margin-top: 15px;
+	border-radius: 30px;
+}
+
+/* top card */
+.single-flight-detail-topcard {
+	/* margin-top: 10px; */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/* border: 2px solid black; */
+	border-radius: 30px;
+	background: #f6f4f4;
+}
+
+.single-flight-detail-topcard .topcard-tabs {
+	width: 23%;
+	/* border: 2px solid orange; */
+	padding: 5px;
+	border-radius: 30px;
+	font-size: 0.95rem;
+	text-align: center;
+	background: none;
+	cursor: pointer;
+}
+
+.single-flight-detail-topcard .topcard-active {
+	background: #2196f3;
+	color: white;
+}
+
+.single-flight-detail-topcard button {
+	border: none;
+	border-radius: 50%;
+	width: 35px;
+	padding: 5px;
+	cursor: pointer;
+}
+.single-flight-detail-topcard button:hover {
+	background: #2196f3;
+	color: white;
+}
+
+/* FlightDetailsContainerDynamic */
+.all-the-flights-details {
+	/* border: 2px solid black; */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/* width: 90%; */
+	margin: auto auto;
+	padding: 15px;
+	margin-top: 10px;
+}
+
+.all-the-flights-details .flight-logo-container {
+	height: 45px;
+	width: 45px;
+}
+
+.all-the-flights-details .flight-text-container {
+	font-size: 1rem;
+}
+
+.all-the-flights-details .duration-flight-xoox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.all-the-flights-details p {
+	margin-top: 5px;
+}
+/* FareDetails.css */
+.airline-fare-details-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 10px;
+}
+
+.airline-fare-details-div .airline-fare-rules {
+	width: 75%;
+}
+
+.airline-fare-details-table table {
+	border-spacing: 0;
+	/* border-spacing removes the gap between the table border and, removes the gap between the individual cells */
+	border-collapse: collapse;
+	border: 1px solid #cecece;
+
+	width: 100%;
+	/* border: 2px solid black; */
+	/* padding: 10px; */
+	/* margin: auto auto; */
+	margin-top: 20px;
+	margin-bottom: 15px;
+	text-align: left;
+
+	font-size: 0.7rem;
+	/* float: left; */
+}
+
+.airline-fare-details-table tr {
+	border: 2px solid #cecece;
+}
+
+.airline-fare-details-table td {
+	padding: 5px 10px;
+	font-weight: 600;
+}
+
+/* FareRules.css */
+.airline-fare-rules {
+	border: 1px solid #cecece;
+	border-radius: 10px;
+	padding: 10px;
+	position: relative;
+	width: 80%;
+	margin: auto auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.airline-fare-rules-table span {
+	display: block;
+	font-weight: 400;
+	font-size: 0.7rem;
+}
+.airline-fare-rules #refundable {
+	position: absolute;
+	right: 15px;
+	top: 10px;
+	border-radius: 30px;
+	border: 1px solid #2dca1c;
+	color: #2dca1c;
+	padding: 3px 10px;
+}
+.airline-fare-rules-table {
+	border: 1px solid #cecece;
+
+	width: 90%;
+	/* border: 2px solid black; */
+	/* padding: 10px; */
+	margin: auto auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: left;
+
+	border-spacing: 0;
+	/* border-spacing removes the gap between the table border and, removes the gap between the individual cells */
+	border-collapse: collapse;
+}
+.airline-fare-rules-table thead th {
+	border: 1px solid #cecece;
+	/* border: 2px solid red; */
+
+	background: #f5f5f5;
+	padding: 7px;
+}
+
+.airline-fare-rules-table tbody td {
+	border: 1px solid #cecece;
+	padding: 7px;
+	max-width: 350px;
+	font-size: 0.8rem;
+}
+
+.airFare-terms-conditions {
+	width: 100%;
+	margin: auto auto;
+	/* border: 2px solid red; */
+	padding: 10px 25px;
+}
+
+.airFare-terms-conditions li {
+	font-size: 0.8rem;
+}
+
+/* Baggage Information */
+.airline-baggage-info {
+	margin: auto auto;
+	width: 85%;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.airline-baggage-info table {
+	border-spacing: 0;
+	/* border-spacing removes the gap between the table border and, removes the gap between the individual cells */
+	border-collapse: collapse;
+	border: 1px solid #cecece;
+	width: 100%;
+}
+
+.airline-baggage-info thead th {
+	border: 1px solid #cecece;
+	/* border: 2px solid red; */
+
+	background: #f5f5f5;
+	padding: 10px;
+	text-align: center;
+}
+.airline-baggage-info tbody td {
+	border: 1px solid #cecece;
+	padding: 7px;
+	max-width: 350px;
+	text-align: center;
+	/* font-size: 0.8rem; */
+}
+
+.airline-baggage-info tbody td li {
+	text-align: left;
+	margin-left: 25px;
+	padding: 5px;
+}

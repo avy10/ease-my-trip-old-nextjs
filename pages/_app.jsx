@@ -24,6 +24,7 @@ import "@/styles/flightSearch/oneWayStyles/oneWayStylesMain.css";
 import "@/styles/flightSearch/oneWayStyles/dateCard.css";
 import "@/styles/flightSearch/oneWayStyles/sortButtons.css";
 import "@/styles/flightSearch/oneWayStyles/flightsList.css";
+import "@/styles/flightSearch/oneWayStyles/singleFlightDetails/singleFlightDetailsMain.css";
 
 import "@/styles/flightSearch/quickButtonsFL.css";
 import "@/styles/flightSearch/searchResultsOfferCards.css";

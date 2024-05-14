@@ -7,7 +7,7 @@ export default function OneWay() {
 		<>
 			<FilterBox />
 			<div className="one-way-flights-list">
-				<OneWayTopBar />I AM ON ONEWAY FLIGHTS LIST
+				<OneWayTopBar />
 				<FlightsList />
 			</div>
 		</>
