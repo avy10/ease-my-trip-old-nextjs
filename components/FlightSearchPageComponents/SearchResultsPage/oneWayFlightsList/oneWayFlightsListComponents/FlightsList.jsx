@@ -190,7 +190,11 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 						className="bottom-content"
 						onClick={handleSetShowFlightDetails}
 					>
-						{showFlightDetails ? "Hide Details" : "Flight Details"}
+						<p>
+							{showFlightDetails
+								? "Hide Details"
+								: "Flight Details"}
+						</p>
 					</div>
 					{showFlightDetails && (
 						<SingleFlightDetailsMain

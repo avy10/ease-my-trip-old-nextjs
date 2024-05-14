@@ -157,7 +157,20 @@
 	margin-left: -10px;
 	margin-right: -10px;
 	margin-bottom: -10px;
-	padding: 3px 35px;
+	padding: 5px 35px;
+	height: 35px;
 	cursor: pointer;
 	color: #2196f3;
+	position: relative;
+}
+
+.single-flight-data-container .bottom-content p {
+	width: fit-content;
+}
+.single-flight-data-container .bottom-content p:hover {
+	border-bottom: 1px solid #2196f3;
+	/* visibility: hidden; */
+	/* border-radius: 5px; */
+	transition: 0.25s linear;
+	/* position: absolute; */
 }
