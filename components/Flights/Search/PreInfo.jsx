@@ -14,7 +14,7 @@ export default function PreInfo() {
 					}}
 					labelStyle={{
 						color: pink[50],
-						fontSize: "1.15rem",
+						fontSize: "1rem",
 						fontWeight: "600",
 					}}
 				/>

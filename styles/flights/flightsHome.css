@@ -1,11 +1,11 @@
 .flight-home-container {
 	position: relative;
-	top: 9.5vh;
+	top: 75px;
 	left: 0;
 	height: max-content;
 	width: 100%;
 	/* border: 2px solid aqua; */
-	border-top: 2px solid silver;
+	/* border-top: 2px solid silver; */
 	padding-top: 1px;
 }
 

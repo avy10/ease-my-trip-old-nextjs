@@ -32,10 +32,10 @@ export default function SearchResultsOfferCards() {
 	}
 
 	useEffect(() => {
-		console.log(
-			"AM I WORKING AAAAAAAAAAAAAAAAAAAA",
-			containerRef.current.scrollLeft
-		);
+		// console.log(
+		// 	"AM I WORKING AAAAAAAAAAAAAAAAAAAA",
+		// 	containerRef.current.scrollLeft
+		// );
 		toggleButtons();
 	}, [scrollDistance]);
 	return (

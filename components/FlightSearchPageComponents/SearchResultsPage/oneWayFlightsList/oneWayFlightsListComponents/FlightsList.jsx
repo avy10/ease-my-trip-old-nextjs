@@ -2,49 +2,12 @@ import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
+import { ICON_SOURCES } from "@/public/utils/FlightUtils/airlineDecoding";
 
-import indigo from "@/public/assests/images/icons/indigo.png";
-import spicyJett from "@/public/assests/images/icons/SG.png";
-import vistara from "@/public/assests/images/icons/UK.png";
-import airIndia from "@/public/assests/images/icons/AI.png";
-import goAir from "@/public/assests/images/icons/G8.png";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import AirlineSeatLegroomNormalIcon from "@mui/icons-material/AirlineSeatLegroomNormal";
 import SingleFlightDetailsMain from "./singleFlightDetail/SingleFlightDetailsMain";
-const ICON_SOURCES = {
-	"6E001": {
-		name: "IndiGo",
-		shortID: "6E",
-		icon: indigo,
-		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/indigo.png",
-	},
 
-	AI001: {
-		name: "Air India",
-		shortID: "AI",
-		icon: airIndia,
-		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/AI.png",
-	},
-	UK001: {
-		name: "Vistara",
-		shortID: "UK",
-		icon: vistara,
-		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/UK.png",
-	},
-	SG001: {
-		name: "SpiceJet",
-		shortID: "SG",
-		icon: spicyJett,
-		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/SG.png",
-	},
-	G801: {
-		name: "Go Air",
-		shortID: "G8",
-		icon: goAir,
-		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/G8.png",
-	},
-};
 export default function FlightsList() {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
@@ -55,7 +18,7 @@ export default function FlightsList() {
 	useEffect(() => {
 		// `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"
 		// 	DEL","destination":"BOM"}&day=Mon`,
-		console.log(indigo);
+
 		const flightDayWeekName = dayjs(day).format("ddd");
 		const url =
 			`https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"` +
@@ -77,7 +40,7 @@ export default function FlightsList() {
 			});
 	}, [router.isReady]);
 	return (
-		<div>
+		<div id="flight-result-list">
 			{flightListOriginal.map((ele) => {
 				return (
 					<AllTheCards

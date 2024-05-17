@@ -1,5 +1,7 @@
 .search-results-main-div {
 	margin: auto auto;
-	/* width: 1240px; */
+	width: 100vw;
+	/* height: 100vh; */
+	max-width: 1350px;
 	/* border: 2px solid black; */
 }

@@ -1,5 +1,6 @@
 .date-card-main {
-	border: 1px solid silver;
+	margin: 10px 15px;
+	/* border: 1px solid silver; */
 	display: flex;
 	justify-content: space-between;
 }
@@ -8,6 +9,8 @@
 	/* border: 3px solid aqua; */
 	border-left: 1px solid silver;
 	border-right: 1px solid silver;
+	border: 1px solid silver;
+	border-radius: 5px;
 	padding: 8px;
 	width: 100px;
 	text-align: center;

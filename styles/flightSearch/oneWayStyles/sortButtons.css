@@ -1,5 +1,10 @@
 .sort-options-flight-search {
-	border: 2px solid green;
+	/* border: 2px solid green; */
+	margin: 10px;
+	padding: 2px 7px;
 	display: flex;
 	justify-content: space-between;
+	font-size: 12px;
+	color: #666;
+	font-weight: 600;
 }

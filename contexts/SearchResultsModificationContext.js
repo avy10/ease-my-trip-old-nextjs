@@ -89,7 +89,7 @@ export default function SearchResultsModificationContextProvider({ children }) {
 	// SORTING
 	// GLOBAL SORTING
 	const [quickCheapestSort, setQuickCheapestSort] = useState(true);
-	const [quickFastestSort, setQuickFastestSort] = useState(true);
+	const [quickFastestSort, setQuickFastestSort] = useState(false);
 
 	return (
 		<SearchResultsModificationContext.Provider

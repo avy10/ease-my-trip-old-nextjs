@@ -42,27 +42,32 @@ export default function Navigation() {
 		window.addEventListener("scroll", handleChange);
 	}, []);
 	return (
-		<nav className={scrollLengthY ? "mini-nav" : ""}>
-			<div className="emt-icon">
-				<Link href="/">
-					<Image
-						src="https://www.easemytrip.com/images/brandlogo/emtlogo_new8.svg"
-						height={scrollLengthY ? 40 : 70}
-						width={scrollLengthY ? 170 : 200}
-						alt={"go to homepage"}
-					/>
-				</Link>
-			</div>
-			<PageNavigations scrollLengthY={scrollLengthY} />
-			{/* {!scrollLengthY && (
+		<nav>
+			<div
+				className={
+					scrollLengthY ? "navigation-div mini-nav" : "navigation-div"
+				}
+			>
+				<div className="emt-icon">
+					<Link href="/">
+						<Image
+							src="https://www.easemytrip.com/images/brandlogo/emtlogo_new8.svg"
+							height={scrollLengthY ? 40 : 60}
+							width={scrollLengthY ? 170 : 200}
+							alt={"go to homepage"}
+						/>
+					</Link>
+				</div>
+				<PageNavigations scrollLengthY={scrollLengthY} />
+				{/* {!scrollLengthY && (
 				<PageNavigations scrollLengthY={scrollLengthY} />
 			)} */}
-			{/* {scrollLengthY && <MiniPageNavigations />} */}
-			<div className="login-portal"> HI I AM USER</div>
+				{/* {scrollLengthY && <MiniPageNavigations />} */}
+				<div className="login-portal"> HI I AM USER</div>
+			</div>
 		</nav>
 	);
 }
-
 function PageNavigations({ scrollLengthY }) {
 	const router = useRouter();
 	// console.log(router.pathname);

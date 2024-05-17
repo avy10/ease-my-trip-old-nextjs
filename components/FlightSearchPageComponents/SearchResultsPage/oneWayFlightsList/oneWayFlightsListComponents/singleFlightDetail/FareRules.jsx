@@ -1,3 +1,5 @@
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+
 export default function FareRules() {
 	return (
 		<div className="airline-fare-rules">
@@ -47,16 +49,32 @@ function TableFormation({
 			<tbody>
 				<tr>
 					<td>{purpose} Before 96 hours of departure time</td>
-					<td>{airlineFeesEarly}</td>
-					<td>{emtFees}</td>
+					<td>
+						{" "}
+						<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+						{airlineFeesEarly}
+					</td>
+					<td>
+						{" "}
+						<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+						{emtFees}
+					</td>
 				</tr>
 				<tr>
 					<td>
 						{purpose} Within 96 hours & before 4 hours of departure
 						time
 					</td>
-					<td>{airlineFeesLate}</td>
-					<td>{emtFees}</td>
+					<td>
+						{" "}
+						<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+						{airlineFeesLate}
+					</td>
+					<td>
+						{" "}
+						<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+						{emtFees}
+					</td>
 				</tr>
 			</tbody>
 		</table>

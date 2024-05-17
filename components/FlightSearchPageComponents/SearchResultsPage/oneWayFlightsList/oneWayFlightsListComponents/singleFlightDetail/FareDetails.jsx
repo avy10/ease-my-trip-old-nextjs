@@ -1,6 +1,7 @@
 import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import { useEffect, useState } from "react";
 import FareRules from "./FareRules";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 export default function FareDetails({ flightPrice }) {
 	const flightSearchData = useFlightSearch();
@@ -34,19 +35,31 @@ export default function FareDetails({ flightPrice }) {
 							{numberOfPassengers} x{" "}
 							{numberOfPassengers == 1 ? "Adult" : "Adults"}
 						</td>
-						<td>{totalBaseFare}</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalBaseFare}
+						</td>
 					</tr>
 					<tr>
 						<td>Total (Base Fare)</td>
-						<td>{totalBaseFare}</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalBaseFare}
+						</td>
 					</tr>
 					<tr>
 						<td>Total taxes</td>
-						<td>{totalTax}</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalTax}
+						</td>
 					</tr>
 					<tr>
 						<td>Total (Fee and Surcharge)</td>
-						<td>{numberOfPassengers * flightPrice}</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{numberOfPassengers * flightPrice}
+						</td>
 					</tr>
 				</table>
 			</div>

@@ -3,7 +3,6 @@
 export default function SortButtons() {
 	return (
 		<div className="sort-options-flight-search">
-			Sort buttons
 			<p>AIRLINES</p>
 			<p>DEPARTURE</p>
 			<p>DURATION</p>

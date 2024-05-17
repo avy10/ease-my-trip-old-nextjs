@@ -2,6 +2,7 @@
 	/* border: 2px solid rebeccapurple; */
 	margin-top: 15px;
 	border-radius: 30px;
+	transition: all 0.3s ease-out;
 }
 
 /* top card */
@@ -213,4 +214,11 @@
 	text-align: left;
 	margin-left: 25px;
 	padding: 5px;
+}
+
+/* additional css */
+.rupee-symbol-in-fare-tables {
+	display: inline;
+	vertical-align: baseline;
+	font-size: 10px;
 }

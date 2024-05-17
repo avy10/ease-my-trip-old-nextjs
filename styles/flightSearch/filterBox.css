@@ -2,10 +2,141 @@
 	float: left;
 	width: 300px;
 	margin-top: 10px;
-	border: 2px solid aqua;
+	/* border: 1px solid rgba(0, 0, 0, 0.438); */
+	border-radius: 10px;
+	box-shadow: 2px 2px 1px 1px #2196f3;
+	border-top: 1px solid rgba(0, 0, 0, 0.438);
+	border-left: 1px solid rgba(0, 0, 0, 0.438);
 }
 
-.flights-filter-box h4 {
+.flights-filter-box h3 {
 	/* border: 2px solid orange; */
-	padding: 10px 5px;
+	padding: 10px 15px;
+}
+.slider-values {
+	display: flex;
+	justify-content: space-between;
+}
+.filter-box-name {
+	font-weight: 600;
+	font-size: 1.1rem;
+	margin-left: 10px;
+}
+/* AirlineFilterBox.css, AirlineList.css */
+.airline-name-filter-box {
+	/* border: 2px solid black; */
+
+	padding: 10px;
+}
+/* .airline-name-filter-box .filter-box-name {
+	font-weight: 800;
+	font-size: 1.1rem;
+} */
+
+.airline-name-filter-box ul {
+	list-style-type: none;
+}
+
+.airline-name-filter-box li {
+	/* border: 2px solid red; */
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 24px;
+	column-gap: 5px;
+}
+
+.airline-name-filter-box .icon-box {
+	height: 16px;
+	width: 16px;
+}
+.airline-name-filter-box .icon-box img {
+	height: 100%;
+	width: 100%;
+}
+.airline-name-filter-box .only-button {
+	/* position: absolute; */
+	margin: auto auto;
+	color: #2196f3;
+	cursor: pointer;
+	font-weight: 600;
+	font-style: italic;
+}
+
+/* Price Range.css */
+.rupee-symbol-in-filter-box {
+	display: inline;
+	vertical-align: middle;
+	font-size: 14px;
+}
+
+.slider-box-filter-box {
+	width: 200px;
+	margin: auto auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+/* STOPS FILTER BOX .CSS */
+.stops-filter-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 10px;
+	width: 300px;
+	margin: auto auto;
+	/* border: 2px solid red; */
+	margin-bottom: 10px;
+}
+.single-stop-box {
+	background: #2196f3 !important;
+	color: #fff !important;
+	text-align: center;
+	width: 60px;
+	height: 50px;
+	font-size: 0.85rem;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+	border-radius: 7px;
+	flex-direction: column;
+}
+
+/* DepartureArrivalTimeFilter */
+.departure-arrival-time-filter {
+	margin: auto auto;
+	/* border: 2px solid red; */
+	display: flex;
+	flex-direction: row;
+	column-gap: 10px;
+	padding: 10px;
+	width: max-content;
+	margin-top: 5px;
+	margin-bottom: 10px;
+
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+}
+.departure-arrival-time-filter .single-time-point {
+	border: 1px solid #737373;
+	/* height: 50px; */
+	padding: 5px;
+	text-align: center;
+	border-radius: 7px;
+}
+.departure-arrival-time-filter .filter-text {
+	font-size: 0.85rem;
+	/* border: 2px solid black; */
+	width: 50px;
+	line-height: 14px;
+	color: #737373;
+}
+/* Sunrise */
+.departure-arrival-time-filter .twilight-sunrise-empty {
+	height: 10px;
+}
+
+/* sunset */
+.departure-arrival-time-filter .twilight-sunset-empty {
+	height: 10px;
 }
