@@ -4,6 +4,14 @@ import { createContext, useContext, useReducer, useState } from "react";
 const SearchResultsModificationContext = createContext();
 function reducer(state, action) {}
 export default function SearchResultsModificationContextProvider({ children }) {
+	const [isURLModified, setIsURLModified] = useState(false);
+	function updateIsURLModified(val) {
+		setIsURLModified(val);
+	}
+
+	const [sortOptions, setSortOptions] = useState(null);
+
+	const [filterOptions, setFilterOptions] = useState(null);
 	// FILTERS
 	// global filter i.e. works on both oneWay and twoWay
 	const [singleAirlineSelector, setSingleAirlineSelector] = useState("");
@@ -88,12 +96,14 @@ export default function SearchResultsModificationContextProvider({ children }) {
 
 	// SORTING
 	// GLOBAL SORTING
-	const [quickCheapestSort, setQuickCheapestSort] = useState(true);
-	const [quickFastestSort, setQuickFastestSort] = useState(false);
+	const [quickCheapestSort, setQuickCheapestSort] = useState(false);
+	const [quickFastestSort, setQuickFastestSort] = useState(true);
 
 	return (
 		<SearchResultsModificationContext.Provider
 			value={{
+				isURLModified,
+				updateIsURLModified,
 				singleAirlineSelector,
 				quickCheapestSort,
 				quickFastestSort,

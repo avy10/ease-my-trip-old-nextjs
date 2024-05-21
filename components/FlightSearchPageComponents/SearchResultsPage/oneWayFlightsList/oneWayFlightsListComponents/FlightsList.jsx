@@ -7,14 +7,23 @@ import { ICON_SOURCES } from "@/public/utils/FlightUtils/airlineDecoding";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import AirlineSeatLegroomNormalIcon from "@mui/icons-material/AirlineSeatLegroomNormal";
 import SingleFlightDetailsMain from "./singleFlightDetail/SingleFlightDetailsMain";
+import { useSearchParams } from "next/navigation";
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
 export default function FlightsList() {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
 	const { source, destination, day, numberOfPassengers } = flightSearchData;
 
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { isURLModified, updateIsURLModified } = flightSearchModificationCS;
 	const [flightListOriginal, setFlightListOriginal] = useState([]);
 	const [showFlightDetails, setShowFlightDetails] = useState([]);
+
+	const [hasApiFetched, setHasApiFetched] = useState(false);
+
+	// const searchParams = useSearchParams();
+
 	useEffect(() => {
 		// `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"
 		// 	DEL","destination":"BOM"}&day=Mon`,
@@ -26,7 +35,8 @@ export default function FlightsList() {
 			`","destination":"` +
 			destination?.iata_code +
 			`"}&day=` +
-			"Mon";
+			"Mon" +
+			`&sort={"duration" : "1"}`;
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -37,8 +47,33 @@ export default function FlightsList() {
 			.then((data) => {
 				console.log(data?.data?.flights);
 				setFlightListOriginal(data?.data?.flights);
+				setHasApiFetched(true);
+				updateIsURLModified(false);
 			});
 	}, [router.isReady]);
+
+	useEffect(() => {
+		if (!hasApiFetched) {
+			return;
+		}
+		console.table("searchParams in FLLLLL", router);
+		const newQueryParams = {
+			day: "22-05-2024",
+		};
+		setTimeout(() => {
+			router.push(
+				{
+					pathname: router.pathname,
+					query: {
+						...router.query,
+						...newQueryParams,
+					},
+				},
+				undefined,
+				{ shallow: true }
+			);
+		}, 5000);
+	}, [hasApiFetched]);
 	return (
 		<div id="flight-result-list">
 			{flightListOriginal.map((ele) => {

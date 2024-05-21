@@ -1,35 +1,59 @@
-import { domain, allTheAirports } from "@/public/utils/apiFetch";
-
-import { useContext, useState, useEffect } from "react";
-import AirportAutoCompleteMUI from "@/components/Custom-MUI-Components/AirportAutoCompleteMUI";
+import { useContext, useState, useEffect, useRef } from "react";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
-
-import styles from "./fspInputFields.module.css";
-
-import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 
-import { createTheme, useTheme } from "@mui/material/styles";
-import SelectTravellersNumber from "@/components/Flights/Search/SelectTravellersNumber";
-export default function FspInputFields() {
+import FspAirportAutoCompleteMUI from "./FspAirportAutoCompleteMUI";
+import BasicDatePickerFSP from "./BasicDatePickerFSP";
+import SelectTravellersNumberFSP from "./SelectTravellersNumberFSP";
+export default function FspInputFields({
+	state,
+	dispatch,
+	finalFlightBooking,
+}) {
 	const searchData = useContext(FlightSearchContext);
-	const {
-		day,
-		updateDay,
-		isTwoWay,
-		returnDay,
-		source,
-		destination,
-		updateFlightSearchStates,
-		updateErrorState,
-		finalFlightBooking,
-		dateErrorTarget,
-		airportNames,
-		dayError,
-	} = searchData;
-
+	const { airportNames } = searchData;
+	const sourceInputRefFSP = useRef();
+	const destinationInputRefFSP = useRef();
+	const dayInputRefFSP = useRef();
+	const returnDayInputRefFSP = useRef();
+	const noOfTravellersInputRefFSP = useRef();
+	// decided against use of useRef because we want the user to first see the flight results he got he query made on homepage
+	// if he is not satisfied with the flight results, he can then use the search button provided here
+	const [sourceChanged, setSourceChanged] = useState(false);
+	function updateSourceChanged() {
+		setSourceChanged(true);
+	}
+	useEffect(() => {
+		if (!sourceChanged) return;
+		sourceInputRefFSP?.current?.children[1].children[0].value !== "" &&
+			destinationInputRefFSP?.current?.children[1].children[1].children[1].click();
+	}, [state.sourceFSP]);
+	useEffect(() => {
+		destinationInputRefFSP?.current?.children[1].children[0].value !== "" &&
+			dayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
+	}, [state.destinationFSP]);
+	useEffect(() => {
+		// console.log(
+		// 	noOfTravellersInputRefFSP?.current?.children[0]?.children[1]
+		// 		?.children[1]
+		// );
+		console.log(noOfTravellersInputRefFSP.current.children);
+		if (state.isTwoWayFSP) {
+			console.log("BRIMMM");
+			dayInputRefFSP?.current?.children[1].children[0].value !== "" &&
+				returnDayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
+		} else {
+			console.log("ABHISHEK");
+			const noOfTrravellersElement =
+				document.querySelector(".abhishekKumar");
+			noOfTrravellersElement.click();
+			// dayInputRefFSP?.current?.children[1].children[0].value !== "" &&
+			// 	noOfTravellersInputRefFSP?.current.click();
+		}
+	}, [state.dayFSP]);
 	const customTheme = (outerTheme) =>
 		createTheme({
 			palette: {
@@ -72,9 +96,10 @@ export default function FspInputFields() {
 					FROM
 					<FlightTakeoffIcon />
 				</label>
-				<AirportAutoCompleteMUI
+				<FspAirportAutoCompleteMUI
 					optionsName={airportNames}
-					airportSelection={source}
+					airportSelection={state?.sourceFSP}
+					dispatch={dispatch}
 					labelText={"FROM"}
 					customTheme={customTheme}
 					outerTheme={outerTheme}
@@ -83,6 +108,10 @@ export default function FspInputFields() {
 					}}
 					sizeValue="small"
 					classNameValue="fsp-autocomplete"
+					type={"updateSourceFSP"}
+					keyToUpdate={"sourceFSP"}
+					refTarget={sourceInputRefFSP}
+					updateSourceChanged={updateSourceChanged}
 				/>
 			</div>
 			<div className="fsp-ssingle-search-component">
@@ -90,35 +119,39 @@ export default function FspInputFields() {
 					TO
 					<FlightLandIcon />
 				</label>
-				<AirportAutoCompleteMUI
+				<FspAirportAutoCompleteMUI
 					optionsName={airportNames}
-					airportSelection={destination}
+					airportSelection={state?.destinationFSP}
+					dispatch={dispatch}
 					labelText={"TO"}
 					customTheme={customTheme}
 					outerTheme={outerTheme}
 					customSX={{ width: 200 }}
 					classNameValue="fsp-autocomplete"
 					sizeValue="small"
+					type={"updateDestinationFSP"}
+					keyToUpdate={"destinationFSP"}
+					refTarget={destinationInputRefFSP}
 				/>
 			</div>
-			<BasicDatePicker
-				targetVALUE={day}
+			<BasicDatePickerFSP
+				targetVALUE={state?.dayFSP}
+				dispatch={dispatch}
+				type={"updateDayFSP"}
+				keyToUpdate={"dayFSP"}
 				labelText={"Choose your Departure date"}
 				paraText="DEPARTURE DATE"
-				updateTarget="day"
-				updateState={updateDay}
 				children={<CalendarMonthIcon />}
 				classNameValueForPTag="label-text-user-white"
 				classNameValueForDivTag="fsp-date-container"
 				className="white-text-field"
-				dateErrorTarget={dayError}
-				updateErrorState={updateErrorState}
 				finalFlightBooking={finalFlightBooking}
 				slotPropsValue={{
 					textField: { size: "small" },
 				}}
+				refTarget={dayInputRefFSP}
 			/>
-			{!isTwoWay && (
+			{!state?.isTwoWayFSP && (
 				<div className="date-container">
 					<div className="fsp-avy-round-trip">
 						<div className="avy-date-container"></div>
@@ -132,29 +165,34 @@ export default function FspInputFields() {
 					</div>
 				</div>
 			)}
-			{isTwoWay && (
-				<BasicDatePicker
-					targetVALUE={returnDay}
+			{state?.isTwoWayFSP && (
+				<BasicDatePickerFSP
+					targetVALUE={state?.returnDayFSP}
+					dispatch={dispatch}
+					type={"updateReturnDayFSP"}
+					keyToUpdate={"returnDayFSP"}
 					labelText={"Choose your Return date"}
 					paraText="RETURN DATE"
-					minReturnDay={day}
-					updateTarget="returnDay"
-					updateState={updateDay}
+					minReturnDay={state?.dayFSP}
 					finalFlightBooking={finalFlightBooking}
 					children={<CalendarMonthIcon />}
 					classNameValueForPTag="label-text-user-white"
 					classNameValueForDivTag="fsp-date-container"
 					className="white-text-field"
-					dateErrorTarget={dayError}
-					updateErrorState={updateErrorState}
 					slotPropsValue={{
 						textField: { size: "small" },
 					}}
+					refTarget={returnDayInputRefFSP}
 				/>
 			)}
 			<div className="fsp-no-of-travellers">
 				<p>No. of Travellers</p>
-				<SelectTravellersNumber sizeValue="small" />
+				<SelectTravellersNumberFSP
+					numberOfPassengers={state?.noOfTravellersFSP}
+					sizeValue="small"
+					dispatch={dispatch}
+					refTarget={noOfTravellersInputRefFSP}
+				/>
 				<p></p>
 			</div>
 			<div className="fsp-search-button-div">

@@ -116,7 +116,7 @@ export default function BasicDatePicker({
 						updateState(updateTarget, e);
 					}}
 					label={labelText}
-					minDate={minReturnDay ? minReturnDay : targetVALUE}
+					minDate={minReturnDay ? minReturnDay : dayjs()}
 					maxDate={finalFlightBooking}
 					slotProps={slotPropsValue}
 					ref={refTarget}

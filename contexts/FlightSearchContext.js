@@ -81,9 +81,9 @@ export function FlightSearchProvider({ children }) {
 		// if (language == "en-IN") {
 		// 	setUserLocale("en-in");
 		// }
-		if (language == "it-IT") {
-			setUserLocale("it");
-		}
+		// if (language == "it-IT") {
+		// 	setUserLocale("it");
+		// }
 
 		// fetching names of the airport from the API
 
@@ -244,11 +244,11 @@ export function FlightSearchProvider({ children }) {
 	}, [day, returnDay]);
 
 	// fetching names of the airport from the API
-	useEffect(() => {
-		// sourceInputRef?.current?.children[1].children[0].focus();
-		// console.log("LOOK HERE!!!!!!!!!");
-		// console.log(dayjs("10-04-2024").toISOString());
-	}, []);
+	// useEffect(() => {
+	// 	// sourceInputRef?.current?.children[1].children[0].focus();
+	// 	// console.log("LOOK HERE!!!!!!!!!");
+	// 	// console.log(dayjs("10-04-2024").toISOString());
+	// }, []);
 
 	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].focus();
@@ -265,6 +265,15 @@ export function FlightSearchProvider({ children }) {
 		destinationInputRef?.current?.children[1].children[0].value !== "" &&
 			dayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [destination]);
+	useEffect(() => {
+		if (isTwoWay) {
+			dayInputRef?.current?.children[1].children[0].value !== "" &&
+				returnDayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
+		} else {
+			dayInputRef?.current?.children[1].children[0].value !== "" &&
+				noOfTravellersInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
+		}
+	}, [day]);
 
 	useEffect(() => {
 		// console.log("RETURN DAY INPUT REF", returnDayInputRef);

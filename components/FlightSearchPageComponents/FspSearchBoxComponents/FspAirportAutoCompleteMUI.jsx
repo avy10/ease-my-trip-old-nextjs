@@ -1,12 +1,12 @@
-import TextField from "@mui/material/TextField";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { useState, useContext } from "react";
-import FlightSearchContext from "@/contexts/FlightSearchContext";
-export default function AirportAutoCompleteMUI({
+import TextField from "@mui/material/TextField";
+
+export default function FspAirportAutoCompleteMUI({
 	optionsName,
 	airportSelection,
+	dispatch,
 	labelText,
 	customTheme,
 	outerTheme,
@@ -15,10 +15,10 @@ export default function AirportAutoCompleteMUI({
 	sizeValue = "medium",
 	airportNameError,
 	refTarget,
+	type,
+	keyToUpdate,
+	updateSourceChanged,
 }) {
-	const searchData = useContext(FlightSearchContext);
-	const { updateFlightSearchStates } = searchData;
-
 	return (
 		<ThemeProvider theme={customTheme(outerTheme)}>
 			<Autocomplete
@@ -28,7 +28,15 @@ export default function AirportAutoCompleteMUI({
 					// in order to pass the selection airport-object we need to pass in event as a first argument and then the newer value
 					// console.log(newValue);
 					// setVal(newValue);
-					updateFlightSearchStates(labelText, newValue);
+					// updateFlightSearchStates(labelText, newValue);
+					if (labelText == "FROM") {
+						updateSourceChanged();
+					}
+					dispatch({
+						type,
+						payload: newValue,
+						keyToUpdate,
+					});
 				}}
 				autoComplete={true}
 				clearOnEscape={true}
@@ -73,7 +81,9 @@ export default function AirportAutoCompleteMUI({
 				renderInput={(params) => (
 					<TextField
 						ref={refTarget}
-						onChange={(e) => console.log(e.target.value)}
+						onChange={(e) => {
+							/*  console.log(e.target.value) */
+						}}
 						required
 						error={airportNameError}
 						color={airportNameError ? "error" : "primary"}

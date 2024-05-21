@@ -1,8 +1,20 @@
 .flight-details {
 	/* border: 2px solid rebeccapurple; */
 	margin-top: 15px;
-	border-radius: 30px;
-	transition: all 0.3s ease-out;
+	border-radius: 3px;
+	/* height: 170px; */
+	/* transition: all 1s ease-in; */
+	overflow: hidden;
+	animation: growHeight 0.3s ease-in-out;
+}
+
+@keyframes growHeight {
+	from {
+		height: 0;
+	}
+	to {
+		height: 170px;
+	}
 }
 
 /* top card */
@@ -34,10 +46,14 @@
 
 .single-flight-detail-topcard button {
 	border: none;
-	border-radius: 50%;
+	border-radius: 30px;
 	width: 35px;
-	padding: 5px;
+	/* padding: 5px; */
+	font-size: 1.1rem;
+	font-weight: 600;
 	cursor: pointer;
+	color: red;
+	background-color: #cecece;
 }
 .single-flight-detail-topcard button:hover {
 	background: #2196f3;
