@@ -4,15 +4,18 @@ import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 import FlightLandIcon from "@mui/icons-material/FlightLand";
-
+import dayjs from "dayjs";
 import FspAirportAutoCompleteMUI from "./FspAirportAutoCompleteMUI";
 import BasicDatePickerFSP from "./BasicDatePickerFSP";
 import SelectTravellersNumberFSP from "./SelectTravellersNumberFSP";
+import { useRouter } from "next/router";
 export default function FspInputFields({
 	state,
 	dispatch,
 	finalFlightBooking,
+	searchButtonOnclickStateReset,
 }) {
+	const router = useRouter();
 	const searchData = useContext(FlightSearchContext);
 	const { airportNames } = searchData;
 	const sourceInputRefFSP = useRef();
@@ -26,27 +29,64 @@ export default function FspInputFields({
 	function updateSourceChanged() {
 		setSourceChanged(true);
 	}
+	function searchButtonClick() {
+		const {
+			isTwoWayFSP,
+			dayFSP,
+			returnDayFSP,
+			sourceFSP,
+			destinationFSP,
+			noOfTravellersFSP,
+		} = state;
+		let newQueryParams;
+		if (!isTwoWayFSP) {
+			newQueryParams = {
+				src: sourceFSP.iata_code,
+				dest: destinationFSP.iata_code,
+				day: dayjs(dayFSP).format("DD-MM-YYYY"),
+				notv: noOfTravellersFSP,
+			};
+		}
+		router.push(
+			{
+				pathname: router.pathname,
+				query: {
+					...router.query,
+					...newQueryParams,
+				},
+			},
+			undefined,
+			{ shallow: true }
+		);
+		searchButtonOnclickStateReset();
+	}
 	useEffect(() => {
 		if (!sourceChanged) return;
 		sourceInputRefFSP?.current?.children[1].children[0].value !== "" &&
 			destinationInputRefFSP?.current?.children[1].children[1].children[1].click();
 	}, [state.sourceFSP]);
 	useEffect(() => {
+		if (!sourceChanged) return;
 		destinationInputRefFSP?.current?.children[1].children[0].value !== "" &&
 			dayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [state.destinationFSP]);
+	useEffect(() => {
+		if (state.isTwoWayFSP) {
+			returnDayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
+		}
+	}, [state.isTwoWayFSP]);
 	useEffect(() => {
 		// console.log(
 		// 	noOfTravellersInputRefFSP?.current?.children[0]?.children[1]
 		// 		?.children[1]
 		// );
-		console.log(noOfTravellersInputRefFSP.current.children);
+		// console.log(noOfTravellersInputRefFSP.current.children);
 		if (state.isTwoWayFSP) {
-			console.log("BRIMMM");
+			// console.log("BRIMMM");
 			dayInputRefFSP?.current?.children[1].children[0].value !== "" &&
 				returnDayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
 		} else {
-			console.log("ABHISHEK");
+			// console.log("ABHISHEK");
 			const noOfTrravellersElement =
 				document.querySelector(".abhishekKumar");
 			noOfTrravellersElement.click();
@@ -197,7 +237,12 @@ export default function FspInputFields({
 			</div>
 			<div className="fsp-search-button-div">
 				<p></p>
-				<button className="fsp-search-button">Search</button>
+				<button
+					className="fsp-search-button"
+					onClick={searchButtonClick}
+				>
+					Search
+				</button>
 				<p></p>
 			</div>
 		</div>

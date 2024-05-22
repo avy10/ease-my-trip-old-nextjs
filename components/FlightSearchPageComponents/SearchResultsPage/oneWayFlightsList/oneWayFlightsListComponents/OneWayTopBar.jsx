@@ -3,13 +3,19 @@ import OneWayQuickButtons from "./OneWayQuickButtons";
 import SearchResultsOfferCards from "./SearchResultsOfferCards";
 import SortButtons from "./SortButtons";
 
-export default function OneWayTopBar() {
+export default function OneWayTopBar({
+	searchButtonOnclickStateReset,
+	setSortParamsState,
+}) {
 	return (
 		<div className="one-way-top-bar">
 			<OneWayQuickButtons />
 			<SearchResultsOfferCards />
 			<DateCard />
-			<SortButtons />
+			<SortButtons
+				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
+				setSortParamsState={setSortParamsState}
+			/>
 		</div>
 	);
 }

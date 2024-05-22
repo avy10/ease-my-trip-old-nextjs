@@ -104,6 +104,8 @@ export default function MainBox() {
 		const routerReturnDay = dayjs(returnDay).format("DD-MM-YYYY");
 		// console.log("routerDay", routerDay);
 
+		const sortParams = JSON.stringify({ duration: 1 }); //if we do not perform JSON.stringify, the encoded becomes object object after encodingURI
+		const encodedSortParams = encodeURIComponent(sortParams);
 		isTwoWay &&
 			router.push(
 				`/flights/search?twoway=${isTwoWay}&src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&rday=${routerReturnDay}&notv=${numberOfPassengers}`
@@ -111,7 +113,7 @@ export default function MainBox() {
 
 		!isTwoWay &&
 			router.push(
-				`/flights/search?src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&notv=${numberOfPassengers}`
+				`/flights/search?src=${source.iata_code}&dest=${destination.iata_code}&day=${routerDay}&notv=${numberOfPassengers}&sort=${encodedSortParams}`
 			);
 	}
 

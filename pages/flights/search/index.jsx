@@ -19,8 +19,24 @@ export default function FlightSearchHome() {
 	const [loading, setLoading] = useState(true);
 	// material UI state and function for backdrops
 	const [open, setOpen] = useState(true);
-
+	const [unMountSPPB, setUnMountSPPB] = useState(false);
 	//
+	useEffect(() => {
+		setUnMountSPPB(false);
+	}, [unMountSPPB]);
+
+	useEffect(() => {
+		const handlePopState = () => {
+			// Force a re-render by toggling unMountSPPB state
+			setUnMountSPPB(true);
+		};
+
+		window.addEventListener("popstate", handlePopState);
+
+		return () => {
+			window.removeEventListener("popstate", handlePopState);
+		};
+	}, []);
 
 	return (
 		<FlightSearchProvider>
@@ -36,7 +52,13 @@ export default function FlightSearchHome() {
 				</Backdrop>
 			)}
 
-			<SearchPageParentBuild loading={loading} setLoading={setLoading} />
+			{!unMountSPPB && (
+				<SearchPageParentBuild
+					loading={loading}
+					setLoading={setLoading}
+					setUnMountSPPB={setUnMountSPPB}
+				/>
+			)}
 		</FlightSearchProvider>
 	);
 }

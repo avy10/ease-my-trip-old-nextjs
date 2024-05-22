@@ -15,7 +15,11 @@ import SearchResultsModificationContextProvider from "@/contexts/SearchResultsMo
 		updateFlightSearchStates("destination", destinationURL, "notTrusty");
 */
 
-export default function SearchPageParentBuild({ loading, setLoading }) {
+export default function SearchPageParentBuild({
+	loading,
+	setLoading,
+	setUnMountSPPB,
+}) {
 	const fsd = useContext(FlightSearchContext);
 	const {
 		source,
@@ -32,8 +36,17 @@ export default function SearchPageParentBuild({ loading, setLoading }) {
 	const [paramsAreLoaded, setParamsAreLoaded] = useState(false);
 	const [airportNames, setAirportNames] = useState([]);
 	const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
+
+	const [sortParamsState, setSortParamsState] = useState({});
 	// useEffect to get the data from URL search params
 	// ?twoway=true&src=DEL&dest=BOM&day=
+	function searchButtonOnclickStateReset() {
+		// resets loading, isAirportNamesLoading and paramsAreLoaded
+		// setLoading(true);
+		setUnMountSPPB(true);
+		setIsAirportNamesLoading(true);
+		setParamsAreLoaded(false);
+	}
 	async function fetchAirportnames() {
 		airportNames.length == 0 &&
 			(await fetch(`${domain}${allTheAirports}`, {
@@ -114,6 +127,11 @@ export default function SearchPageParentBuild({ loading, setLoading }) {
 		updateFlightSearchStates("numberOfPassengers", +noOfTravellersURL);
 		setLoading(false);
 		!isAirportNamesLoading && setParamsAreLoaded(true);
+
+		const sortParams = searchParams.get("sort");
+		const a = JSON.parse(decodeURIComponent(sortParams));
+		// console.log("IS DECODE URI WORKING", a);
+		setSortParamsState(a);
 	}
 	useEffect(() => {
 		// console.log(router.isReady);
@@ -122,11 +140,22 @@ export default function SearchPageParentBuild({ loading, setLoading }) {
 	}, [router.isReady, isAirportNamesLoading, paramsAreLoaded]);
 	return (
 		<div className="flight-search-home">
-			<FspSearchBox />
+			<FspSearchBox
+				paramsAreLoaded={paramsAreLoaded}
+				setParamsAreLoaded={setParamsAreLoaded}
+				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
+			/>
 			{!errorInParams && (
 				<SearchResultsModificationContextProvider>
 					{!isAirportNamesLoading && (
-						<SearchMainBox paramsAreLoaded={paramsAreLoaded} />
+						<SearchMainBox
+							paramsAreLoaded={paramsAreLoaded}
+							sortParamsState={sortParamsState}
+							searchButtonOnclickStateReset={
+								searchButtonOnclickStateReset
+							}
+							setSortParamsState={setSortParamsState}
+						/>
 					)}
 				</SearchResultsModificationContextProvider>
 			)}

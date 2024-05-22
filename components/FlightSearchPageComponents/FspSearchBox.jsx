@@ -18,6 +18,8 @@ import SelectTravellersNumber from "../Flights/Search/SelectTravellersNumber";
 function reducer(state, action) {
 	let x = action.keyToUpdate;
 	switch (action.type) {
+		case "stateUpdate":
+			return { ...state, ...action.payload };
 		case "updateSourceFSP":
 			return { ...state, [x]: action.payload };
 		case "updateIsTwoWay":
@@ -30,12 +32,17 @@ function reducer(state, action) {
 			return { ...state, [x]: action.payload };
 		case "updateNumberOfTravellers":
 			return { ...state, [x]: action.payload };
+
 		default:
 			return state;
 	}
 }
 
-export default function FspSearchBox() {
+export default function FspSearchBox({
+	paramsAreLoaded,
+	setParamsAreLoaded,
+	searchButtonOnclickStateReset,
+}) {
 	const [errorInParams, setErrorInParams] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -43,13 +50,11 @@ export default function FspSearchBox() {
 	const [open, setOpen] = useState(true);
 
 	const contextState = useFlightSearch();
-	const { day, returnDay, source, destination } = contextState;
+	const { day, returnDay, source, destination, numberOfPassengers } =
+		contextState;
 	const obj = {
 		isTwoWayFSP: false,
-		dayFSP: day,
-		returnDayFSP: returnDay,
-		sourceFSP: source,
-		destinationFSP: destination,
+
 		sourceErrorFSP: false,
 		destinationErrorFSP: false,
 		dayErrorFSP: false,
@@ -58,30 +63,60 @@ export default function FspSearchBox() {
 		fspDestinationERR: false,
 		fspDayERR: false,
 		fspReturnDayERR: false,
-		noOfTravellersFSP: 1,
 	};
 
 	const today = dayjs();
 	const [finalFlightBooking] = useState(today.add(8, "months"));
 	// const finalFlightBooking = today.add(8, "months");
+	const [state, dispatch] = useReducer(reducer, obj);
 
 	// useEffect(() => {
 	// 	// console.log("DAYFSP", obj.dayFSP);
 	// 	console.log("finalFlightBooking IN FSPSB", finalFlightBooking);
 	// }, []);
-	useEffect(() => {}, []);
-	const [state, dispatch] = useReducer(reducer, obj);
+	useEffect(() => {
+		// console.log("PARAMS ARE LOADED", paramsAreLoaded);
+		// if (!paramsAreLoaded) {
+		// 	return;
+		// }
+		// setParamsAreLoaded(false);
+		dispatch({
+			type: "stateUpdate",
+			payload: {
+				dayFSP: day,
+				returnDayFSP: returnDay,
+				sourceFSP: source,
+				destinationFSP: destination,
+				noOfTravellersFSP: numberOfPassengers,
+			},
+		});
+		// obj.dayFSP = day;
+		// obj.returnDayFSP = returnDay;
+		// obj.sourceFSP = source;
+		// obj.destinationFSP = destination;
+		// obj.noOfTravellersFSP = numberOfPassengers;
+		// console.log("STATE UPDATED?", state);
+	}, [paramsAreLoaded]);
+	// if (!paramsAreLoaded) return null;
 	return (
-		<div className="search-page-blue-search-box">
-			<FspRadioButtons
-				isTwoWayFSP={state.isTwoWayFSP}
-				dispatch={dispatch}
-			/>
-			<FspInputFields
-				state={state}
-				dispatch={dispatch}
-				finalFlightBooking={finalFlightBooking}
-			/>
-		</div>
+		<>
+			{/* {!paramsAreLoaded && alert("AAAAA")} */}
+			{paramsAreLoaded && (
+				<div className="search-page-blue-search-box">
+					<FspRadioButtons
+						isTwoWayFSP={state.isTwoWayFSP}
+						dispatch={dispatch}
+					/>
+					<FspInputFields
+						searchButtonOnclickStateReset={
+							searchButtonOnclickStateReset
+						}
+						state={state}
+						dispatch={dispatch}
+						finalFlightBooking={finalFlightBooking}
+					/>
+				</div>
+			)}
+		</>
 	);
 }

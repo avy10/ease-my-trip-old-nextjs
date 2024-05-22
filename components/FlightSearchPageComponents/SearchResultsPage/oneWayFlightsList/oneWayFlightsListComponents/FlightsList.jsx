@@ -10,7 +10,7 @@ import SingleFlightDetailsMain from "./singleFlightDetail/SingleFlightDetailsMai
 import { useSearchParams } from "next/navigation";
 import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
-export default function FlightsList() {
+export default function FlightsList({ sortParamsState, setSortParamsState }) {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
 	const { source, destination, day, numberOfPassengers } = flightSearchData;
@@ -36,7 +36,7 @@ export default function FlightsList() {
 			destination?.iata_code +
 			`"}&day=` +
 			"Mon" +
-			`&sort={"duration" : "1"}`;
+			`&sort=${JSON.stringify(sortParamsState)}`;
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -50,33 +50,38 @@ export default function FlightsList() {
 				setHasApiFetched(true);
 				updateIsURLModified(false);
 			});
-	}, [router.isReady]);
+	}, [router.isReady, sortParamsState]);
 
 	useEffect(() => {
 		if (!hasApiFetched) {
 			return;
 		}
-		console.table("searchParams in FLLLLL", router);
-		const newQueryParams = {
-			day: "22-05-2024",
-		};
-		setTimeout(() => {
-			router.push(
-				{
-					pathname: router.pathname,
-					query: {
-						...router.query,
-						...newQueryParams,
-					},
-				},
-				undefined,
-				{ shallow: true }
-			);
-		}, 5000);
+		// `/flights/search?src=${source.iata_code}
+		// &dest=${destination.iata_code}
+		// &day=${routerDay}
+		// &notv=${numberOfPassengers}`;
+
+		// console.table("searchParams in FLLLLL", router);
+		// const newQueryParams = {
+		// 	day: "22-05-2024",
+		// };
+		// setTimeout(() => {
+		// 	router.push(
+		// 		{
+		// 			pathname: router.pathname,
+		// 			query: {
+		// 				...router.query,
+		// 				...newQueryParams,
+		// 			},
+		// 		},
+		// 		undefined,
+		// 		{ shallow: true }
+		// 	);
+		// }, 5000);
 	}, [hasApiFetched]);
 	return (
 		<div id="flight-result-list">
-			{flightListOriginal.map((ele) => {
+			{flightListOriginal?.map((ele) => {
 				return (
 					<AllTheCards
 						ele={ele}
