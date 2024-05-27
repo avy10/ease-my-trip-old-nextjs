@@ -10,13 +10,19 @@ import SingleFlightDetailsMain from "./singleFlightDetail/SingleFlightDetailsMai
 import { useSearchParams } from "next/navigation";
 import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
-export default function FlightsList({ sortParamsState, setSortParamsState }) {
+export default function FlightsList({
+	updateLoading,
+	sortParamsState,
+	setSortParamsState,
+	updateFlightResultsLoading,
+}) {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
 	const { source, destination, day, numberOfPassengers } = flightSearchData;
 
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { isURLModified, updateIsURLModified } = flightSearchModificationCS;
+	const { isURLModified, updateIsURLModified, sortOptions } =
+		flightSearchModificationCS;
 	const [flightListOriginal, setFlightListOriginal] = useState([]);
 	const [showFlightDetails, setShowFlightDetails] = useState([]);
 
@@ -36,7 +42,7 @@ export default function FlightsList({ sortParamsState, setSortParamsState }) {
 			destination?.iata_code +
 			`"}&day=` +
 			"Mon" +
-			`&sort=${JSON.stringify(sortParamsState)}`;
+			`&sort=${JSON.stringify(sortOptions)}`;
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -48,11 +54,13 @@ export default function FlightsList({ sortParamsState, setSortParamsState }) {
 				console.log(data?.data?.flights);
 				setFlightListOriginal(data?.data?.flights);
 				setHasApiFetched(true);
+				updateFlightResultsLoading(false);
 				updateIsURLModified(false);
+				updateLoading(false);
 			});
-	}, [router.isReady, sortParamsState]);
+	}, [sortOptions]);
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		if (!hasApiFetched) {
 			return;
 		}
@@ -78,7 +86,7 @@ export default function FlightsList({ sortParamsState, setSortParamsState }) {
 		// 		{ shallow: true }
 		// 	);
 		// }, 5000);
-	}, [hasApiFetched]);
+	}, [hasApiFetched]); */
 	return (
 		<div id="flight-result-list">
 			{flightListOriginal?.map((ele) => {

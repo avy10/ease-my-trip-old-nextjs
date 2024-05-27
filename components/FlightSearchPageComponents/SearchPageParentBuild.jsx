@@ -7,27 +7,19 @@ import { domain, allTheAirports } from "@/public/utils/apiFetch";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
-import SearchResultsModificationContextProvider from "@/contexts/SearchResultsModificationContext";
-/* 
-		// !isAirportNamesLoading &&
-		updateFlightSearchStates("source", sourceURL, "notTrusty");
-		// !isAirportNamesLoading &&
-		updateFlightSearchStates("destination", destinationURL, "notTrusty");
-*/
+import SearchResultsModificationContextProvider, {
+	useSearchResultsModificationContext,
+} from "@/contexts/SearchResultsModificationContext";
 
 export default function SearchPageParentBuild({
-	loading,
-	setLoading,
 	setUnMountSPPB,
+	updateLoading,
 }) {
 	const fsd = useContext(FlightSearchContext);
-	const {
-		source,
-		updateFlightSearchStates,
-		updateDay,
+	const { updateFlightSearchStates, updateDay, updateTwoWay } = fsd;
 
-		updateTwoWay,
-	} = fsd;
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { sortOptions, updateSortOptions } = flightSearchModificationCS;
 	// flight search data (fsd) from context
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -37,9 +29,6 @@ export default function SearchPageParentBuild({
 	const [airportNames, setAirportNames] = useState([]);
 	const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
 
-	const [sortParamsState, setSortParamsState] = useState({});
-	// useEffect to get the data from URL search params
-	// ?twoway=true&src=DEL&dest=BOM&day=
 	function searchButtonOnclickStateReset() {
 		// resets loading, isAirportNamesLoading and paramsAreLoaded
 		// setLoading(true);
@@ -58,22 +47,15 @@ export default function SearchPageParentBuild({
 				.then((res) => res.json())
 				.then((apiData) => {
 					setAirportNames(apiData?.data?.airports);
-					// setIsAirportNamesLoading(false);
-					// updateFlightSearchStates("source", apiData?.data?.airports[7]);
-					// updateFlightSearchStates(
-					// 	"destination",
-					// 	apiData?.data?.airports[8]
-					// );
 					setIsAirportNamesLoading(false);
 					setParamsAreLoaded(false);
-
 					return;
 				})
 				.catch((error) => console.log(error)));
 	}
 
 	async function onComponentMount() {
-		setLoading(true);
+		updateLoading(true);
 		await fetchAirportnames();
 		const isTwoWayURL = searchParams.get("twoway");
 		const sourceURL = searchParams.get("src"); //iata_code
@@ -90,17 +72,11 @@ export default function SearchPageParentBuild({
 		// dayD=12,dayM=3,dayY=2024, dayW=5
 		// in dayjs, month is 0 based index, hence month[3] is April
 		// similarly, returnD, returnM, returnY, returnW
+		// instead of doing tha, just format the date into DD-MM-YYYY format lol, no need to individually take D, M, YY and then combine them
 		const noOfTravellersURL = searchParams.get("notv");
 
-		// const isAirportNamesLoading = airportNames?.length == 0;
-		// console.log("isTwoWay", typeof isTwoWayURL); //string ofc
-		// console.log("source", sourceURL);
 		updateTwoWay(Boolean(isTwoWayURL));
-		// console.log(
-		// 	"source details",
-		// 	airportNames.length != 0 &&
-		// 		airportNames.filter((ele) => ele.iata_code == sourceURL).at(0)
-		// );
+
 		!isAirportNamesLoading &&
 			updateFlightSearchStates(
 				"source",
@@ -113,26 +89,30 @@ export default function SearchPageParentBuild({
 					.filter((ele) => ele.iata_code == destinationURL)
 					.at(0)
 			);
-		console.log("dayURL to dayjs date", dayURL);
+		// console.log("dayURL to dayjs date", dayURL); //params => &day=22-05-2024 ,  for date 22nd May 2024, OUTPUT => dayURL to dayjs date 22-05-2024
 		if (dayURL != null) {
 			const newDay = dayjs(dayURL, "DD-MM-YYYY");
-			console.log("dayURL to dayjs date", newDay);
+			// console.log("dayURL to dayjs date", newDay);
 			updateDay("day", newDay);
 			const newReturnDay = returnDayURL
 				? dayjs(returnDayURL, "DD-MM-YYYY")
 				: null;
-			console.log("return day value on one way", newReturnDay);
+			// console.log("return day value on one way", newReturnDay);
 			newReturnDay && updateDay("returnDay", newReturnDay);
 		}
 		updateFlightSearchStates("numberOfPassengers", +noOfTravellersURL);
-		setLoading(false);
-		!isAirportNamesLoading && setParamsAreLoaded(true);
+		// setLoading(false);
 
 		const sortParams = searchParams.get("sort");
 		const a = JSON.parse(decodeURIComponent(sortParams));
 		// console.log("IS DECODE URI WORKING", a);
-		setSortParamsState(a);
+		updateSortOptions(a);
+		updateLoading(false);
+		!isAirportNamesLoading && setParamsAreLoaded(true);
 	}
+
+	// useEffect to get the data from URL search params
+	// ?twoway=true&src=DEL&dest=BOM&day=
 	useEffect(() => {
 		// console.log(router.isReady);
 		// console.log("isAirportNamesLoading", isAirportNamesLoading);
@@ -142,22 +122,18 @@ export default function SearchPageParentBuild({
 		<div className="flight-search-home">
 			<FspSearchBox
 				paramsAreLoaded={paramsAreLoaded}
-				setParamsAreLoaded={setParamsAreLoaded}
 				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
+				updateLoading={updateLoading}
 			/>
 			{!errorInParams && (
-				<SearchResultsModificationContextProvider>
+				<>
 					{!isAirportNamesLoading && (
 						<SearchMainBox
+							updateLoading={updateLoading}
 							paramsAreLoaded={paramsAreLoaded}
-							sortParamsState={sortParamsState}
-							searchButtonOnclickStateReset={
-								searchButtonOnclickStateReset
-							}
-							setSortParamsState={setSortParamsState}
 						/>
 					)}
-				</SearchResultsModificationContextProvider>
+				</>
 			)}
 		</div>
 	);

@@ -9,6 +9,8 @@ import { useContext, useEffect, useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchPageParentBuild from "@/components/FlightSearchPageComponents/SearchPageParentBuild";
+import Loader from "@/components/FlightSearchPageComponents/Loader";
+import SearchResultsModificationContextProvider from "@/contexts/SearchResultsModificationContext";
 export default function FlightSearchHome() {
 	// const fsd = useContext(FlightSearchContext);
 	// const { source, airportNames } = fsd;
@@ -18,7 +20,6 @@ export default function FlightSearchHome() {
 	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(true);
 	// material UI state and function for backdrops
-	const [open, setOpen] = useState(true);
 	const [unMountSPPB, setUnMountSPPB] = useState(false);
 	//
 	useEffect(() => {
@@ -29,6 +30,9 @@ export default function FlightSearchHome() {
 		const handlePopState = () => {
 			// Force a re-render by toggling unMountSPPB state
 			setUnMountSPPB(true);
+			// when the search pages is loaded, it fetches the states from URL and updates the states in FlightSearchContext
+			// whenever the search button on the flight search page is clicked, I do not want the page to reload in order for it to fetch the newer parameters from the URL
+			// instead I am using this boolean state to unmount and remount the component
 		};
 
 		window.addEventListener("popstate", handlePopState);
@@ -38,26 +42,21 @@ export default function FlightSearchHome() {
 		};
 	}, []);
 
+	function updateLoading(val) {
+		setLoading(val);
+	}
+
 	return (
 		<FlightSearchProvider>
-			{loading && (
-				<Backdrop
-					sx={{
-						color: "aqua",
-						zIndex: (theme) => theme.zIndex.drawer + 1,
-					}}
-					open={open}
-				>
-					<CircularProgress color="inherit" />
-				</Backdrop>
-			)}
+			{loading && <Loader />}
 
 			{!unMountSPPB && (
-				<SearchPageParentBuild
-					loading={loading}
-					setLoading={setLoading}
-					setUnMountSPPB={setUnMountSPPB}
-				/>
+				<SearchResultsModificationContextProvider>
+					<SearchPageParentBuild
+						updateLoading={updateLoading}
+						setUnMountSPPB={setUnMountSPPB}
+					/>
+				</SearchResultsModificationContextProvider>
 			)}
 		</FlightSearchProvider>
 	);

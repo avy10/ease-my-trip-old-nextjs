@@ -9,8 +9,10 @@ export default function SearchResultsModificationContextProvider({ children }) {
 		setIsURLModified(val);
 	}
 
-	const [sortOptions, setSortOptions] = useState(null);
-
+	const [sortOptions, setSortOptions] = useState({});
+	function updateSortOptions(value) {
+		setSortOptions(value);
+	}
 	const [filterOptions, setFilterOptions] = useState(null);
 	// FILTERS
 	// global filter i.e. works on both oneWay and twoWay
@@ -96,17 +98,15 @@ export default function SearchResultsModificationContextProvider({ children }) {
 
 	// SORTING
 	// GLOBAL SORTING
-	const [quickCheapestSort, setQuickCheapestSort] = useState(false);
-	const [quickFastestSort, setQuickFastestSort] = useState(true);
 
 	return (
 		<SearchResultsModificationContext.Provider
 			value={{
 				isURLModified,
 				updateIsURLModified,
+				sortOptions,
+				updateSortOptions,
 				singleAirlineSelector,
-				quickCheapestSort,
-				quickFastestSort,
 			}}
 		>
 			{children}

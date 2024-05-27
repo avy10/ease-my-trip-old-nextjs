@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -24,11 +24,6 @@ export default function FspAirportAutoCompleteMUI({
 			<Autocomplete
 				value={airportSelection}
 				onChange={(event, newValue) => {
-					// if event is not passed as first argument i.e. (newValue) then JS treats the name newValue as event itself
-					// in order to pass the selection airport-object we need to pass in event as a first argument and then the newer value
-					// console.log(newValue);
-					// setVal(newValue);
-					// updateFlightSearchStates(labelText, newValue);
 					if (labelText == "FROM") {
 						updateSourceChanged();
 					}
@@ -50,17 +45,6 @@ export default function FspAirportAutoCompleteMUI({
 					`${option.iata_code}, ${option.city}`
 				}
 				isOptionEqualToValue={(option, value) => {
-					// if (option.iata_code === value.iata_code) {
-					// 	// console.log(
-					// 	// 	"i am working to set airport name error to false"
-					// 	// );
-					// 	// setAirportNameError(false);
-					// } else {
-					// 	// console.log(
-					// 	// 	"i am working to set airport name error to true"
-					// 	// );
-					// 	// setAirportNameError(true);
-					// }
 					return option?.iata_code === value?.iata_code;
 				}}
 				renderOption={(props, option) => (
@@ -81,9 +65,6 @@ export default function FspAirportAutoCompleteMUI({
 				renderInput={(params) => (
 					<TextField
 						ref={refTarget}
-						onChange={(e) => {
-							/*  console.log(e.target.value) */
-						}}
 						required
 						error={airportNameError}
 						color={airportNameError ? "error" : "primary"}
@@ -94,7 +75,6 @@ export default function FspAirportAutoCompleteMUI({
 						placeholder={labelText}
 						inputProps={{
 							...params.inputProps,
-							// autoComplete: "new-password", // disable autocomplete and autofill
 						}}
 					/>
 				)}

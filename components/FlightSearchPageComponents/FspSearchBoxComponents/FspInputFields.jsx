@@ -9,7 +9,10 @@ import FspAirportAutoCompleteMUI from "./FspAirportAutoCompleteMUI";
 import BasicDatePickerFSP from "./BasicDatePickerFSP";
 import SelectTravellersNumberFSP from "./SelectTravellersNumberFSP";
 import { useRouter } from "next/router";
+import PersonIcon from "@mui/icons-material/Person";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 export default function FspInputFields({
+	updateLoading,
 	state,
 	dispatch,
 	finalFlightBooking,
@@ -17,19 +20,22 @@ export default function FspInputFields({
 }) {
 	const router = useRouter();
 	const searchData = useContext(FlightSearchContext);
-	const { airportNames } = searchData;
+	const { airportNames, numberOfPassengers } = searchData;
 	const sourceInputRefFSP = useRef();
 	const destinationInputRefFSP = useRef();
 	const dayInputRefFSP = useRef();
 	const returnDayInputRefFSP = useRef();
 	const noOfTravellersInputRefFSP = useRef();
-	// decided against use of useRef because we want the user to first see the flight results he got he query made on homepage
+	// because we want the user to first see the flight results he got he query made on homepage
+	// so the refs are only triggered when src is changed
+	// for some reason I cant make click() worj on noOfTravellersInputRefFSP ref
 	// if he is not satisfied with the flight results, he can then use the search button provided here
 	const [sourceChanged, setSourceChanged] = useState(false);
 	function updateSourceChanged() {
 		setSourceChanged(true);
 	}
 	function searchButtonClick() {
+		updateLoading(true);
 		const {
 			isTwoWayFSP,
 			dayFSP,
@@ -154,7 +160,7 @@ export default function FspInputFields({
 					updateSourceChanged={updateSourceChanged}
 				/>
 			</div>
-			<div className="fsp-ssingle-search-component">
+			<div className="fsp-single-search-component">
 				<label className="fsp-label-text-user">
 					TO
 					<FlightLandIcon />
@@ -226,7 +232,11 @@ export default function FspInputFields({
 				/>
 			)}
 			<div className="fsp-no-of-travellers">
-				<p>No. of Travellers</p>
+				<p>
+					TRAVELLERS
+					{state?.noOfTravellersFSP == "1" && <PersonIcon />}
+					{state?.noOfTravellersFSP >= "2" && <PeopleAltIcon />}
+				</p>
 				<SelectTravellersNumberFSP
 					numberOfPassengers={state?.noOfTravellersFSP}
 					sizeValue="small"

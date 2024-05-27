@@ -11,7 +11,7 @@ export const airlineCodes = {
 	SG001: "SpiceJet",
 	G801: "Go Air",
 };
-
+// SG001 - DELBOM - 578;
 export const ICON_SOURCES = {
 	"6E001": {
 		name: "IndiGo",

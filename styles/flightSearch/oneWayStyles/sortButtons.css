@@ -8,3 +8,9 @@
 	color: #666;
 	font-weight: 600;
 }
+.sort-options-flight-search p {
+	/* border: 3px solid black; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

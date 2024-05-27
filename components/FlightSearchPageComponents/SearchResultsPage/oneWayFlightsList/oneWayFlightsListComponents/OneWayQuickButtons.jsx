@@ -1,29 +1,31 @@
 import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 import { Divider } from "@mui/material";
 
-export default function OneWayQuickButtons() {
+export default function OneWayQuickButtons({ sortAirlines }) {
 	const quickSortStates = useSearchResultsModificationContext();
-	const { quickCheapestSort, quickFastestSort } = quickSortStates;
+	const { sortOptions } = quickSortStates;
 	return (
 		<div className="one-way-flights-quick-buttons">
 			<div className="lhs-sort-buttons flex-center-center">
 				<span>Sort By: </span>
 				<button
 					className={
-						quickCheapestSort
+						sortOptions.ticketPrice == 1
 							? "quick-sort-btn active-quick-sort-btn flex-center-center"
 							: "quick-sort-btn flex-center-center"
 					}
+					onClick={() => sortAirlines({ ticketPrice: 1 })}
 				>
 					<span className="cheap-sort-span"></span>
 					Cheapest
 				</button>
 				<button
 					className={
-						quickFastestSort
+						sortOptions.duration == 1
 							? "quick-sort-btn active-quick-sort-btn flex-center-center"
 							: "quick-sort-btn flex-center-center"
 					}
+					onClick={() => sortAirlines({ duration: 1 })}
 				>
 					<span className="fastest-sort-span"></span>
 					Fastest

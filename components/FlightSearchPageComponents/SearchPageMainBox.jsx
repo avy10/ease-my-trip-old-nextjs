@@ -6,10 +6,11 @@ import FlightSearchContext from "@/contexts/FlightSearchContext";
 import FilterBox from "./SearchResultsPage/FilterBox";
 import OneWay from "./SearchResultsPage/oneWayFlightsList/OneWay";
 export default function SearchMainBox({
+	updateLoading,
 	paramsAreLoaded,
 	sortParamsState,
 	searchButtonOnclickStateReset,
-	setSortParamsState,
+	updateSortParamsState,
 }) {
 	const searchData = useContext(FlightSearchContext);
 	const { isTwoWay } = searchData;
@@ -19,11 +20,9 @@ export default function SearchMainBox({
 		<div className="search-results-main-div">
 			{!isTwoWay && (
 				<OneWay
+					updateLoading={updateLoading}
 					sortParamsState={sortParamsState}
-					searchButtonOnclickStateReset={
-						searchButtonOnclickStateReset
-					}
-					setSortParamsState={setSortParamsState}
+					updateSortParamsState={updateSortParamsState}
 				/>
 			)}
 			{isTwoWay && (

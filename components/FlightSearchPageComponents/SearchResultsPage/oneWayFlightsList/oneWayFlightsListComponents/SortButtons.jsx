@@ -1,73 +1,93 @@
 // css : styles\flightSearch\oneWayStyles\sortButtons.css
 
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 import { useRouter } from "next/router";
-
-export default function SortButtons({
-	searchButtonOnclickStateReset,
-	setSortParamsState,
-}) {
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import SwapVerticalCircleIcon from "@mui/icons-material/SwapVerticalCircle";
+import StraightIcon from "@mui/icons-material/Straight";
+import NorthIcon from "@mui/icons-material/North";
+import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+export default function SortButtons({ sortAirlines }) {
 	const router = useRouter();
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { sortOptions, updateSortOptions } = flightSearchModificationCS;
 
-	function sortAirlinesAsc() {
-		console.log(router.query);
-		const { src, dest, day, notv, sort, filter } = router.query;
-		// // const sortParams = searchParams.get("sort");
-		const a = JSON.parse(decodeURIComponent(sort));
-		const obj = { ...router.query, sort: a };
-		// const newParamsObj = { ...router.query, sort: JSON.stringify(a) };
-		// const encodedNewParamsObj = encodeURIComponent(newParamsObj);
-		// console.log("MODIFIED", obj);
-		// router.push(
-		// 	{
-		// 		pathname: router.pathname,
-		// 		query: {
-		// 			...encodedNewParamsObj,
-		// 		},
-		// 	},
-		// 	undefined,
-		// 	{ shallow: true }
-		// );
-
-		const requiredObjects = {
-			src,
-			dest,
-			day,
-			notv,
-		};
-		console.log("MODIFIED", requiredObjects);
-		const sortParamsNew = JSON.parse(decodeURIComponent(sort));
-		console.log("sortParamsNew", sortParamsNew);
-
-		const airlineAscendingSort = { airline: 1 };
-		const stringifiedAirlineAscendingSort =
-			JSON.stringify(airlineAscendingSort);
-		// const encodedAirlineAscendingSort =
-		// 	encodeURIComponent(airlineAscendingSort);
-		const encodedAirlineAscendingSort = encodeURIComponent(
-			stringifiedAirlineAscendingSort
-		);
-
-		router.push(
-			{
-				pathname: router.pathname,
-				query: {
-					...requiredObjects,
-					sort: encodedAirlineAscendingSort,
-				},
-			},
-			undefined,
-			{ shallow: true }
-		);
-		setSortParamsState(airlineAscendingSort);
-		// searchButtonOnclickStateReset();
-	}
 	return (
 		<div className="sort-options-flight-search">
-			<p onClick={sortAirlinesAsc}>AIRLINES</p>
-			<p>ARRIVAL</p>
-			<p>DEPARTURE</p>
-			<p>DURATION</p>
-			<p>PRICE</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.airline == 1
+							? { airline: -1 }
+							: { airline: 1 }
+					)
+				}
+			>
+				AIRLINES{sortOptions.airline == null && <UnfoldMoreIcon />}
+				{sortOptions.airline == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.airline == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.arrivalTime == 1
+							? { arrivalTime: -1 }
+							: { arrivalTime: 1 }
+					)
+				}
+			>
+				ARRIVAL
+				{sortOptions.arrivalTime == null && <UnfoldMoreIcon />}
+				{sortOptions.arrivalTime == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.arrivalTime == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.departureTime == 1
+							? { departureTime: -1 }
+							: { departureTime: 1 }
+					)
+				}
+			>
+				DEPARTURE
+				{sortOptions.departureTime == null && <UnfoldMoreIcon />}
+				{sortOptions.departureTime == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.departureTime == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.duration == 1
+							? { duration: -1 }
+							: { duration: 1 }
+					)
+				}
+			>
+				DURATION{sortOptions.duration == null && <UnfoldMoreIcon />}
+				{sortOptions.duration == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.duration == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.ticketPrice == 1
+							? { ticketPrice: -1 }
+							: { ticketPrice: 1 }
+					)
+				}
+			>
+				PRICE{sortOptions.ticketPrice == null && <UnfoldMoreIcon />}
+				{sortOptions.ticketPrice == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.ticketPrice == -1 && <KeyboardArrowDownIcon />}
+			</p>
 		</div>
 	);
 }

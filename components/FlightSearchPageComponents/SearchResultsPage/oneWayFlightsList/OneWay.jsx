@@ -1,25 +1,34 @@
 import FlightsList from "./oneWayFlightsListComponents/FlightsList";
 import FilterBox from "../FilterBox";
 import OneWayTopBar from "./oneWayFlightsListComponents/OneWayTopBar";
+import { useState } from "react";
+import Loader from "../../Loader";
 
 export default function OneWay({
+	updateLoading,
 	sortParamsState,
-	searchButtonOnclickStateReset,
-	setSortParamsState,
+	updateSortParamsState,
 }) {
+	const [flightResultsLoading, setFlightResultsLoading] = useState(true);
+	function updateFlightResultsLoading(val) {
+		// function to toggle boolean state for loader
+		setFlightResultsLoading(val);
+	}
 	return (
 		<div id="one-way-search-page">
-			<FilterBox />
+			<FilterBox
+				updateFlightResultsLoading={updateFlightResultsLoading}
+			/>
 			<div className="one-way-flights-list">
 				<OneWayTopBar
-					searchButtonOnclickStateReset={
-						searchButtonOnclickStateReset
-					}
-					setSortParamsState={setSortParamsState}
+					updateFlightResultsLoading={updateFlightResultsLoading}
 				/>
+				{flightResultsLoading && <Loader />}
 				<FlightsList
+					updateFlightResultsLoading={updateFlightResultsLoading}
+					updateLoading={updateLoading}
 					sortParamsState={sortParamsState}
-					setSortParamsState={setSortParamsState}
+					updateSortParamsState={updateSortParamsState}
 				/>
 			</div>
 		</div>

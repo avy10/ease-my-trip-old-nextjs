@@ -39,16 +39,10 @@ function reducer(state, action) {
 }
 
 export default function FspSearchBox({
+	updateLoading,
 	paramsAreLoaded,
-	setParamsAreLoaded,
 	searchButtonOnclickStateReset,
 }) {
-	const [errorInParams, setErrorInParams] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
-	const [loading, setLoading] = useState(false);
-	// material UI state and function for backdrops
-	const [open, setOpen] = useState(true);
-
 	const contextState = useFlightSearch();
 	const { day, returnDay, source, destination, numberOfPassengers } =
 		contextState;
@@ -67,19 +61,9 @@ export default function FspSearchBox({
 
 	const today = dayjs();
 	const [finalFlightBooking] = useState(today.add(8, "months"));
-	// const finalFlightBooking = today.add(8, "months");
 	const [state, dispatch] = useReducer(reducer, obj);
 
-	// useEffect(() => {
-	// 	// console.log("DAYFSP", obj.dayFSP);
-	// 	console.log("finalFlightBooking IN FSPSB", finalFlightBooking);
-	// }, []);
 	useEffect(() => {
-		// console.log("PARAMS ARE LOADED", paramsAreLoaded);
-		// if (!paramsAreLoaded) {
-		// 	return;
-		// }
-		// setParamsAreLoaded(false);
 		dispatch({
 			type: "stateUpdate",
 			payload: {
@@ -97,10 +81,8 @@ export default function FspSearchBox({
 		// obj.noOfTravellersFSP = numberOfPassengers;
 		// console.log("STATE UPDATED?", state);
 	}, [paramsAreLoaded]);
-	// if (!paramsAreLoaded) return null;
 	return (
 		<>
-			{/* {!paramsAreLoaded && alert("AAAAA")} */}
 			{paramsAreLoaded && (
 				<div className="search-page-blue-search-box">
 					<FspRadioButtons
@@ -108,6 +90,7 @@ export default function FspSearchBox({
 						dispatch={dispatch}
 					/>
 					<FspInputFields
+						updateLoading={updateLoading}
 						searchButtonOnclickStateReset={
 							searchButtonOnclickStateReset
 						}
