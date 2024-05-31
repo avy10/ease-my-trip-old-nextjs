@@ -11,21 +11,21 @@ export default function SearchResultsOfferCards() {
 	const [scrollDistance, setScrollDistance] = useState(0);
 	function toggleButtons() {
 		if (containerRef == null || containerRef == undefined) {
-			console.log("FFFSSSSSS ONE");
+			// console.log("FFFSSSSSS ONE");
 			return;
 		}
 		if (scrollDistance == "0") {
-			console.log("FFFSSSSSS TWO");
+			// console.log("FFFSSSSSS TWO");
 			setDisableLeftButton(true);
 			return;
 		}
 		if (scrollDistance >= "1805") {
-			console.log("FFFSSSSSS THREE");
+			// console.log("FFFSSSSSS THREE");
 			setDisableRightButton(true);
 			return;
 		}
 		if (scrollDistance > "0" || scrollDistance < "1805") {
-			console.log("FFFSSSSSS FOUR");
+			// console.log("FFFSSSSSS FOUR");
 			setDisableLeftButton(false);
 			setDisableRightButton(false);
 		}
@@ -43,7 +43,7 @@ export default function SearchResultsOfferCards() {
 			<button
 				className="flex-center-center"
 				onClick={() => {
-					containerRef.current.scrollLeft -= 500;
+					containerRef?.current.scrollLeft -= 500;
 					setScrollDistance((prev) => (prev -= 500));
 				}}
 				disabled={disableLeftButton}
@@ -65,7 +65,7 @@ export default function SearchResultsOfferCards() {
 			<button
 				className="flex-center-center"
 				onClick={() => {
-					containerRef.current.scrollLeft += 500;
+					containerRef?.current.scrollLeft += 500;
 					setScrollDistance((prev) => (prev += 500));
 				}}
 				disabled={disableRightButton}

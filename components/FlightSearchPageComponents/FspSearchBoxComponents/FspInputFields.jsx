@@ -73,7 +73,8 @@ export default function FspInputFields({
 	}, [state.sourceFSP]);
 	useEffect(() => {
 		if (!sourceChanged) return;
-		destinationInputRefFSP?.current?.children[1].children[0].value !== "" &&
+		destinationInputRefFSP?.current?.children[1]?.children[0].value !==
+			"" &&
 			dayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [state.destinationFSP]);
 	useEffect(() => {

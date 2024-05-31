@@ -7,9 +7,7 @@ import { domain, allTheAirports } from "@/public/utils/apiFetch";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
-import SearchResultsModificationContextProvider, {
-	useSearchResultsModificationContext,
-} from "@/contexts/SearchResultsModificationContext";
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
 export default function SearchPageParentBuild({
 	setUnMountSPPB,
@@ -19,7 +17,7 @@ export default function SearchPageParentBuild({
 	const { updateFlightSearchStates, updateDay, updateTwoWay } = fsd;
 
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { sortOptions, updateSortOptions } = flightSearchModificationCS;
+	const { updateSortOptions } = flightSearchModificationCS;
 	// flight search data (fsd) from context
 	const router = useRouter();
 	const searchParams = useSearchParams();

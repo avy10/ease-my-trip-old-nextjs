@@ -252,25 +252,25 @@ export function FlightSearchProvider({ children }) {
 
 	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].focus();
-		sourceInputRef?.current?.children[1].children[1].children[1].click();
+		sourceInputRef?.current?.children[1]?.children[1]?.children[1]?.click();
 		// console.log("ON LOAD SOURCEREF", sourceInputRef);
 	}, []);
 	useEffect(() => {
 		// sourceInputRef?.current?.children[1].children[0].value !== "" &&
 		// 	destinationInputRef?.current?.children[1].children[0].focus();
-		sourceInputRef?.current?.children[1].children[0].value !== "" &&
-			destinationInputRef?.current?.children[1].children[1].children[1].click();
+		sourceInputRef?.current?.children[1]?.children[0]?.value !== "" &&
+			destinationInputRef?.current?.children[1]?.children[1]?.children[1]?.click();
 	}, [source]);
 	useEffect(() => {
-		destinationInputRef?.current?.children[1].children[0].value !== "" &&
+		destinationInputRef?.current?.children[1]?.children[0]?.value !== "" &&
 			dayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [destination]);
 	useEffect(() => {
 		if (isTwoWay) {
-			dayInputRef?.current?.children[1].children[0].value !== "" &&
+			dayInputRef?.current?.children[1]?.children[0]?.value !== "" &&
 				returnDayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 		} else {
-			dayInputRef?.current?.children[1].children[0].value !== "" &&
+			dayInputRef?.current?.children[1].children[0]?.value !== "" &&
 				noOfTravellersInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 		}
 	}, [day]);
