@@ -43,7 +43,7 @@ export default function SearchResultsOfferCards() {
 			<button
 				className="flex-center-center"
 				onClick={() => {
-					containerRef?.current.scrollLeft -= 500;
+					containerRef.current.scrollLeft -= 500;
 					setScrollDistance((prev) => (prev -= 500));
 				}}
 				disabled={disableLeftButton}
@@ -65,7 +65,7 @@ export default function SearchResultsOfferCards() {
 			<button
 				className="flex-center-center"
 				onClick={() => {
-					containerRef?.current.scrollLeft += 500;
+					containerRef.current.scrollLeft += 500;
 					setScrollDistance((prev) => (prev += 500));
 				}}
 				disabled={disableRightButton}
