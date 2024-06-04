@@ -38,8 +38,8 @@ export default function App({ Component, pageProps }) {
 			<>
 				<Navigation />
 				<Component {...pageProps} />
-				<Footer />
 				<SpeedInsights />
+				<Footer />
 			</>
 		</AuthorisationProvider>
 	);
