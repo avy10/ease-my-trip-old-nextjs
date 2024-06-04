@@ -99,6 +99,14 @@ export default function FlightsList({
 	}, [hasApiFetched]); */
 	return (
 		<div id="flight-result-list">
+			{flightListOriginal.length == 0 && (
+				<div
+					className="single-flight-data-container"
+					style={{ textAlign: "center" }}
+				>
+					Sorry, No flights available for the selected filters.
+				</div>
+			)}
 			{flightListOriginal?.map((ele) => {
 				return (
 					<AllTheCards

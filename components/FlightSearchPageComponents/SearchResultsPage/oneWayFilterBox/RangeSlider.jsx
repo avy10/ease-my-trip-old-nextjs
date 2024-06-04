@@ -48,11 +48,15 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		} else {
 			setRange(difference);
 		}
+		if (value[0] == minAndMaxValue[0] && value[1] == minAndMaxValue[1]) {
+			applyFilter("removeTicketPrice");
+		}
 	}, [value]);
 	const handleChange = (event, newValue) => {
 		console.log(newValue);
 		const diff = newValue[1] - newValue[0];
 		if (diff >= 100) {
+			console.log("I AM UPDATING");
 			setValue(newValue);
 		}
 	};
@@ -61,7 +65,7 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		return `${value}°C`;
 	}
 
-	function applyFilter() {
+	function applyFilter(avy) {
 		// updateFlightResultsLoading(true);
 		const { src, dest, day, notv, sort, filter } = router.query;
 		const a = JSON.parse(decodeURIComponent(sort));
@@ -85,6 +89,9 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 				$gte: value[0],
 			},
 		};
+		if (avy == "removeTicketPrice") {
+			delete newFilter.ticketPrice;
+		}
 		console.log("VERY NEW FILTER", newFilter);
 		const stringifiedFilterValue = JSON.stringify(newFilter);
 		// filter={ "duration" : {"$lte":3,"$gte":0},

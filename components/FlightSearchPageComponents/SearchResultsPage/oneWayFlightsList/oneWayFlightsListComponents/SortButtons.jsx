@@ -37,20 +37,6 @@ export default function SortButtons({ sortAirlines }) {
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.arrivalTime == 1
-							? { arrivalTime: -1 }
-							: { arrivalTime: 1 }
-					)
-				}
-			>
-				ARRIVAL
-				{sortOptions.arrivalTime == null && <UnfoldMoreIcon />}
-				{sortOptions.arrivalTime == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.arrivalTime == -1 && <KeyboardArrowDownIcon />}
-			</p>
-			<p
-				onClick={() =>
-					sortAirlines(
 						sortOptions.departureTime == 1
 							? { departureTime: -1 }
 							: { departureTime: 1 }
@@ -62,6 +48,21 @@ export default function SortButtons({ sortAirlines }) {
 				{sortOptions.departureTime == 1 && <KeyboardArrowUpIcon />}
 				{sortOptions.departureTime == -1 && <KeyboardArrowDownIcon />}
 			</p>
+			<p
+				onClick={() =>
+					sortAirlines(
+						sortOptions.arrivalTime == 1
+							? { arrivalTime: -1 }
+							: { arrivalTime: 1 }
+					)
+				}
+			>
+				ARRIVAL
+				{sortOptions.arrivalTime == null && <UnfoldMoreIcon />}
+				{sortOptions.arrivalTime == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions.arrivalTime == -1 && <KeyboardArrowDownIcon />}
+			</p>
+
 			<p
 				onClick={() =>
 					sortAirlines(
