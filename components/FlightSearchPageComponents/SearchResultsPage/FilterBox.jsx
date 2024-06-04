@@ -25,7 +25,9 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 				}}
 			/>
 
-			<p className="filter-box-name">Price Range</p>
+			<p className="filter-box-name">
+				Price Range<span>(per person)</span>
+			</p>
 			<RangeSlider
 				updateFlightResultsLoading={updateFlightResultsLoading}
 			/>
@@ -35,8 +37,9 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 				}}
 			/>
 
-			<p className="filter-box-name">Stops</p>
-			<StopsFilter />
+			<StopsFilter
+				updateFlightResultsLoading={updateFlightResultsLoading}
+			/>
 			<Divider
 				sx={{
 					backgroundColor: "cecece",

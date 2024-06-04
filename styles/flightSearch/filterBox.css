@@ -22,6 +22,10 @@
 	font-size: 1.1rem;
 	margin-left: 10px;
 }
+.filter-box-name span {
+	font-weight: 400;
+	font-size: 0.81rem;
+}
 /* AirlineFilterBox.css, AirlineList.css */
 .airline-name-filter-box {
 	/* border: 2px solid black; */
@@ -90,8 +94,9 @@
 	margin-bottom: 10px;
 }
 .single-stop-box {
-	background: #2196f3 !important;
-	color: #fff !important;
+	background: #fff !important;
+	color: #2196f3 !important;
+	border: 1px solid black;
 	text-align: center;
 	width: 60px;
 	height: 50px;
@@ -100,6 +105,11 @@
 	transition: all 0.3s ease-out;
 	border-radius: 7px;
 	flex-direction: column;
+}
+
+.stops-filter-box .unselected {
+	background: #2196f3 !important;
+	color: #fff !important;
 }
 
 /* DepartureArrivalTimeFilter */
