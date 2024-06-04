@@ -17,7 +17,8 @@ export default function SearchPageParentBuild({
 	const { updateFlightSearchStates, updateDay, updateTwoWay } = fsd;
 
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { updateSortOptions } = flightSearchModificationCS;
+	const { updateSortOptions, updateFilterOptions } =
+		flightSearchModificationCS;
 	// flight search data (fsd) from context
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -105,6 +106,12 @@ export default function SearchPageParentBuild({
 		const a = JSON.parse(decodeURIComponent(sortParams));
 		// console.log("IS DECODE URI WORKING", a);
 		updateSortOptions(a);
+		const filterParams = searchParams.get("filter");
+		console.log("FILTERPARAMS ARE NULL OR UNDEFINED", filterParams);
+		if (filterParams) {
+			const filterApplied = JSON.parse(decodeURIComponent(filterParams));
+			updateFilterOptions(filterApplied);
+		}
 		updateLoading(false);
 		!isAirportNamesLoading && setParamsAreLoaded(true);
 	}

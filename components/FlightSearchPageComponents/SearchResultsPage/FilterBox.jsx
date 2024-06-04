@@ -9,7 +9,7 @@ import StopsFilter from "./oneWayFilterBox/StopsFilterBox";
 import DepartureArrivalTimeFilter from "./oneWayFilterBox/DepartureArrivalTimeFilter";
 // RANGE SLIDER .JSX
 
-export default function FilterBox() {
+export default function FilterBox({ updateFlightResultsLoading }) {
 	return (
 		<div className="flights-filter-box">
 			<h3>FILTER</h3>
@@ -26,7 +26,9 @@ export default function FilterBox() {
 			/>
 
 			<p className="filter-box-name">Price Range</p>
-			<RangeSlider />
+			<RangeSlider
+				updateFlightResultsLoading={updateFlightResultsLoading}
+			/>
 			<Divider
 				sx={{
 					backgroundColor: "cecece",

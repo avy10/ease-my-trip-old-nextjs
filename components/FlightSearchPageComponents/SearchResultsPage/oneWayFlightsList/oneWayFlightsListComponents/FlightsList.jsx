@@ -21,8 +21,14 @@ export default function FlightsList({
 	const { source, destination, day, numberOfPassengers } = flightSearchData;
 
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { isURLModified, updateIsURLModified, sortOptions } =
-		flightSearchModificationCS;
+	const {
+		isURLModified,
+		updateIsURLModified,
+		sortOptions,
+		filterOptions,
+		updateFilterOptions,
+		updateOriginalFlightList,
+	} = flightSearchModificationCS;
 	const [flightListOriginal, setFlightListOriginal] = useState([]);
 	const [showFlightDetails, setShowFlightDetails] = useState([]);
 
@@ -42,7 +48,10 @@ export default function FlightsList({
 			destination?.iata_code +
 			`"}&day=` +
 			"Mon" +
-			`&sort=${JSON.stringify(sortOptions)}`;
+			`&sort=${JSON.stringify(sortOptions)}` +
+			`${
+				filterOptions ? "&filter=" + JSON.stringify(filterOptions) : ""
+			}`;
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -53,12 +62,13 @@ export default function FlightsList({
 			.then((data) => {
 				console.log(data?.data?.flights);
 				setFlightListOriginal(data?.data?.flights);
+				updateOriginalFlightList(data?.data?.flights);
 				setHasApiFetched(true);
 				updateFlightResultsLoading(false);
 				updateIsURLModified(false);
 				updateLoading(false);
 			});
-	}, [sortOptions]);
+	}, [sortOptions, filterOptions]);
 
 	/* 	useEffect(() => {
 		if (!hasApiFetched) {

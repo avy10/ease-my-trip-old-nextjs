@@ -48,7 +48,7 @@ export default function OneWayTopBar({ updateFlightResultsLoading }) {
 			stringifiedSortingValue
 		);
 
-		router.push(
+		router.replace(
 			{
 				pathname: router.pathname,
 				query: {

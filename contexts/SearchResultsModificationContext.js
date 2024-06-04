@@ -1,5 +1,11 @@
 import { airlineCodes } from "@/public/utils/FlightUtils/airlineDecoding";
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useReducer,
+	useState,
+} from "react";
 
 const SearchResultsModificationContext = createContext();
 function reducer(state, action) {}
@@ -14,6 +20,9 @@ export default function SearchResultsModificationContextProvider({ children }) {
 		setSortOptions(value);
 	}
 	const [filterOptions, setFilterOptions] = useState(null);
+	function updateFilterOptions(value) {
+		setFilterOptions(value);
+	}
 	// FILTERS
 	// global filter i.e. works on both oneWay and twoWay
 	const [singleAirlineSelector, setSingleAirlineSelector] = useState("");
@@ -99,6 +108,13 @@ export default function SearchResultsModificationContextProvider({ children }) {
 	// SORTING
 	// GLOBAL SORTING
 
+	// original flight list
+	const [originalFlightList, setOriginalFlightList] = useState([]);
+	function updateOriginalFlightList(value) {
+		setOriginalFlightList(value);
+	}
+	// FlightPrice min and max
+
 	return (
 		<SearchResultsModificationContext.Provider
 			value={{
@@ -107,6 +123,10 @@ export default function SearchResultsModificationContextProvider({ children }) {
 				sortOptions,
 				updateSortOptions,
 				singleAirlineSelector,
+				originalFlightList,
+				updateOriginalFlightList,
+				filterOptions,
+				updateFilterOptions,
 			}}
 		>
 			{children}
