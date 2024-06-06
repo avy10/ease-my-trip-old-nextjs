@@ -107,46 +107,9 @@ export function FlightSearchProvider({ children }) {
 			.catch((error) => console.log(error));
 	}, []);
 
-	// function working on search-states
-	/* function updateFlightSearchStates(text, val, whoAreYou = "trusty") {
-		// console.log("I AM UPDATING the flight search states");
-		// console.log(text, val);
-		if (whoAreYou == "notTrusty") {
-			if (text == "source" || text == "FROM") {
-				const newVal = airportNames
-					.filter((ele) => ele.iata_code == val)
-					.at(0);
-				console.log(newVal);
-				console.log(airportNames);
-				setSource(newVal);
-			} else if (text == "destination" || text == "TO") {
-				const newVal = airportNames
-					.filter((ele) => ele.iata_code == val)
-					.at(0);
-				setDestination(newVal);
-			} else if (text == "numberOfPassengers") {
-				setNumberOfPassengers(val);
-			} else {
-				return;
-			}
-			return;
-		}
-		if (text == "source" || text == "FROM") {
-			setSource(val);
-		} else if (text == "destination" || text == "TO") {
-			setDestination(val);
-		} else if (text == "day") {
-			setDay(val);
-		} else if (text == "numberOfPassengers") {
-			setNumberOfPassengers(val);
-		} else {
-			return;
-		}
-	} */
-
 	function updateFlightSearchStates(text, val) {
-		console.log("AVYYYYYY I AM RUNNINGGGGGGGGGG");
-		console.log(text, val);
+		// console.log("AVYYYYYY I AM RUNNINGGGGGGGGGG");
+		// console.log(text, val);
 		if (text == "source" || text == "FROM") {
 			setSource(val);
 		} else if (text == "destination" || text == "TO") {
@@ -203,8 +166,8 @@ export function FlightSearchProvider({ children }) {
 
 	useEffect(() => {
 		// console.log("TODAY", today);
-		console.log("day", day);
-		console.log("return day", returnDay);
+		// console.log("day", day);
+		// console.log("return day", returnDay);
 		// console.log("day > today ", day > today);
 		// console.log("day >= today ", day >= today);
 
@@ -310,6 +273,7 @@ export function FlightSearchProvider({ children }) {
 				updateErrorState,
 				airportNames,
 				isAirportNamesLoading,
+				setIsAirportNamesLoading,
 				noOfTravellersInputRef,
 				searchButtonRef,
 				userLocale,

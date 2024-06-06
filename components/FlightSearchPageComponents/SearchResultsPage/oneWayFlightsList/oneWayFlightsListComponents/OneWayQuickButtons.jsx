@@ -121,28 +121,28 @@ export default function OneWayQuickButtons({
 				</button>
 			</div>
 			<div className="rhs-calendar-buttons ">
-				<BootstrapTooltip title="Show previous day flights with filters reset">
-					<button
-						onClick={() => handleClick("prev")}
-						disabled={isMinDate}
-					>
-						Previous Day
-					</button>
-				</BootstrapTooltip>
+				<button
+					onClick={() => handleClick("prev")}
+					disabled={isMinDate}
+				>
+					<BootstrapTooltip title="Show previous day flights with filters reset">
+						<span>Previous Day</span>
+					</BootstrapTooltip>
+				</button>
 				<Divider
 					orientation="vertical"
 					variant="middle"
 					flexItem
 					sx={{ backgroundColor: "black" }}
 				/>
-				<BootstrapTooltip title="Show next day flights with filters reset">
-					<button
-						onClick={() => handleClick("next")}
-						disabled={isMaxDate}
-					>
-						Next Day
-					</button>
-				</BootstrapTooltip>
+				<button
+					onClick={() => handleClick("next")}
+					disabled={isMaxDate}
+				>
+					<BootstrapTooltip title="Show next day flights with filters reset">
+						<span>Next Day</span>
+					</BootstrapTooltip>
+				</button>
 			</div>
 		</div>
 	);

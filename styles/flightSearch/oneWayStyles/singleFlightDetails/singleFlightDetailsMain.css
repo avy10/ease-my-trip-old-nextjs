@@ -125,7 +125,7 @@
 }
 
 .airline-fare-details-table td {
-	padding: 5px 10px;
+	padding: 5px 5px;
 	font-weight: 600;
 }
 
@@ -233,8 +233,17 @@
 }
 
 /* additional css */
-.rupee-symbol-in-fare-tables {
+/* .rupee-symbol-in-fare-tables {
 	display: inline;
 	vertical-align: baseline;
 	font-size: 10px;
+	color: red;
+} */
+
+.airline-fare-rules-table .css-i4bv87-MuiSvgIcon-root,
+.airline-fare-details-table .css-i4bv87-MuiSvgIcon-root {
+	display: inline;
+	vertical-align: baseline;
+	font-size: 14px;
+	color: red;
 }

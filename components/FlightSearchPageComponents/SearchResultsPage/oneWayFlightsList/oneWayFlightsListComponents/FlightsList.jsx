@@ -78,11 +78,16 @@ export default function FlightsList({
 				updateLoading(false);
 			});
 	}
+	// useEffect(() => {
+	// 	flightSearchResultFetch();
+	// }, []);
+	let key;
 	useEffect(() => {
-		flightSearchResultFetch();
-	}, []);
-	useEffect(() => {
-		flightSearchResultFetch();
+		key = setTimeout(() => {
+			clearTimeout(key);
+			flightSearchResultFetch();
+		}, 100);
+		// flightSearchResultFetch();
 	}, [sortOptions, filterOptions]);
 
 	/* 	useEffect(() => {
