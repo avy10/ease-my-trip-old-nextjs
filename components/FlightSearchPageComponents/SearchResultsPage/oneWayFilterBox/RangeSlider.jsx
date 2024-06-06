@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -12,29 +14,75 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 	const [minAndMaxOnceUpdate, setMinAndMaxOnceUpdate] = useState(false);
 	const [range, setRange] = useState(10);
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { originalFlightList, updateFilterOptions } =
-		flightSearchModificationCS;
-	function updateMinAndMaxValue() {
+	const { filterOptions, updateFilterOptions } = flightSearchModificationCS;
+	function updateMinAndMaxValue(flightList, valueZero, valueOne) {
 		let maxValue = Number.MIN_VALUE;
 		let minValue = Number.MAX_VALUE;
-		originalFlightList.forEach((ele) => {
+		flightList.forEach((ele) => {
 			maxValue = ele.ticketPrice >= maxValue ? ele.ticketPrice : maxValue;
 			minValue = ele.ticketPrice <= minValue ? ele.ticketPrice : minValue;
 		});
 
 		console.log("MIN VALUE MAX VALUE", minValue, maxValue);
-		setValue([minValue, maxValue]);
+		if (valueOne !== undefined) {
+			setValue([valueZero, valueOne]);
+		} else {
+			setValue([minValue, maxValue]);
+		}
 		setMinAndMaxValue([minValue, maxValue]);
 	}
-	// useEffect(() => {
-	// 	updateMinAndMaxValue();
-	// }, []);
 	useEffect(() => {
-		if (originalFlightList.length == 0) return;
 		if (minAndMaxOnceUpdate) return;
-		updateMinAndMaxValue();
-		setMinAndMaxOnceUpdate(true);
-	}, [originalFlightList]);
+		const valueZero = filterOptions?.ticketPrice?.$gte;
+		const valueOne = filterOptions?.ticketPrice?.$lte;
+		console.log(
+			"VALUE ZERO AND VALUE ONE INSIDE THE RANGE SLIDER",
+			valueOne,
+			valueZero
+		);
+		const { src, dest, day, notv } = router.query;
+		const flightDayWeekName = dayjs(day).format("ddd");
+		const url =
+			`https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"` +
+			src +
+			`","destination":"` +
+			dest +
+			`"}&day=` +
+			flightDayWeekName;
+		fetch(url, {
+			method: "GET",
+			headers: {
+				projectID: "qwqzgpiy336h",
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				// console.log(data?.data?.flights);
+				updateMinAndMaxValue(data?.data?.flights, valueZero, valueOne);
+				setMinAndMaxOnceUpdate(true);
+			});
+	}, []);
+	// useEffect(() => {
+	// 	// if (minAndMaxOnceUpdate) return;
+	// 	console.log("filterOptions inside rangeSlider", filterOptions);
+	// 	const valueZero = filterOptions?.ticketPrice?.$gte;
+	// 	const valueOne = filterOptions?.ticketPrice?.$lte;
+	// 	if (valueZero && value[0] == 0) {
+	// 		setValue([valueZero, valueOne]);
+	// 	}
+	// 	console.log("filterOptions inside rangeSlider", valueZero, valueOne);
+	// 	/* filterOptions ??
+	// 		setValue(
+	// 			filterOptions?.ticketPrice?.$gte,
+	// 			filterOptions?.ticketPrice?.$lte
+	// 		); */
+	// }, [filterOptions]);
+	// useEffect(() => {
+	// 	if (originalFlightList.length == 0) return;
+	// 	if (minAndMaxOnceUpdate) return;
+	// 	updateMinAndMaxValue();
+	// 	setMinAndMaxOnceUpdate(true);
+	// }, [originalFlightList]);
 	useEffect(() => {
 		const difference = value[1] - value[0];
 		if (difference >= 2000) {
@@ -48,7 +96,12 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		} else {
 			setRange(difference);
 		}
-		if (value[0] == minAndMaxValue[0] && value[1] == minAndMaxValue[1]) {
+
+		if (
+			value[0] == minAndMaxValue[0] &&
+			value[1] == minAndMaxValue[1] &&
+			minAndMaxOnceUpdate
+		) {
 			applyFilter("removeTicketPrice");
 		}
 	}, [value]);

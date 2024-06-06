@@ -23,10 +23,16 @@ export default function SearchMainBox({
 					updateLoading={updateLoading}
 					sortParamsState={sortParamsState}
 					updateSortParamsState={updateSortParamsState}
+					searchButtonOnclickStateReset={
+						searchButtonOnclickStateReset
+					}
 				/>
 			)}
 			{isTwoWay && (
-				<div className="fsp-main-content-box">I AM ON TWO WAY</div>
+				<div className="fsp-main-content-box">
+					I AM ON TWO WAY
+					<div className="avy">Webpage Coming Soon</div>
+				</div>
 			)}
 		</div>
 	);

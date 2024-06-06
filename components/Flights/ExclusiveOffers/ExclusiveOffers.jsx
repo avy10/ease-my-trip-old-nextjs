@@ -13,7 +13,7 @@ export default function ExclusiveOffers() {
 		setIsLoading(true);
 		const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS"];
 		const myHeaders = new Headers();
-		myHeaders.append("projectID", "4xh7gn2pv8it");
+		myHeaders.append("projectID", "qwqzgpiy336h");
 		myHeaders.append("random", "adsaav");
 
 		const requestOptions = {

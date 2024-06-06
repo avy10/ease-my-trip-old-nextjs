@@ -33,10 +33,11 @@ export default function FlightsList({
 	const [showFlightDetails, setShowFlightDetails] = useState([]);
 
 	const [hasApiFetched, setHasApiFetched] = useState(false);
-
+	const [oldURL, setOldURL] = useState("");
 	// const searchParams = useSearchParams();
-
-	useEffect(() => {
+	function flightSearchResultFetch() {
+		console.log("SORT OPTIONS INSIDE FLIGHTLIST", sortOptions);
+		console.log("FILTER OPTIONS INSIDE FLIGHTLIST", filterOptions);
 		// `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"
 		// 	DEL","destination":"BOM"}&day=Mon`,
 
@@ -47,11 +48,19 @@ export default function FlightsList({
 			`","destination":"` +
 			destination?.iata_code +
 			`"}&day=` +
-			"Mon" +
+			flightDayWeekName +
 			`&sort=${JSON.stringify(sortOptions)}` +
 			`${
 				filterOptions ? "&filter=" + JSON.stringify(filterOptions) : ""
 			}`;
+		console.log("old url", oldURL);
+		console.log("new url", url);
+
+		if (url == oldURL) {
+			return;
+		} else {
+			setOldURL(url);
+		}
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -68,6 +77,12 @@ export default function FlightsList({
 				updateIsURLModified(false);
 				updateLoading(false);
 			});
+	}
+	useEffect(() => {
+		flightSearchResultFetch();
+	}, []);
+	useEffect(() => {
+		flightSearchResultFetch();
 	}, [sortOptions, filterOptions]);
 
 	/* 	useEffect(() => {

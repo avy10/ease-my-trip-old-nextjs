@@ -40,7 +40,7 @@ export default function SearchPageParentBuild({
 			(await fetch(`${domain}${allTheAirports}`, {
 				method: "GET",
 				headers: {
-					projectID: "4xh7gn2pv8it",
+					projectID: "qwqzgpiy336h",
 				},
 			})
 				.then((res) => res.json())
@@ -136,6 +136,9 @@ export default function SearchPageParentBuild({
 						<SearchMainBox
 							updateLoading={updateLoading}
 							paramsAreLoaded={paramsAreLoaded}
+							searchButtonOnclickStateReset={
+								searchButtonOnclickStateReset
+							}
 						/>
 					)}
 				</>

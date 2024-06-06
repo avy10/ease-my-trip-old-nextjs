@@ -8,6 +8,7 @@ export default function OneWay({
 	updateLoading,
 	sortParamsState,
 	updateSortParamsState,
+	searchButtonOnclickStateReset,
 }) {
 	const [flightResultsLoading, setFlightResultsLoading] = useState(true);
 	function updateFlightResultsLoading(val) {
@@ -22,6 +23,9 @@ export default function OneWay({
 			<div className="one-way-flights-list">
 				<OneWayTopBar
 					updateFlightResultsLoading={updateFlightResultsLoading}
+					searchButtonOnclickStateReset={
+						searchButtonOnclickStateReset
+					}
 				/>
 				{flightResultsLoading && <Loader />}
 				<FlightsList

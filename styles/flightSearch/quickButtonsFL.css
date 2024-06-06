@@ -22,19 +22,22 @@
 .rhs-calendar-buttons {
 	margin: 0px 15px;
 }
-.rhs-calendar-buttons span {
+.rhs-calendar-buttons button {
 	/* float: right; */
 	/* border: 2px solid red; */
 	padding: 10px;
 	cursor: pointer;
 	transition: transform 0.3s ease-in-out;
+	border: none;
+	border-radius: 20px;
+	background-color: white;
 }
 
-.rhs-calendar-buttons span:hover {
+.rhs-calendar-buttons button:hover {
 	transform: scale(1.05);
 	transition: transform 0.3s ease-in-out;
 }
-.rhs-calendar-buttons span:active {
+.rhs-calendar-buttons button:active {
 	transform: scale(0.9);
 	transition: transform 0.3s ease-in-out;
 }

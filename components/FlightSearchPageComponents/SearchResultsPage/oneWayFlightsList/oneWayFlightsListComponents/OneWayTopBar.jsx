@@ -6,7 +6,10 @@ import OneWayQuickButtons from "./OneWayQuickButtons";
 import SearchResultsOfferCards from "./SearchResultsOfferCards";
 import SortButtons from "./SortButtons";
 
-export default function OneWayTopBar({ updateFlightResultsLoading }) {
+export default function OneWayTopBar({
+	updateFlightResultsLoading,
+	searchButtonOnclickStateReset,
+}) {
 	const router = useRouter();
 	const flightSearchModificationCS = useSearchResultsModificationContext();
 	const { sortOptions, updateSortOptions } = flightSearchModificationCS;
@@ -65,9 +68,14 @@ export default function OneWayTopBar({ updateFlightResultsLoading }) {
 	function changeDate(dateValue) {}
 	return (
 		<div className="one-way-top-bar">
-			<OneWayQuickButtons sortAirlines={sortAirlines} />
+			<OneWayQuickButtons
+				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
+				sortAirlines={sortAirlines}
+			/>
 			<SearchResultsOfferCards />
-			<DateCard />
+			<DateCard
+				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
+			/>
 			<SortButtons sortAirlines={sortAirlines} />
 		</div>
 	);

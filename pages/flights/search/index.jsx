@@ -40,7 +40,7 @@ export default function FlightSearchHome() {
 		return () => {
 			window.removeEventListener("popstate", handlePopState);
 		};
-	}, []);
+	}, [router.pathname]);
 
 	function updateLoading(val) {
 		setLoading(val);

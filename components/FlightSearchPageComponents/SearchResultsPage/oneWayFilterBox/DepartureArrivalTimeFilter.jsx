@@ -1,12 +1,15 @@
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 export default function DepartureArrivalTimeFilter({
 	target,
 	updateState,
 	state,
 }) {
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { filterOptions } = flightSearchModificationCS;
 	const [currentSelection, setCurrentSelection] = useState(null);
 	function updateCurrentSelection(boxValue, timeLow, timeHigh) {
 		setCurrentSelection(boxValue);
@@ -14,6 +17,48 @@ export default function DepartureArrivalTimeFilter({
 
 		updateState(target, timeLow, timeHigh);
 	}
+	useEffect(() => {
+		console.log(
+			"123 1231 231 231 2 31 3213 132 1     ",
+			filterOptions?.arrivalTime,
+			filterOptions?.departureTime,
+			target
+		);
+		if (filterOptions?.departureTime && target === "departureTime") {
+			const valueHigh = filterOptions?.departureTime?.$lte;
+			const valueLow = filterOptions?.departureTime?.$gte;
+			console.log("0000000000000000000000", valueLow, valueHigh, target);
+			if (valueLow == "00:00" && valueHigh == "06:00") {
+				updateCurrentSelection("sunrise", "00:00", "06:00");
+			}
+			if (valueLow == "06:00" && valueHigh == "12:00") {
+				updateCurrentSelection("afternoon", "06:00", "12:00");
+			}
+			if (valueLow == "12:00" && valueHigh == "18:00") {
+				updateCurrentSelection("sunset", "12:00", "18:00");
+			}
+			if (valueLow == "18:00" && valueHigh == "23:59") {
+				updateCurrentSelection("night", "18:00", "23:59");
+			}
+		}
+		if (filterOptions?.arrivalTime && target === "arrivalTime") {
+			const valueHigh = filterOptions?.arrivalTime?.$lte;
+			const valueLow = filterOptions?.arrivalTime?.$gte;
+			console.log("0000000000000000000000", valueLow, valueHigh, target);
+			if (valueLow == "00:00" && valueHigh == "06:00") {
+				updateCurrentSelection("sunrise", "00:00", "06:00");
+			}
+			if (valueLow == "06:00" && valueHigh == "12:00") {
+				updateCurrentSelection("afternoon", "06:00", "12:00");
+			}
+			if (valueLow == "12:00" && valueHigh == "18:00") {
+				updateCurrentSelection("sunset", "12:00", "18:00");
+			}
+			if (valueLow == "18:00" && valueHigh == "23:59") {
+				updateCurrentSelection("night", "18:00", "23:59");
+			}
+		}
+	}, []);
 	return (
 		<div className="departure-arrival-time-filter">
 			<Sunrise

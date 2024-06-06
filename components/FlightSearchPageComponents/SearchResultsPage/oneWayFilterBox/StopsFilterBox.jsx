@@ -1,13 +1,14 @@
 import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function StopsFilter() {
 	const router = useRouter();
 	const flightSearchModificationCS = useSearchResultsModificationContext();
-	const { updateFilterOptions } = flightSearchModificationCS;
+	const { filterOptions, updateFilterOptions } = flightSearchModificationCS;
 	const [stopsValueSelected, setStopsValueSelected] = useState([10, 11, 12]);
 	const [showWarning, setShowWarning] = useState(false);
+
 	function applyStopsFilter(condition, valueLow, valueHigh) {
 		const { src, dest, day, notv, sort, filter } = router.query;
 		const requiredObjects = {
@@ -96,6 +97,36 @@ export default function StopsFilter() {
 			applyStopsFilter("dualStops", 1, 2);
 		}
 	}
+
+	useEffect(() => {
+		if (filterOptions?.stops == 0) {
+			setStopsValueSelected([10, -11, -12]);
+		}
+		if (filterOptions?.stops == 1) {
+			setStopsValueSelected([-10, 11, -12]);
+		}
+		if (filterOptions?.stops == 2) {
+			setStopsValueSelected([-10, -11, 12]);
+		}
+		if (
+			filterOptions?.stops?.$gte == 0 &&
+			filterOptions?.stops?.$lte == 1
+		) {
+			setStopsValueSelected([10, 11, -12]);
+		}
+		if (
+			filterOptions?.stops?.$gte == 0 &&
+			filterOptions?.stops?.$lte == 2
+		) {
+			setStopsValueSelected([10, 11, 12]);
+		}
+		if (
+			filterOptions?.stops?.$gte == 1 &&
+			filterOptions?.stops?.$lte == 2
+		) {
+			setStopsValueSelected([-10, 11, 12]);
+		}
+	}, []);
 	return (
 		<>
 			<p className="filter-box-name">
