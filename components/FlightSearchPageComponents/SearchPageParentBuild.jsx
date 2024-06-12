@@ -12,16 +12,13 @@ import { useSearchResultsModificationContext } from "@/contexts/SearchResultsMod
 export default function SearchPageParentBuild({
 	setUnMountSPPB,
 	updateLoading,
+	toggleUnMountSPPB,
 }) {
 	const fsd = useContext(FlightSearchContext);
-	const {
-		updateFlightSearchStates,
-		updateDay,
-		updateTwoWay,
-		isAirportNamesLoading,
-		setIsAirportNamesLoading,
-		airportNames,
-	} = fsd;
+	const { updateFlightSearchStates, updateDay, updateTwoWay } = fsd;
+	// isAirportNamesLoading,
+	// setIsAirportNamesLoading,
+	// airportNames,
 
 	const flightSearchModificationCS = useSearchResultsModificationContext();
 	const { updateSortOptions, updateFilterOptions } =
@@ -32,19 +29,23 @@ export default function SearchPageParentBuild({
 
 	const [errorInParams, setErrorInParams] = useState(false);
 	const [paramsAreLoaded, setParamsAreLoaded] = useState(false);
-	// const [airportNames, setAirportNames] = useState([]);
-	// const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
+	const [airportNames, setAirportNames] = useState([]);
+	const [isAirportNamesLoading, setIsAirportNamesLoading] = useState(true);
 
 	function searchButtonOnclickStateReset() {
 		// resets loading, isAirportNamesLoading and paramsAreLoaded
 		// setLoading(true);
 		setUnMountSPPB(true);
 		setIsAirportNamesLoading(true);
+		console.log("airportNames", airportNames);
 		setParamsAreLoaded(false);
 	}
-	function fetchAirportnames() {
+
+	async function fetchAirportnames() {
+		// console.log("I AM RUNNING first BECAUSE OF ASYNC AWAIT");
+
 		airportNames.length == 0 &&
-			fetch(`${domain}${allTheAirports}`, {
+			(await fetch(`${domain}${allTheAirports}`, {
 				method: "GET",
 				headers: {
 					projectID: "qwqzgpiy336h",
@@ -55,15 +56,18 @@ export default function SearchPageParentBuild({
 					setAirportNames(apiData?.data?.airports);
 					setIsAirportNamesLoading(false);
 					setParamsAreLoaded(false);
-					return;
+					// return;
 				})
-				.catch((error) => console.log(error));
+				.catch((error) => console.log(error)));
+		// console.log("I AM RUNNING LATE BECAUSE OF ASYNC AWAIT");
+		airportNames.length > 0 && setIsAirportNamesLoading(false);
 	}
 
-	async function onComponentMount() {
+	function onComponentMount() {
+		// console.log("HOW MANY TIMES I AM RUNNING");
 		updateLoading(true);
 		// await fetchAirportnames();
-		const { twoway, src, dest, day, rday, notv } = router.query;
+		const { twoway, src, dest, day, rday, notv, filter } = router.query;
 
 		updateTwoWay(Boolean(twoway));
 
@@ -78,41 +82,44 @@ export default function SearchPageParentBuild({
 				airportNames.filter((ele) => ele.iata_code == dest).at(0)
 			);
 		// console.log("dayURL to dayjs date", dayURL); //params => &day=22-05-2024 ,  for date 22nd May 2024, OUTPUT => dayURL to dayjs date 22-05-2024
-		if (day != null) {
-			const newDay = dayjs(day, "DD-MM-YYYY");
-			// console.log("dayURL to dayjs date", newDay);
-			updateDay("day", newDay);
-			const newReturnDay = rday ? dayjs(rday, "DD-MM-YYYY") : null;
-			// console.log("return day value on one way", newReturnDay);
-			newReturnDay && updateDay("returnDay", newReturnDay);
-		}
+
+		var customParseFormat = require("dayjs/plugin/customParseFormat");
+		dayjs.extend(customParseFormat);
+		const newDay = dayjs(day, "DD-MM-YYYY");
+		// console.log("dayURL to dayjs date", day, newDay);
+		updateDay("day", newDay);
+		const newReturnDay = rday ? dayjs(rday, "DD-MM-YYYY") : null;
+		// console.log("return day value on one way", newReturnDay);
+		newReturnDay && updateDay("returnDay", newReturnDay);
+
 		updateFlightSearchStates("numberOfPassengers", +notv);
 		// setLoading(false);
 
 		const sortParams = searchParams.get("sort");
 		const a = JSON.parse(decodeURIComponent(sortParams));
-		// console.log("IS DECODE URI WORKING", a);
+		// console.log("IS DECODE URI WORKING", sortParams, a);
 		updateSortOptions(a);
 		const filterParams = searchParams.get("filter");
-		// console.log("FILTERPARAMS ARE NULL OR UNDEFINED", filterParams);
-		if (filterParams) {
-			const filterApplied = JSON.parse(decodeURIComponent(filterParams));
+		// console.log("FILTERPARAMS ARE NULL OR UNDEFINED", filter, filterParams);
+		if (filter != null || filter != undefined) {
+			const filterApplied = JSON.parse(decodeURIComponent(filter));
 			updateFilterOptions(filterApplied);
 		}
 		updateLoading(false);
-		!isAirportNamesLoading && setParamsAreLoaded(true);
+		setParamsAreLoaded(true);
 	}
 	useEffect(() => {
-		// fetchAirportnames();
+		fetchAirportnames();
 	}, []);
 	useEffect(() => {
 		if (isAirportNamesLoading) {
+			// if (isAirportNamesLoading) {
 			return;
 		} else {
 			onComponentMount();
 		}
-		// [isAirportNamesLoading, paramsAreLoaded]
-	}, [isAirportNamesLoading]);
+		// }, [isAirportNamesLoading]);
+	}, [isAirportNamesLoading, paramsAreLoaded]);
 	return (
 		<div className="flight-search-home">
 			<FspSearchBox
@@ -120,17 +127,15 @@ export default function SearchPageParentBuild({
 				searchButtonOnclickStateReset={searchButtonOnclickStateReset}
 				updateLoading={updateLoading}
 			/>
-			{!errorInParams && (
+			{paramsAreLoaded && (
 				<>
-					{!isAirportNamesLoading && (
-						<SearchMainBox
-							updateLoading={updateLoading}
-							paramsAreLoaded={paramsAreLoaded}
-							searchButtonOnclickStateReset={
-								searchButtonOnclickStateReset
-							}
-						/>
-					)}
+					<SearchMainBox
+						updateLoading={updateLoading}
+						paramsAreLoaded={paramsAreLoaded}
+						searchButtonOnclickStateReset={
+							searchButtonOnclickStateReset
+						}
+					/>
 				</>
 			)}
 		</div>

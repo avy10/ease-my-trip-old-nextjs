@@ -1,21 +1,14 @@
-import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
-import { useContext, useEffect, useReducer, useState } from "react";
-import FlightSearchContext, {
-	useFlightSearch,
-} from "@/contexts/FlightSearchContext";
+import { useEffect, useReducer, useState } from "react";
+import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 
 import FspInputFields from "./FspSearchBoxComponents/FspInputFields";
 import FspRadioButtons from "./FspSearchBoxComponents/FspRadioButtons";
 
-import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import SelectTravellersNumber from "../Flights/Search/SelectTravellersNumber";
-
 // FspSearchBox => Flight Search Page - Search Box
 
 function reducer(state, action) {
+	// console.log("MUI IS MAKING ME RUN", action.payload);
 	let x = action.keyToUpdate;
 	switch (action.type) {
 		case "stateUpdate":
@@ -44,8 +37,7 @@ export default function FspSearchBox({
 	searchButtonOnclickStateReset,
 }) {
 	const contextState = useFlightSearch();
-	const { day, returnDay, source, destination, numberOfPassengers } =
-		contextState;
+	const { day } = contextState;
 	const obj = {
 		isTwoWayFSP: false,
 
@@ -60,10 +52,22 @@ export default function FspSearchBox({
 	};
 
 	const today = dayjs();
+	// console.log(
+	// 	today,
+	// 	"inside fsp search box for max flight date calculations"
+	// );
 	const [finalFlightBooking] = useState(today.add(8, "months"));
 	const [state, dispatch] = useReducer(reducer, obj);
 
 	useEffect(() => {
+		const {
+			day,
+			returnDay,
+			source,
+			destination,
+			numberOfPassengers,
+			isTwoWay,
+		} = contextState;
 		dispatch({
 			type: "stateUpdate",
 			payload: {
@@ -72,22 +76,17 @@ export default function FspSearchBox({
 				sourceFSP: source,
 				destinationFSP: destination,
 				noOfTravellersFSP: numberOfPassengers,
+				isTwoWayFSP: isTwoWay,
 			},
 		});
-		// obj.dayFSP = day;
-		// obj.returnDayFSP = returnDay;
-		// obj.sourceFSP = source;
-		// obj.destinationFSP = destination;
-		// obj.noOfTravellersFSP = numberOfPassengers;
-		// console.log("STATE UPDATED?", state);
-	}, [paramsAreLoaded]);
+	}, []);
 	return (
 		<>
 			{paramsAreLoaded && (
 				<div className="search-page-blue-search-box">
 					<FspRadioButtons
-						isTwoWayFSP={state.isTwoWayFSP}
 						dispatch={dispatch}
+						isTwoWayFSP={state.isTwoWayFSP}
 					/>
 					<FspInputFields
 						updateLoading={updateLoading}

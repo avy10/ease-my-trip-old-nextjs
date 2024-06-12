@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { ICON_SOURCES } from "@/public/utils/FlightUtils/airlineDecoding";
-
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import AirlineSeatLegroomNormalIcon from "@mui/icons-material/AirlineSeatLegroomNormal";
 import SingleFlightDetailsMain from "./singleFlightDetail/SingleFlightDetailsMain";
@@ -30,38 +29,100 @@ export default function FlightsList({
 		updateOriginalFlightList,
 	} = flightSearchModificationCS;
 	const [flightListOriginal, setFlightListOriginal] = useState([]);
+	const [flightListModified, setFlightListModified] = useState([]);
 	const [showFlightDetails, setShowFlightDetails] = useState([]);
 
-	const [hasApiFetched, setHasApiFetched] = useState(false);
+	const [firstLoading, setFirstLoading] = useState(true);
 	const [oldURL, setOldURL] = useState("");
+	const [isMultipleAirlineFilter, setIsMultipleAirlineFilter] =
+		useState(false);
 	// const searchParams = useSearchParams();
-	function flightSearchResultFetch() {
-		console.log("SORT OPTIONS INSIDE FLIGHTLIST", sortOptions);
-		console.log("FILTER OPTIONS INSIDE FLIGHTLIST", filterOptions);
+	// function flightSearchResultFetch() {
+	// 	// console.log("SORT OPTIONS INSIDE FLIGHTLIST", sortOptions);
+	// 	// console.log("FILTER OPTIONS INSIDE FLIGHTLIST", filterOptions);
+	// 	// `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"
+	// 	// 	DEL","destination":"BOM"}&day=Mon`,
+
+	// 	// if(airlines)
+	// 	console.log("LOOK AT THE DATE", day);
+	// 	const flightDayWeekName = dayjs(day).format("ddd");
+	// 	console.log("LOOK AT THE DATE", flightDayWeekName);
+
+	// 	const url =
+	// 		`https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"` +
+	// 		source?.iata_code +
+	// 		`","destination":"` +
+	// 		destination?.iata_code +
+	// 		`"}&day=` +
+	// 		flightDayWeekName +
+	// 		`&sort=${JSON.stringify(sortOptions)}` +
+	// 		`${
+	// 			filterOptions ? "&filter=" + JSON.stringify(filterOptions) : ""
+	// 		}`;
+	// 	console.log("old url", oldURL);
+	// 	console.log("new url", url);
+
+	// 	if (url == oldURL) {
+	// 		return;
+	// 	} else {
+	// 		setOldURL(url);
+	// 	}
+	// 	fetch(url, {
+	// 		method: "GET",
+	// 		headers: {
+	// 			projectID: "qwqzgpiy336h",
+	// 		},
+	// 	})
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data?.data?.flights);
+	// 			setFlightListOriginal(data?.data?.flights);
+	// 			updateOriginalFlightList(data?.data?.flights);
+	// 			setHasApiFetched(true);
+	// 			updateFlightResultsLoading(false);
+	// 			updateIsURLModified(false);
+	// 			updateLoading(false);
+	// 		});
+	// }
+	async function flightSearchResultFetchNew() {
+		// console.log("HOW MANY TIMES I AM FETCHING");
+		// console.log("SORT OPTIONS INSIDE FLIGHTLIST", sortOptions);
+		// console.log("FILTER OPTIONS INSIDE FLIGHTLIST", filterOptions);
 		// `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"
 		// 	DEL","destination":"BOM"}&day=Mon`,
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
+		console.log("airlines present in flight list", airlines);
 
-		const flightDayWeekName = dayjs(day).format("ddd");
+		// if(airlines)
+		// console.log("LOOK AT THE DATE", day);
+		const flightDayWeekName = dayjs(day, "DD-MM-YYYY").format("ddd");
+		// console.log("LOOK AT THE DATE", flightDayWeekName);
+
 		const url =
 			`https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"` +
-			source?.iata_code +
+			src +
 			`","destination":"` +
-			destination?.iata_code +
+			dest +
 			`"}&day=` +
 			flightDayWeekName +
-			`&sort=${JSON.stringify(sortOptions)}` +
+			`&sort=${sort}` +
 			`${
-				filterOptions ? "&filter=" + JSON.stringify(filterOptions) : ""
+				filterOptions != undefined
+					? "&filter=" + JSON.stringify(filterOptions)
+					: ""
 			}`;
-		console.log("old url", oldURL);
-		console.log("new url", url);
+		// console.log("old url", oldURL);
+		// console.log("new url", url);
+		// console.log("SORT IN FLIGHTLIST", sort);
+		// console.log("filter IN FLIGHTLIST", filter);
 
-		if (url == oldURL) {
-			return;
-		} else {
-			setOldURL(url);
-		}
-		fetch(url, {
+		// if (url == oldURL) {
+		// 	return;
+		// } else {
+		// 	setOldURL(url);
+		// }
+		let flightDataArray = [];
+		await fetch(url, {
 			method: "GET",
 			headers: {
 				projectID: "qwqzgpiy336h",
@@ -69,26 +130,45 @@ export default function FlightsList({
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data?.data?.flights);
+				// console.log(data?.data?.flights);
 				setFlightListOriginal(data?.data?.flights);
+				flightDataArray = [...data?.data?.flights];
 				updateOriginalFlightList(data?.data?.flights);
-				setHasApiFetched(true);
+				setFirstLoading(false);
 				updateFlightResultsLoading(false);
 				updateIsURLModified(false);
 				updateLoading(false);
 			});
+		if (!airlines || airlines?.length == 0) {
+			setIsMultipleAirlineFilter(false);
+		} else {
+			// if (airlines?.length > 0)
+			setIsMultipleAirlineFilter(true);
+			const airlineNewtonIDs = [];
+			airlines.forEach((ele) =>
+				airlineNewtonIDs.push(ICON_SOURCES[ele].newtonID)
+			);
+			console.log(airlineNewtonIDs, flightDataArray);
+			const filteredFlightDataArray = [];
+			flightDataArray.forEach((ele) => {
+				if (airlineNewtonIDs.includes(ele.airline)) {
+					filteredFlightDataArray.push(ele);
+				}
+			});
+			setFlightListModified(filteredFlightDataArray);
+		}
 	}
+
 	// useEffect(() => {
-	// 	flightSearchResultFetch();
+	// 	// flightSearchResultFetch();
+	// 	flightSearchResultFetchNew();
+	// 	// flightSearchResultFetch();
 	// }, []);
-	let key;
 	useEffect(() => {
-		key = setTimeout(() => {
-			clearTimeout(key);
-			flightSearchResultFetch();
-		}, 100);
+		flightSearchResultFetchNew();
 		// flightSearchResultFetch();
 	}, [sortOptions, filterOptions]);
+	// }, []);
 
 	/* 	useEffect(() => {
 		if (!hasApiFetched) {
@@ -119,7 +199,7 @@ export default function FlightsList({
 	}, [hasApiFetched]); */
 	return (
 		<div id="flight-result-list">
-			{flightListOriginal.length == 0 && (
+			{!isMultipleAirlineFilter && flightListOriginal.length == 0 && (
 				<div
 					className="single-flight-data-container"
 					style={{ textAlign: "center" }}
@@ -127,17 +207,38 @@ export default function FlightsList({
 					Sorry, No flights available for the selected filters.
 				</div>
 			)}
-			{flightListOriginal?.map((ele) => {
-				return (
-					<AllTheCards
-						ele={ele}
-						source={source}
-						destination={destination}
-						numberOfPassengers={numberOfPassengers}
-						key={ele._id}
-					/>
-				);
-			})}
+			{!isMultipleAirlineFilter &&
+				flightListOriginal?.map((ele) => {
+					return (
+						<AllTheCards
+							ele={ele}
+							source={source}
+							destination={destination}
+							numberOfPassengers={numberOfPassengers}
+							key={ele._id}
+						/>
+					);
+				})}
+			{isMultipleAirlineFilter && flightListModified.length == 0 && (
+				<div
+					className="single-flight-data-container"
+					style={{ textAlign: "center" }}
+				>
+					Sorry, No flights available for the selected filters.
+				</div>
+			)}
+			{isMultipleAirlineFilter &&
+				flightListModified?.map((ele) => {
+					return (
+						<AllTheCards
+							ele={ele}
+							source={source}
+							destination={destination}
+							numberOfPassengers={numberOfPassengers}
+							key={ele._id}
+						/>
+					);
+				})}
 		</div>
 	);
 }

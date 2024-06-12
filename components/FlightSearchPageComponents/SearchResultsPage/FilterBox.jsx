@@ -18,15 +18,17 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 
 	const [departureTimeFilter, setDepartureTimeFilter] = useState(null);
 	const [arrivalTimeFilter, setArrivalTimeFilter] = useState(null);
+	const [firstTimeTimingFilterUse, setFirstTimeTimingFilterUse] =
+		useState(true);
 	// "departureTime" : {"$lte": "18:00", "$gte" : "09:00" }
-	function updateState(target, valueLow, valueHigh) {
+	async function updateState(target, valueLow, valueHigh) {
 		if (target == "arrivalTime") {
 			setArrivalTimeFilter({ valueLow, valueHigh });
 		} else if (target == "departureTime") {
 			setDepartureTimeFilter({ valueLow, valueHigh });
 		}
 
-		const { src, dest, day, notv, sort, filter } = router.query;
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
 		const a = JSON.parse(decodeURIComponent(sort));
 		const requiredObjects = {
 			src,
@@ -39,7 +41,11 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 		if (filter) {
 			filterOldDecoded = JSON.parse(decodeURIComponent(filter));
 		}
-		console.log("FILTER FROM URL PARAMS", filterOldDecoded);
+		if (airlines) {
+			requiredObjects.airlines = airlines;
+		}
+		console.log("INSIDE THE FILTER BOX", filterOldDecoded);
+
 		const newFilter = {
 			...filterOldDecoded,
 			arrivalTime: {
@@ -73,12 +79,34 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 		if (target == "departureTime" && arrivalTimeFilter?.valueHigh == null) {
 			delete newFilter["arrivalTime"];
 		}
+		const departureTimeFilterOld = filterOldDecoded?.departureTime
+			? filterOldDecoded?.departureTime
+			: {};
+		const arrivalTimeFilterOld = filterOldDecoded?.arrivalTime
+			? filterOldDecoded?.arrivalTime
+			: {};
+		console.log(
+			"TIMING FILTERS INSIDE FILTER BOX",
+			Object.keys(departureTimeFilterOld),
+			"\n",
+			Object.keys(arrivalTimeFilterOld)
+		);
+		if (firstTimeTimingFilterUse) {
+			if (Object.keys(departureTimeFilterOld).length > 0) {
+				newFilter.departureTime = { ...departureTimeFilterOld };
+			}
+			if (Object.keys(arrivalTimeFilterOld).length > 0) {
+				newFilter.arrivalTime = { ...arrivalTimeFilterOld };
+			}
+			setFirstTimeTimingFilterUse(false);
+			console.log("VERY NEW FILTER inside the timing boolean", newFilter);
+		}
+		// if (filterOldDecoded?.departureTime != undefined)
 		console.log("VERY NEW FILTER", newFilter);
 		const stringifiedFilterValue = JSON.stringify(newFilter);
 		// filter={ "duration" : {"$lte":3,"$gte":0},
 		const encodedFilters = encodeURIComponent(stringifiedFilterValue);
-		updateFilterOptions(newFilter);
-		router.replace(
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -89,6 +117,7 @@ export default function FilterBox({ updateFlightResultsLoading }) {
 			undefined,
 			{ shallow: true }
 		);
+		updateFilterOptions(newFilter);
 	}
 
 	return (

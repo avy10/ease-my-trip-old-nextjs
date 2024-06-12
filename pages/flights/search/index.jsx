@@ -26,24 +26,27 @@ export default function FlightSearchHome() {
 		setUnMountSPPB(false);
 	}, [unMountSPPB]);
 
-	useEffect(() => {
-		const handlePopState = () => {
-			// Force a re-render by toggling unMountSPPB state
-			setUnMountSPPB(true);
-			// when the search pages is loaded, it fetches the states from URL and updates the states in FlightSearchContext
-			// whenever the search button on the flight search page is clicked, I do not want the page to reload in order for it to fetch the newer parameters from the URL
-			// instead I am using this boolean state to unmount and remount the component
-		};
+	// useEffect(() => {
+	// 	const handlePopState = () => {
+	// 		// Force a re-render by toggling unMountSPPB state
+	// 		setUnMountSPPB(true);
+	// 		// when the search pages is loaded, it fetches the states from URL and updates the states in FlightSearchContext
+	// 		// whenever the search button on the flight search page is clicked, I do not want the page to reload in order for it to fetch the newer parameters from the URL
+	// 		// instead I am using this boolean state to unmount and remount the component
+	// 	};
 
-		window.addEventListener("popstate", handlePopState);
+	// 	window.addEventListener("popstate", handlePopState);
 
-		return () => {
-			window.removeEventListener("popstate", handlePopState);
-		};
-	}, [router.pathname]);
+	// 	return () => {
+	// 		window.removeEventListener("popstate", handlePopState);
+	// 	};
+	// }, [router.pathname]);
 
 	function updateLoading(val) {
 		setLoading(val);
+	}
+	function toggleUnMountSPPB(val) {
+		setUnMountSPPB(val);
 	}
 
 	return (
@@ -55,6 +58,7 @@ export default function FlightSearchHome() {
 					<SearchPageParentBuild
 						updateLoading={updateLoading}
 						setUnMountSPPB={setUnMountSPPB}
+						toggleUnMountSPPB={toggleUnMountSPPB}
 					/>
 				</SearchResultsModificationContextProvider>
 			)}

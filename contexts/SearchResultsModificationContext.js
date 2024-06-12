@@ -11,15 +11,21 @@ const SearchResultsModificationContext = createContext();
 function reducer(state, action) {}
 export default function SearchResultsModificationContextProvider({ children }) {
 	const [isURLModified, setIsURLModified] = useState(false);
+	const [paramsAreLoaded, setParamsAreLoaded] = useState(false);
+
+	const [singleAirlineFilter, setSingleAirlineFilter] = useState(false);
+	function toggleSingleAirlineFilter(value) {
+		setSingleAirlineFilter(value);
+	}
 	function updateIsURLModified(val) {
 		setIsURLModified(val);
 	}
 
-	const [sortOptions, setSortOptions] = useState({});
+	const [sortOptions, setSortOptions] = useState(undefined);
 	function updateSortOptions(value) {
 		setSortOptions(value);
 	}
-	const [filterOptions, setFilterOptions] = useState(null);
+	const [filterOptions, setFilterOptions] = useState(undefined);
 	function updateFilterOptions(value) {
 		setFilterOptions(value);
 	}
@@ -128,6 +134,10 @@ export default function SearchResultsModificationContextProvider({ children }) {
 				updateOriginalFlightList,
 				filterOptions,
 				updateFilterOptions,
+				singleAirlineFilter,
+				toggleSingleAirlineFilter,
+				paramsAreLoaded,
+				setParamsAreLoaded,
 			}}
 		>
 			{children}

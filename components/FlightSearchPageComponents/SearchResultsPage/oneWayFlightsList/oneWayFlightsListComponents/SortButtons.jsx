@@ -24,70 +24,70 @@ export default function SortButtons({ sortAirlines }) {
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.airline == 1
+						sortOptions?.airline == 1
 							? { airline: -1 }
 							: { airline: 1 }
 					)
 				}
 			>
-				AIRLINES{sortOptions.airline == null && <UnfoldMoreIcon />}
-				{sortOptions.airline == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.airline == -1 && <KeyboardArrowDownIcon />}
+				AIRLINES{sortOptions?.airline == null && <UnfoldMoreIcon />}
+				{sortOptions?.airline == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.airline == -1 && <KeyboardArrowDownIcon />}
 			</p>
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.departureTime == 1
+						sortOptions?.departureTime == 1
 							? { departureTime: -1 }
 							: { departureTime: 1 }
 					)
 				}
 			>
 				DEPARTURE
-				{sortOptions.departureTime == null && <UnfoldMoreIcon />}
-				{sortOptions.departureTime == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.departureTime == -1 && <KeyboardArrowDownIcon />}
+				{sortOptions?.departureTime == null && <UnfoldMoreIcon />}
+				{sortOptions?.departureTime == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.departureTime == -1 && <KeyboardArrowDownIcon />}
 			</p>
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.arrivalTime == 1
+						sortOptions?.arrivalTime == 1
 							? { arrivalTime: -1 }
 							: { arrivalTime: 1 }
 					)
 				}
 			>
 				ARRIVAL
-				{sortOptions.arrivalTime == null && <UnfoldMoreIcon />}
-				{sortOptions.arrivalTime == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.arrivalTime == -1 && <KeyboardArrowDownIcon />}
+				{sortOptions?.arrivalTime == null && <UnfoldMoreIcon />}
+				{sortOptions?.arrivalTime == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.arrivalTime == -1 && <KeyboardArrowDownIcon />}
 			</p>
 
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.duration == 1
+						sortOptions?.duration == 1
 							? { duration: -1 }
 							: { duration: 1 }
 					)
 				}
 			>
-				DURATION{sortOptions.duration == null && <UnfoldMoreIcon />}
-				{sortOptions.duration == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.duration == -1 && <KeyboardArrowDownIcon />}
+				DURATION{sortOptions?.duration == null && <UnfoldMoreIcon />}
+				{sortOptions?.duration == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.duration == -1 && <KeyboardArrowDownIcon />}
 			</p>
 			<p
 				onClick={() =>
 					sortAirlines(
-						sortOptions.ticketPrice == 1
+						sortOptions?.ticketPrice == 1
 							? { ticketPrice: -1 }
 							: { ticketPrice: 1 }
 					)
 				}
 			>
-				PRICE{sortOptions.ticketPrice == null && <UnfoldMoreIcon />}
-				{sortOptions.ticketPrice == 1 && <KeyboardArrowUpIcon />}
-				{sortOptions.ticketPrice == -1 && <KeyboardArrowDownIcon />}
+				PRICE{sortOptions?.ticketPrice == null && <UnfoldMoreIcon />}
+				{sortOptions?.ticketPrice == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.ticketPrice == -1 && <KeyboardArrowDownIcon />}
 			</p>
 		</div>
 	);

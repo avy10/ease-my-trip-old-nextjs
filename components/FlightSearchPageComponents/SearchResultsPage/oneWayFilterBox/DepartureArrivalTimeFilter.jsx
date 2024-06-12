@@ -18,12 +18,12 @@ export default function DepartureArrivalTimeFilter({
 		updateState(target, timeLow, timeHigh);
 	}
 	useEffect(() => {
-		console.log(
-			"123 1231 231 231 2 31 3213 132 1     ",
-			filterOptions?.arrivalTime,
-			filterOptions?.departureTime,
-			target
-		);
+		// console.log(
+		// 	"123 1231 231 231 2 31 3213 132 1     ",
+		// 	filterOptions?.arrivalTime,
+		// 	filterOptions?.departureTime,
+		// 	target
+		// );
 		if (filterOptions?.departureTime && target === "departureTime") {
 			const valueHigh = filterOptions?.departureTime?.$lte;
 			const valueLow = filterOptions?.departureTime?.$gte;

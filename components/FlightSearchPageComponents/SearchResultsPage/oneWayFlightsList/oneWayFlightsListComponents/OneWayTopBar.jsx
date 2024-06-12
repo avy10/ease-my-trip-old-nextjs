@@ -14,9 +14,9 @@ export default function OneWayTopBar({
 	const flightSearchModificationCS = useSearchResultsModificationContext();
 	const { sortOptions, updateSortOptions } = flightSearchModificationCS;
 
-	function sortAirlines(sortingValue) {
+	async function sortAirlines(sortingValue) {
 		updateFlightResultsLoading(true);
-		const { src, dest, day, notv, sort, filter } = router.query;
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
 		// // const sortParams = searchParams.get("sort");
 		const a = JSON.parse(decodeURIComponent(sort));
 		const obj = { ...router.query, sort: a };
@@ -40,6 +40,31 @@ export default function OneWayTopBar({
 			day,
 			notv,
 		};
+		let filterOldDecoded;
+		if (filter) {
+			filterOldDecoded = JSON.parse(decodeURIComponent(filter));
+		}
+		if (airlines) {
+			requiredObjects.airlines = airlines;
+		}
+
+		if (filterOldDecoded != null || filterOldDecoded != undefined) {
+			console.log(
+				"ONE WAY TOP BAR",
+				Object.keys(filterOldDecoded),
+				"\n",
+				filterOldDecoded
+			);
+			if (Object.keys(filterOldDecoded).length == 0) {
+				// do nothing
+			} else {
+				requiredObjects.filter = filter;
+				console.log(
+					"REQUIRED OBJECTS IN ONE WAY TOP BAR",
+					requiredObjects
+				);
+			}
+		}
 		// console.log("MODIFIED", requiredObjects);
 		const sortParamsNew = JSON.parse(decodeURIComponent(sort));
 		// console.log("sortParamsNew", sortParamsNew);
@@ -51,7 +76,7 @@ export default function OneWayTopBar({
 			stringifiedSortingValue
 		);
 
-		router.replace(
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -64,6 +89,7 @@ export default function OneWayTopBar({
 		);
 		updateSortOptions(sortingValue);
 		// searchButtonOnclickStateReset();
+		updateFlightResultsLoading(false);
 	}
 	function changeDate(dateValue) {}
 	return (

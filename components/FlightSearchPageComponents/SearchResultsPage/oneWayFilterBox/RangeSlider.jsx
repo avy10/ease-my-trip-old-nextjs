@@ -32,6 +32,13 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		setMinAndMaxValue([minValue, maxValue]);
 	}
 	useEffect(() => {
+		var customParseFormat = require("dayjs/plugin/customParseFormat");
+		dayjs.extend(customParseFormat);
+		const { src, dest, day, notv } = router.query;
+		const flightDay = dayjs(day, "DD-MM-YYYY");
+		const flightDayWeekName = flightDay.format("ddd");
+		console.log("AAAAAAAAA LOOOK AT THE DATEEEEE", flightDayWeekName);
+
 		if (minAndMaxOnceUpdate) return;
 		const valueZero = filterOptions?.ticketPrice?.$gte;
 		const valueOne = filterOptions?.ticketPrice?.$lte;
@@ -40,8 +47,7 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 			valueOne,
 			valueZero
 		);
-		const { src, dest, day, notv } = router.query;
-		const flightDayWeekName = dayjs(day).format("ddd");
+
 		const url =
 			`https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"` +
 			src +
@@ -61,7 +67,7 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 				updateMinAndMaxValue(data?.data?.flights, valueZero, valueOne);
 				setMinAndMaxOnceUpdate(true);
 			});
-	}, []);
+	}, [minAndMaxOnceUpdate]);
 	// useEffect(() => {
 	// 	// if (minAndMaxOnceUpdate) return;
 	// 	console.log("filterOptions inside rangeSlider", filterOptions);
@@ -118,9 +124,9 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		return `${value}°C`;
 	}
 
-	function applyFilter(avy) {
+	async function applyFilter(avy) {
 		// updateFlightResultsLoading(true);
-		const { src, dest, day, notv, sort, filter } = router.query;
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
 		const a = JSON.parse(decodeURIComponent(sort));
 		const obj = { ...router.query, sort: a };
 		const requiredObjects = {
@@ -133,6 +139,9 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		let filterOldDecoded;
 		if (filter) {
 			filterOldDecoded = JSON.parse(decodeURIComponent(filter));
+		}
+		if (airlines) {
+			requiredObjects.airlines = airlines;
 		}
 		console.log("FILTER FROM URL PARAMS", filterOldDecoded);
 		const newFilter = {
@@ -149,8 +158,8 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 		const stringifiedFilterValue = JSON.stringify(newFilter);
 		// filter={ "duration" : {"$lte":3,"$gte":0},
 		const encodedFilters = encodeURIComponent(stringifiedFilterValue);
-		updateFilterOptions(newFilter);
-		router.replace(
+
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -161,6 +170,7 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 			undefined,
 			{ shallow: true }
 		);
+		updateFilterOptions(newFilter);
 	}
 
 	return (

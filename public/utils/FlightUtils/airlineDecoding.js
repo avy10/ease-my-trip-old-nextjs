@@ -18,6 +18,7 @@ export const ICON_SOURCES = {
 		shortID: "6E",
 		icon: indigo,
 		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/indigo.png",
+		newtonID: "65144a1b664a43628887c45e",
 	},
 
 	AI001: {
@@ -25,23 +26,27 @@ export const ICON_SOURCES = {
 		shortID: "AI",
 		icon: airIndia,
 		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/AI.png",
+		newtonID: "65144a1b664a43628887c45d",
 	},
 	UK001: {
 		name: "Vistara",
 		shortID: "UK",
 		icon: vistara,
 		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/UK.png",
+		newtonID: "65144a1b664a43628887c460",
 	},
 	SG001: {
 		name: "SpiceJet",
 		shortID: "SG",
 		icon: spicyJett,
 		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/SG.png",
+		newtonID: "65144a1b664a43628887c45f",
 	},
 	G801: {
 		name: "Go Air",
 		shortID: "G8",
 		icon: goAir,
 		icon2: "https://raw.githubusercontent.com/avy10/assestsForNSReactProjects/main/icons/G8.png",
+		newtonID: "65144a1b664a43628887c461",
 	},
 };

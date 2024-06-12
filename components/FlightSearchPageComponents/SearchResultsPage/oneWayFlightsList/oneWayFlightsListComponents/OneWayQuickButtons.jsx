@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { useFlightSearch } from "@/contexts/FlightSearchContext";
 export default function OneWayQuickButtons({
 	sortAirlines,
 	searchButtonOnclickStateReset,
@@ -14,6 +15,8 @@ export default function OneWayQuickButtons({
 	const router = useRouter();
 	const quickSortStates = useSearchResultsModificationContext();
 	const { sortOptions } = quickSortStates;
+	const flightSearchData = useFlightSearch();
+	const { updateFlightSearchStates } = flightSearchData;
 	const [presentDay, setPresentDay] = useState(null);
 	const [isMinDate, setIsMinDate] = useState(false);
 	const [isMaxDate, setIsMaxDate] = useState(false);
@@ -28,7 +31,7 @@ export default function OneWayQuickButtons({
 						{
 							name: "offset",
 							options: {
-								offset: [0, -20],
+								offset: [0, -10],
 							},
 						},
 					],
@@ -44,8 +47,10 @@ export default function OneWayQuickButtons({
 		},
 	}));
 
-	function handleClick(action) {
+	async function handleClick(action) {
 		let { src, dest, day, notv, sort } = router.query;
+		var customParseFormat = require("dayjs/plugin/customParseFormat");
+		dayjs.extend(customParseFormat);
 		const presentDate = dayjs(day, "DD-MM-YYYY");
 		let newDate;
 		if (action == "prev") {
@@ -55,6 +60,8 @@ export default function OneWayQuickButtons({
 		}
 		day = newDate.format("DD-MM-YYYY");
 		setPresentDay(day);
+		updateFlightSearchStates("day", newDate);
+
 		const requiredObjects = {
 			src,
 			dest,
@@ -62,7 +69,7 @@ export default function OneWayQuickButtons({
 			notv,
 			sort,
 		};
-		router.push(
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -70,7 +77,7 @@ export default function OneWayQuickButtons({
 				},
 			},
 			undefined,
-			{ shallow: false }
+			{ shallow: true }
 		);
 		searchButtonOnclickStateReset();
 	}
@@ -99,7 +106,7 @@ export default function OneWayQuickButtons({
 				<span>Sort By: </span>
 				<button
 					className={
-						sortOptions.ticketPrice == 1
+						sortOptions?.ticketPrice == 1
 							? "quick-sort-btn active-quick-sort-btn flex-center-center"
 							: "quick-sort-btn flex-center-center"
 					}
@@ -110,7 +117,7 @@ export default function OneWayQuickButtons({
 				</button>
 				<button
 					className={
-						sortOptions.duration == 1
+						sortOptions?.duration == 1
 							? "quick-sort-btn active-quick-sort-btn flex-center-center"
 							: "quick-sort-btn flex-center-center"
 					}

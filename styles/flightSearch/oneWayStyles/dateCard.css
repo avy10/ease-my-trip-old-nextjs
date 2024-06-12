@@ -16,6 +16,7 @@
 	text-align: center;
 
 	font-size: 0.85rem;
+	cursor: pointer;
 }
 
 .date-card-main .active {

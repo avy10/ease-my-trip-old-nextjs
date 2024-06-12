@@ -70,6 +70,7 @@ export function FlightSearchProvider({ children }) {
 	}
 
 	useEffect(() => {
+		// console.log("I AM RUNNING");
 		const newDate = dayjs("19-04-2024", "DD-MM-YYYY", "en-in");
 		// console.log("STUDYING DAYJS", newDate);
 		// console.log("STUDYING DAYJS", source.format);

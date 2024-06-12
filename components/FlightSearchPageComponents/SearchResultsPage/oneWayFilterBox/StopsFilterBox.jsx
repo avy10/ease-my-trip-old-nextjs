@@ -9,8 +9,8 @@ export default function StopsFilter() {
 	const [stopsValueSelected, setStopsValueSelected] = useState([10, 11, 12]);
 	const [showWarning, setShowWarning] = useState(false);
 
-	function applyStopsFilter(condition, valueLow, valueHigh) {
-		const { src, dest, day, notv, sort, filter } = router.query;
+	async function applyStopsFilter(condition, valueLow, valueHigh) {
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
 		const requiredObjects = {
 			src,
 			dest,
@@ -21,6 +21,9 @@ export default function StopsFilter() {
 		let filterOldDecoded;
 		if (filter) {
 			filterOldDecoded = JSON.parse(decodeURIComponent(filter));
+		}
+		if (airlines) {
+			requiredObjects.airlines = airlines;
 		}
 		let newFilter;
 		if (condition == "allStops") {
@@ -45,8 +48,8 @@ export default function StopsFilter() {
 		}
 		const stringifiedFilterValue = JSON.stringify(newFilter);
 		const encodedFilters = encodeURIComponent(stringifiedFilterValue);
-		updateFilterOptions(newFilter);
-		router.replace(
+
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -57,6 +60,7 @@ export default function StopsFilter() {
 			undefined,
 			{ shallow: true }
 		);
+		updateFilterOptions(newFilter);
 	}
 	function updateStopsValueSelected(index) {
 		const indexNum = Number(index);

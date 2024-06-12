@@ -2,6 +2,7 @@ import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -11,7 +12,10 @@ import Typography from "@mui/material/Typography";
 export default function DateCard({ searchButtonOnclickStateReset }) {
 	const flightSearchData = useFlightSearch();
 	// const today = useState(dayjs());
-	const { day, returnDay } = flightSearchData;
+	const { day, returnDay, updateFlightSearchStates } = flightSearchData;
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { filterOptions, updateFilterOptions } = flightSearchModificationCS;
+
 	const [datesArray, setDatesArray] = useState([]);
 	const router = useRouter();
 	function createDateArray() {
@@ -24,10 +28,10 @@ export default function DateCard({ searchButtonOnclickStateReset }) {
 			today,
 			"day"
 		);
-		console.log("differenceBetweenTodayandFlightDay", dayjs(day));
+		// console.log("differenceBetweenTodayandFlightDay", dayjs(day));
 		const tempArray = [];
 		if (differenceBetweenTodayandFlightDay <= 3) {
-			console.log("I AM RUNNING");
+			// console.log("I AM RUNNING");
 			tempArray.push(today);
 			for (let i = 1; i <= 6; i++) {
 				tempArray.push(today.add(i, "day"));
@@ -77,22 +81,28 @@ export default function DateCard({ searchButtonOnclickStateReset }) {
 		createDateArray();
 	}, [router.isReady]);
 
-	useEffect(() => {
-		console.log("datesArray", datesArray);
-	}, [datesArray]);
+	// useEffect(() => {
+	// 	console.log("datesArray", datesArray);
+	// }, [datesArray]);
 
-	function handleClick(dateReceived) {
-		const { src, dest, day, notv, sort, filter } = router.query;
-		const newDate = dayjs(dateReceived, "DD-MM-YYYY").format("DD-MM-YYYY");
+	async function handleClick(dateReceived) {
+		const { src, dest, day, notv, sort, filter, airlines } = router.query;
+		var customParseFormat = require("dayjs/plugin/customParseFormat");
+		dayjs.extend(customParseFormat);
+		const newDate = dayjs(dateReceived, "DD-MM-YYYY");
+		console.log("NEW DATE IN DATE CARD", newDate);
+		console.log("filter in date card", filter);
 		const requiredObjects = {
 			src,
 			dest,
-			day: newDate,
+			day: newDate.format("DD-MM-YYYY"),
 			notv,
 			sort,
 			filter,
+			airlines,
 		};
-		router.replace(
+		updateFlightSearchStates("day", newDate);
+		await router.replace(
 			{
 				pathname: router.pathname,
 				query: {
@@ -116,7 +126,7 @@ export default function DateCard({ searchButtonOnclickStateReset }) {
 						{
 							name: "offset",
 							options: {
-								offset: [0, -15],
+								offset: [0, -10],
 							},
 						},
 					],

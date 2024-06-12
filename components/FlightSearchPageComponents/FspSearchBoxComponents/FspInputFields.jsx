@@ -1,5 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import FlightSearchContext from "@/contexts/FlightSearchContext";
+import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
+
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
@@ -20,7 +22,17 @@ export default function FspInputFields({
 }) {
 	const router = useRouter();
 	const searchData = useContext(FlightSearchContext);
-	const { airportNames, numberOfPassengers } = searchData;
+	const {
+		airportNames,
+		numberOfPassengers,
+		updateTwoWay,
+		updateFlightSearchStates,
+	} = searchData;
+
+	const flightSearchModificationCS = useSearchResultsModificationContext();
+	const { updateSortOptions, updateFilterOptions } =
+		flightSearchModificationCS;
+
 	const sourceInputRefFSP = useRef();
 	const destinationInputRefFSP = useRef();
 	const dayInputRefFSP = useRef();
@@ -28,14 +40,17 @@ export default function FspInputFields({
 	const noOfTravellersInputRefFSP = useRef();
 	// because we want the user to first see the flight results he got he query made on homepage
 	// so the refs are only triggered when src is changed
-	// for some reason I cant make click() worj on noOfTravellersInputRefFSP ref
+	// for some reason I cant make click() work on noOfTravellersInputRefFSP ref
 	// if he is not satisfied with the flight results, he can then use the search button provided here
 	const [sourceChanged, setSourceChanged] = useState(false);
 	function updateSourceChanged() {
 		setSourceChanged(true);
 	}
-	function searchButtonClick() {
+
+	async function searchButtonClick() {
 		updateLoading(true);
+		var customParseFormat = require("dayjs/plugin/customParseFormat");
+		dayjs.extend(customParseFormat);
 		const {
 			isTwoWayFSP,
 			dayFSP,
@@ -44,27 +59,63 @@ export default function FspInputFields({
 			destinationFSP,
 			noOfTravellersFSP,
 		} = state;
+		console.log(
+			"THIS IS FAILING",
+			dayFSP,
+			returnDayFSP,
+			sourceFSP,
+			destinationFSP,
+			noOfTravellersFSP
+		);
 		let newQueryParams;
-		if (!isTwoWayFSP) {
-			newQueryParams = {
-				src: sourceFSP.iata_code,
-				dest: destinationFSP.iata_code,
-				day: dayjs(dayFSP).format("DD-MM-YYYY"),
-				notv: noOfTravellersFSP,
-			};
+		const sortingValue = { duration: 1 };
+		const stringifiedSortingValue = JSON.stringify(sortingValue);
+		const encodedSort = encodeURIComponent(stringifiedSortingValue);
+		newQueryParams = {
+			src: sourceFSP.iata_code,
+			dest: destinationFSP.iata_code,
+			day: dayjs(dayFSP).format("DD-MM-YYYY"),
+			notv: noOfTravellersFSP,
+			sort: encodedSort,
+		};
+		if (isTwoWayFSP) {
+			newQueryParams.twoway = true;
+			updateTwoWay(true);
+			dispatch({
+				type: "updateIsTwoWay",
+				payload: true,
+				keyToUpdate: "isTwoWayFSP",
+			});
 		}
-		router.push(
+		if (!isTwoWayFSP) {
+			updateTwoWay(false);
+			dispatch({
+				type: "updateIsTwoWay",
+				payload: false,
+				keyToUpdate: "isTwoWayFSP",
+			});
+		}
+
+		updateFlightSearchStates("source", sourceFSP);
+		updateFlightSearchStates("destination", destinationFSP);
+		updateFlightSearchStates("day", dayFSP);
+		updateFlightSearchStates("numberOfPassengers", noOfTravellersFSP);
+
+		await router.push(
 			{
 				pathname: router.pathname,
 				query: {
-					...router.query,
 					...newQueryParams,
 				},
 			},
 			undefined,
 			{ shallow: true }
 		);
+		updateFilterOptions(undefined);
+		updateSortOptions({ duration: 1 });
+		updateLoading(false);
 		searchButtonOnclickStateReset();
+		// searchMainBoxComponentReset();
 	}
 	useEffect(() => {
 		if (!sourceChanged) return;
