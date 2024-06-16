@@ -33,3 +33,17 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-thumb:hover {
 	background: #bbb;
 }
+/* FaQsComponent */
+.single-faq-container {
+	margin: 15px;
+}
+.faq-heading-text {
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+	/* border: 2px solid blue; */
+}
+.faq-para-text {
+	margin: 2px;
+	/* border: 2px solid blue; */
+}
