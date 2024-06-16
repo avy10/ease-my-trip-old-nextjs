@@ -215,21 +215,31 @@ export function FlightSearchProvider({ children }) {
 	// }, []);
 
 	useEffect(() => {
+		if (sourceInputRef == null) return;
 		// sourceInputRef?.current?.children[1].children[0].focus();
 		sourceInputRef?.current?.children[1]?.children[1]?.children[1]?.click();
 		// console.log("ON LOAD SOURCEREF", sourceInputRef);
 	}, []);
 	useEffect(() => {
+		if (destinationInputRef == null || sourceInputRef == null) return;
 		// sourceInputRef?.current?.children[1].children[0].value !== "" &&
 		// 	destinationInputRef?.current?.children[1].children[0].focus();
 		sourceInputRef?.current?.children[1]?.children[0]?.value !== "" &&
 			destinationInputRef?.current?.children[1]?.children[1]?.children[1]?.click();
 	}, [source]);
 	useEffect(() => {
+		if (destinationInputRef == null || dayInputRef == null) return;
+
 		destinationInputRef?.current?.children[1]?.children[0]?.value !== "" &&
 			dayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [destination]);
 	useEffect(() => {
+		if (
+			returnDayInputRef == null ||
+			dayInputRef == null ||
+			noOfTravellersInputRef == null
+		)
+			return;
 		if (isTwoWay) {
 			dayInputRef?.current?.children[1]?.children[0]?.value !== "" &&
 				returnDayInputRef?.current?.children[1]?.children[1]?.children[0]?.click();

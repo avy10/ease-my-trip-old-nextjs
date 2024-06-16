@@ -79,7 +79,7 @@ export default function FspSearchBox({
 				isTwoWayFSP: isTwoWay,
 			},
 		});
-	}, []);
+	}, [paramsAreLoaded]);
 	return (
 		<>
 			{paramsAreLoaded && (

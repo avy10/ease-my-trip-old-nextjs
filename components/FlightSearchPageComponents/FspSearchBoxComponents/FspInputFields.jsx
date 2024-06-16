@@ -118,22 +118,24 @@ export default function FspInputFields({
 		// searchMainBoxComponentReset();
 	}
 	useEffect(() => {
-		if (!sourceChanged) return;
+		if (!sourceChanged || sourceInputRefFSP == null) return;
 		sourceInputRefFSP?.current?.children[1].children[0].value !== "" &&
 			destinationInputRefFSP?.current?.children[1].children[1].children[1].click();
 	}, [state.sourceFSP]);
 	useEffect(() => {
-		if (!sourceChanged) return;
+		if (!sourceChanged || destinationInputRefFSP == null) return;
 		destinationInputRefFSP?.current?.children[1]?.children[0].value !==
 			"" &&
 			dayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
 	}, [state.destinationFSP]);
 	useEffect(() => {
+		if (returnDayInputRefFSP == null) return;
 		if (state.isTwoWayFSP) {
 			returnDayInputRefFSP?.current?.children[1]?.children[1]?.children[0]?.click();
 		}
 	}, [state.isTwoWayFSP]);
 	useEffect(() => {
+		if (dayInputRefFSP == null) return;
 		// console.log(
 		// 	noOfTravellersInputRefFSP?.current?.children[0]?.children[1]
 		// 		?.children[1]

@@ -2,6 +2,8 @@ nav {
 	width: 100vw;
 	position: fixed;
 	z-index: 3;
+	z-index: 54;
+
 	/* background-color: red; */
 	/* border: 1px solid black; */
 }
@@ -16,11 +18,11 @@ nav {
 	width: 1350px;
 	padding: 10px 10px 0px 10px;
 	/* padding-top: 10px; */
-	/* background-color: white; */
+	background-color: white;
 	/* border-bottom: 1px solid black; */
 	/* border: 4px solid red; */
 	height: 75px;
-	backdrop-filter: blur(300px);
+	/* backdrop-filter: blur(300px); */
 	box-shadow: 0px 0px 300px rgb(227, 228, 237);
 }
 nav a {
@@ -28,7 +30,7 @@ nav a {
 	color: black;
 }
 .mini-nav {
-	height: 60px;
+	height: 65px;
 	/* border-bottom: 1px solid black; */
 	backdrop-filter: blur(80px);
 	box-shadow: 0px 0px 300px rgb(227, 228, 237);
@@ -151,4 +153,334 @@ nav a {
 	background: url(../../public/assests/images/navigation-images/bus-icon-selected.svg);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
+}
+
+/* LOGIN MODAL .CSS */
+.login-modal {
+	/* target the box rendered by the MUI */
+	border-radius: 20px;
+	/* border: 2px solid aqua; */
+}
+
+.login-modal-backdrop .MuiModal-backdrop {
+	backdrop-filter: blur(7px);
+	background-color: rgba(0, 0, 0, 0.473);
+}
+
+.login-and-slideshow-modal {
+	/* border: 2px solid red; */
+	background: url(../../public/assests/images/login/background.png);
+	display: flex;
+	flex-direction: row;
+	height: 280px;
+	z-index: 32;
+	width: 750px;
+	border-radius: 20px;
+	position: relative;
+}
+
+.signup-form-main-box {
+	width: 50%;
+	/* border-radius: 20px 20px 20px 0px; */
+	border-radius: 20px;
+	height: 150%;
+
+	position: absolute;
+	right: 0px;
+	bottom: -70px;
+	background-color: rgb(233, 252, 252);
+	color: black;
+}
+
+.login-form-main-box {
+	width: 50%;
+	/* border-radius: 20px 20px 20px 0px; */
+	border-radius: 20px;
+	height: 120%;
+
+	position: absolute;
+	right: 0px;
+	bottom: -28px;
+	background-color: rgb(233, 252, 252);
+	color: black;
+}
+
+.login-form,
+.signup-form {
+	/* border: 2px solid orange; */
+	margin: auto auto;
+	position: absolute;
+
+	left: 50%;
+	top: 47%;
+	transform: translate(-50%, -50%);
+
+	width: 90%;
+}
+.login-form .close-modal-button,
+.signup-form .close-modal-button {
+	border: none;
+	background: none;
+	color: rgb(234, 40, 40);
+	/* border: 1px solid rgb(174, 171, 171); */
+	/* background-color: rgb(255, 143, 143); */
+	border-radius: 20px;
+	position: absolute;
+	height: 35px;
+	width: 35px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	top: -17px;
+	right: -17px;
+	transform: scale(1.1);
+}
+.login-form .close-modal-button:hover {
+	cursor: pointer;
+}
+.login-form .close-modal-button:active {
+	transform: scale(0.8);
+	transition: transform 0.5s ease-in-out;
+}
+.signup-form .close-modal-button {
+	top: -21px;
+	right: -17px;
+}
+
+.login-form h2 {
+	font-size: 1.5rem;
+}
+
+.single-form-element {
+	display: flex;
+	flex-direction: column;
+	/* row-gap: 5px; */
+	border: none;
+	/* border: 2px solid aqua; */
+	position: relative;
+}
+
+.form-elements {
+	/* margin-top: 20px; */
+	padding: 5px 10px;
+}
+
+.single-form-element label {
+	font-size: 1rem;
+	font-weight: 600;
+	/* color: aqua; */
+}
+.single-form-element input {
+	background-color: rgb(24, 24, 24);
+	background-color: rgb(232, 240, 254);
+	border: 1px solid rgb(63, 61, 61);
+
+	/* border: none; */
+	min-height: 35px;
+	border-radius: 5px;
+	padding: 3px 5px;
+	color: white;
+	color: black;
+}
+
+.single-form-element input:focus {
+	outline: none;
+	transition-duration: 180ms;
+	transition-timing-function: ease-in-out;
+
+	box-shadow: rgb(46, 105, 255) 0px 0px 0px 1px;
+	border: none;
+	/* border: 1px solid rgb(46, 105, 255); */
+}
+
+.login-signup-div {
+	/* float: inline-end; */
+	/* display: flex;
+	justify-content: flex-end;
+	flex-direction: column; */
+	/* align-items: center; */
+	/* border: 3px solid aqua; */
+	/* width: 80%; */
+	margin: auto auto;
+	float: right;
+
+	/* 3 */
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/* border: 2px solid aqua; */
+	margin: 5px 0px 8px 0px;
+}
+/* this button calls the login or signup API */
+.api-call-button {
+	display: block;
+	width: fit-content;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px 20px;
+
+	border: none;
+	outline: none;
+	font-size: 0.85rem;
+	font-weight: 600;
+	background-color: rgb(46, 105, 255);
+	color: white;
+	border-radius: 1000px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.api-call-button:hover {
+	transform: scale(1.05);
+	transition: transform 0.3s ease-in-out;
+}
+
+.api-call-button:active {
+	transform: scale(0.95);
+	transition: transform 0.3s ease-in-out;
+}
+.placeholder-login-form {
+	width: 5px;
+	height: 45px;
+}
+
+.login-signup-error-p-tag {
+	padding: 0px 5px;
+	font-size: 0.85rem;
+	color: red;
+	/* border: 2px solid aqua; */
+}
+
+/*  */
+
+/*  */
+/* ImageSlideShow.css */
+.image-slider-box {
+	position: absolute;
+	/* border: 2px solid black; */
+	/* margin: 0px 10px; */
+	/* max-width: 400px; */
+	/* min-width: 300px; */
+	height: 240px;
+	width: 320px;
+	left: 20px;
+	top: 22px;
+	transition: all 0.3s ease-in-out;
+}
+.image-slider-box .center-this-div {
+	/* display: flex;
+justify-content: center;
+align-items: center; */
+	flex-direction: column;
+	text-align: center;
+	row-gap: 10px;
+}
+.image-slider-box .img-box {
+	height: 160px;
+	width: 160px;
+}
+.image-slider-box .img-box img {
+	height: 100%;
+	width: 100%;
+}
+.text-box h2 {
+	margin: 5px;
+}
+
+/*  */
+
+.tnc-div {
+	width: 80%;
+	position: absolute;
+	left: 12px;
+	bottom: -15px;
+	font-size: 0.75rem;
+	margin: 20px;
+}
+.snackbar-anchor .MuiSnackbar-root {
+	position: absolute;
+	top: -80px;
+}
+.snackbar-anchor .MuiSnackbarContent-message {
+	text-align: center;
+	margin: auto auto;
+}
+
+.eye-visibility-icon {
+	position: absolute;
+	top: 28px;
+	right: 5px;
+}
+
+.login-portal {
+	cursor: pointer;
+	/* position: relative; */
+	/* border: 2px solid red; */
+	/* text-align: center; */
+	height: 55px;
+	width: 190px;
+}
+
+/* profile */
+.user-div {
+	text-align: left;
+	/* border: 2px solid aqua; */
+	/* position: absolute;
+	top: 10px; */
+	/* cz avatar div has flex so position relative wont work and the parent div login-portal has position relative
+	which is why user-div get positioned according to login-portal*/
+	background-color: rgba(255, 255, 255, 0.856);
+	min-height: 150px;
+	min-width: 190px;
+	max-width: 250px;
+	max-height: max-content;
+	z-index: 56;
+	border-radius: 10px;
+	color: hsl(0, 0, 0);
+	font-weight: 500;
+	padding: 5px 0px;
+}
+.user-div-elements-package {
+	z-index: 56;
+	margin: 10px 2px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 5px;
+}
+.text-div:hover {
+	border-bottom: 1px solid #4dabf5;
+}
+
+.text-div {
+	z-index: 56;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: fit-content;
+	width: fit-content;
+	word-wrap: break-word;
+}
+.text-div span {
+	z-index: 56;
+	font-style: italic;
+}
+
+.arrow-div {
+	z-index: 56;
+	height: 25px;
+	width: 25px;
+	/* border: 2px solid red; */
+}
+
+.avatar-overlay {
+	/* border: 2px solid black; */
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+
+	z-index: 53;
+	background-color: transparent;
+	/* background-color: aqua; */
 }

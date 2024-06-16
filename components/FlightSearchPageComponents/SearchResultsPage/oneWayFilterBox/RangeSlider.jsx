@@ -184,7 +184,7 @@ export default function RangeSlider({ updateFlightResultsLoading }) {
 				min={minAndMaxValue[0]}
 				max={minAndMaxValue[1]}
 				step={range}
-				onMouseUp={() => {
+				onClick={() => {
 					// console.log(
 					// 	"Mouse released",
 					// 	router.asPath,
