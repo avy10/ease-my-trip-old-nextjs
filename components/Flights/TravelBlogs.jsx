@@ -4,6 +4,7 @@ import vibrantFestivals from "@/public/assests/images/icons/travelBlogs/vibrant-
 import travelWithKids from "@/public/assests/images/icons/travelBlogs/booking-flights-with-kids-hp.webp";
 import bahrain from "@/public/assests/images/icons/travelBlogs/travelers-to-bahrain-hp.webp";
 import EastIcon from "@mui/icons-material/East";
+// css in flightsHome.css
 const TRAVEL_BLOGS_TITLE = [
 	{
 		blogTitle: "Things you need to know before you book a trip to Thailand",

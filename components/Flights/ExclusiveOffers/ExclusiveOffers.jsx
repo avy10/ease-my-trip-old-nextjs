@@ -54,6 +54,7 @@ export default function ExclusiveOffers() {
 				{/* {!isloading && (
 					<OfferCards offers={offers} isloading={isloading} />
 				)} */}
+
 				<OfferCards offers={offers} isloading={isloading} />
 				{/* {isloading && (
 					<div className="offerSkeletonDiv">

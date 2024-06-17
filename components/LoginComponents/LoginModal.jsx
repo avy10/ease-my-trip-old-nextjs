@@ -42,8 +42,8 @@ export default function LoginModal({ handleClose, showModal }) {
 								<ImageSlideShow key={index} element={ele[1]} />
 							)
 					)}
-					<LoginSignUpForms onModalClose={handleClose} />
 				</div>
+				<LoginSignUpForms onModalClose={handleClose} />
 			</Box>
 		</Modal>
 	);

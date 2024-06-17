@@ -138,10 +138,11 @@
 	font-weight: 600;
 	font-size: 15px;
 	width: 90%;
+	z-index: 2;
 }
 .single-travel-div .read-more {
 	background: #5a55558e;
-	background: #00000031;
+	background: #0000002c;
 
 	backdrop-filter: blur(15px);
 	display: flex;

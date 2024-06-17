@@ -1,3 +1,28 @@
+.offer-cards-div-main-box {
+	/* border: 2px solid blue; */
+	position: relative;
+}
+.offer-cards-div-main-box button {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	cursor: pointer;
+	top: 45%;
+	border: none;
+	color: #2196f3;
+	background: white;
+}
+.offer-cards-div-main-box button:active {
+	transform: scale(0.75);
+	transition: transform 0.2s ease-in-out;
+}
+.left-scroll-button {
+	left: 0px;
+}
+.right-scroll-button {
+	right: 0px;
+}
 .offerCardsDiv {
 	display: flex;
 	flex-direction: row;
@@ -6,6 +31,8 @@
 	max-width: 85vw;
 	flex-wrap: nowrap;
 	position: relative;
+	scroll-behavior: smooth;
+	transition: scroll-behavior 1s cubic-bezier(0, 0, 0.2, 1); /* border: 2px solid red; */
 }
 
 .offerCardsDiv::-webkit-scrollbar {

@@ -180,11 +180,11 @@ nav a {
 }
 
 .signup-form-main-box {
-	width: 50%;
+	width: 375px;
 	/* border-radius: 20px 20px 20px 0px; */
 	border-radius: 20px;
 	height: 150%;
-
+	z-index: 33;
 	position: absolute;
 	right: 0px;
 	bottom: -70px;
@@ -193,11 +193,11 @@ nav a {
 }
 
 .login-form-main-box {
-	width: 50%;
+	width: 375px;
 	/* border-radius: 20px 20px 20px 0px; */
 	border-radius: 20px;
 	height: 120%;
-
+	z-index: 33;
 	position: absolute;
 	right: 0px;
 	bottom: -28px;
@@ -483,4 +483,114 @@ align-items: center; */
 	z-index: 53;
 	background-color: transparent;
 	/* background-color: aqua; */
+}
+
+@media screen and (max-width: 550px) {
+	.login-and-slideshow-modal {
+		/* top: 10px; */
+		scale: 0.01;
+	}
+	.signup-form-main-box,
+	.login-form-main-box {
+		bottom: 120px;
+		right: 190px;
+	}
+	.signup-form-main-box {
+		height: 145%;
+	}
+
+	.page-navigations {
+		width: 350px;
+		margin: auto auto;
+	}
+	.page-navigations-ul {
+		width: 350px;
+		border: 2px solid aqua;
+		display: flex;
+		column-gap: 10px;
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media screen and (min-width: 380px) and (max-width: 550px) {
+	.navigation-div {
+		width: 100%;
+		display: grid;
+		border: 2px solid blue;
+	}
+	.avatar-div .MuiAvatar-root {
+		width: 40px;
+
+		height: 40px;
+	}
+	.sign-in-div {
+		display: inline;
+		/* border: 2px solid saddlebrown; */
+		position: absolute;
+		top: 2px;
+		right: 0px;
+	}
+}
+@media screen and (max-width: 379px) {
+	.navigation-div {
+		border: 2px solid orange;
+		width: 100%;
+		/* display: grid; */
+	}
+}
+
+/* mobile css */
+.mobile-navigations {
+	position: sticky;
+	background-color: white;
+}
+.icon-login-mobile-div {
+	display: flex;
+	justify-content: space-evenly;
+	justify-content: space-between;
+	flex-direction: row;
+	/* column-gap: 50px; */
+	align-items: flex-start;
+	height: 40px;
+	background-color: white;
+}
+.pages-mobile {
+	border: 2px solid orange;
+	width: 90vw;
+	margin: auto auto;
+	background-color: white;
+
+	/* backdrop-filter: blur(300px); */
+	/* box-shadow: 0px 0px 300px rgb(227, 228, 237); */
+}
+.pages-mobile-ul {
+	/* margin: auto auto; */
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.pages-mobile-ul li {
+	/* border: 2px solid black; */
+}
+.mobile-nav-c {
+	border: 2px solid saddlebrown;
+	padding: 0;
+	background-size: 30px 30px;
+	height: fit-content;
+	min-height: 40px;
+	width: 50px;
+	margin: 0px 10px;
+}
+
+.mobile-nav-text {
+	margin-top: 10px;
+	font-size: 12px;
+}
+.mobile-blank-space {
+	height: 27px;
+	width: 10px;
+}
+.mobile-nav-text-active {
+	font-weight: 800;
 }

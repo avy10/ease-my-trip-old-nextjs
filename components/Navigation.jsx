@@ -13,6 +13,8 @@ import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 // import slider1amzdeal from "@/public/assests/images/login/slider1amzdeal.png";
+import emt_logo_smol from "@/public/assests/images/navigation-images/easemytrip-logo-small.svg";
+import emt_logo_full from "@/public/assests/images/navigation-images/emtlogo-full.svg";
 const ROUTES = [
 	{
 		id: "flight-nav",
@@ -36,9 +38,84 @@ const ROUTES = [
 	},
 ];
 export default function Navigation() {
+	const [scrollLengthY, setScrollLengthY] = useState(false);
+	// for rendering the smaller navigation
+	const handleChange = () => {
+		if (window.scrollY >= 40) {
+			setScrollLengthY(true);
+		} else {
+			setScrollLengthY(false);
+		}
+	};
+	useEffect(() => {
+		window.addEventListener("scroll", handleChange);
+		return () => window.removeEventListener("scroll", handleChange);
+	}, []);
+
+	const [width, setWidth] = useState(551);
+	// useEffect(() => {
+	// 	setWidth(window.innerWidth);
+	/* The issue arises because window is not defined on the server side. Next.js performs server-side rendering, so when the component first renders on the server, window is not available. You need to ensure that the code accessing window only runs on the client side.
+
+To fix this, you can use a combination of useEffect and a check for typeof window !== "undefined" */
+	// }, [window.innerWidth]);
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const handleResize = () => {
+				setWidth(window.innerWidth);
+			};
+
+			// Set initial width
+			handleResize();
+
+			// Add event listener for resize
+			window.addEventListener("resize", handleResize);
+
+			// Cleanup event listener on component unmount
+			return () => window.removeEventListener("resize", handleResize);
+		}
+	}, []);
+	return (
+		<nav>
+			{width > 550 ? (
+				<NavigationDesktop scrollLengthY={scrollLengthY} />
+			) : (
+				<NavigationMobile scrollLengthY={scrollLengthY} width={width} />
+			)}
+		</nav>
+	);
+}
+function NavigationDesktop({ scrollLengthY }) {
+	return (
+		<>
+			<div
+				className={
+					scrollLengthY ? "navigation-div mini-nav" : "navigation-div"
+				}
+			>
+				<div className="emt-icon">
+					<Link href="/">
+						<Image
+							src={emt_logo_full.src}
+							height={scrollLengthY ? 40 : 60}
+							width={scrollLengthY ? 170 : 200}
+							alt={"go to homepage"}
+						/>
+					</Link>
+				</div>
+				<PageNavigations scrollLengthY={scrollLengthY} />
+				{/* {!scrollLengthY && (
+				<PageNavigations scrollLengthY={scrollLengthY} />
+			)} */}
+				{/* {scrollLengthY && <MiniPageNavigations />} */}
+				<SignUpModal />
+			</div>
+		</>
+	);
+}
+function SignUpModal() {
 	const authorisationContextData = useContext(AuthorisationContext);
 	const { isLoggedIn, userName } = authorisationContextData;
-	const [scrollLengthY, setScrollLengthY] = useState(false);
 
 	// for modal
 	const [showModal, setShowModal] = useState(false);
@@ -51,84 +128,50 @@ export default function Navigation() {
 	const handleOpen = () => setShowModal(true);
 	const handleClose = () => setShowModal(false);
 
-	// for rendering the smaller navigation
-	const handleChange = () => {
-		if (window.scrollY >= 40) {
-			setScrollLengthY(true);
-		} else {
-			setScrollLengthY(false);
-		}
-	};
-	useEffect(() => {
-		window.addEventListener("scroll", handleChange);
-	}, []);
-
 	const [showProfile, setShowProfile] = useState(false);
 	function toggleShowProfile() {
 		setShowProfile((prev) => !prev);
 	}
-
 	return (
-		<nav>
-			<div
-				className={
-					scrollLengthY ? "navigation-div mini-nav" : "navigation-div"
-				}
-			>
-				<div className="emt-icon">
-					<Link href="/">
-						<Image
-							src="https://www.easemytrip.com/images/brandlogo/emtlogo_new8.svg"
-							height={scrollLengthY ? 40 : 60}
-							width={scrollLengthY ? 170 : 200}
-							alt={"go to homepage"}
-						/>
-					</Link>
+		<>
+			{!isLoggedIn && (
+				<div
+					className="login-portal flex-center-center"
+					onClick={handleOpen}
+				>
+					<div className="sign-in-div showAllOffersBTN  flex-center-center">
+						Sign In<>&nbsp;</>
+						<LoginIcon />
+					</div>
 				</div>
-				<PageNavigations scrollLengthY={scrollLengthY} />
-				{/* {!scrollLengthY && (
-				<PageNavigations scrollLengthY={scrollLengthY} />
-			)} */}
-				{/* {scrollLengthY && <MiniPageNavigations />} */}
-				{!isLoggedIn && (
-					<div
-						className="login-portal flex-center-center"
-						onClick={handleOpen}
-					>
-						<div className="sign-in-div showAllOffersBTN  flex-center-center">
-							Sign In<>&nbsp;</>
-							<LoginIcon />
-						</div>
+			)}
+			{isLoggedIn && (
+				<div className="login-portal" onClick={toggleShowProfile}>
+					<div className="avatar-div flex-center-center">
+						<Avatar
+							sx={{
+								bgcolor: "#4dabf5",
+								width: 50,
+								height: 50,
+							}}
+							children={nameInitials(userName)}
+						/>
 					</div>
-				)}
-				{isLoggedIn && (
-					<div className="login-portal" onClick={toggleShowProfile}>
-						<div className="avatar-div flex-center-center">
-							<Avatar
-								sx={{
-									bgcolor: "#4dabf5",
-									width: 50,
-									height: 50,
+					{showProfile && <Profile userName={userName} />}
+					{showProfile &&
+						createPortal(
+							<div
+								className="avatar-overlay"
+								onClick={(e) => {
+									e.stopPropagation();
+									console.log("OVERLAY IS WORKING");
+									setShowProfile(false);
 								}}
-								children={nameInitials(userName)}
-							/>
-						</div>
-						{showProfile && <Profile userName={userName} />}
-						{showProfile &&
-							createPortal(
-								<div
-									className="avatar-overlay"
-									onClick={(e) => {
-										e.stopPropagation();
-										console.log("OVERLAY IS WORKING");
-										setShowProfile(false);
-									}}
-								></div>,
-								document.body
-							)}
-					</div>
-				)}
-			</div>
+							></div>,
+							document.body
+						)}
+				</div>
+			)}
 			{showModal &&
 				createPortal(
 					<LoginModal
@@ -137,7 +180,7 @@ export default function Navigation() {
 					/>,
 					document.body
 				)}
-		</nav>
+		</>
 	);
 }
 function nameInitials(userName) {
@@ -186,7 +229,28 @@ function PageNavigations({ scrollLengthY }) {
 		</div>
 	);
 }
-
+function NavigationMobile({ scrollLengthY, width }) {
+	return (
+		<>
+			<div className="mobile-navigations">
+				<div className="icon-login-mobile-div">
+					<div className="emt-icon-mobile">
+						<Link href="/">
+							<Image
+								src={emt_logo_smol.src}
+								height={40}
+								width={150}
+								alt={"go to homepage"}
+							/>
+						</Link>
+					</div>
+					<SignUpModal width={width} />
+				</div>
+				<MobilePageNavigation scrollLengthY={scrollLengthY} />
+			</div>
+		</>
+	);
+}
 /* 
 logic to match the pathname has been changed from router.pathname == ele.path
 to current iteration
@@ -271,6 +335,47 @@ function SingleProfileElement({ text, children }) {
 				<>&nbsp;</>
 				{children}
 			</div>
+		</div>
+	);
+}
+
+function MobilePageNavigation({ scrollLengthY }) {
+	const router = useRouter();
+	// mobile-
+	return (
+		<div className="pages-mobile">
+			<ul className="pages-mobile-ul ">
+				{ROUTES.map((ele) => (
+					<li id={ele.id} key={ele.id}>
+						<Link href={ele.path}>
+							<div
+								className={
+									router.pathname.includes(ele.path)
+										? "nav-container mobile-nav-c active"
+										: "nav-container mobile-nav-c"
+								}
+							>
+								<div className="mobile-blank-space"></div>
+								{!scrollLengthY && (
+									<>
+										<div
+											className={
+												router.pathname.includes(
+													ele.path
+												)
+													? "mobile-nav-text mobile-nav-text-active"
+													: "mobile-nav-text"
+											}
+										>
+											{ele.name}
+										</div>
+									</>
+								)}
+							</div>
+						</Link>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }
