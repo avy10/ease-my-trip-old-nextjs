@@ -1,0 +1,127 @@
+@media screen and (min-width: 380px) and (max-width: 550px) {
+	/* navigation styling */
+	.navigation-div {
+		width: 100%;
+		display: grid;
+		/* border: 2px solid blue; */
+	}
+	.avatar-div .MuiAvatar-root {
+		width: 40px;
+
+		height: 40px;
+	}
+	.sign-in-div {
+		/* display: inline; */
+		/* border: 2px solid saddlebrown; */
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		height: 40px;
+		scale: 0.9;
+	}
+	.login-and-slideshow-modal {
+		/* top: 10px; */
+		scale: 0.01;
+	}
+	.login-portal {
+		height: 45px;
+	}
+	.signup-form-main-box,
+	.login-form-main-box {
+		bottom: 120px;
+		right: 190px;
+	}
+	.signup-form-main-box {
+		height: 145%;
+	}
+
+	.page-navigations {
+		width: 350px;
+		margin: auto auto;
+	}
+	.page-navigations-ul {
+		width: 350px;
+		/* border: 2px solid aqua; */
+		display: flex;
+		column-gap: 10px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* flightsHome */
+	.inner-box {
+		width: 400px;
+	}
+	.flight-home-container {
+		top: 105px;
+	}
+	/* searchBox */
+
+	.flight-pre-info {
+		padding: 5px 10px 0px 10px;
+		width: 98%;
+	}
+	.flight-travel-buttons {
+		margin: auto auto;
+	}
+	.pre-info-box-title {
+		font-size: 1rem;
+		display: none;
+	}
+	/* searchBox.css => main box */
+	.main-box {
+		/* border: 2px solid aqua; */
+		margin: auto auto;
+		width: 100%;
+		height: max-content;
+	}
+	/* searchBox.css =>  AirportSearchBoxes.jsx */
+	.selected-airport-name {
+		max-width: 175px;
+		min-width: 175px;
+		min-height: 55px;
+	}
+	/* mainBoxTwo.css */
+	.single-search-component .MuiFormControl-root,
+	.no-of-travellers .MuiFormControl-root {
+		width: 175px;
+		/* border: 2px solid black; */
+	}
+	.single-search-component .MuiInputBase-root {
+		/* width: 50px; */
+		/* border: 2px solid aqua; */
+		padding: 9px 4px;
+		/* margin: 0; */
+	}
+	.single-search-component .MuiAutocomplete-root {
+		width: 175px;
+		/* border: 2px solid black; */
+	}
+
+	/* DatePicker.jsx */
+	.date-container {
+		width: 175px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 175px;
+	}
+	/* swap button */
+	.main-box-swap-button {
+		left: 180px;
+	}
+	/* search button */
+	.search-button-div {
+		left: 200px;
+	}
+	.search-button {
+		width: 175px;
+	}
+}
+
+@media screen and (max-width: 379px) {
+	.navigation-div {
+		/* border: 2px solid orange; */
+		width: 100%;
+		/* display: grid; */
+	}
+}

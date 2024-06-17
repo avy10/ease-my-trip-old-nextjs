@@ -189,95 +189,105 @@ export default function MainBox() {
 				action={action}
 				anchorOrigin={{ vertical: "top", horizontal: "center" }}
 			/>
-			<AirportSearchBoxes
-				airportNames={airportNames ? airportNames : []}
-				target={source}
-				labelText="FROM"
-				children={<FlightTakeoffIcon />}
-				airportErrorTarget={sourceError}
-				updateErrorState={updateErrorState}
-				keyVal="srcErr"
-				refTarget={sourceInputRef}
-			/>
-			<div className="main-box-swap-button">
-				<button onClick={swapSourceDestination}>
-					<SwapHorizontalCircleIcon />
-				</button>
-			</div>
-			<AirportSearchBoxes
-				airportNames={airportNames ? airportNames : []}
-				target={destination}
-				labelText="TO"
-				children={<FlightLandIcon />}
-				airportErrorTarget={destinationError}
-				updateErrorState={updateErrorState}
-				keyVal="destErr"
-				refTarget={destinationInputRef}
-			/>
-			<BasicDatePicker
-				targetVALUE={day}
-				// labelText={"Choose your Departure date"}
-				labelText={"Pick a Departure date"}
-				paraText="DEPARTURE DATE"
-				updateTarget="day"
-				updateState={updateDay}
-				children={<CalendarMonthIcon />}
-				classNameValueForPTag="label-text-user"
-				classNameValueForDivTag="date-container"
-				dateErrorTarget={dayError}
-				updateErrorState={updateErrorState}
-				refTarget={dayInputRef}
-				keyVal="dayErr"
-				finalFlightBooking={finalFlightBooking}
-				// minReturnDay={day}
-			/>
-			{!isTwoWay && (
-				<div className="date-container">
-					<div className="avy-date-container"></div>
-					<p className="round-trip-persuasion">
-						Book a Round Trip to save more
-					</p>
-					<div className="avy-date-container"></div>
+			<div className="airport-search-boxes">
+				<AirportSearchBoxes
+					airportNames={airportNames ? airportNames : []}
+					target={source}
+					labelText="FROM"
+					children={<FlightTakeoffIcon />}
+					airportErrorTarget={sourceError}
+					updateErrorState={updateErrorState}
+					keyVal="srcErr"
+					refTarget={sourceInputRef}
+				/>
+				<div className="main-box-swap-button">
+					<button onClick={swapSourceDestination}>
+						<SwapHorizontalCircleIcon />
+					</button>
 				</div>
-			)}
-			{isTwoWay && (
+				<AirportSearchBoxes
+					airportNames={airportNames ? airportNames : []}
+					target={destination}
+					labelText="TO"
+					children={<FlightLandIcon />}
+					airportErrorTarget={destinationError}
+					updateErrorState={updateErrorState}
+					keyVal="destErr"
+					refTarget={destinationInputRef}
+				/>
+			</div>
+			<div className="airport-search-boxes">
 				<BasicDatePicker
-					targetVALUE={returnDay}
-					// labelText={"Choose your Return date"}
-					labelText={"Pick a Return date"}
-					paraText="RETURN DATE"
-					minReturnDay={day}
-					updateTarget="returnDay"
+					targetVALUE={day}
+					// labelText={"Choose your Departure date"}
+					labelText={"Pick a Departure date"}
+					paraText="DEPARTURE DATE"
+					updateTarget="day"
 					updateState={updateDay}
 					children={<CalendarMonthIcon />}
-					finalFlightBooking={finalFlightBooking}
 					classNameValueForPTag="label-text-user"
 					classNameValueForDivTag="date-container"
-					dateErrorTarget={returnDayError}
+					dateErrorTarget={dayError}
 					updateErrorState={updateErrorState}
-					refTarget={returnDayInputRef}
-					keyVal="returnDayErr"
+					refTarget={dayInputRef}
+					keyVal="dayErr"
+					finalFlightBooking={finalFlightBooking}
+					// minReturnDay={day}
 				/>
-			)}
-			<div className="no-of-travellers">
-				{/* <p>No. of Travellers</p> */}
-				<p>
-					TRAVELLERS
-					{numberOfPassengers == "1" && <PersonIcon />}
-					{numberOfPassengers >= "2" && <PeopleAltIcon />}
-				</p>
-				<SelectTravellersNumber refTarget={noOfTravellersInputRef} />
-				<p></p>
+				{!isTwoWay && (
+					<div className="date-container">
+						<div className="avy-date-container"></div>
+						<p className="round-trip-persuasion">
+							Book a Round Trip to save more
+						</p>
+						{/* <div className="avy-date-container"></div> */}
+					</div>
+				)}
+				{isTwoWay && (
+					<BasicDatePicker
+						targetVALUE={returnDay}
+						// labelText={"Choose your Return date"}
+						labelText={"Pick a Return date"}
+						paraText="RETURN DATE"
+						minReturnDay={day}
+						updateTarget="returnDay"
+						updateState={updateDay}
+						children={<CalendarMonthIcon />}
+						finalFlightBooking={finalFlightBooking}
+						classNameValueForPTag="label-text-user"
+						classNameValueForDivTag="date-container"
+						dateErrorTarget={returnDayError}
+						updateErrorState={updateErrorState}
+						refTarget={returnDayInputRef}
+						keyVal="returnDayErr"
+					/>
+				)}
 			</div>
-			<div className="search-button-div">
-				<p></p>
-				<button
-					onClick={handleSearchNavigation}
-					className="search-button"
-				>
-					Search
-				</button>
-				<p></p>
+			<div className="airport-search-button-div">
+				<div className="no-of-travellers">
+					{/* <p>No. of Travellers</p> */}
+					<p>
+						TRAVELLERS
+						{numberOfPassengers == "1" && <PersonIcon />}
+						{numberOfPassengers >= "2" && <PeopleAltIcon />}
+					</p>
+					<SelectTravellersNumber
+						refTarget={noOfTravellersInputRef}
+					/>
+					<p></p>
+				</div>
+
+				<div className="search-button-div">
+					<div className="avy-date-container"></div>
+					<p></p>
+					<button
+						onClick={handleSearchNavigation}
+						className="search-button"
+					>
+						Search
+					</button>
+					<p></p>
+				</div>
 			</div>
 		</div>
 	);

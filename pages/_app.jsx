@@ -8,7 +8,7 @@ import "@/styles/commons/navigationStyling.css";
 // CSS FOR "pages/flights/index.jsx"
 import "@/styles/flights/flightsHome.css";
 import "@/styles/flights/searchBox.css";
-import "@/styles/flights/mainBoxTwo.css";
+// import "@/styles/flights/mainBoxTwo.css";
 import "@/styles/flights/exclusiveOffers.css";
 import "@/styles/flights/offerCard.css";
 import "@/styles/flights/refund.css";
@@ -28,6 +28,8 @@ import "@/styles/flightSearch/oneWayStyles/singleFlightDetails/singleFlightDetai
 
 import "@/styles/flightSearch/quickButtonsFL.css";
 import "@/styles/flightSearch/searchResultsOfferCards.css";
+
+import "@/styles/responsiveness/mobile-flight-pages.css";
 import Footer from "@/components/Footer";
 
 // vercel speed insights

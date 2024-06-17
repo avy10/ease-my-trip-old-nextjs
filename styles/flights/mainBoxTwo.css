@@ -28,17 +28,3 @@
 }
 
 /* some temporary styles to move to searchBox.css later */
-.single-search-component .MuiAutocomplete-root {
-	width: 190px;
-	/* border: 2px solid black; */
-}
-.single-search-component .MuiFormControl-root {
-	width: 190px;
-	/* border: 2px solid black; */
-}
-.single-search-component .MuiInputBase-root {
-	/* width: 50px; */
-	/* border: 2px solid aqua; */
-	padding: 9px 4px;
-	/* margin: 0; */
-}

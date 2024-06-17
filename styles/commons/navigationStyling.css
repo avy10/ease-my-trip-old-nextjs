@@ -485,60 +485,6 @@ align-items: center; */
 	/* background-color: aqua; */
 }
 
-@media screen and (max-width: 550px) {
-	.login-and-slideshow-modal {
-		/* top: 10px; */
-		scale: 0.01;
-	}
-	.signup-form-main-box,
-	.login-form-main-box {
-		bottom: 120px;
-		right: 190px;
-	}
-	.signup-form-main-box {
-		height: 145%;
-	}
-
-	.page-navigations {
-		width: 350px;
-		margin: auto auto;
-	}
-	.page-navigations-ul {
-		width: 350px;
-		border: 2px solid aqua;
-		display: flex;
-		column-gap: 10px;
-		justify-content: center;
-		align-items: center;
-	}
-}
-@media screen and (min-width: 380px) and (max-width: 550px) {
-	.navigation-div {
-		width: 100%;
-		display: grid;
-		border: 2px solid blue;
-	}
-	.avatar-div .MuiAvatar-root {
-		width: 40px;
-
-		height: 40px;
-	}
-	.sign-in-div {
-		display: inline;
-		/* border: 2px solid saddlebrown; */
-		position: absolute;
-		top: 2px;
-		right: 0px;
-	}
-}
-@media screen and (max-width: 379px) {
-	.navigation-div {
-		border: 2px solid orange;
-		width: 100%;
-		/* display: grid; */
-	}
-}
-
 /* mobile css */
 .mobile-navigations {
 	position: sticky;
@@ -555,16 +501,17 @@ align-items: center; */
 	background-color: white;
 }
 .pages-mobile {
-	border: 2px solid orange;
+	/* border: 2px solid orange; */
 	width: 90vw;
 	margin: auto auto;
-	background-color: white;
+	background: white;
 
 	/* backdrop-filter: blur(300px); */
 	/* box-shadow: 0px 0px 300px rgb(227, 228, 237); */
 }
 .pages-mobile-ul {
 	/* margin: auto auto; */
+	background: white;
 	list-style-type: none;
 	display: flex;
 	flex-direction: row;
@@ -574,7 +521,7 @@ align-items: center; */
 	/* border: 2px solid black; */
 }
 .mobile-nav-c {
-	border: 2px solid saddlebrown;
+	/* border: 2px solid saddlebrown; */
 	padding: 0;
 	background-size: 30px 30px;
 	height: fit-content;

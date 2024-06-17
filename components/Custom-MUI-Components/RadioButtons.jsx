@@ -11,30 +11,34 @@ export default function RadioButtons({
 	const { isTwoWay, updateTwoWay } = searchData;
 	return (
 		<>
-			<Radio
-				checked={!isTwoWay}
-				onChange={() => {
-					updateTwoWay(false);
-				}}
-				value="oneWay"
-				name="radio-buttons"
-				inputProps={{ "aria-label": "one way" }}
-				sx={radioStyle}
-				size={radioSize}
-			/>
-			<label style={labelStyle}>One-Way</label>
-			<Radio
-				checked={isTwoWay}
-				onChange={() => {
-					updateTwoWay(true);
-				}}
-				value="twoWay"
-				name="radio-buttons"
-				inputProps={{ "aria-label": "two way" }}
-				sx={radioStyle}
-				size={radioSize}
-			/>
-			<label style={labelStyle}>Round Trip</label>
+			<div className="single-flight-radio-button">
+				<Radio
+					checked={!isTwoWay}
+					onChange={() => {
+						updateTwoWay(false);
+					}}
+					value="oneWay"
+					name="radio-buttons"
+					inputProps={{ "aria-label": "one way" }}
+					sx={radioStyle}
+					size={radioSize}
+				/>
+				<label style={labelStyle}>One-Way</label>
+			</div>
+			<div className="single-flight-radio-button">
+				<Radio
+					checked={isTwoWay}
+					onChange={() => {
+						updateTwoWay(true);
+					}}
+					value="twoWay"
+					name="radio-buttons"
+					inputProps={{ "aria-label": "two way" }}
+					sx={radioStyle}
+					size={radioSize}
+				/>
+				<label style={labelStyle}>Round Trip</label>
+			</div>
 		</>
 	);
 }
