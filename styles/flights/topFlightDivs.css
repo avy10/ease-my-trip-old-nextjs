@@ -5,33 +5,37 @@
 	background-position: top;
 	background-repeat: no-repeat;
 	padding: 20px 0;
-	border: 2px solid blueviolet;
+	/* border: 2px solid blueviolet; */
 }
 
 .topFlightGRID {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	/* display: grid; */
+	/* grid-template-columns: repeat(3, 1fr); */
+	display: flex;
+	flex-wrap: wrap;
+
 	row-gap: 20px;
 	position: relative;
-	left: 20vw;
-	right: 10vw;
-	width: 60vw;
+	/* left: 20vw; */
+	/* right: 10vw; */
+	/* width: 60vw; */
 }
 
 .topFlightELEMENT {
 	display: flex;
 	align-items: center;
-	/* border: 2px solid black; */
-	width: max-content;
+	border: 2px solid black;
+	/* width: max-content; */
+	width: 380px;
 	cursor: pointer;
 }
 .topFlightTEXT {
-	margin: 5px 15px;
+	/* margin: 5px 15px; */
 	padding: 5px 10px;
-	margin-top: 10px;
+	/* margin-top: 10px; */
 }
 .topFlightTEXT p {
-	font-size: 1.5rem;
+	font-size: 1.35rem;
 	font-weight: 600;
 }
 .topFlightTEXT p:nth-child(2) {

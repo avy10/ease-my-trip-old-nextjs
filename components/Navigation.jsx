@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import AuthorisationContext from "@/contexts/AuthorisationContext";
+import AuthorisationContext, {
+	useAuthorisationContext,
+} from "@/contexts/AuthorisationContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -39,6 +41,8 @@ const ROUTES = [
 ];
 export default function Navigation() {
 	const [scrollLengthY, setScrollLengthY] = useState(false);
+	const widthStore = useAuthorisationContext();
+	const { width } = widthStore;
 	// for rendering the smaller navigation
 	const handleChange = () => {
 		if (window.scrollY >= 40) {
@@ -52,29 +56,6 @@ export default function Navigation() {
 		return () => window.removeEventListener("scroll", handleChange);
 	}, []);
 
-	const [width, setWidth] = useState(551);
-	// useEffect(() => {
-	// 	setWidth(window.innerWidth);
-	/* The issue arises because window is not defined on the server side. Next.js performs server-side rendering, so when the component first renders on the server, window is not available. You need to ensure that the code accessing window only runs on the client side.
-
-To fix this, you can use a combination of useEffect and a check for typeof window !== "undefined" */
-	// }, [window.innerWidth]);
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			const handleResize = () => {
-				setWidth(window.innerWidth);
-			};
-
-			// Set initial width
-			handleResize();
-
-			// Add event listener for resize
-			window.addEventListener("resize", handleResize);
-
-			// Cleanup event listener on component unmount
-			return () => window.removeEventListener("resize", handleResize);
-		}
-	}, []);
 	return (
 		<nav>
 			{width > 550 ? (

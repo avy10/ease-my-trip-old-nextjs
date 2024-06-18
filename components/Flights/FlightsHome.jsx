@@ -15,12 +15,12 @@ export default function FlightHome() {
 		<div className="flight-home-container">
 			<SearchBox />
 			<ExclusiveOffers />
-			{/* <Refund /> */}
-			{/* <TopFlightRoutes /> */}
-			{/* <InfoBoxes /> */}
-			{/* <FamousTouristAttraction /> */}
-			{/* <TravelBlogs /> */}
-			{/* <WhyUs /> */}
+			<Refund />
+			<TopFlightRoutes />
+			<InfoBoxes />
+			<FamousTouristAttraction />
+			<TravelBlogs />
+			<WhyUs />
 			<About />
 			<FlightBookingParagraph />
 			{/* <FlightFooter /> */}

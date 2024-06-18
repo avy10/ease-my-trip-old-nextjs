@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }) {
 				<Navigation />
 				<Component {...pageProps} />
 				<SpeedInsights />
-				{/* <Footer /> */}
+				<Footer />
 			</>
 		</AuthorisationProvider>
 	);

@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 const AuthorisationContext = createContext();
 
 export default AuthorisationContext;
@@ -55,6 +55,30 @@ export function AuthorisationProvider({ children }) {
 			setUserUniqueInternalID(JSON.parse(localStorage.getItem("userID")));
 		}
 	}, []);
+
+	const [width, setWidth] = useState(551);
+	// useEffect(() => {
+	// 	setWidth(window.innerWidth);
+	/* The issue arises because window is not defined on the server side. Next.js performs server-side rendering, so when the component first renders on the server, window is not available. You need to ensure that the code accessing window only runs on the client side.
+
+To fix this, you can use a combination of useEffect and a check for typeof window !== "undefined" */
+	// }, [window.innerWidth]);
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const handleResize = () => {
+				setWidth(window.innerWidth);
+			};
+
+			// Set initial width
+			handleResize();
+
+			// Add event listener for resize
+			window.addEventListener("resize", handleResize);
+
+			// Cleanup event listener on component unmount
+			return () => window.removeEventListener("resize", handleResize);
+		}
+	}, []);
 	return (
 		<AuthorisationContext.Provider
 			value={{
@@ -65,6 +89,7 @@ export function AuthorisationProvider({ children }) {
 				logMeOut,
 				userEmail,
 				userUniqueInternalID,
+				width,
 			}}
 		>
 			{children}

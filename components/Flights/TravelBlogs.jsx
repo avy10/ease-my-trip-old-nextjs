@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { styled } from "@mui/material/styles";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Container from "@mui/material/Container";
 import thailand from "@/public/assests/images/icons/travelBlogs/book-a-trip-to-thailand-hp.webp";
 import vibrantFestivals from "@/public/assests/images/icons/travelBlogs/vibrant-festivals-worldwide-hp.webp";
@@ -40,18 +43,49 @@ export default function TravelBlogs() {
 	);
 }
 function SingleTravelBlog({ element }) {
+	const [openToolTip, setOpenToolTip] = useState(false);
+	const handleClose = () => {
+		setOpenToolTip(false);
+	};
+
+	const handleOpen = () => {
+		setOpenToolTip(true);
+	};
+
+	const BootstrapTooltip = styled(({ className, ...props }) => (
+		<Tooltip
+			open={openToolTip}
+			onClose={handleClose}
+			onOpen={handleOpen}
+			{...props}
+			arrow
+			classes={{ popper: className }}
+		/>
+	))(({ theme }) => ({
+		[`& .${tooltipClasses.arrow}`]: {
+			color: theme.palette.common.black,
+		},
+		[`& .${tooltipClasses.tooltip}`]: {
+			backgroundColor: theme.palette.common.black,
+		},
+	}));
 	return (
-		<div className="single-travel-div">
-			<div className="background-image-div">
-				<img src={element.iconSource} />
+		<BootstrapTooltip title="COMING SOON" arrow>
+			<div
+				className="single-travel-div"
+				onClick={() => setOpenToolTip(true)}
+			>
+				<div className="background-image-div">
+					<img src={element.iconSource} />
+				</div>
+				<div className="blur-overlay"></div>
+				<div className="top-content">Holiday Destinations</div>
+				<div className="blog-title">{element.blogTitle}</div>
+				<div className="read-more">
+					<p>Read More</p>
+					<EastIcon />
+				</div>
 			</div>
-			<div className="blur-overlay"></div>
-			<div className="top-content">Holiday Destinations</div>
-			<div className="blog-title">{element.blogTitle}</div>
-			<div className="read-more">
-				<p>Read More</p>
-				<EastIcon />
-			</div>
-		</div>
+		</BootstrapTooltip>
 	);
 }

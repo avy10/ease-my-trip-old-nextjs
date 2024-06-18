@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuthorisationContext } from "@/contexts/AuthorisationContext";
 
 const listItems = [
 	"OUR OFFERINGS",
@@ -21,22 +22,26 @@ fetch(`https://academics.newtonschool.co/api/v1/bookingportals/city?limit=100`, 
 .then(data => console.log(data))
 */
 export default function Footer() {
+	const authorisationContextData = useAuthorisationContext();
+	const { width } = authorisationContextData;
 	const [rightElementToDisplay, setRightElementToDisplay] = useState(
 		<QuickLinks />
 	);
 	// <OurOfferings />
 	return (
 		<>
-			<div className="footer">
-				<div className="bottomBorder">
-					<div className="darkBottom"></div>
-					<div className="lightBottom"></div>
+			{width > 650 && (
+				<div className="footer">
+					<div className="bottomBorder">
+						<div className="darkBottom"></div>
+						<div className="lightBottom"></div>
+					</div>
+					<div className="footer-content">
+						<LeftFooter />
+						<RightFooter children={rightElementToDisplay} />
+					</div>
 				</div>
-				<div className="footer-content">
-					<LeftFooter />
-					<RightFooter children={rightElementToDisplay} />
-				</div>
-			</div>
+			)}
 		</>
 	);
 }

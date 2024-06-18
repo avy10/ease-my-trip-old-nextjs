@@ -1,13 +1,18 @@
 .why-us {
-	margin: 10px 10vw;
+	/* margin: 10px 10vw; */
 }
 .why-us-Cards {
 	position: relative;
-	left: 10vw;
-	width: 60vw;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	column-gap: 20px;
+	/* left: 10vw; */
+	/* width: 60vw; */
+	/* display: grid;
+	grid-template-columns: repeat(4, 1fr); */
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	column-gap: 17px;
+	row-gap: 17px;
+	flex-direction: row;
 }
 .why-us-DIVCard {
 	border: 2px solid #73bcf8;
@@ -19,4 +24,5 @@
 	align-items: center;
 	row-gap: 10px;
 	text-align: center;
+	width: 275px;
 }

@@ -2,6 +2,7 @@ import important from "@/public/assests/images/icons/important.svg";
 import travelGuide from "@/public/assests/images/icons/trvl-guid.svg";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
+import Container from "@mui/material/Container";
 
 const DATA_TO_RENDER = [
 	{
@@ -20,11 +21,13 @@ const DATA_TO_RENDER = [
 export default function InfoBoxes() {
 	// css in styles\flights\flightsHome.css
 	return (
-		<div className="info-box-main-div ">
-			{DATA_TO_RENDER.map((element, index) => (
-				<SingleInfoBox element={element} key={index} />
-			))}
-		</div>
+		<Container maxWidth="lg">
+			<div className="info-box-main-div ">
+				{DATA_TO_RENDER.map((element, index) => (
+					<SingleInfoBox element={element} key={index} />
+				))}
+			</div>
+		</Container>
 	);
 }
 

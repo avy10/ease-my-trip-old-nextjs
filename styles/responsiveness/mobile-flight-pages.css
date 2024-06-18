@@ -7,7 +7,6 @@
 	}
 	.avatar-div .MuiAvatar-root {
 		width: 40px;
-
 		height: 40px;
 	}
 	.sign-in-div {
@@ -107,7 +106,7 @@
 	}
 	/* swap button */
 	.main-box-swap-button {
-		left: 180px;
+		left: 190px;
 	}
 	/* search button */
 	.search-button-div {
@@ -115,6 +114,104 @@
 	}
 	.search-button {
 		width: 175px;
+	}
+	/* exclusiveOffers */
+	.title-EO {
+		font-size: 1.5rem;
+	}
+	.offerTypeTabDIV {
+		width: 390px;
+		column-gap: 20px;
+		font-size: 0.9rem;
+	}
+
+	/* offerCard */
+	.offer-cards-div-main-box {
+		width: 390px;
+	}
+	.offer-cards-div-main-box button {
+		height: 35px;
+		width: 35px;
+	}
+	.offerCardsDiv {
+		margin: 10px 30px;
+		/* border: 2px solid green; */
+		overflow-y: hidden;
+	}
+	.offerCards {
+		height: 230px;
+		margin: 5px;
+
+		width: 250px;
+	}
+	.offerImageDIV {
+		width: 200px;
+		height: 130px;
+	}
+	.offerTextDIV,
+	.offerPersuasion {
+		font-size: 12px;
+	}
+	/* FamousTouristAttraction */
+	.ta-list-flexbox {
+		column-gap: 50px;
+		row-gap: 20px;
+	}
+	/* Refund */
+	.refundIcon {
+		height: 60px;
+		width: 80px;
+	}
+	/* top flight div */
+	.topFlightGRID {
+		row-gap: 10px;
+	}
+	.topFlightTEXT p {
+		font-size: 1rem;
+	}
+	/* travel blogs */
+	.tb-cards-flexbox {
+		column-gap: 10px;
+		justify-content: start;
+		row-gap: 10px;
+	}
+	.single-travel-div {
+		height: 200px;
+		width: 192px;
+	}
+	.single-travel-div .top-content {
+		top: 0px;
+		left: 17px;
+		padding: 2px 12px;
+	}
+	.single-travel-div .blog-title {
+		top: 80px;
+		width: 155px;
+		font-size: 12px;
+	}
+	.single-travel-div .read-more {
+		column-gap: 45px;
+	}
+	.single-travel-div .read-more p {
+		margin: 0px;
+	}
+	/* Info box */
+	.single-info-box {
+		column-gap: 0px;
+	}
+	.single-info-box .icon-box {
+		margin: 0px 25px;
+	}
+	.single-info-box .text-box,
+	.single-info-box .text-box p {
+		margin-right: 0px;
+	}
+	/* why us */
+	.why-us-DIVCard {
+		width: 190px;
+		font-size: 12px;
+		text-align: left;
+		padding: 10px 20px;
 	}
 }
 

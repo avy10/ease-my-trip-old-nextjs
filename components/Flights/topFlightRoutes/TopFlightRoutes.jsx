@@ -4,6 +4,8 @@ import { topFlightsARR } from "@/public/utils/FlightUtils/topFlights";
 import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
+import Container from "@mui/material/Container";
+
 export default function TopFlightRoutes() {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
@@ -20,39 +22,44 @@ export default function TopFlightRoutes() {
 		);
 	}
 	return (
-		<div className="topFlightsDIV">
-			<div className="titleDiv">
-				<h1 className="title-EO">Top Flights Routes</h1>
-			</div>
-			<div className="topFlightGRID">
-				{topFlightsARR.map((ele, index) => (
-					<div
-						className="topFlightELEMENT"
-						key={index}
-						onClick={() =>
-							handleClickNavigation(ele.from_iata, ele.to_iata)
-						}
-					>
-						<AirplaneTicketIcon
-							className="topFlightICON"
-							fontSize="large"
-						/>
-						<div className="topFlightTEXT">
-							<p>
-								{ele.from}
-								<ConnectingAirportsIcon
-									fontSize="large"
-									className="topFlightAirportsICON"
-								/>
-								{ele.to}
-							</p>
-							<p className="topFlight-IATA">
-								{ele.from_iata}-{ele.to_iata}
-							</p>
+		<Container maxWidth="lg">
+			<div className="topFlightsDIV">
+				<div className="titleDiv">
+					<h1 className="title-EO">Top Flights Routes</h1>
+				</div>
+				<div className="topFlightGRID flex-center-center">
+					{topFlightsARR.map((ele, index) => (
+						<div
+							className="topFlightELEMENT"
+							key={index}
+							onClick={() =>
+								handleClickNavigation(
+									ele.from_iata,
+									ele.to_iata
+								)
+							}
+						>
+							<AirplaneTicketIcon
+								className="topFlightICON"
+								fontSize="large"
+							/>
+							<div className="topFlightTEXT">
+								<p>
+									{ele.from}
+									<ConnectingAirportsIcon
+										fontSize="large"
+										className="topFlightAirportsICON"
+									/>
+									{ele.to}
+								</p>
+								<p className="topFlight-IATA">
+									{ele.from_iata}-{ele.to_iata}
+								</p>
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 }
