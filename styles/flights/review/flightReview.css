@@ -2,7 +2,7 @@
 	background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
 	display: flex;
 	align-items: center;
-	padding: 10px 10px;
+	padding: 6px 20px;
 	border-radius: 10px 10px 0px 0px;
 }
 
@@ -24,6 +24,7 @@
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+	margin-bottom: 10px;
 }
 
 .flight-review-content {
@@ -52,4 +53,71 @@
 	border-radius: 50%;
 	height: 35px;
 	width: 35px;
+}
+
+/* FlightReviewOtherTabs */
+.medical-refund-policy-card {
+	margin: 20px 0px;
+	border: 1px solid #b8d0e5;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+}
+.medical-refund-policy-header {
+	background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
+	border-radius: 10px 10px 0px 0px;
+	column-gap: 10px;
+	padding: 6px 20px;
+}
+
+.medical-refund-policy-content {
+	padding: 10px 15px;
+	font-size: 14px;
+}
+.medical-refund-policy-content span {
+	font-weight: 600;
+}
+.medical-refund-policy-selection-boxes {
+	/* font-size: 14px; */
+}
+
+.good-to-know-card {
+	background-color: white;
+	border: 1px solid #b8d0e5;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+	margin: 20px 0px;
+}
+.good-to-know-card-header {
+	background: #dcfbd0;
+	border-bottom: 1px solid #c4e4b8;
+	padding: 6px 20px;
+	border-radius: 10px 10px 0px 0px;
+	column-gap: 20px;
+}
+
+.good-to-know-card-header p {
+	font-size: 12px;
+	color: #318807;
+}
+.good-to-know-card-content {
+	padding: 10px 25px;
+	font-size: 14px;
+}
+
+.flight-review-insurance-card {
+	background-color: white;
+	border: 1px solid #b8d0e5;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+	margin: 20px 0px;
+}
+.flight-review-insurance-card-header {
+	background: #e0d5ff;
+	padding: 6px 20px;
+	border-radius: 10px 10px 0px 0px;
+	column-gap: 20px;
+}
+.flight-review-insurance-card-header p {
+	font-size: 12px;
 }

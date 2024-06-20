@@ -10,6 +10,7 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { useAuthorisationContext } from "@/contexts/AuthorisationContext";
 import { useEffect, useState } from "react";
 import FlightReview from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReview";
+import FlightReviewOtherTabs from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReviewComponents/FlightReviewOtherTabs";
 // not using bread crumbs cz they use position fixed
 /*  */
 export default function ReviewHome() {
@@ -77,17 +78,17 @@ export default function ReviewHome() {
 				once we move onto tab 2, we are gonna display an edit button on it
 				which will take the user back to the  */}
 					{/* <FlightReview fid={fid} /> */}
-					{tabNumber == 0 && <TestingTabOne />}
+					{tabNumber == 0 && <FlightReviewOtherTabs />}
 					{tabNumber == 1 && <TestingTabTwo />}
 					{tabNumber == 2 && <TestingTabThree />}
 				</Container>
-				<div
+				{/* <div
 					className="smol-container"
 					style={{ border: "2px solid blue" }}
 				>
 					<TestingSticky topVal={"100px"} />
 					<TestingSticky topVal={"250px"} />
-				</div>
+				</div> */}
 			</Container>
 		</>
 	);

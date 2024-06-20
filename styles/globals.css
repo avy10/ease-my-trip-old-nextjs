@@ -47,3 +47,9 @@ body::-webkit-scrollbar-thumb:hover {
 	margin: 2px;
 	/* border: 2px solid blue; */
 }
+
+.flex-start-center {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
