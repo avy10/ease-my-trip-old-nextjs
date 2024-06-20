@@ -11,6 +11,7 @@ export default function SingleFlightDetailsMain({
 	flightIcon,
 	carrierName,
 	fullFlightName,
+	numberOfPassengers,
 }) {
 	const [flightData, setFlightData] = useState([]);
 	const [showTabNumber, setShowTabNumber] = useState(0);
@@ -59,7 +60,11 @@ export default function SingleFlightDetailsMain({
 						/>
 					)}
 					{showTabNumber == 1 && (
-						<FareDetails flightPrice={flightData.ticketPrice} />
+						<FareDetails
+							numberOfPassengers={numberOfPassengers}
+							flightPrice={flightData.ticketPrice}
+							renderTnC={true}
+						/>
 					)}
 					{showTabNumber == 2 && (
 						<BaggageInformation

@@ -1,7 +1,18 @@
 import FlightIcon from "@mui/icons-material/Flight";
 import { ICON_SOURCES } from "@/public/utils/FlightUtils/airlineDecoding";
 import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import { Box, Container, Modal } from "@mui/material";
+import { createPortal } from "react-dom";
+
+import {
+	FlightLogoName,
+	FlightTimings,
+} from "../SearchResultsPage/oneWayFlightsList/oneWayFlightsListComponents/singleFlightDetail/FlightDetailsContainerDynamic";
+import dayjs from "dayjs";
+import BaggageInformation from "../SearchResultsPage/oneWayFlightsList/oneWayFlightsListComponents/singleFlightDetail/BaggageInformation";
+import { Height } from "@mui/icons-material";
+import FareDetails from "../SearchResultsPage/oneWayFlightsList/oneWayFlightsListComponents/singleFlightDetail/FareDetails";
+import FareRules from "../SearchResultsPage/oneWayFlightsList/oneWayFlightsListComponents/singleFlightDetail/FareRules";
 const response = {
 	message: "success",
 	data: {
@@ -28,11 +39,26 @@ export default function FlightReview({ fid }) {
 	const [stops, setStops] = useState("Non-Stop");
 	const [srcCity, setSrcCity] = useState("Delhi");
 	const [destCity, setDestCity] = useState("Mumbai");
+	const [flightDay, setFlightDay] = useState(undefined);
+	const [numberOfPassengers, setNumberOfPassengers] = useState(1);
+	// // MODAL
+	// const [showModal, setShowModal] = useState(false);
+
+	// const handleOpen = () => setShowModal(true);
+	// const handleClose = () => setShowModal(false);
+	//
+	// FLight review content
+
+	//
 	useEffect(() => {
 		const citiesData = JSON.parse(localStorage.getItem("citiesData"));
-		const { sourceCity, destinationCity } = citiesData;
+		const { sourceCity, destinationCity, day, numberOfPassengers } =
+			citiesData;
 		setSrcCity(sourceCity);
 		setDestCity(destinationCity);
+		setFlightDay(day);
+		setNumberOfPassengers(numberOfPassengers);
+
 		console.log("reloading", citiesData);
 		const url = `https://academics.newtonschool.co/api/v1/bookingportals/flight/${fid}`;
 		fetch(url, {
@@ -64,7 +90,35 @@ export default function FlightReview({ fid }) {
 				stops={stops}
 				duration={flightDetails?.duration}
 			/>
-			I AM ALWAYS ON TOP {fid}
+			<FlightReviewContent
+				flightData={flightDetails}
+				srcCity={srcCity}
+				destCity={destCity}
+				flightDay={flightDay}
+				numberOfPassengers={numberOfPassengers}
+				flightPrice={flightDetails?.ticketPrice}
+			/>
+			{/* <BaggageInformation /> */}
+			{/* <div className="extra-flight-details-modals">
+				<div onClick={() => setShowModal(true)}>Fare Rules</div>
+				<div onClick={() => setShowModal(true)}>Baggage</div>
+
+				{showModal &&
+					createPortal(
+						<FlightReviewModal
+							showModal={showModal}
+							handleClose={handleClose}
+							children={
+								<BaggageInformation
+									flightIcon={flightIcon}
+									carrierName={carrierName}
+									fullFlightName={fullFlightName}
+								/>
+							}
+						/>,
+						document.body
+					)}
+			</div> */}
 		</div>
 	);
 }
@@ -82,4 +136,121 @@ function FlightReviewHeader({ srcCity, destCity, stops, duration }) {
 	);
 }
 
-function FlightReviewContent() {}
+function FlightReviewContent({
+	flightData,
+	srcCity,
+	destCity,
+	flightDay,
+	numberOfPassengers,
+	flightPrice,
+}) {
+	const flightFullID = flightData?.flightID;
+	const flightIDSplit = flightFullID?.split("-");
+	const carrierID = flightIDSplit ? flightIDSplit[0] : "loading";
+	const flightNumber = flightIDSplit ? flightIDSplit[2] : "loading";
+	const fullFlightName =
+		ICON_SOURCES[carrierID]?.shortID + "-" + flightNumber;
+	const flightDayFormatted = dayjs(flightDay);
+	const [modalChildren, setModalChildren] = useState(<p></p>);
+	/*  */
+	// MODAL
+	const [showModal, setShowModal] = useState(false);
+
+	const handleOpen = () => setShowModal(true);
+	const handleClose = () => setShowModal(false);
+	const baggageInfo = (
+		<BaggageInformation
+			flightIcon={ICON_SOURCES[carrierID]?.icon?.src}
+			carrierName={ICON_SOURCES[carrierID]?.name ?? "loading"}
+			fullFlightName={fullFlightName}
+		/>
+	);
+	const fareDetailsInfo = (
+		<FareRules
+			numberOfPassengers={numberOfPassengers}
+			flightPrice={flightPrice}
+			renderTnC={true}
+		/>
+	);
+	/*  */
+	return (
+		<div className="flight-review-entire-content-box">
+			<div className="flight-review-content ">
+				{console.log("arrivalTiming", flightDay, srcCity, destCity)}
+				<FlightLogoName
+					renderEconomy={false}
+					flightIcon={ICON_SOURCES[carrierID]?.icon?.src}
+					carrierName={ICON_SOURCES[carrierID]?.name ?? "loading"}
+					fullFlightName={fullFlightName}
+				/>
+				<FlightTimings
+					flightData={flightData}
+					sourceCity={srcCity}
+					sourceIata={flightData?.source}
+					arrivalDay={flightDayFormatted}
+					destinationCity={destCity}
+					destinationIata={flightData?.destination}
+					flightDuration={flightData?.duration}
+				/>
+			</div>
+
+			<div className="extra-flight-details-modals">
+				<div
+					onClick={() => {
+						setShowModal(true);
+						setModalChildren(fareDetailsInfo);
+					}}
+				>
+					Fare Rules
+				</div>
+				<div
+					onClick={() => {
+						setShowModal(true);
+						setModalChildren(baggageInfo);
+					}}
+				>
+					Baggage
+				</div>
+
+				{showModal &&
+					createPortal(
+						<FlightReviewModal
+							showModal={showModal}
+							handleClose={handleClose}
+							children={modalChildren}
+						/>,
+						document.body
+					)}
+			</div>
+		</div>
+	);
+}
+
+function FlightReviewModal({ showModal, handleClose, children }) {
+	const style = {
+		position: "absolute",
+		top: "50%",
+		left: "50%",
+		transform: "translate(-50%, -50%)",
+		height: "fit-content",
+		width: "fit-content",
+		backgroundColor: "white",
+	};
+	return (
+		<Modal open={showModal} onClose={handleClose}>
+			<Box sx={style} className="login-modal">
+				{children}
+				<button
+					className="flex-center-center"
+					onClick={() => handleClose()}
+				>
+					x
+				</button>
+			</Box>
+		</Modal>
+	);
+}
+// maxWidth: "50vw",
+// 		minWidth: "100vw",
+
+// border: "4px solid orange",

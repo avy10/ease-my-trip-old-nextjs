@@ -23,7 +23,15 @@ export default function FlightDetailsContainerDynamic({
 					fullFlightName={fullFlightName}
 					renderEconomy={true}
 				/>
-				<FlightTimings flightData={flightData} />
+				<FlightTimings
+					flightData={flightData}
+					sourceCity={source.city}
+					sourceIata={source.iata_code}
+					arrivalDay={day}
+					destinationCity={destination.city}
+					destinationIata={destination.iata_code}
+					flightDuration={flightData.duration}
+				/>
 			</div>
 			{/* <div className="amenities-single-flight">
 				<h4>Amenities</h4>
@@ -67,13 +75,19 @@ export function FlightLogoName({
 	);
 }
 
-export function FlightTimings({ flightData }) {
-	const flightSearchData = useFlightSearch();
-	const { source, destination, day, numberOfPassengers } = flightSearchData;
+export function FlightTimings({
+	flightData,
+	sourceCity,
+	sourceIata,
+	arrivalDay,
+	destinationCity,
+	destinationIata,
+	flightDuration,
+}) {
 	let isNextDayArrival = flightData.arrivalTime < flightData.departureTime;
 	let nextDayString;
 	if (isNextDayArrival) {
-		let nextDay = day.add(1, "day");
+		let nextDay = arrivalDay.add(1, "day");
 		// let nextDayWeek = nextDay.format("ddd");
 		// let nextDayLonger = nextDay.format("DD MMM YYYY");
 		// nextDayString = nextDayWeek + "-" + nextDayLonger;
@@ -83,21 +97,21 @@ export function FlightTimings({ flightData }) {
 		<div className="flight-timings">
 			<div className="departure-time ">
 				<h3>{flightData.departureTime}</h3>
-				<p>{`${source.city} (${source.iata_code})`}</p>
-				<p>{day.format("ddd - DD MMM YYYY")}</p>
+				<p>{`${sourceCity} (${sourceIata})`}</p>
+				<p>{arrivalDay.format("ddd - DD MMM YYYY")}</p>
 				<p>Terminal 3</p>
 			</div>
 			<div className="duration-flight-xoox">
 				<AccessAlarmsIcon />
-				<p>{flightData.duration + "h 00m"}</p>
+				<p>{0 + "" + flightDuration + "h 00m"}</p>
 			</div>
 			<div className="arrival-time">
 				<h3>{flightData.arrivalTime}</h3>
-				<p>{`${destination.city} (${destination.iata_code})`}</p>
+				<p>{`${destinationCity} (${destinationIata})`}</p>
 				<p>
 					{isNextDayArrival
 						? nextDayString
-						: day.format("ddd - DD MMM YYYY")}
+						: arrivalDay.format("ddd - DD MMM YYYY")}
 				</p>
 				<p>Terminal 3</p>
 			</div>

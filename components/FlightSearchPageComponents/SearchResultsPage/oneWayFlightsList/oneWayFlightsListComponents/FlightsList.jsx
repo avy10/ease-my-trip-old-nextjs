@@ -216,6 +216,7 @@ export default function FlightsList({
 							destination={destination}
 							numberOfPassengers={numberOfPassengers}
 							key={ele._id}
+							flightDay={day}
 						/>
 					);
 				})}
@@ -236,6 +237,7 @@ export default function FlightsList({
 							destination={destination}
 							numberOfPassengers={numberOfPassengers}
 							key={ele._id}
+							flightDay={day}
 						/>
 					);
 				})}
@@ -243,7 +245,13 @@ export default function FlightsList({
 	);
 }
 
-function AllTheCards({ ele, source, destination, numberOfPassengers }) {
+function AllTheCards({
+	ele,
+	source,
+	destination,
+	numberOfPassengers,
+	flightDay,
+}) {
 	const [showFlightDetails, setShowFlightDetails] = useState(false);
 	const a = 10;
 	const flightIDSplit = ele.flightID.split("-");
@@ -320,6 +328,8 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 								sourceCity={source.city}
 								destinationCity={destination.city}
 								f_id={ele._id}
+								flightDay={flightDay}
+								numberOfPassengers={numberOfPassengers}
 							/>
 							<div
 								className={
@@ -358,6 +368,7 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 							flightIcon={ICON_SOURCES[carrierID].icon.src}
 							carrierName={ICON_SOURCES[carrierID].name}
 							fullFlightName={fullFlightName}
+							numberOfPassengers={numberOfPassengers}
 						/>
 					)}
 				</div>
@@ -366,13 +377,21 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 	);
 }
 
-function BookNowButton({ sourceCity, destinationCity, f_id }) {
+function BookNowButton({
+	sourceCity,
+	destinationCity,
+	f_id,
+	flightDay,
+	numberOfPassengers,
+}) {
 	const router = useRouter();
 	function handleClick() {
 		localStorage.removeItem("citiesData");
 		const citiesData = {
 			sourceCity,
 			destinationCity,
+			flightDay,
+			numberOfPassengers,
 		};
 		localStorage.setItem("citiesData", JSON.stringify(citiesData));
 		router.push(`/flights/review?id=${f_id}`);

@@ -74,11 +74,12 @@
 }
 .flight-timings {
 	display: flex;
-	justify-content: space-around;
-	border: 2px solid red;
-	column-gap: 20px;
+	justify-content: space-between;
+	/* border: 2px solid red; */
+	/* column-gap: 20px; */
 	width: 75%;
-	flex-wrap: wrap;
+	min-width: 350px;
+	/* flex-wrap: wrap; */
 }
 
 .all-the-flights-details .flight-logo-container {
@@ -108,8 +109,9 @@
 	margin: 10px;
 }
 
-.airline-fare-details-div .airline-fare-rules {
+.airline-fare-rules {
 	width: 75%;
+	min-width: 375px;
 }
 
 .airline-fare-details-table table {
@@ -199,6 +201,8 @@
 	margin: auto auto;
 	/* border: 2px solid red; */
 	padding: 10px 25px;
+	max-height: 100px;
+	overflow-y: scroll;
 }
 
 .airFare-terms-conditions li {
@@ -207,10 +211,13 @@
 
 /* Baggage Information */
 .airline-baggage-info {
-	border: 2px solid red;
-
+	/* border: 2px solid red; */
+	background: white;
 	margin: auto auto;
-	width: 85%;
+	/* width: 85%; */
+	width: calc(280px + 25vw);
+	max-width: 700px;
+	min-width: 375px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 }

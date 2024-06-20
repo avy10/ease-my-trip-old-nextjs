@@ -2,18 +2,54 @@
 	background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
 	display: flex;
 	align-items: center;
-	padding: 5px 10px;
+	padding: 10px 10px;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .flight-review-header #city-names {
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .flight-review-header #smol-details {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .testing-sticky-div {
 	/* max-width: 75%; */
+}
+.flight-details-review {
+	/* border: 2px solid blueviolet; */
+	border: 1px solid #b8d0e5;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+}
+
+.flight-review-content {
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.flight-review-content .flight-timings {
+	padding: 10px 10px;
+}
+
+.login-modal button {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	border: none;
+	background: white;
+	color: red;
+
+	font-size: 24px;
+	font-weight: 600;
+	border-radius: 50%;
+	height: 35px;
+	width: 35px;
 }

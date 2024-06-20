@@ -1,6 +1,6 @@
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
-export default function FareRules() {
+export default function FareRules({ renderTnC }) {
 	return (
 		<div className="airline-fare-rules">
 			<p>Fare Rules</p>
@@ -17,7 +17,7 @@ export default function FareRules() {
 				airlineFeesLate={3350}
 				emtFees={300}
 			/>
-			<TermsAndCondition />
+			{renderTnC && <TermsAndCondition />}
 		</div>
 	);
 }
@@ -81,7 +81,7 @@ function TableFormation({
 	);
 }
 
-function TermsAndCondition() {
+export function TermsAndCondition() {
 	return (
 		<div className="airFare-terms-conditions">
 			<h3>Terms & Conditions</h3>

@@ -1,3 +1,5 @@
+import { FlightLogoName } from "./FlightDetailsContainerDynamic";
+
 export default function BaggageInformation({
 	flightIcon,
 	carrierName,
@@ -16,15 +18,11 @@ export default function BaggageInformation({
 				<tbody>
 					<tr>
 						<td>
-							<div className="flight-logo-name flex-center-center">
-								<div className="flight-logo-container">
-									<img src={flightIcon} />
-								</div>
-								<div className="flight-text-container">
-									<h3>{carrierName}</h3>
-									<p>{fullFlightName}</p>
-								</div>
-							</div>
+							<FlightLogoName
+								flightIcon={flightIcon}
+								carrierName={carrierName}
+								fullFlightName={fullFlightName}
+							/>
 						</td>
 						<td>15Kgs</td>
 						<td>7Kgs</td>
@@ -51,3 +49,15 @@ export default function BaggageInformation({
 		</div>
 	);
 }
+/* 
+// old td
+<div className="flight-logo-name flex-center-center">
+								<div className="flight-logo-container">
+									<img src={flightIcon} />
+								</div>
+								<div className="flight-text-container">
+									<h3>{carrierName}</h3>
+									<p>{fullFlightName}</p>
+								</div>
+							</div>
+*/

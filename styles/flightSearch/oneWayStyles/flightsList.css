@@ -41,7 +41,7 @@
 	justify-content: space-between;
 }
 
-.single-flight-data-container .flight-logo-name {
+.flight-logo-name {
 	/* border: 2px solid teal; */
 	column-gap: 15px;
 	padding: 7px;
@@ -50,21 +50,21 @@
 .single-flight-data-container .flight-text-container {
 	/* border: 2px solid red; */
 }
-.single-flight-data-container .flight-logo-container {
+.flight-logo-container {
 	height: 32px;
 	width: 32px;
 }
 
-.single-flight-data-container .flight-logo-container img {
+.flight-logo-container img {
 	height: 100%;
 	width: 100%;
 }
 
-.single-flight-data-container .flight-text-container {
+.flight-text-container {
 	font-size: 0.75rem;
 }
 
-.single-flight-data-container .flight-text-container p {
+.flight-text-container p {
 	font-size: 12px;
 	color: #737373;
 }
@@ -160,9 +160,9 @@
 	font-size: 1.15rem;
 }
 
-.single-flight-data-container .departure-time p,
-.single-flight-data-container .arrival-time p,
-.single-flight-data-container .flight-duration-stops {
+.flight-timings .departure-time p,
+.flight-timings .arrival-time p,
+.flight-timings .flight-duration-stops {
 	font-size: 0.85rem;
 }
 

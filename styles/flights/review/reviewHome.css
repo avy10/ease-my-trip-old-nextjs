@@ -1,5 +1,5 @@
 .flight-booking-preview-bread-crumbs {
-	border: 2px solid blue;
+	/* border: 2px solid blue; */
 	position: relative;
 	height: 45px;
 	width: 500px;
@@ -36,4 +36,14 @@
 
 .flight-review-main-container {
 	display: flex;
+}
+.extra-flight-details-modals {
+	display: flex;
+	justify-content: flex-start;
+	column-gap: 20px;
+	cursor: pointer;
+	color: #2196f3;
+	font-weight: 500;
+	margin: 5px;
+	padding: 10px;
 }

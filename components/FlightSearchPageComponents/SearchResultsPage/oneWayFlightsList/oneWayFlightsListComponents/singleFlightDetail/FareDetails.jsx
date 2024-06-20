@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import FareRules from "./FareRules";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
-export default function FareDetails({ flightPrice }) {
-	const flightSearchData = useFlightSearch();
-	const { numberOfPassengers } = flightSearchData;
+export default function FareDetails({
+	flightPrice,
+	numberOfPassengers,
+	renderTnC,
+}) {
+	// const flightSearchData = useFlightSearch();
+	// const { numberOfPassengers } = flightSearchData;
 
 	const [flightPriceBeforeTax, setFlightPriceBeforeTax] =
 		useState(flightPrice);
@@ -63,7 +67,7 @@ export default function FareDetails({ flightPrice }) {
 					</tr>
 				</table>
 			</div>
-			<FareRules />
+			<FareRules renderTnC={renderTnC} />
 		</div>
 	);
 }
