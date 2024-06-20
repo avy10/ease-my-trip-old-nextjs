@@ -1,0 +1,37 @@
+.flight-booking-preview-bread-crumbs {
+	border: 2px solid blue;
+	position: relative;
+	height: 45px;
+	width: 500px;
+	top: 75px;
+	left: -25px;
+	/* margin: auto auto; */
+	color: black;
+	display: flex;
+}
+@media screen and (min-width: 380px) and (max-width: 550px) {
+	.flight-booking-preview-bread-crumbs {
+		top: 105px;
+		left: 0px;
+		width: 350px;
+	}
+	.flight-review-main-container {
+		top: 105px;
+	}
+}
+.flight-booking-preview-bread-crumbs div {
+	color: black;
+}
+.flight-booking-preview-bread-crumbs div:hover {
+	cursor: pointer;
+	text-decoration: underline solid black;
+}
+
+.flight-booking-preview-bread-crumbs .bread-crumbs-go-back-btn {
+	height: 30px;
+	width: 35px;
+	border: none;
+	background: transparent;
+}
+.testing {
+}

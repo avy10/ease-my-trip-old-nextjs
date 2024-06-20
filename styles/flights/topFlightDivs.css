@@ -24,7 +24,7 @@
 .topFlightELEMENT {
 	display: flex;
 	align-items: center;
-	border: 2px solid black;
+	/* border: 2px solid black; */
 	/* width: max-content; */
 	width: 380px;
 	cursor: pointer;

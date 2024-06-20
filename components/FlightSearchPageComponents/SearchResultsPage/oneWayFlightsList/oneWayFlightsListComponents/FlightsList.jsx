@@ -316,9 +316,11 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 							</p>
 						</div>
 						<div className="flight-book-seats">
-							<button className="flight-booking-button">
-								Book Now
-							</button>
+							<BookNowButton
+								sourceCity={source.city}
+								destinationCity={destination.city}
+								f_id={ele._id}
+							/>
 							<div
 								className={
 									ele.availableSeats >= 10
@@ -361,5 +363,23 @@ function AllTheCards({ ele, source, destination, numberOfPassengers }) {
 				</div>
 			}
 		</>
+	);
+}
+
+function BookNowButton({ sourceCity, destinationCity, f_id }) {
+	const router = useRouter();
+	function handleClick() {
+		localStorage.removeItem("citiesData");
+		const citiesData = {
+			sourceCity,
+			destinationCity,
+		};
+		localStorage.setItem("citiesData", JSON.stringify(citiesData));
+		router.push(`/flights/review?id=${f_id}`);
+	}
+	return (
+		<button className="flight-booking-button" onClick={handleClick}>
+			Book Now
+		</button>
 	);
 }

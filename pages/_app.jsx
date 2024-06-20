@@ -15,6 +15,7 @@ import "@/styles/flights/refund.css";
 import "@/styles/flights/topFlightDivs.css";
 import "@/styles/flights/whyus.css";
 import "@/styles/flights/aboutHome.css";
+import "@/styles/flights/review/reviewHome.css";
 import "@/styles/flights/flightFooter.css";
 import "@/styles/flightSearch/flightSearchHome.css";
 import "@/styles/flightSearch/fspInputFields.css";
@@ -30,6 +31,8 @@ import "@/styles/flightSearch/quickButtonsFL.css";
 import "@/styles/flightSearch/searchResultsOfferCards.css";
 
 import "@/styles/responsiveness/mobile-flight-pages.css";
+import "@/styles/flights/review/flightReview.css";
+import "@/styles/flights/review/reviewHome.css";
 import Footer from "@/components/Footer";
 
 // vercel speed insights

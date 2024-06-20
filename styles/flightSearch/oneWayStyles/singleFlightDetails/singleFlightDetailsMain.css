@@ -62,17 +62,27 @@
 
 /* FlightDetailsContainerDynamic */
 .all-the-flights-details {
-	/* border: 2px solid black; */
+	border: 2px solid black;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	/* width: 90%; */
 	margin: auto auto;
 	padding: 15px;
 	margin-top: 10px;
+	flex-wrap: wrap;
+}
+.flight-timings {
+	display: flex;
+	justify-content: space-around;
+	border: 2px solid red;
+	column-gap: 20px;
+	width: 75%;
+	flex-wrap: wrap;
 }
 
 .all-the-flights-details .flight-logo-container {
+	/* border: 2px solid red; */
 	height: 45px;
 	width: 45px;
 }
@@ -197,6 +207,8 @@
 
 /* Baggage Information */
 .airline-baggage-info {
+	border: 2px solid red;
+
 	margin: auto auto;
 	width: 85%;
 	margin-top: 20px;
