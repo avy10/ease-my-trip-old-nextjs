@@ -33,5 +33,7 @@
 	border: none;
 	background: transparent;
 }
-.testing {
+
+.flight-review-main-container {
+	display: flex;
 }

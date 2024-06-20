@@ -13,3 +13,7 @@
 .flight-review-header #smol-details {
 	font-size: 12px;
 }
+
+.testing-sticky-div {
+	/* max-width: 75%; */
+}
