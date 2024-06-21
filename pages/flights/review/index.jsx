@@ -89,6 +89,15 @@ export default function ReviewHome() {
 					<TestingSticky topVal={"100px"} />
 					<TestingSticky topVal={"250px"} />
 				</div> */}
+				{/* code for the bottom of mobile pages <div
+					style={{
+						position: "fixed",
+						border: "2px solid green",
+						bottom: "10px",
+					}}
+				>
+					ABHISHEK
+				</div> */}
 			</Container>
 		</>
 	);
