@@ -124,14 +124,17 @@
 	/* border: 2px solid black; */
 	/* padding: 10px; */
 	/* margin: auto auto; */
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	margin-bottom: 15px;
 	text-align: left;
 
 	font-size: 0.7rem;
 	/* float: left; */
 }
-
+.flight-details table,
+.flight-details .airline-fare-rules {
+	margin-top: 20px;
+}
 .airline-fare-details-table tr {
 	border: 2px solid #cecece;
 }
@@ -139,6 +142,7 @@
 .airline-fare-details-table td {
 	padding: 5px 5px;
 	font-weight: 600;
+	min-width: 70px;
 }
 
 /* FareRules.css */
@@ -149,7 +153,7 @@
 	position: relative;
 	width: 80%;
 	margin: auto auto;
-	margin-top: 20px;
+	/* margin-top: 20px; */
 	margin-bottom: 10px;
 }
 .airline-fare-rules-table span {

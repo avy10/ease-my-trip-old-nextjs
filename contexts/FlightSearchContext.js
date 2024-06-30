@@ -183,10 +183,10 @@ export function FlightSearchProvider({ children }) {
 			setDayError(true);
 			setReturnDayError(true);
 		}
-		if (day >= today && day < today.add(8, "months")) {
+		if (day >= today && day <= today.add(8, "months")) {
 			setDayError(false);
 		}
-		if (returnDay >= today && returnDay < today.add(8, "months")) {
+		if (returnDay >= today && returnDay <= today.add(8, "months")) {
 			setReturnDayError(false);
 		}
 		if (

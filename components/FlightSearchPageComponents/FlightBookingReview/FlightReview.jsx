@@ -34,7 +34,7 @@ const response = {
 	},
 };
 
-export default function FlightReview({ fid }) {
+export default function FlightReview({ fid, updateFlightFare }) {
 	const [flightDetails, setFlightDetails] = useState([]);
 	const [stops, setStops] = useState("Non-Stop");
 	const [srcCity, setSrcCity] = useState("Delhi");
@@ -79,6 +79,7 @@ export default function FlightReview({ fid }) {
 				if (result?.data?.stops == 2) {
 					setStops("Two-Stops");
 				}
+				updateFlightFare(result?.data?.ticketPrice);
 				// localStorage.removeItem("citiesData");
 			});
 	}, [fid]);
@@ -226,7 +227,7 @@ function FlightReviewContent({
 	);
 }
 
-function FlightReviewModal({ showModal, handleClose, children }) {
+export function FlightReviewModal({ showModal, handleClose, children }) {
 	const style = {
 		position: "absolute",
 		top: "50%",
@@ -240,10 +241,7 @@ function FlightReviewModal({ showModal, handleClose, children }) {
 		<Modal open={showModal} onClose={handleClose}>
 			<Box sx={style} className="login-modal">
 				{children}
-				<button
-					className="flex-center-center"
-					onClick={() => handleClose()}
-				>
+				<button className="flex-center-center" onClick={handleClose}>
 					x
 				</button>
 			</Box>

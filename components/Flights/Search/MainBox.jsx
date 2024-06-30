@@ -168,7 +168,7 @@ export default function MainBox() {
 		}
 	}, [source, destination]);
 	const action = (
-		<React.Fragment>
+		<>
 			<IconButton
 				size="small"
 				aria-label="close"
@@ -177,7 +177,7 @@ export default function MainBox() {
 			>
 				<CloseIcon fontSize="small" />
 			</IconButton>
-		</React.Fragment>
+		</>
 	);
 	return (
 		<div className="main-box">

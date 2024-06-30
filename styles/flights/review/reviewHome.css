@@ -47,3 +47,57 @@
 	margin: 5px;
 	padding: 10px;
 }
+
+.price-card {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+	border: 1px solid #b8d0e5;
+}
+.price-card table {
+	margin-top: 0px;
+	border-radius: 0px 0px 10px 10px;
+}
+.price-card table tr {
+	border: none;
+	border-bottom: 1px solid rgb(209, 202, 202);
+}
+.price-card table td {
+	font-weight: normal;
+	padding: 7px;
+}
+.price-card table tr:last-child {
+	border-radius: 0px 0px 10px 10px;
+}
+
+.price-card-header {
+	background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
+	padding: 10px;
+	border-radius: 10px 10px 0px 0px;
+}
+.price-card-content {
+}
+#strikethrough {
+	text-decoration: line-through;
+	color: gray;
+}
+#grand-total {
+	color: red;
+	font-size: 18px;
+}
+
+.mobile-price-modal {
+	position: fixed;
+	/* border: 2px solid green; */
+	height: 75px;
+	width: 100%;
+	bottom: 0px;
+	left: 0px;
+	background: #3f3d3d;
+	color: white;
+}
+
+.price-modal-trigger-div {
+	margin-left: 30px;
+	padding: 10px;
+}

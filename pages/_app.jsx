@@ -33,19 +33,23 @@ import "@/styles/flightSearch/searchResultsOfferCards.css";
 import "@/styles/responsiveness/mobile-flight-pages.css";
 import "@/styles/flights/review/flightReview.css";
 import "@/styles/flights/review/reviewHome.css";
+import "@/styles/hotels/hotelSearch/hotelSearchHome.css";
 import Footer from "@/components/Footer";
 
 // vercel speed insights
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { HotelSearchProvider } from "@/contexts/HotelSearchContext";
 export default function App({ Component, pageProps }) {
 	return (
 		<AuthorisationProvider>
-			<>
-				<Navigation />
-				<Component {...pageProps} />
-				<SpeedInsights />
-				<Footer />
-			</>
+			<HotelSearchProvider>
+				<>
+					<Navigation />
+					<Component {...pageProps} />
+					<SpeedInsights />
+					<Footer />
+				</>
+			</HotelSearchProvider>
 		</AuthorisationProvider>
 	);
 }

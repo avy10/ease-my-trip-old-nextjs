@@ -80,23 +80,33 @@ const WHY_US_CONTENT = [
 	},
 ];
 //
-export default function FlightReviewOtherTabs() {
+export default function FlightReviewOtherTabs({
+	medicalRefunSelected,
+	updateMedicalRefunSelected,
+	travelInsuranceSelected,
+	updateTravelInsuranceSelected,
+}) {
 	return (
 		<div className="flight-review-other-tabs">
-			<MedicalRefundPolicyCard />
+			<MedicalRefundPolicyCard
+				medicalRefunSelected={medicalRefunSelected}
+				updateMedicalRefunSelected={updateMedicalRefunSelected}
+			/>
 			<GoodToKnowCard />
 			<FlightReviewImportantInformationCard />
-			<FlightReviewInsuranceCard />
+			<FlightReviewInsuranceCard
+				travelInsuranceSelected={travelInsuranceSelected}
+				updateTravelInsuranceSelected={updateTravelInsuranceSelected}
+			/>
 			<FlightReviewWhyUs />
 		</div>
 	);
 }
 
-function MedicalRefundPolicyCard() {
-	const [radioValue, setRadioValue] = useState("yes");
-	useEffect(() => {
-		console.log("FRRPC", radioValue);
-	}, [radioValue]);
+function MedicalRefundPolicyCard({
+	medicalRefunSelected,
+	updateMedicalRefunSelected,
+}) {
 	return (
 		<div className="medical-refund-policy-card">
 			<div className="medical-refund-policy-header flex-start-center">
@@ -124,17 +134,17 @@ function MedicalRefundPolicyCard() {
 						<input
 							type="radio"
 							id="yes-radio"
-							value="yes"
+							value="true"
 							name="isPolicy"
-							checked={radioValue === "yes"}
+							checked={medicalRefunSelected}
 							onChange={(event) => {
 								event.stopPropagation();
-								setRadioValue(event.target.value);
+								updateMedicalRefunSelected(true);
 							}}
 						/>
 						<label htmlFor="yes-radio">
 							Yes, I want to add Medical Refund Policy (FREE) to
-							this flight.{radioValue}
+							this flight.
 						</label>
 					</div>
 					<div
@@ -144,12 +154,12 @@ function MedicalRefundPolicyCard() {
 						<input
 							type="radio"
 							id="no-radio"
-							value="no"
+							value="false"
 							name="isPolicy"
-							checked={radioValue === "no"}
+							checked={!medicalRefunSelected}
 							onChange={(event) => {
 								event.stopPropagation();
-								setRadioValue("no");
+								updateMedicalRefunSelected(false);
 							}}
 						/>
 						<label htmlFor="no-radio">
@@ -220,7 +230,10 @@ function FlightReviewImportantInformationCard() {
 	);
 }
 
-function FlightReviewInsuranceCard() {
+function FlightReviewInsuranceCard({
+	travelInsuranceSelected,
+	updateTravelInsuranceSelected,
+}) {
 	const [elementCount, setElementCount] = useState(3);
 	const [radioValue, setRadioValue] = useState("yes");
 	useEffect(() => {
@@ -278,12 +291,13 @@ function FlightReviewInsuranceCard() {
 						<input
 							type="radio"
 							id="yesInsurance"
-							value="yes"
+							value="true"
 							name="isInsurance"
-							checked={radioValue === "yes"}
-							onChange={(event) =>
-								setRadioValue(event.target.value)
-							}
+							checked={travelInsuranceSelected}
+							onChange={(event) => {
+								event.stopPropagation();
+								updateTravelInsuranceSelected(true);
+							}}
 						/>
 						<label htmlFor="yesInsurance">
 							Yes, I want to secure my trip with insurance.
@@ -302,19 +316,19 @@ function FlightReviewInsuranceCard() {
 						<input
 							type="radio"
 							id="noInsurance"
-							value="no"
+							value="false"
 							name="isInsurance"
-							checked={radioValue === "no"}
-							// checked={true}
-							onChange={(event) =>
-								setRadioValue(event.target.value)
-							}
+							checked={!travelInsuranceSelected}
+							onChange={(event) => {
+								event.stopPropagation();
+								updateTravelInsuranceSelected(false);
+							}}
 						/>
 						<label htmlFor="noInsurance">
 							No, I don't wish to insure my trip.
 						</label>
 					</div>
-					{radioValue == "no" && (
+					{!travelInsuranceSelected && (
 						<div
 							className="flight-review-insurance-pursuasion"
 							id="more-pursuasion"

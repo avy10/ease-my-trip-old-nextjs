@@ -9,24 +9,62 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { useAuthorisationContext } from "@/contexts/AuthorisationContext";
 import { useEffect, useState } from "react";
-import FlightReview from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReview";
+import FlightReview, {
+	FlightReviewModal,
+} from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReview";
 import FlightReviewOtherTabs from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReviewComponents/FlightReviewOtherTabs";
+import FlightReviewPricingDesktop, {
+	PriceCard,
+} from "@/components/FlightSearchPageComponents/FlightBookingReview/FlightReviewPricing";
+import { CurrencyRupeeOutlined } from "@mui/icons-material";
 // not using bread crumbs cz they use position fixed
 /*  */
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { createPortal } from "react-dom";
 export default function ReviewHome() {
 	const router = useRouter();
-
+	const authorisationStateData = useAuthorisationContext();
+	const { width } = authorisationStateData;
 	const [fid, setFid] = useState(undefined);
+	const [flightFare, setFlightFare] = useState(undefined);
+	const [noOfPassengers, setNoOfPassengers] = useState(1);
+
+	function updateNoOfPassengers(val) {
+		setNoOfPassengers(val);
+	}
+	function updateFlightFare(val) {
+		setFlightFare(val);
+	}
+	const [medicalRefunSelected, setMedicalRefundTable] = useState(true);
+	function updateMedicalRefunSelected(value) {
+		setMedicalRefundTable(value);
+	}
+	const [travelInsuranceSelected, setTravelInsuranceSelected] =
+		useState(false);
+	function updateTravelInsuranceSelected(value) {
+		setTravelInsuranceSelected(value);
+	}
+
 	useEffect(() => {
 		const { id } = router.query;
 		setFid(id);
 		console.log("index is reloading", id);
+		const citiesData = JSON.parse(localStorage.getItem("citiesData"));
+		const { numberOfPassengers } = citiesData;
+		updateNoOfPassengers(numberOfPassengers);
 		// alert(f_id);
 	}, [router.isReady]);
 	const [tabNumber, setTabNumber] = useState(0);
 	function updateTabNumber(newTabNumber) {
 		setTabNumber(newTabNumber);
 	}
+
+	const [showPriceCardModal, setShowPriceCardModal] = useState(false);
+	const handleOpen = () => setShowPriceCardModal(true);
+	const handleClose = () => {
+		console.log("I AM CLOSING PRICE MODAL");
+		setShowPriceCardModal(false);
+	};
 	return (
 		<>
 			<PageBreadcrumbs
@@ -41,7 +79,6 @@ export default function ReviewHome() {
 					top: "75px",
 				}}
 			>
-				{/* border: "2px solid black", */}
 				<div
 					style={{
 						position: "fixed",
@@ -62,7 +99,12 @@ export default function ReviewHome() {
 				>
 					{/* border: "2px solid green", */}
 					{/* <BaggageInformation /> */}
-					{fid && <FlightReview fid={fid} />}
+					{fid && (
+						<FlightReview
+							updateFlightFare={updateFlightFare}
+							fid={fid}
+						/>
+					)}
 					{/* 
 				there is 3 sections / tabs
 				Note : Flight Review, Pricing tab, Coupons tabs will remain fixed on desktop
@@ -78,26 +120,73 @@ export default function ReviewHome() {
 				once we move onto tab 2, we are gonna display an edit button on it
 				which will take the user back to the  */}
 					{/* <FlightReview fid={fid} /> */}
-					{tabNumber == 0 && <FlightReviewOtherTabs />}
+					{tabNumber == 0 && (
+						<FlightReviewOtherTabs
+							medicalRefunSelected={medicalRefunSelected}
+							updateMedicalRefunSelected={
+								updateMedicalRefunSelected
+							}
+							travelInsuranceSelected={travelInsuranceSelected}
+							updateTravelInsuranceSelected={
+								updateTravelInsuranceSelected
+							}
+						/>
+					)}
 					{tabNumber == 1 && <TestingTabTwo />}
 					{tabNumber == 2 && <TestingTabThree />}
 				</Container>
-				{/* <div
-					className="smol-container"
-					style={{ border: "2px solid blue" }}
-				>
-					<TestingSticky topVal={"100px"} />
-					<TestingSticky topVal={"250px"} />
-				</div> */}
-				{/* code for the bottom of mobile pages <div
-					style={{
-						position: "fixed",
-						border: "2px solid green",
-						bottom: "10px",
-					}}
-				>
-					ABHISHEK
-				</div> */}
+				{width > 675 && flightFare !== undefined && (
+					<FlightReviewPricingDesktop
+						flightFare={flightFare}
+						medicalRefunSelected={medicalRefunSelected}
+						travelInsuranceSelected={travelInsuranceSelected}
+					/>
+				)}
+				{
+					/* code for the bottom of mobile pages */
+					width <= 674 && (
+						<div
+							className="mobile-price-modal"
+							onClick={handleOpen}
+						>
+							<div className="price-modal-trigger-div">
+								<p style={{ fontSize: "12px" }}>Grand Total</p>
+								<p
+									style={{
+										fontSize: "20px",
+										fontWeight: 600,
+									}}
+								>
+									<CurrencyRupeeOutlined
+										sx={{ fontSize: "16px" }}
+									/>
+									{travelInsuranceSelected
+										? flightFare + 199
+										: flightFare}
+									<InfoOutlinedIcon />
+								</p>
+							</div>
+						</div>
+					)
+				}
+				{showPriceCardModal &&
+					createPortal(
+						<FlightReviewModal
+							showModal={showPriceCardModal}
+							handleClose={handleClose}
+							children={
+								<PriceCard
+									flightFare={flightFare}
+									noOfPassengers={noOfPassengers}
+									medicalRefunSelected={medicalRefunSelected}
+									travelInsuranceSelected={
+										travelInsuranceSelected
+									}
+								/>
+							}
+						/>,
+						document.body
+					)}
 			</Container>
 		</>
 	);
@@ -138,30 +227,9 @@ function PageBreadcrumbs({ tabNumber, updateTabNumber }) {
 	);
 }
 
-function TestingTabOne() {
-	return <div>I am tab one, will render when Abcd is clicked</div>;
-}
 function TestingTabTwo() {
 	return <div>I am tab two, will render when efgh is clicked</div>;
 }
 function TestingTabThree() {
 	return <div>I am tab three, will render when ijkl is clicked</div>;
 }
-
-function TestingSticky({ topVal }) {
-	return (
-		<div
-			style={{
-				position: "sticky",
-				top: topVal,
-				width: "320px",
-				height: "150px",
-				border: "2px solid red",
-			}}
-		>
-			I AM ABHISHEK
-		</div>
-	);
-}
-// top: "120px",
-// 				right: "351px",

@@ -11,28 +11,14 @@ export default function FareDetails({
 	// const flightSearchData = useFlightSearch();
 	// const { numberOfPassengers } = flightSearchData;
 
-	const [flightPriceBeforeTax, setFlightPriceBeforeTax] =
-		useState(flightPrice);
-	const [taxes, setTaxes] = useState(5);
-	const [taxAmount, setTaxAmount] = useState(flightPrice);
-	const [totalBaseFare, setTotalBaseFare] = useState();
-	const [totalTax, seTotalTax] = useState();
-	useEffect(() => {
-		let calculation = ((flightPriceBeforeTax * 5) / 100).toFixed(2);
-
-		setTaxAmount(calculation);
-		const copyFlightPriceBeforeTax = (flightPrice - calculation).toFixed(2);
-
-		setFlightPriceBeforeTax((flightPrice - calculation).toFixed(2));
-		setTotalBaseFare(
-			(numberOfPassengers * copyFlightPriceBeforeTax).toFixed(2)
-		);
-		seTotalTax((numberOfPassengers * calculation).toFixed(2));
-	}, []);
 	// className = "airline-fare-details-table";
 	return (
 		<div className="airline-fare-details-div">
-			<div className="airline-fare-details-table">
+			<FareSummaryTable
+				flightPrice={flightPrice}
+				numberOfPassengers={numberOfPassengers}
+			/>
+			{/* <div className="airline-fare-details-table">
 				<table>
 					<tr>
 						<td>
@@ -66,8 +52,75 @@ export default function FareDetails({
 						</td>
 					</tr>
 				</table>
-			</div>
+			</div> */}
 			<FareRules renderTnC={renderTnC} />
+		</div>
+	);
+}
+
+export function FareSummaryTable({
+	flightPrice,
+	numberOfPassengers,
+	children,
+}) {
+	const [flightPriceBeforeTax, setFlightPriceBeforeTax] =
+		useState(flightPrice);
+	const [taxes, setTaxes] = useState(5);
+	const [taxAmount, setTaxAmount] = useState(flightPrice);
+	const [totalBaseFare, setTotalBaseFare] = useState();
+	const [totalTax, seTotalTax] = useState();
+	useEffect(() => {
+		let calculation = ((flightPriceBeforeTax * 5) / 100).toFixed(2);
+
+		setTaxAmount(calculation);
+		const copyFlightPriceBeforeTax = (flightPrice - calculation).toFixed(2);
+
+		setFlightPriceBeforeTax((flightPrice - calculation).toFixed(2));
+		setTotalBaseFare(
+			(numberOfPassengers * copyFlightPriceBeforeTax).toFixed(2)
+		);
+		seTotalTax((numberOfPassengers * calculation).toFixed(2));
+	}, []);
+	return (
+		<div className="airline-fare-details-table">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							{numberOfPassengers} x{" "}
+							{numberOfPassengers == 1 ? "Adult" : "Adults"}
+						</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalBaseFare}
+						</td>
+					</tr>
+					<tr>
+						<td>Total (Base Fare)</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalBaseFare}
+						</td>
+					</tr>
+					<tr>
+						<td>Total taxes</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{totalTax}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Total <p>(Fee and Surcharge)</p>
+						</td>
+						<td>
+							<CurrencyRupeeIcon className="rupee-symbol-in-fare-tables" />
+							{numberOfPassengers * flightPrice}
+						</td>
+					</tr>
+					{children}
+				</tbody>
+			</table>
 		</div>
 	);
 }

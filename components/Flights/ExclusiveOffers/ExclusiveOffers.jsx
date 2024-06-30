@@ -3,9 +3,9 @@ import OfferTypeTab from "./OfferTypeTab";
 import { domain, offersURL } from "@/public/utils/apiFetch";
 import OfferCards from "./OfferCards";
 import Skeleton from "@mui/material/Skeleton";
-export default function ExclusiveOffers() {
+export default function ExclusiveOffers({ activeTabCustomisation = 0 }) {
 	const [offers, setOffers] = useState([]);
-	const [activeTab, setActiveTab] = useState(0);
+	const [activeTab, setActiveTab] = useState(activeTabCustomisation);
 	const [isloading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -14,7 +14,6 @@ export default function ExclusiveOffers() {
 		const types = ["ALL", "FLIGHTS", "HOTELS", "RAILS"];
 		const myHeaders = new Headers();
 		myHeaders.append("projectID", "qwqzgpiy336h");
-		myHeaders.append("random", "adsaav");
 
 		const requestOptions = {
 			method: "GET",
