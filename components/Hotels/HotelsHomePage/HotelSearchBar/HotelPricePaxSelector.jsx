@@ -144,7 +144,6 @@ function PricePerNightMainDiv() {
 		</span>,
 	];
 	const [showPriceMenu, setShowPriceMenu] = useState(false);
-	console.log(priceValue);
 	return (
 		<div id="hotel-price-range-menu">
 			<p onClick={() => setShowPriceMenu((prev) => !prev)}>

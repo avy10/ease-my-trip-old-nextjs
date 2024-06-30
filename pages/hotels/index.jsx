@@ -1,6 +1,7 @@
 import ExclusiveOffers from "@/components/Flights/ExclusiveOffers/ExclusiveOffers";
 import Refund from "@/components/Flights/Refund/Refund";
 import HotelSearchBar from "@/components/Hotels/HotelsHomePage/HotelSearchBar";
+import PopularHotelDestinations from "@/components/Hotels/HotelsHomePage/HotelSearchBar/PopularHotelDestinations";
 import PriceGuarantee from "@/components/Hotels/HotelsHomePage/PriceGuarantee";
 import { Container } from "@mui/material";
 
@@ -17,6 +18,7 @@ export default function Hotels() {
 			<PriceGuarantee />
 			<ExclusiveOffers activeTabCustomisation={2} />
 			<Refund />
+			<PopularHotelDestinations />
 		</Container>
 	);
 }

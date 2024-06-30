@@ -181,3 +181,43 @@
 	top: -8px;
 	left: 0;
 }
+
+/* POPULAR HOTEL DESTINATIONS */
+.pop-hotels-div {
+	flex-wrap: wrap;
+	column-gap: 20px;
+	row-gap: 10px;
+	/* background-color: aqua; */
+}
+
+.pop-hotels-div .single-destination {
+	background: #f6fbff;
+	border: 1px solid #2196f3;
+	border-radius: 10px;
+	padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	column-gap: 10px;
+	width: 360px;
+}
+
+.pop-hotels-div .icon-div {
+	height: 65px;
+	width: 85px;
+	border-radius: 5px 0px 0px 5px;
+}
+.pop-hotels-div .icon-div img {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px 0px 0px 10px;
+}
+.pop-hotels-div .text-bold {
+	font-weight: 600;
+}
+.pop-hotels-div .text-smol {
+	font-size: 12px;
+}
+.pop-hotels-div .text-smol span:hover {
+	cursor: pointer;
+	border-bottom: 1px solid #2f80ed;
+}
