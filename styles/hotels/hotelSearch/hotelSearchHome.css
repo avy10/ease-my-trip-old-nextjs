@@ -279,8 +279,8 @@
 /* PROMO BANNER */
 .hotel-promo-banner {
 	margin: 20px 0px;
-	height: 280px;
-	overflow: scroll;
+	height: 290px;
+	overflow-y: scroll;
 	background: url(../../../public/assests/images/icons/hotelsIcons/bannner-hotel-newht.webp);
 	background-size: cover;
 	width: 100%;
@@ -305,7 +305,25 @@
 .hotel-promo-banner .text-bold {
 	font-weight: 600;
 	font-size: 24px;
+	margin: 10px;
 }
 .hotel-promo-banner .text-smol {
+	margin: 10px;
 	font-size: 14px;
+}
+
+.hotel-promo-banner::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+	border-radius: 25px;
+}
+.hotel-promo-banner::-webkit-scrollbar-track {
+	background: aqua;
+}
+.hotel-promo-banner::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 30px;
+}
+.hotel-promo-banner::-webkit-scrollbar-thumb:hover {
+	background: #bbb;
 }
