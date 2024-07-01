@@ -9,6 +9,8 @@ import InfoBoxes from "./InfoBoxes";
 import FamousTouristAttraction from "./FamousTouristAttractions";
 import TravelBlogs from "./TravelBlogs";
 import FlightBookingParagraph from "./FlightBookingParagraph";
+import { whyusARRFLIGHTS } from "@/public/utils/FlightUtils/whyusText";
+import { whyusARRHOTELS } from "@/public/utils/FlightUtils/whyusText";
 
 export default function FlightHome() {
 	return (
@@ -20,7 +22,7 @@ export default function FlightHome() {
 			<InfoBoxes />
 			<FamousTouristAttraction />
 			<TravelBlogs />
-			<WhyUs />
+			<WhyUs content={whyusARRFLIGHTS} />
 			<About />
 			<FlightBookingParagraph />
 			{/* <FlightFooter /> */}

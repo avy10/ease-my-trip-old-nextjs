@@ -1,7 +1,6 @@
-import { whyusARR } from "@/public/utils/FlightUtils/whyusText";
 import Container from "@mui/material/Container";
 
-export default function WhyUs() {
+export default function WhyUs({ content }) {
 	return (
 		<Container maxWidth="lg">
 			<div className="why-us">
@@ -9,7 +8,7 @@ export default function WhyUs() {
 					<h1 className="title-EO">Why book with us?</h1>
 				</div>
 				<div className="why-us-Cards">
-					{whyusARR.map((ele) => (
+					{content.map((ele) => (
 						<div key={ele.id} className="why-us-DIVCard">
 							<div className="why-us-IconDiv">
 								<img src={ele.icon} alt={ele.alt} />

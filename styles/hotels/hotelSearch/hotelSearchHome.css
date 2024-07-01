@@ -14,7 +14,8 @@
 .hotel-search-box-div {
 	/* border: 2px solid black; */
 	background-color: white;
-	padding: 20px;
+	padding: 25px;
+	/* set padding to 5px for mobile */
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -184,6 +185,9 @@
 
 /* POPULAR HOTEL DESTINATIONS */
 .pop-hotels-div {
+	margin-bottom: 70px;
+
+	position: relative;
 	flex-wrap: wrap;
 	column-gap: 20px;
 	row-gap: 10px;
@@ -220,4 +224,88 @@
 .pop-hotels-div .text-smol span:hover {
 	cursor: pointer;
 	border-bottom: 1px solid #2f80ed;
+}
+.pop-hotels-div .pop-div-show-btn {
+	position: absolute;
+	bottom: -50px;
+	/* left: 50%; */
+}
+
+/* TOP HOTELS CHAIN */
+.top-hotels-chain-div #text-content {
+	margin-bottom: 20px;
+}
+.top-hotels-chain-div .image-flex-div {
+	margin: auto auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	column-gap: 15px;
+	row-gap: 15px;
+}
+
+.top-hotels-chain-div .img-div {
+	border-radius: 10px;
+	height: 110px;
+	width: 110px;
+	box-shadow: 0 0 7px rgb(0 0 0 / 20%);
+}
+.top-hotels-chain-div img {
+	border-radius: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+/* WHY US  */
+.why-us-hotels-div .why-us-Cards {
+	justify-content: center;
+	column-gap: 15px;
+}
+
+.why-us-hotels-div .why-us-DIVCard {
+	padding: 10px5px;
+	height: 230px;
+	width: 250px;
+}
+.why-us-hotels-div .why-us-Title {
+	font-size: 16px;
+}
+.why-us-hotels-div .why-us-Text {
+	font-size: 14px;
+}
+
+/* PROMO BANNER */
+.hotel-promo-banner {
+	margin: 20px 0px;
+	height: 280px;
+	overflow: scroll;
+	background: url(../../../public/assests/images/icons/hotelsIcons/bannner-hotel-newht.webp);
+	background-size: cover;
+	width: 100%;
+	position: relative;
+	padding: 20px;
+	border-radius: 10px;
+}
+.hotel-promo-banner .background-image {
+	width: 100%;
+	position: absolute;
+	z-index: 10;
+}
+.hotel-promo-banner .background-image img {
+	width: 100%;
+}
+.hotel-promo-banner .text-content {
+	/* position: absolute; */
+	z-index: 11;
+	color: white;
+	width: 70%;
+}
+.hotel-promo-banner .text-bold {
+	font-weight: 600;
+	font-size: 24px;
+}
+.hotel-promo-banner .text-smol {
+	font-size: 14px;
 }

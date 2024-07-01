@@ -41,6 +41,8 @@ body::-webkit-scrollbar-thumb:hover {
 	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
+	/* font-weight: 500; */
+	font-size: 20px;
 	/* border: 2px solid blue; */
 }
 .faq-para-text {

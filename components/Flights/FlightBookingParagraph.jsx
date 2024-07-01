@@ -127,7 +127,7 @@ export default function FlightBookingParagraph() {
 				</p>
 			</Container>
 			<Container maxWidth="lg">
-				<h2>FAQ</h2>
+				<h2>FAQs</h2>
 				{FAQ_DATA_ARRAY.map((element, index) => (
 					<FaQsComponent element={element} key={index} />
 				))}
