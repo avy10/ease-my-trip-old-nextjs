@@ -16,10 +16,17 @@ export default function HotelSearch() {
 	dayjs.extend(customParseFormat);
 	const hotelSearchContextData = useHotelSearchContext();
 	const { width } = useAuthorisationContext();
-	const { cityList, updateHotelCity, updateHotelsDate } =
-		hotelSearchContextData;
+	const {
+		cityList,
+		hotelCity,
+		updateHotelCity,
+		updateHotelsDate,
+		checkInDate,
+		checkOutDate,
+	} = hotelSearchContextData;
 	const [hotelNotFound, setHotelNotFound] = useState("loading");
 	const [allDataLoaded, setAllDataLoaded] = useState(false);
+	const [sortOptions, setSortOptions] = useState({ avgCostPerNight: "1" });
 
 	const [fetchingHotels, setFetchingHotels] = useState(false);
 	function updateFetchingHotels(newValue) {
@@ -29,7 +36,7 @@ export default function HotelSearch() {
 	const router = useRouter();
 	function onLoad() {
 		// http://localhost:3000/hotels/search?city=Mumbai&cid=02-07-2024&cod=02-07-2024
-		const { city, cid, cod } = router.query;
+		const { city, cid, cod, sort } = router.query;
 		// console.log("CITYLIST", cityList);
 		if (cityList.length == 0) {
 			return;
@@ -58,6 +65,9 @@ export default function HotelSearch() {
 		updateHotelsDate("checkIn", newCID);
 		const newCOD = dayjs(cod, "DD-MM-YYYY", "en-in");
 		updateHotelsDate("checkOut", newCOD);
+		const sortOptionsDecoded = JSON.parse(decodeURIComponent(sort));
+		setSortOptions(sortOptionsDecoded);
+
 		setAllDataLoaded(true);
 	}
 	useEffect(() => {
@@ -66,7 +76,10 @@ export default function HotelSearch() {
 	}, [cityList]);
 
 	return (
-		<div style={{ backgroundColor: "aqua" }}>
+		<div
+			style={{ backgroundColor: "aqua" }}
+			key={hotelCity?.cityState + checkInDate + checkOutDate}
+		>
 			{allDataLoaded && <HotelSearchBar key={allDataLoaded} />}
 
 			<Container
@@ -94,6 +107,7 @@ export default function HotelSearch() {
 				<HotelList
 					hotelNotFound={hotelNotFound}
 					updateFetchingHotels={updateFetchingHotels}
+					sortOptions={sortOptions}
 				/>
 			</Container>
 		</div>

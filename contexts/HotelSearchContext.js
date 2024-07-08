@@ -59,58 +59,58 @@ export function HotelSearchProvider({ children }) {
 	const today = dayjs();
 	const maxBookingDate = today.add(9, "months");
 
-	// ERROR IN DAY
-	const [checkINDayError, setCheckINDayError] = useState(false);
-	const [checkOUTDayError, setCheckOUTDayError] = useState(false);
-	useEffect(() => {
-		if (
-			checkInDate.$y < today.$y &&
-			checkInDate.$M < today.$M &&
-			checkInDate.$D < today.$D &&
-			checkInDate <= maxBookingDate
-		) {
-			setCheckINDayError(true);
-		}
-		if (
-			checkOutDate.$y < today.$y &&
-			checkOutDate.$M < today.$M &&
-			checkOutDate.$D < today.$D &&
-			checkOutDate <= maxBookingDate
-		) {
-			setCheckOUTDayError(true);
-		}
-		if (
-			checkInDate.$y >= today.$y &&
-			checkInDate.$M >= today.$M &&
-			checkInDate.$D >= today.$D &&
-			checkInDate <= maxBookingDate
-		) {
-			setCheckINDayError(false);
-		}
-		if (
-			checkOutDate.$y >= today.$y &&
-			checkOutDate.$M >= today.$M &&
-			checkOutDate.$D >= today.$D &&
-			checkOutDate <= maxBookingDate
-		) {
-			setCheckOUTDayError(false);
-		}
-		checkOutDate < checkInDate && setCheckOUTDayError(true);
-		if (checkInDate > maxBookingDate || checkOutDate > maxBookingDate) {
-			setCheckINDayError(true);
-			setCheckOUTDayError(true);
-			return;
-		}
-		if (checkInDate >= today && checkInDate <= maxBookingDate) {
-			setCheckINDayError(false);
-		}
-		if (checkOutDate >= today && checkOutDate <= maxBookingDate) {
-			setCheckOUTDayError(false);
-		}
-		if (checkOutDate >= checkInDate) {
-			setCheckOUTDayError(false);
-		}
-	}, [checkInDate, checkOutDate]);
+	// // ERROR IN DAY
+	// const [checkINDayError, setCheckINDayError] = useState(false);
+	// const [checkOUTDayError, setCheckOUTDayError] = useState(false);
+	// useEffect(() => {
+	// 	if (
+	// 		checkInDate.$y < today.$y &&
+	// 		checkInDate.$M < today.$M &&
+	// 		checkInDate.$D < today.$D &&
+	// 		checkInDate <= maxBookingDate
+	// 	) {
+	// 		setCheckINDayError(true);
+	// 	}
+	// 	if (
+	// 		checkOutDate.$y < today.$y &&
+	// 		checkOutDate.$M < today.$M &&
+	// 		checkOutDate.$D < today.$D &&
+	// 		checkOutDate <= maxBookingDate
+	// 	) {
+	// 		setCheckOUTDayError(true);
+	// 	}
+	// 	if (
+	// 		checkInDate.$y >= today.$y &&
+	// 		checkInDate.$M >= today.$M &&
+	// 		checkInDate.$D >= today.$D &&
+	// 		checkInDate <= maxBookingDate
+	// 	) {
+	// 		setCheckINDayError(false);
+	// 	}
+	// 	if (
+	// 		checkOutDate.$y >= today.$y &&
+	// 		checkOutDate.$M >= today.$M &&
+	// 		checkOutDate.$D >= today.$D &&
+	// 		checkOutDate <= maxBookingDate
+	// 	) {
+	// 		setCheckOUTDayError(false);
+	// 	}
+	// 	checkOutDate < checkInDate && setCheckOUTDayError(true);
+	// 	if (checkInDate > maxBookingDate || checkOutDate > maxBookingDate) {
+	// 		setCheckINDayError(true);
+	// 		setCheckOUTDayError(true);
+	// 		return;
+	// 	}
+	// 	if (checkInDate >= today && checkInDate <= maxBookingDate) {
+	// 		setCheckINDayError(false);
+	// 	}
+	// 	if (checkOutDate >= today && checkOutDate <= maxBookingDate) {
+	// 		setCheckOUTDayError(false);
+	// 	}
+	// 	if (checkOutDate >= checkInDate) {
+	// 		setCheckOUTDayError(false);
+	// 	}
+	// }, [checkInDate, checkOutDate]);
 
 	// R00MS AND GUESTS
 	const [numRooms, setNumRooms] = useState(1);
@@ -209,8 +209,8 @@ export function HotelSearchProvider({ children }) {
 				numAdults,
 				numChildren,
 				updateRoomsGuests,
-				checkINDayError,
-				checkOUTDayError,
+				// checkINDayError,
+				// checkOUTDayError,
 				priceValue,
 				updatePriceValue,
 			}}

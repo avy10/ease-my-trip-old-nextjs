@@ -15,7 +15,11 @@ import ListAmenities, {
 	HotelDiscount,
 	PeopleViewing,
 } from "./ListAmenities";
-export default function HotelList({ hotelNotFound, updateFetchingHotels }) {
+export default function HotelList({
+	hotelNotFound,
+	updateFetchingHotels,
+	sortOptions,
+}) {
 	const [hotelsList, setHotelsList] = useState([]);
 	const [errorInFetch, setErrorInFetch] = useState(false);
 	const { width } = useAuthorisationContext();
@@ -25,7 +29,10 @@ export default function HotelList({ hotelNotFound, updateFetchingHotels }) {
 	async function fetchHotels(selectedHotelCity) {
 		// https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"delhi"}&limit=10
 		try {
-			const URL = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"${selectedHotelCity}"}&limit=${pageLimiter}`;
+			const URL = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"${selectedHotelCity}"}&sort=${JSON.stringify(
+				sortOptions
+			)}&limit=${pageLimiter}`;
+			console.log(URL, "/n", sortOptions);
 			const myHeaders = new Headers();
 			myHeaders.append("projectID", "$4xh7gn2pv8it");
 
@@ -50,7 +57,9 @@ export default function HotelList({ hotelNotFound, updateFetchingHotels }) {
 		}
 	}
 	useEffect(() => {
-		const selectedCity = hotelCity.cityState.split(",").at(0);
+		const hotelCitySplitArray = hotelCity.cityState.split(",");
+		const selectedCity =
+			hotelCitySplitArray.at(0) + "," + hotelCitySplitArray.at(1);
 		console.log(selectedCity);
 		updateFetchingHotels(true);
 		fetchHotels(selectedCity);
@@ -61,7 +70,7 @@ export default function HotelList({ hotelNotFound, updateFetchingHotels }) {
 
 			const { scrollTop, scrollHeight, clientHeight } =
 				document.documentElement;
-			if (scrollTop + clientHeight >= scrollHeight - 100) {
+			if (scrollTop + clientHeight >= scrollHeight - 250) {
 				setPageLimiter((prev) => prev + 12);
 			}
 		}
@@ -172,3 +181,8 @@ function HotelPriceIndicator({ hotelPrice }) {
 		</div>
 	);
 }
+/* hotelsArray.forEach(ele => {
+let minCost = 1000000000;
+ele.rooms.forEach(ele => minCost = ele.costDetails.baseCost <= minCost ? ele.costDetails.baseCost : minCost )
+console.log(minCost)
+}) */

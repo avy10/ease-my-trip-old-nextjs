@@ -19,15 +19,89 @@ export default function HotelSearchBar() {
 		hotelCity,
 		checkInDate,
 		checkOutDate,
-		checkINDayError,
-		checkOUTDayError,
+		updateHotelsDate,
+		today,
+		maxBookingDate,
 	} = hotelSearchData;
 
 	const [selectedHotelCity, setSelectedHotelCity] = useState(hotelCity);
 	function updateSelectedHotelCity(newCitySelected) {
 		setSelectedHotelCity(newCitySelected);
 	}
+	const [searchCheckInDate, setSearchCheckInDate] = useState(checkInDate);
+	const [searchCheckOutDate, setSearchCheckOutDate] = useState(checkOutDate);
+	function updateSearchDates(target, newDate) {
+		if (target === "checkIn") {
+			setSearchCheckInDate(newDate);
+		} else if (target === "checkOut") {
+			setSearchCheckOutDate(newDate);
+		}
+	}
+	// ERROR IN DAY
+	const [checkINDayError, setCheckINDayError] = useState(false);
+	const [checkOUTDayError, setCheckOUTDayError] = useState(false);
+	useEffect(() => {
+		if (
+			searchCheckInDate.$y < today.$y &&
+			searchCheckInDate.$M < today.$M &&
+			searchCheckInDate.$D < today.$D &&
+			searchCheckInDate <= maxBookingDate
+		) {
+			setCheckINDayError(true);
+		}
+		if (
+			searchCheckOutDate.$y < today.$y &&
+			searchCheckOutDate.$M < today.$M &&
+			searchCheckOutDate.$D < today.$D &&
+			searchCheckOutDate <= maxBookingDate
+		) {
+			setCheckOUTDayError(true);
+		}
+		if (
+			searchCheckInDate.$y >= today.$y &&
+			searchCheckInDate.$M >= today.$M &&
+			searchCheckInDate.$D >= today.$D &&
+			searchCheckInDate <= maxBookingDate
+		) {
+			setCheckINDayError(false);
+		}
+		if (
+			searchCheckOutDate.$y >= today.$y &&
+			searchCheckOutDate.$M >= today.$M &&
+			searchCheckOutDate.$D >= today.$D &&
+			searchCheckOutDate <= maxBookingDate
+		) {
+			setCheckOUTDayError(false);
+		}
+		searchCheckOutDate < searchCheckInDate && setCheckOUTDayError(true);
+		searchCheckInDate > maxBookingDate && setCheckINDayError(true);
+		if (
+			searchCheckInDate > maxBookingDate ||
+			searchCheckOutDate > maxBookingDate
+		) {
+			setCheckINDayError(true);
+			setCheckOUTDayError(true);
+			// return;
+		}
 
+		if (searchCheckInDate >= today && searchCheckInDate <= maxBookingDate) {
+			setCheckINDayError(false);
+		}
+		if (
+			searchCheckOutDate >= today &&
+			searchCheckOutDate <= maxBookingDate
+		) {
+			setCheckOUTDayError(false);
+		}
+		if (searchCheckOutDate >= searchCheckInDate) {
+			setCheckOUTDayError(false);
+		}
+	}, [
+		searchCheckInDate,
+		searchCheckOutDate,
+		setCheckINDayError,
+		setCheckOUTDayError,
+	]);
 	const [openSnackBar, setOpenSnackBar] = useState(false);
 	function handleSnackBarOpen() {
 		setOpenSnackBar(true);
@@ -62,12 +136,17 @@ export default function HotelSearchBar() {
 			return;
 		}
 		updateHotelCity(selectedHotelCity);
-		const routerCheckInDate = dayjs(checkInDate).format("DD-MM-YYYY");
-		const routerCheckOutDate = dayjs(checkOutDate).format("DD-MM-YYYY");
+		updateHotelsDate("checkIn", searchCheckInDate);
+		updateHotelsDate("checkOut", searchCheckOutDate);
+		const routerCheckInDate = dayjs(searchCheckInDate).format("DD-MM-YYYY");
+		const routerCheckOutDate =
+			dayjs(searchCheckOutDate).format("DD-MM-YYYY");
 		const selectedCity = selectedHotelCity.cityState.split(",").at(0);
+		const sortParams = JSON.stringify({ rating: "-1" });
+		const encodedSortParams = encodeURIComponent(sortParams);
 
 		await router.push(
-			`/hotels/search?city=${selectedCity}&cid=${routerCheckInDate}&cod=${routerCheckOutDate}`
+			`/hotels/search?city=${selectedCity}&cid=${routerCheckInDate}&cod=${routerCheckOutDate}&sort=${encodedSortParams}`
 		);
 	}
 
@@ -98,7 +177,11 @@ export default function HotelSearchBar() {
 					selectedHotelCity={selectedHotelCity}
 					updateSelectedHotelCity={updateSelectedHotelCity}
 				/>
-				<HotelDateSelector />
+				<HotelDateSelector
+					searchCheckInDate={searchCheckInDate}
+					searchCheckOutDate={searchCheckOutDate}
+					updateSearchDates={updateSearchDates}
+				/>
 				<HotelPricePaxSelector />
 				<div className="search-button-div">
 					<div className="avy-date-container"></div>

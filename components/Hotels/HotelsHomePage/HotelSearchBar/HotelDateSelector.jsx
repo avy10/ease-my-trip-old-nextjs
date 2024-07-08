@@ -1,7 +1,11 @@
 import { useHotelSearchContext } from "@/contexts/HotelSearchContext";
 import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
 
-export default function HotelDateSelector() {
+export default function HotelDateSelector({
+	searchCheckInDate,
+	searchCheckOutDate,
+	updateSearchDates,
+}) {
 	const hotelSearchData = useHotelSearchContext();
 	const {
 		checkInDate,
@@ -17,12 +21,12 @@ export default function HotelDateSelector() {
 					<span>Check IN date</span>
 				</label>
 				<BasicDatePicker
-					targetVALUE={checkInDate}
+					targetVALUE={searchCheckInDate}
 					labelText={"Select CheckIn date"}
 					minReturnDay={today}
 					finalFlightBooking={maxBookingDate}
 					updateTarget="checkIn"
-					updateState={updateHotelsDate}
+					updateState={updateSearchDates}
 				/>
 			</div>
 			<div id="hotel-checkout-date">
@@ -30,12 +34,12 @@ export default function HotelDateSelector() {
 					<span>Check OUT date</span>
 				</label>
 				<BasicDatePicker
-					targetVALUE={checkOutDate}
+					targetVALUE={searchCheckOutDate}
 					labelText={"Select CheckOut date"}
-					minReturnDay={today}
+					minReturnDay={searchCheckInDate}
 					finalFlightBooking={maxBookingDate}
 					updateTarget="checkOut"
-					updateState={updateHotelsDate}
+					updateState={updateSearchDates}
 				/>
 			</div>
 		</div>
