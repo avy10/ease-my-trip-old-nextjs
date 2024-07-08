@@ -128,7 +128,7 @@ export function FlightSearchProvider({ children }) {
 		setIsTwoWay(val);
 	}
 	function updateDay(text, val) {
-		// console.log("DATE VALUE", val);
+		console.log("DATE VALUE", val);
 		if (text == "day") {
 			setDay(val);
 			setReturnDay(val);

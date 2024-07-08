@@ -6,6 +6,8 @@ import { domain, allTheAirports } from "@/public/utils/apiFetch";
 
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat"; // ES 2015
+import locale_en_in from "dayjs/locale/en-in";
 import { useContext, useEffect, useState } from "react";
 import { useSearchResultsModificationContext } from "@/contexts/SearchResultsModificationContext";
 
@@ -14,6 +16,8 @@ export default function SearchPageParentBuild({
 	updateLoading,
 	toggleUnMountSPPB,
 }) {
+	dayjs.extend(customParseFormat);
+
 	const fsd = useContext(FlightSearchContext);
 	const { updateFlightSearchStates, updateDay, updateTwoWay } = fsd;
 	// isAirportNamesLoading,
@@ -85,11 +89,11 @@ export default function SearchPageParentBuild({
 
 		var customParseFormat = require("dayjs/plugin/customParseFormat");
 		dayjs.extend(customParseFormat);
-		const newDay = dayjs(day, "DD-MM-YYYY");
-		// console.log("dayURL to dayjs date", day, newDay);
+		const newDay = dayjs(day, "DD-MM-YYYY", "en-in");
+		console.log("dayURL to dayjs date", day, newDay);
 		updateDay("day", newDay);
-		const newReturnDay = rday ? dayjs(rday, "DD-MM-YYYY") : null;
-		// console.log("return day value on one way", newReturnDay);
+		const newReturnDay = rday ? dayjs(rday, "DD-MM-YYYY", "en-in") : null;
+		console.log("return day value on one way", newReturnDay);
 		newReturnDay && updateDay("returnDay", newReturnDay);
 
 		updateFlightSearchStates("numberOfPassengers", +notv);

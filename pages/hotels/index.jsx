@@ -13,32 +13,34 @@ import { FAQ_HOTELS_DATA_ARRAY } from "@/public/utils/faqHotels";
 import promoBanner from "@/public/assests/images/icons/hotelsIcons/bannner-hotel-newht.webp";
 export default function Hotels() {
 	return (
-		<Container
-			maxWidth="lg"
-			style={{
-				position: "relative",
-				top: "80px",
-			}}
-		>
+		<>
 			<HotelSearchBar />
-			<PriceGuarantee />
-			<ExclusiveOffers activeTabCustomisation={2} />
-			<Refund />
-			<PopularHotelDestinations />
-			<TopHotelsChain />
+			<Container
+				maxWidth="lg"
+				style={{
+					position: "relative",
+					top: "80px",
+				}}
+			>
+				<PriceGuarantee />
+				<ExclusiveOffers activeTabCustomisation={2} />
+				<Refund />
+				<PopularHotelDestinations />
+				<TopHotelsChain />
 
-			<div className="why-us-hotels-div">
-				<WhyUs content={whyusARRHOTELS} />
-			</div>
-			<PromoBanner />
+				<div className="why-us-hotels-div">
+					<WhyUs content={whyusARRHOTELS} />
+				</div>
+				<PromoBanner />
 
-			<div className="hotels-faq-div">
-				<h2>FAQs</h2>
-				{FAQ_HOTELS_DATA_ARRAY.map((element, index) => (
-					<FaQsComponent element={element} key={index} />
-				))}
-			</div>
-		</Container>
+				<div className="hotels-faq-div">
+					<h2>FAQs</h2>
+					{FAQ_HOTELS_DATA_ARRAY.map((element, index) => (
+						<FaQsComponent element={element} key={index} />
+					))}
+				</div>
+			</Container>
+		</>
 	);
 }
 

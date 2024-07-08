@@ -34,6 +34,7 @@ import "@/styles/responsiveness/mobile-flight-pages.css";
 import "@/styles/flights/review/flightReview.css";
 import "@/styles/flights/review/reviewHome.css";
 import "@/styles/hotels/hotelSearch/hotelSearchHome.css";
+import "@/styles/hotels/hotelSearch/hotelSearchHotelList.css";
 import Footer from "@/components/Footer";
 
 // vercel speed insights

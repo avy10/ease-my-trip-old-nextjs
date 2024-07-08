@@ -31,10 +31,10 @@
 	transition: all 0.3s ease-out;
 }
 
-.single-flight-data-container div {
-	/* border: 2px solid blue; */
-	/* height: fit-content; */
-}
+/* .single-flight-data-container div { */
+/* border: 2px solid blue; */
+/* height: fit-content; */
+/* } */
 .single-flight-data-container .top-content {
 	padding: 10px 15px;
 	display: flex;

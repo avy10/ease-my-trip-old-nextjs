@@ -11,6 +11,28 @@ export function HotelSearchProvider({ children }) {
 	function updateCityList(cityArr) {
 		setCityList(cityArr);
 	}
+	useEffect(() => {
+		const myHeaders = new Headers();
+		myHeaders.append("projectID", "$4xh7gn2pv8it");
+
+		const requestOptions = {
+			method: "GET",
+			headers: myHeaders,
+			redirect: "follow",
+		};
+
+		fetch(
+			"https://academics.newtonschool.co/api/v1/bookingportals/city?limit=100",
+			requestOptions
+		)
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				}
+			})
+			.then((result) => updateCityList(result?.data?.cities))
+			.catch((error) => console.error(error));
+	}, []);
 
 	// SELECTED CITY
 	const [hotelCity, setHotelCity] = useState({
@@ -170,6 +192,7 @@ export function HotelSearchProvider({ children }) {
 	function updatePriceValue(newValue) {
 		setPriceValue(newValue);
 	}
+
 	return (
 		<HotelSearchContext.Provider
 			value={{

@@ -15,7 +15,7 @@ export default function HotelSearchBar() {
 	const router = useRouter();
 	const hotelSearchData = useHotelSearchContext();
 	const {
-		updateCityList,
+		updateHotelCity,
 		hotelCity,
 		checkInDate,
 		checkOutDate,
@@ -39,7 +39,7 @@ export default function HotelSearchBar() {
 		"Source and Destination should not be same"
 	);
 
-	function handleSearch() {
+	async function handleSearch() {
 		/* _id: "65292ae86ea9a006f4ad6855",
 		cityState: "Mumbai, Maharashtra",
 		__v: 0, */
@@ -61,33 +61,16 @@ export default function HotelSearchBar() {
 			handleSnackBarOpen();
 			return;
 		}
-		updateCityList(selectedHotelCity);
+		updateHotelCity(selectedHotelCity);
 		const routerCheckInDate = dayjs(checkInDate).format("DD-MM-YYYY");
 		const routerCheckOutDate = dayjs(checkOutDate).format("DD-MM-YYYY");
-		router.push(`/hotels/search`);
+		const selectedCity = selectedHotelCity.cityState.split(",").at(0);
+
+		await router.push(
+			`/hotels/search?city=${selectedCity}&cid=${routerCheckInDate}&cod=${routerCheckOutDate}`
+		);
 	}
-	useEffect(() => {
-		const myHeaders = new Headers();
-		myHeaders.append("projectID", "$4xh7gn2pv8it");
 
-		const requestOptions = {
-			method: "GET",
-			headers: myHeaders,
-			redirect: "follow",
-		};
-
-		fetch(
-			"https://academics.newtonschool.co/api/v1/bookingportals/city?limit=100",
-			requestOptions
-		)
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				}
-			})
-			.then((result) => updateCityList(result?.data?.cities))
-			.catch((error) => console.error(error));
-	}, []);
 	const action = (
 		<>
 			<IconButton
