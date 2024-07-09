@@ -10,16 +10,23 @@ import PlaceIcon from "@mui/icons-material/Place";
 import ImageAndRatingCard from "./ImageAndRatingCard";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
 import ListAmenities, {
 	CancellationBreakfast,
 	HotelDiscount,
 	PeopleViewing,
 } from "./ListAmenities";
+import { useRouter } from "next/router";
 export default function HotelList({
 	hotelNotFound,
 	updateFetchingHotels,
 	sortOptions,
+	updateSortOptions,
 }) {
+	const router = useRouter();
 	const [hotelsList, setHotelsList] = useState([]);
 	const [errorInFetch, setErrorInFetch] = useState(false);
 	const { width } = useAuthorisationContext();
@@ -56,6 +63,17 @@ export default function HotelList({
 			updateFetchingHotels(false);
 		}
 	}
+	async function setNewSortFilterURL() {
+		const { city, cid, cod } = router.query;
+		const sortParams = JSON.stringify(sortOptions);
+		const encodedSortParams = encodeURIComponent(sortParams);
+		await router.push(
+			`/hotels/search?city=${city}&cid=${cid}&cod=${cod}&sort=${encodedSortParams}`
+		);
+	}
+	useEffect(() => {
+		setNewSortFilterURL();
+	}, [sortOptions]);
 	useEffect(() => {
 		const hotelCitySplitArray = hotelCity.cityState.split(",");
 		const selectedCity =
@@ -63,7 +81,7 @@ export default function HotelList({
 		console.log(selectedCity);
 		updateFetchingHotels(true);
 		fetchHotels(selectedCity);
-	}, [pageLimiter]);
+	}, [pageLimiter, sortOptions]);
 	useEffect(() => {
 		function handleScroll() {
 			console.log(pageLimiter);
@@ -89,6 +107,10 @@ export default function HotelList({
 				float: `${width > 500 ? "right" : "none"}`,
 			}}
 		>
+			<HotelSortButtons
+				sortOptions={sortOptions}
+				updateSortOptions={updateSortOptions}
+			/>
 			{hotelsList.map((element, index) => (
 				<SingleHotelCard hotel={element} key={element?._id} />
 			))}
@@ -186,3 +208,61 @@ let minCost = 1000000000;
 ele.rooms.forEach(ele => minCost = ele.costDetails.baseCost <= minCost ? ele.costDetails.baseCost : minCost )
 console.log(minCost)
 }) */
+
+function HotelSortButtons({ sortOptions, updateSortOptions }) {
+	return (
+		<div className="sort-options-flight-search">
+			<p
+				onClick={() =>
+					updateSortOptions(
+						sortOptions?.name == 1 ? { name: -1 } : { name: 1 }
+					)
+				}
+			>
+				NAME {sortOptions?.name == null && <UnfoldMoreIcon />}
+				{sortOptions?.name == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.name == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					updateSortOptions(
+						sortOptions?._id == 1 ? { _id: -1 } : { _id: 1 }
+					)
+				}
+			>
+				POPULARITY {sortOptions?._id == null && <UnfoldMoreIcon />}
+				{sortOptions?._id == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?._id == -1 && <KeyboardArrowDownIcon />}
+			</p>
+			<p
+				onClick={() =>
+					updateSortOptions(
+						sortOptions?.avgCostPerNight == 1
+							? { avgCostPerNight: -1 }
+							: { avgCostPerNight: 1 }
+					)
+				}
+			>
+				PRICE{" "}
+				{sortOptions?.avgCostPerNight == null && <UnfoldMoreIcon />}
+				{sortOptions?.avgCostPerNight == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.avgCostPerNight == -1 && (
+					<KeyboardArrowDownIcon />
+				)}
+			</p>
+			<p
+				onClick={() =>
+					updateSortOptions(
+						sortOptions?.rating == 1
+							? { rating: -1 }
+							: { rating: 1 }
+					)
+				}
+			>
+				RATING {sortOptions?.rating == null && <UnfoldMoreIcon />}
+				{sortOptions?.rating == 1 && <KeyboardArrowUpIcon />}
+				{sortOptions?.rating == -1 && <KeyboardArrowDownIcon />}
+			</p>
+		</div>
+	);
+}

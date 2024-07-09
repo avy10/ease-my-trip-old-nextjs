@@ -120,60 +120,42 @@ export function HotelSearchProvider({ children }) {
 		if (target == "rooms") {
 			if (action == "inc") {
 				const newValue = numRooms + 1;
-				if (newValue > 8) {
-					setNumRooms(8);
-				} else {
-					setNumRooms(newValue);
-				}
+				setNumRooms(newValue > 8 ? 8 : newValue);
 			}
 			if (action == "dec") {
 				const newValue = numRooms - 1;
-				if (newValue <= 1) {
-					setNumRooms(1);
-				} else {
-					setNumRooms(newValue);
-				}
+				setNumRooms(newValue <= 1 ? 1 : newValue);
 			}
 		}
 		if (target == "adults") {
 			if (action == "inc") {
 				const newValue = numAdults + 1;
-				if (newValue > 12) {
-					setNumAdults(12);
-				} else {
-					setNumAdults(newValue);
-				}
+				const autoRoomsRequired = Math.ceil(newValue / 2);
+				setNumAdults(newValue > 12 ? 12 : newValue);
+				setNumRooms(autoRoomsRequired > 6 ? 6 : autoRoomsRequired);
 			}
 			if (action == "dec") {
 				const newValue = numAdults - 1;
-				if (newValue <= 1) {
-					setNumAdults(1);
-				} else {
-					setNumAdults(newValue);
-				}
+				const autoRoomsRequired = Math.ceil(newValue / 2);
+				setNumAdults(newValue <= 1 ? 1 : newValue);
+				setNumRooms(autoRoomsRequired <= 1 ? 1 : autoRoomsRequired);
 			}
 		}
 		if (target == "children") {
 			if (action == "inc") {
 				const newValue = numChildren + 1;
-				if (newValue > 2) {
-					setNumChildren(2);
-				} else {
-					setNumChildren(newValue);
-				}
+				setNumChildren(
+					newValue > numRooms * 2 ? numRooms * 2 : newValue
+				);
 			}
 			if (action == "dec") {
 				const newValue = numChildren - 1;
-				if (newValue <= 0) {
-					setNumChildren(1);
-				} else {
-					setNumChildren(newValue);
-				}
+				setNumChildren(newValue <= 0 ? 0 : newValue);
 			}
 		}
 	}
 
-	// children age
+	// children age // IGNORED
 	const [ageChildOne, setAgeChildOne] = useState(1);
 	const [ageChildTwo, setAgeChildTwo] = useState(1);
 	// price value

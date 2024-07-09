@@ -27,7 +27,9 @@ export default function HotelSearch() {
 	const [hotelNotFound, setHotelNotFound] = useState("loading");
 	const [allDataLoaded, setAllDataLoaded] = useState(false);
 	const [sortOptions, setSortOptions] = useState({ avgCostPerNight: "1" });
-
+	function updateSortOptions(newObject) {
+		setSortOptions(newObject);
+	}
 	const [fetchingHotels, setFetchingHotels] = useState(false);
 	function updateFetchingHotels(newValue) {
 		setFetchingHotels(newValue);
@@ -108,6 +110,7 @@ export default function HotelSearch() {
 					hotelNotFound={hotelNotFound}
 					updateFetchingHotels={updateFetchingHotels}
 					sortOptions={sortOptions}
+					updateSortOptions={updateSortOptions}
 				/>
 			</Container>
 		</div>
