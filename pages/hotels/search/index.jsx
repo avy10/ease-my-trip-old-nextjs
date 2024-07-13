@@ -111,7 +111,7 @@ export default function HotelSearch() {
 						<hr />
 						<RatingFilters setFilterOptions={setFilterOptions} />
 						<hr />
-						<PriceFilters />
+						<PriceFilters setFilterOptions={setFilterOptions} />
 						<hr />
 						<hr />
 					</div>

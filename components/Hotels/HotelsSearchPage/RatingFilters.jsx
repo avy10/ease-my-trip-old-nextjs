@@ -26,7 +26,7 @@ export default function RatingFilters({ setFilterOptions }) {
 				minNumber = ele < minNumber ? ele : minNumber;
 			}
 		});
-		if (minNumber === 6 && maxNumber == -1) {
+		if (minNumber === 6 && maxNumber === -1) {
 			setRatingFilters({
 				$lte: undefined,
 				$gte: undefined,
