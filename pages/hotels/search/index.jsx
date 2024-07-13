@@ -14,6 +14,7 @@ import HotelList from "@/components/Hotels/HotelsSearchPage/HotelList";
 // https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"Hyderabad"}&sort{"avgCostPerNight":1}&filter={"amenities":"Free WiFi"}
 
 import RatingFilters from "@/components/Hotels/HotelsSearchPage/RatingFilters";
+import PriceFilters from "@/components/Hotels/HotelsSearchPage/PriceFilters";
 export default function HotelSearch() {
 	dayjs.extend(customParseFormat);
 	const hotelSearchContextData = useHotelSearchContext();
@@ -92,7 +93,6 @@ export default function HotelSearch() {
 			{allDataLoaded && (
 				<HotelSearchBar
 					hotelNotFound={hotelNotFound}
-					key={allDataLoaded}
 					setHotelNotFound={setHotelNotFound}
 				/>
 			)}
@@ -111,17 +111,20 @@ export default function HotelSearch() {
 						<hr />
 						<RatingFilters setFilterOptions={setFilterOptions} />
 						<hr />
+						<PriceFilters />
 						<hr />
 						<hr />
 					</div>
 				)}
-				<HotelList
-					hotelNotFound={hotelNotFound}
-					updateFetchingHotels={updateFetchingHotels}
-					sortOptions={sortOptions}
-					updateSortOptions={updateSortOptions}
-					filterOptions={filterOptions}
-				/>
+				{allDataLoaded && (
+					<HotelList
+						hotelNotFound={hotelNotFound}
+						updateFetchingHotels={updateFetchingHotels}
+						sortOptions={sortOptions}
+						updateSortOptions={updateSortOptions}
+						filterOptions={filterOptions}
+					/>
+				)}
 			</Container>
 		</div>
 	);

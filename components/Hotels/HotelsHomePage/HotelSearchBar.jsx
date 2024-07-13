@@ -142,9 +142,9 @@ export default function HotelSearchBar({ hotelNotFound, setHotelNotFound }) {
 			handleSnackBarOpen();
 			return;
 		}
-		updateHotelCity(selectedHotelCity);
+		/* updateHotelCity(selectedHotelCity);
 		updateHotelsDate("checkIn", searchCheckInDate);
-		updateHotelsDate("checkOut", searchCheckOutDate);
+		updateHotelsDate("checkOut", searchCheckOutDate); */
 		const routerCheckInDate = dayjs(searchCheckInDate).format("DD-MM-YYYY");
 		const routerCheckOutDate =
 			dayjs(searchCheckOutDate).format("DD-MM-YYYY");
@@ -155,6 +155,9 @@ export default function HotelSearchBar({ hotelNotFound, setHotelNotFound }) {
 		await router.push(
 			`/hotels/search?city=${selectedCity}&cid=${routerCheckInDate}&cod=${routerCheckOutDate}&sort=${encodedSortParams}`
 		);
+		updateHotelCity(selectedHotelCity);
+		updateHotelsDate("checkIn", searchCheckInDate);
+		updateHotelsDate("checkOut", searchCheckOutDate);
 	}
 
 	const action = (
