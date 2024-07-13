@@ -1,4 +1,4 @@
-import RadioButtons from "../../Custom-mui-Components/RadioButtons";
+import RadioButtons from "../../Custom-MUI-Components/RadioButtons";
 
 import { pink } from "@mui/material/colors";
 export default function PreInfo() {

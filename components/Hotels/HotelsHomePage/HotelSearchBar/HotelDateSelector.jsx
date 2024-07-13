@@ -1,5 +1,5 @@
 import { useHotelSearchContext } from "@/contexts/HotelSearchContext";
-import BasicDatePicker from "@/components/Custom-mui-Components/DatePicker";
+import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
 
 export default function HotelDateSelector({
 	searchCheckInDate,
