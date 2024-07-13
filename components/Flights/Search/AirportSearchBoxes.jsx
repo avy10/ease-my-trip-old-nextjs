@@ -1,4 +1,4 @@
-import AirportAutoCompleteMUI from "@/components/Custom-MUI-Components/AirportAutoCompleteMui";
+import AirportAutoCompleteMUI from "@/components/Custom-mui-Components/AirportAutoCompleteMui";
 
 import { createTheme, useTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";

@@ -4,7 +4,7 @@ import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import AirportSearchBoxes from "./AirportSearchBoxes";
 
-import BasicDatePicker from "@/components/Custom-MUI-Components/DatePicker";
+import BasicDatePicker from "@/components/Custom-mui-Components/DatePicker";
 import SelectTravellersNumber from "./SelectTravellersNumber";
 // snackbar
 import Button from "@mui/material/Button";
