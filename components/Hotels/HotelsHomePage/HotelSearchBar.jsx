@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 
-export default function HotelSearchBar() {
+export default function HotelSearchBar({ hotelNotFound, setHotelNotFound }) {
 	const router = useRouter();
 	const hotelSearchData = useHotelSearchContext();
 	const {
@@ -112,6 +112,13 @@ export default function HotelSearchBar() {
 	const [snackBarMSG, setSnackBarMSG] = useState(
 		"Source and Destination should not be same"
 	);
+	useEffect(() => {
+		if (hotelNotFound === true) {
+			setOpenSnackBar(true);
+			setSnackBarMSG("Hotel for the Selected city not found");
+			setHotelNotFound(false);
+		}
+	}, [hotelNotFound]);
 
 	async function handleSearch() {
 		/* _id: "65292ae86ea9a006f4ad6855",

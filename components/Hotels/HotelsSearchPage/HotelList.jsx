@@ -25,6 +25,7 @@ export default function HotelList({
 	updateFetchingHotels,
 	sortOptions,
 	updateSortOptions,
+	filterOptions,
 }) {
 	const router = useRouter();
 	const [hotelsList, setHotelsList] = useState([]);
@@ -38,8 +39,8 @@ export default function HotelList({
 		try {
 			const URL = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"${selectedHotelCity}"}&sort=${JSON.stringify(
 				sortOptions
-			)}&limit=${pageLimiter}`;
-			console.log(URL, "/n", sortOptions);
+			)}&filter=${JSON.stringify(filterOptions)}&limit=${pageLimiter}`;
+			// console.log(URL, "/n", sortOptions);
 			const myHeaders = new Headers();
 			myHeaders.append("projectID", "$4xh7gn2pv8it");
 
@@ -81,7 +82,7 @@ export default function HotelList({
 		console.log(selectedCity);
 		updateFetchingHotels(true);
 		fetchHotels(selectedCity);
-	}, [pageLimiter, sortOptions]);
+	}, [pageLimiter, sortOptions, filterOptions]);
 	useEffect(() => {
 		function handleScroll() {
 			console.log(pageLimiter);
@@ -100,6 +101,9 @@ export default function HotelList({
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [pageLimiter, setPageLimiter, maxPage]);
+	if (hotelNotFound === true) {
+		return;
+	}
 	return (
 		<div
 			className="hotels-list-container"
@@ -114,6 +118,9 @@ export default function HotelList({
 			{hotelsList.map((element, index) => (
 				<SingleHotelCard hotel={element} key={element?._id} />
 			))}
+			{hotelsList.length === 0 && (
+				<div className="single-hotel-card">Hotel Not Found</div>
+			)}
 		</div>
 	);
 }
