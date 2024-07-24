@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.969" height="21.306" viewBox="0 0 16.969 21.306">
+  <g id="concierge_services" data-name="concierge services" transform="translate(-62.049 -10.5)">
+    <line id="Line_30" data-name="Line 30" x1="1.148" y2="6.309" transform="translate(75.057 24.915)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+    <line id="Line_31" data-name="Line 31" x2="1.148" y2="6.309" transform="translate(64.857 24.915)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+    <g id="Group_52767" data-name="Group 52767" transform="translate(62.549 11)">
+      <line id="Line_32" data-name="Line 32" y2="3.499" transform="translate(7.985 12.413)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="Line_33" data-name="Line 33" y1="2.359" transform="translate(5.492 9.412)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="Line_34" data-name="Line 34" y2="2.359" transform="translate(10.477 9.412)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="Path_140634" data-name="Path 140634" d="M78.518,297.123v-5.381l-4.233-1.7v-1.694l-3.752.965-3.752-.965v1.694l-4.233,1.7v5.381Z" transform="translate(-62.549 -276.899)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <line id="Line_35" data-name="Line 35" transform="translate(9.98 14.844)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <g id="Group_52765" data-name="Group 52765" transform="translate(5.989 17.746)">
+        <line id="Line_36" data-name="Line 36" transform="translate(3.992)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_37" data-name="Line 37" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+      <line id="Line_38" data-name="Line 38" transform="translate(5.989 14.844)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="Path_140635" data-name="Path 140635" d="M170.017,86.668v3.075a3.868,3.868,0,0,1-3.868,3.868h0a3.868,3.868,0,0,1-3.868-3.868V86.668" transform="translate(-158.165 -83.545)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      <g id="Group_52766" data-name="Group 52766" transform="translate(1.728 3.123)">
+        <path id="Path_140636" data-name="Path 140636" d="M349.72,89.182h1.131a1.257,1.257,0,0,0,1.257-1.257h0a1.257,1.257,0,0,0-1.257-1.257H349.72" transform="translate(-339.595 -86.668)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_140637" data-name="Path 140637" d="M106.8,89.182H105.67a1.257,1.257,0,0,1-1.257-1.257h0a1.257,1.257,0,0,1,1.257-1.257H106.8" transform="translate(-104.413 -86.668)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+      <rect id="Rectangle_17916" data-name="Rectangle 17916" width="7.736" height="3.123" transform="translate(4.116 0)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

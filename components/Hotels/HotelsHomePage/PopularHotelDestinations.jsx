@@ -1,4 +1,7 @@
 import { POPULAR_HOTELS } from "@/public/utils/popularHotels";
+import { useHotelSearchContext } from "@/contexts/HotelSearchContext";
+import dayjs from "dayjs";
+
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
@@ -94,6 +97,8 @@ function DestinationNA({ ele }) {
 	);
 }
 function SingleDestinationDiv({ ele }) {
+	const hotelSearchData = useHotelSearchContext();
+	const { today } = hotelSearchData;
 	const router = useRouter();
 	const [openSnackBar, setOpenSnackBar] = useState(false);
 	function handleSnackBarOpen() {
@@ -115,16 +120,29 @@ function SingleDestinationDiv({ ele }) {
 			</IconButton>
 		</>
 	);
-	function handleClick() {
+	function handleClick(hotelCity, filterClick = undefined) {
 		if (ele.isClickable) {
-			router.push(`/hotels/search`);
+			const todayFormatted = dayjs(today).format("DD-MM-YYYY");
+			const sortParams = JSON.stringify({ rating: "-1" });
+			const encodedSortParams = encodeURIComponent(sortParams);
+			if (filterClick !== undefined) {
+				router.push(
+					`/hotels/search?city=${hotelCity}&cid=${todayFormatted}&cod=${todayFormatted}&sort=${encodedSortParams}&filter={rating : 3}`
+				);
+			}
+			router.push(
+				`/hotels/search?city=${hotelCity}&cid=${todayFormatted}&cod=${todayFormatted}&sort=${encodedSortParams}`
+			);
 		} else {
 			setSnackBarMSG(`Hotels at ${ele.name} are COMING SOON!!`);
 			handleSnackBarOpen();
 		}
 	}
 	return (
-		<div className="single-destination" onClick={handleClick}>
+		<div
+			className="single-destination"
+			onClick={() => handleClick(ele?.name?.toLowerCase())}
+		>
 			<Snackbar
 				open={openSnackBar}
 				autoHideDuration={3000}
@@ -145,7 +163,14 @@ function SingleDestinationDiv({ ele }) {
 					<span className="blue-bottom-hover-span">
 						Budget Hotels,&nbsp;
 					</span>
-					<span className="blue-bottom-hover-span">
+					<span
+						className="blue-bottom-hover-span"
+						onClick={(event) => {
+							event.stopPropagation();
+							handleClick(ele?.name?.toLowerCase(), 3);
+							// will not work right now as we are not reading and writing filters into the url
+						}}
+					>
 						3 Star Hotels,&nbsp;
 					</span>
 					<span className="blue-bottom-hover-span">

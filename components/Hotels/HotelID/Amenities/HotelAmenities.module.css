@@ -1,0 +1,32 @@
+.hotelAmenitiesContainer {
+	background-color: #fff;
+	box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.listAmenities {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	row-gap: 10px;
+}
+
+.amenitiesIcon {
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	vertical-align: middle;
+	background: #f3fbff;
+	padding: 3px;
+	border-radius: 4px;
+}
+.singleAmenities {
+	width: 180px;
+	font-size: 12px;
+	/* border: 2px solid black; */
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}

@@ -1,7 +1,11 @@
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
 
-export default function RatingFilters({ setFilterOptions }) {
+export default function RatingFilters({
+	setFilterOptions,
+	filterReset,
+	updateFilterReset,
+}) {
 	const [ratingFilters, setRatingFilters] = useState({
 		$lte: undefined,
 		$gte: undefined,

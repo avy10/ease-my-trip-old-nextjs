@@ -1,0 +1,181 @@
+/* HotelRooms */
+/* .hotel-rooms-container {
+	border: px solid #feecde;
+	border-radius: 5px;
+	margin-top: 10px;
+} */
+.hotelRoomsContainer {
+	border: px solid #feecde;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+/* TopBar */
+.hotelRoomsTopbar {
+	background-color: #feecde;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px;
+	font-weight: 500;
+	border: 1px solid #feecde;
+	border-radius: 5px;
+}
+.hotelRoomsTopbar p {
+	/* width: 375px; */
+}
+/* .hotel-rooms-topbar {
+    background-color: #feecde;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    font-weight: 500;
+    border: 1px solid #feecde;
+    border-radius: 5px;
+} */
+/* .hotel-rooms-topbar p {
+	width: 375px;
+} */
+
+/* SingleRoom */
+.hotelRoomIcon {
+	width: 360px;
+	margin-top: 10px;
+	/* border: 2px solid red; */
+	padding: 5px;
+	margin: auto auto;
+}
+.hotelRoomIcon img {
+	margin-top: 10px;
+	border-radius: 5px;
+	width: 100%;
+	box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+}
+/* .hotel-room-icon {
+	width: 375px;
+	margin-top: 10px;
+	border: 2px solid red;
+}
+.hotel-room-icon img {
+	margin-top: 10px;
+	border-radius: 5px;
+	width: 100%;
+	box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+} */
+
+/* .bed-room-area {
+	display: flex;
+	column-gap: 10px;
+} */
+.bedRoomArea {
+	display: flex;
+	column-gap: 10px;
+}
+/* .hotel-room-icon p {
+	padding: 5px 8px;
+	width: max-content;
+	background: #d5e5fa;
+	border-radius: 5px;
+	margin-bottom: 7px;
+	font-size: 13px;
+	margin-right: 4px;
+} */
+.roomsList {
+	display: flex;
+	/* border: 2px solid green; */
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	/* align-items: center; */
+	row-gap: 20px;
+	column-gap: 10px;
+	/* width: 90%; */
+	max-width: 1150px;
+	min-width: 370px;
+	margin: auto auto;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+.roomAmenities {
+	padding: 5px 5px 5px 10px;
+}
+.roomAmenities p {
+	/* float: left; */
+	padding: 5px 8px;
+	width: max-content;
+	background: #d5e5fa;
+	border-radius: 5px;
+	margin-bottom: 7px;
+	font-size: 12px;
+	margin-right: 4px;
+	max-width: 180px;
+}
+
+.singleRoomData {
+	/* border: 2px solid purple; */
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 99%;
+	max-width: 370px;
+	background-color: #fff;
+	box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+	border-radius: 5px;
+	transition: all 0.3s ease-out;
+}
+.singleRoomData:hover {
+	box-shadow: 0 0 25px 1px rgba(77, 133, 255, 0.873);
+	transition: all 0.3s ease-out;
+}
+.roomPrices {
+	max-width: 170px;
+	/* border: 2px solid red; */
+	padding: 5px 10px 5px 5px;
+	text-align: right;
+}
+
+.bookRoomNow p {
+	width: 130px;
+	width: 100%;
+	text-align: center;
+	padding: 3px 5px;
+	border-radius: 40px;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 14px;
+	border: 1px solid #ef6614;
+	background-color: #ef6614;
+	color: white;
+	margin-top: 5px;
+}
+.bookRoomNow p:hover {
+	background-color: #da5200;
+	transition: background-color 500ms linear;
+}
+.markedUpPrice {
+	font-size: 16px;
+	font-weight: 600;
+	color: red;
+	text-decoration: line-through;
+	/* position: relative;
+	right: -76px; */
+}
+.originalPrice {
+	font-size: 24px;
+	font-weight: 600;
+	/* position: relative;
+	right: -50px; */
+}
+.taxes {
+	font-size: 11px;
+	/* position: relative;
+	right: -10px; */
+}
+.bookingPersuasion {
+	font-size: 12px;
+	background-color: rgb(184, 255, 184);
+	background-color: #bbffc3;
+	/* scale: 0.8; */
+	padding: 5px;
+	border-radius: 5px;
+}

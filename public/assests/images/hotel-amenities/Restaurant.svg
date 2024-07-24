@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.587" height="21.587" viewBox="0 0 21.587 21.587">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path2436" d="M0-682.665H21.587v21.587H0Z" transform="translate(0 682.665)"/>
+    </clipPath>
+  </defs>
+  <g id="Resturant" transform="translate(0 682.665)">
+    <g id="g2432" transform="translate(0 -682.665)">
+      <g id="g2434" clip-path="url(#clip-path)">
+        <g id="g2440" transform="translate(17.16 1.939)">
+          <path id="path2442" d="M-116.205-348.615v5.059a1.265,1.265,0,0,1-1.265,1.265,1.265,1.265,0,0,1-1.265-1.265v-5.059H-120v-6.119A5.55,5.55,0,0,1-116.205-360Z" transform="translate(120 359.999)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2444" transform="translate(4.427 13.323)">
+          <path id="path2446" d="M-425.454,0a7.636,7.636,0,0,1-7.526,6.324,7.657,7.657,0,0,1-6.367-3.393" transform="translate(439.347)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2448" transform="translate(0.632 3.204)">
+          <path id="path2450" d="M-154.94,0V2.53A2.529,2.529,0,0,1-156.2,4.721V15.178a1.265,1.265,0,0,1-1.265,1.265,1.265,1.265,0,0,1-1.265-1.265V4.721A2.529,2.529,0,0,1-160,2.53V0" transform="translate(160)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2452" transform="translate(5.57 4.469)">
+          <path id="path2454" d="M0-62.607a7.668,7.668,0,0,1,5.224-2.044,7.657,7.657,0,0,1,6.367,3.393" transform="translate(0 64.652)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2456" transform="translate(3.162 1.939)">
+          <path id="path2458" d="M0,0V3.795" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2460" transform="translate(0.632 1.939)">
+          <path id="path2462" d="M0,0V2.53A1.265,1.265,0,0,0,1.265,3.795h2.53A1.265,1.265,0,0,0,5.059,2.53V0" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+        <g id="g2464" transform="translate(6.957 8.264)">
+          <path id="path2466" d="M-234.993-116.205a3.831,3.831,0,0,1-3.837,3.795,3.831,3.831,0,0,1-3.837-3.795A3.831,3.831,0,0,1-238.829-120,3.831,3.831,0,0,1-234.993-116.205Z" transform="translate(242.666 120)" fill="none" stroke="#8c8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="0.8"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

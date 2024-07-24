@@ -11,11 +11,13 @@ export default function PriceGuarantee() {
 			style={{
 				width: "95%",
 				margin: "auto auto",
+				borderRadius: "10px",
 			}}
 		>
 			<img
 				style={{
 					width: "100%",
+					borderRadius: "10px",
 				}}
 				src={width > 600 ? desktopRefundIcon.src : mobileRefundIcon.src}
 			/>

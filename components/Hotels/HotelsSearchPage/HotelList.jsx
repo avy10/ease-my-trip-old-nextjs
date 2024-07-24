@@ -13,7 +13,7 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
+import Link from "next/link";
 import ListAmenities, {
 	CancellationBreakfast,
 	HotelDiscount,
@@ -34,8 +34,10 @@ export default function HotelList({
 	const { hotelCity } = useHotelSearchContext();
 	const [pageLimiter, setPageLimiter] = useState(12);
 	const [maxPage, setMaxPage] = useState(30);
+	const [loading, setLoading] = useState(false);
 	async function fetchHotels(selectedHotelCity) {
 		// https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"delhi"}&limit=10
+		setLoading();
 		try {
 			const URL = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"${selectedHotelCity}"}&sort=${JSON.stringify(
 				sortOptions
@@ -62,6 +64,7 @@ export default function HotelList({
 			console.log(error);
 		} finally {
 			updateFetchingHotels(false);
+			setLoading(false);
 		}
 	}
 	async function setNewSortFilterURL() {
@@ -76,9 +79,13 @@ export default function HotelList({
 		setNewSortFilterURL();
 	}, [sortOptions]);
 	useEffect(() => {
-		const hotelCitySplitArray = hotelCity.cityState.split(",");
+		if (hotelNotFound) return;
+		setLoading(true);
+
+		console.log("hotelCity inside hotel list", hotelCity);
+		const hotelCitySplitArray = hotelCity?.cityState?.split(",");
 		const selectedCity =
-			hotelCitySplitArray.at(0) + "," + hotelCitySplitArray.at(1);
+			hotelCitySplitArray?.at(0) + "," + hotelCitySplitArray?.at(1);
 		console.log(selectedCity);
 		updateFetchingHotels(true);
 		fetchHotels(selectedCity);
@@ -118,8 +125,11 @@ export default function HotelList({
 			{hotelsList.map((element, index) => (
 				<SingleHotelCard hotel={element} key={element?._id} />
 			))}
-			{hotelsList.length === 0 && (
+			{hotelsList.length === 0 && hotelNotFound && (
 				<div className="single-hotel-card">Hotel Not Found</div>
+			)}
+			{hotelsList.length === 0 && loading && (
+				<div className="single-hotel-card">Loading Hotels</div>
 			)}
 		</div>
 	);
@@ -141,6 +151,7 @@ function SingleHotelCard({ hotel }) {
 					hotelAmneties={hotel?.amenities}
 					hotelHouseRules={hotel?.houseRules}
 					hotelPrice={hotel?.avgCostPerNight}
+					hotelId={hotel?._id}
 				/>
 			</div>
 		</div>
@@ -162,14 +173,19 @@ function HotelNameLocation({ hotelName, hotelLocation }) {
 	);
 }
 
-function HotelServices({ hotelAmneties, hotelHouseRules, hotelPrice }) {
+function HotelServices({
+	hotelAmneties,
+	hotelHouseRules,
+	hotelPrice,
+	hotelId,
+}) {
 	return (
 		<div className="hotel-services-div">
 			<HotelAmenities
 				hotelAmneties={hotelAmneties}
 				hotelHouseRules={hotelHouseRules}
 			/>
-			<HotelPriceIndicator hotelPrice={hotelPrice} />
+			<HotelPriceIndicator hotelPrice={hotelPrice} hotelId={hotelId} />
 		</div>
 	);
 }
@@ -188,7 +204,12 @@ function HotelAmenities({ hotelAmneties, hotelHouseRules }) {
 	);
 }
 
-function HotelPriceIndicator({ hotelPrice }) {
+function HotelPriceIndicator({ hotelPrice, hotelId }) {
+	const { numRooms, numAdults } = useHotelSearchContext();
+	const markedUpPrice = (
+		hotelPrice + Math.ceil((35 * hotelPrice) / 100)
+	).toFixed(0);
+
 	return (
 		<div className="hotel-price-indicator">
 			<div className="original-fake-price flex-center-center">
@@ -198,15 +219,22 @@ function HotelPriceIndicator({ hotelPrice }) {
 					style={{ fontSize: "12px", textDecoration: "line-through" }}
 				/>
 
-				{Math.round(hotelPrice) + 179}
+				{/* {Math.round(hotelPrice) + 179} */}
+				{markedUpPrice * numRooms}
 			</div>
 			<div className="avg-cost-div flex-center-center">
 				<CurrencyRupeeIcon />
-				{Math.round(hotelPrice)}
+				{Math.round(hotelPrice * numRooms)}
 			</div>
 			<p>+ Taxes and Fees</p>
 			<p>Avg Cost per night</p>
-			<div className="view-hotel-room">View Room</div>
+			<div className="view-hotel-room">
+				<Link
+					href={`/hotels/${hotelId}?rooms=${numRooms}&pax=${numAdults}`}
+				>
+					View Room
+				</Link>
+			</div>
 		</div>
 	);
 }

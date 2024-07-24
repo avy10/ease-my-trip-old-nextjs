@@ -241,6 +241,7 @@
 	color: white;
 	transition: transform 0.3s ease-in-out;
 	padding: 10px;
+	cursor: pointer;
 }
 
 .search-button:hover {

@@ -116,7 +116,13 @@ export function HotelSearchProvider({ children }) {
 	const [numRooms, setNumRooms] = useState(1);
 	const [numAdults, setNumAdults] = useState(1);
 	const [numChildren, setNumChildren] = useState(0);
-	function updateRoomsGuests(target, action) {
+	function updateRoomsGuests(target, action, value) {
+		if (target == "roomsDirect") {
+			setNumRooms(value);
+		}
+		if (target == "adultsDirect") {
+			setNumAdults(value);
+		}
 		if (target == "rooms") {
 			if (action == "inc") {
 				const newValue = numRooms + 1;

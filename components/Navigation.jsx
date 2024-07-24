@@ -148,7 +148,11 @@ function SignUpModal() {
 									console.log("OVERLAY IS WORKING");
 									setShowProfile(false);
 								}}
-							></div>,
+							>
+								{/* this component was created before I knew useEffect has a cleanup function which can remove eventListener
+so it is a box with no color and clicking on it closes the profile overlay
+*/}
+							</div>,
 							document.body
 						)}
 				</div>

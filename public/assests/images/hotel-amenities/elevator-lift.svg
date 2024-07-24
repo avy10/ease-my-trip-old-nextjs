@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path2655" d="M0-682.665H22v22H0Z" transform="translate(0 682.665)"/>
+    </clipPath>
+  </defs>
+  <g id="elevator_lift" data-name="elevator/lift" transform="translate(0 682.665)">
+    <g id="g2651" transform="translate(0 -682.665)">
+      <g id="g2653" clip-path="url(#clip-path)">
+        <g id="g2659" transform="translate(11 6.562)">
+          <path id="path2661" d="M0-444.253v-14.794" transform="translate(0 459.047)" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="g2663" transform="translate(5.191 6.562)">
+          <path id="path2665" d="M-352.14-444.253v-14.794h-11.726v14.794" transform="translate(363.866 459.047)" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <path id="path2667" d="M92.195-570.856H74.914V-553.1h17.28Z" transform="translate(-72.5 574.459)" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        <g id="g2669" transform="translate(0 21.355)">
+          <path id="path2671" d="M0,0H2.414" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="g2673" transform="translate(19.586 21.355)">
+          <path id="path2675" d="M0,0H2.414" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="g2677" transform="translate(5.083 0.645)">
+          <path id="path2679" d="M0-88.85V-90.33a1.479,1.479,0,0,1,1.479-1.479h8.876a1.479,1.479,0,0,1,1.479,1.479v1.479" transform="translate(0 91.809)" fill="none" stroke="#8c8a8a" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

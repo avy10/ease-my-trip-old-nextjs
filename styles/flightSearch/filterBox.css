@@ -3,10 +3,13 @@
 	width: 300px;
 	margin-top: 10px;
 	/* border: 1px solid rgba(0, 0, 0, 0.438); */
+	background-color: white;
 	border-radius: 10px;
-	box-shadow: 2px 2px 1px 1px #2196f3;
-	border-top: 1px solid rgba(0, 0, 0, 0.438);
+	/* box-shadow: 2px 2px 1px 1px #2196f3; */
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.352);
+	/* border-top: 1px solid rgba(0, 0, 0, 0.438);
 	border-left: 1px solid rgba(0, 0, 0, 0.438);
+	border: 1px solid rgba(0, 0, 0, 0.438); */
 }
 
 .flights-filter-box h3 {
