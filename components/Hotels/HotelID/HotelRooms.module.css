@@ -5,7 +5,7 @@
 	margin-top: 10px;
 } */
 .hotelRoomsContainer {
-	border: px solid #feecde;
+	/* border: 1px solid #feecde; */
 	border-radius: 5px;
 	margin-top: 10px;
 }
@@ -107,7 +107,7 @@
 	margin-bottom: 7px;
 	font-size: 12px;
 	margin-right: 4px;
-	max-width: 180px;
+	max-width: 150px;
 }
 
 .singleRoomData {
