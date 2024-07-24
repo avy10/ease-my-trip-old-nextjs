@@ -17,7 +17,7 @@ import FreeWiFi from "@/public/assests/images/hotel-amenities/Free-Wifi.svg";
 import frontDesk from "@/public/assests/images/hotel-amenities/Front-Desk.svg";
 import Gym from "@/public/assests/images/hotel-amenities/gym-fitness-center.svg";
 import heater from "@/public/assests/images/hotel-amenities/Heater-On-request.svg";
-import houseKeeping from "@/public/assests/images/hotel-amenities/houseKeeping.svg";
+// import houseKeeping from "@/public/assests/images/hotel-amenities/houseKeeping.svg";
 import laundry from "@/public/assests/images/hotel-amenities/Laundry.svg";
 import paidPickDrop from "@/public/assests/images/hotel-amenities/Paid-Pick up-Drop.svg";
 import powerBackup from "@/public/assests/images/hotel-amenities/Power-Backup.svg";
@@ -105,11 +105,11 @@ const COMMON_HOTEL_AMENITIES = [
 		name: "Bathroom Amenities",
 		icon: bathroomAmenities.src,
 	},
-	{
-		id: 20,
-		name: "Housekeeping",
-		icon: houseKeeping.src,
-	},
+	// {
+	// 	id: 20,
+	// 	name: "Housekeeping",
+	// 	icon: houseKeeping.src,
+	// },
 	{
 		id: 21,
 		name: "Suitable for Children",
