@@ -77,22 +77,29 @@
 	flex-direction: row;
 	justify-content: space-between;
 	/* border: 1px solid #3c9aee; */
-	min-width: 370px;
+	min-width: 355px;
+	/* border: 2px solid black; */
 }
 .first-hotel-room {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 	row-gap: 15px;
+	/* border: 2px solid black; */
+	width: 355px;
 }
 
 .first-hotel-price {
 	flex-direction: column;
 }
+.first-hotel-price .original-fake-price {
+	position: relative;
+	right: 0px;
+}
 
 .first-hotel-name h4 {
-	font-size: 22px;
+	font-size: 18px;
 }
 .first-hotel-name p {
 	font-size: 12px;
@@ -119,10 +126,10 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 370px;
+	width: 100%;
 }
 .first-hotel-buttons p {
-	width: 180px;
+	width: 160px;
 	border: 2px solid red;
 	text-align: center;
 	padding: 7px 10px;

@@ -6,6 +6,9 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
+.hotelAmenitiesContainer h3 {
+	font-size: 14px;
+}
 .listAmenities {
 	display: flex;
 	flex-wrap: wrap;

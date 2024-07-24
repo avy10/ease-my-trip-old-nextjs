@@ -1,6 +1,7 @@
 import StarRating from "@/components/Custom-User-Components/StarRating";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import styles from "./HotelSummaryImages.module.css";
 import {
 	HotelImageContainer,
 	UserRating,
@@ -19,7 +20,9 @@ export default function HotelSummaryImages({ hotelData }) {
 		}
 	}, [width]);
 	return (
-		<div className="hotel-summary-images">
+		<div
+			className={styles.hotelSummaryImages + " " + "hotel-summary-images"}
+		>
 			<HotelNameRating
 				hotelName={hotelData?.name}
 				hotelRating={hotelData?.rating}
@@ -28,7 +31,7 @@ export default function HotelSummaryImages({ hotelData }) {
 				<HotelImageContainer
 					imageArray={hotelData?.images}
 					maxImageLength={hotelData?.images?.length}
-					containerWidth={isMobile ? "365px" : "600px"}
+					containerWidth={isMobile ? "345px" : "600px"}
 					containerHeight={isMobile ? "250px" : "400px"}
 					renderChildren={true}
 					isMobile={isMobile}
@@ -177,13 +180,7 @@ function FirstHotelNamePrice({ roomType, bedType, costPerNight, taxes }) {
 				</p>
 			</div>
 			<div className="first-hotel-price flex-center-center">
-				<div
-					className="original-fake-price flex-center-center"
-					style={{
-						position: "relative",
-						right: "0px",
-					}}
-				>
+				<div className="original-fake-price flex-center-center">
 					{/* there is no data in API indicating original price and discounted price
 				simply adding 179 to all prices */}
 					<CurrencyRupeeIcon
