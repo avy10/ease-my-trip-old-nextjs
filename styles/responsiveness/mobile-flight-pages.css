@@ -1,3 +1,13 @@
+@media screen and (min-width: 551px) and (max-width: 650px) {
+	.sign-in-div {
+		/* display: inline; */
+		/* border: 2px solid saddlebrown; */
+		position: absolute;
+		top: 3px;
+		right: 10px;
+		height: 40px;
+	}
+}
 @media screen and (min-width: 380px) and (max-width: 550px) {
 	/* navigation styling */
 	.navigation-div {
@@ -13,7 +23,7 @@
 		/* display: inline; */
 		/* border: 2px solid saddlebrown; */
 		position: absolute;
-		top: 0px;
+		top: 5px;
 		right: 0px;
 		height: 40px;
 		scale: 0.9;
@@ -68,12 +78,7 @@
 		display: none;
 	}
 	/* searchBox.css => main box */
-	.main-box {
-		/* border: 2px solid aqua; */
-		margin: auto auto;
-		width: 100%;
-		height: max-content;
-	}
+
 	/* searchBox.css =>  AirportSearchBoxes.jsx */
 	.selected-airport-name {
 		max-width: 175px;

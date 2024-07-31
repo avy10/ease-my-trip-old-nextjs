@@ -7,24 +7,7 @@ nav {
 	/* background-color: red; */
 	/* border: 1px solid black; */
 }
-.navigation-div {
-	margin: auto auto;
-	display: flex;
-	flex-direction: row;
-	/* justify-content: space-evenly; */
-	justify-content: space-between;
-	/* margin-left: 18vw; */
-	/* margin-right: 18vw; */
-	width: 1350px;
-	padding: 10px 10px 0px 10px;
-	/* padding-top: 10px; */
-	background-color: white;
-	/* border-bottom: 1px solid black; */
-	/* border: 4px solid red; */
-	height: 75px;
-	/* backdrop-filter: blur(300px); */
-	box-shadow: 0px 0px 300px rgb(227, 228, 237);
-}
+
 nav a {
 	text-decoration: none;
 	color: black;
@@ -37,16 +20,7 @@ nav a {
 	border: 2px solid rgba(255, 255, 255, 0.18);
 	border-radius: 0px 0px 10px 10px;
 }
-.page-navigations-ul {
-	list-style-type: none;
-	display: flex;
-	column-gap: 50px;
-}
-.page-navigations-ul li {
-	/* font-size: 0.75rem; */
-	font-weight: 500;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+
 .emt-icon {
 	height: 60px;
 	width: 200px;
@@ -82,6 +56,29 @@ nav a {
 	height: 80px;
 	width: 80px;
 	align-content: center;
+	/* border: 2px solid black; */
+}
+@media screen and (min-width: 650px) and (max-width: 699px) {
+	/* .navigationDiv {
+                width: 700px;
+            } */
+	.nav-container {
+		height: 80px;
+		width: 60px;
+	}
+	/* .emt-icon {
+		width: 160px;
+		border: 2px solid red;
+	}
+	.emt-icon img {
+		height: 50px;
+	} */
+}
+@media screen and (max-width: 649px) {
+	.nav-container {
+		height: 60px;
+		width: 60px;
+	}
 }
 #flight-nav .nav-container {
 	background: url(../../public/assests/images/navigation-images/flighticon-unselected.svg);
@@ -156,53 +153,9 @@ nav a {
 }
 
 /* LOGIN MODAL .CSS */
-.login-modal {
-	/* target the box rendered by the MUI */
-	border-radius: 20px;
-	/* border: 2px solid aqua; */
-}
-
 .login-modal-backdrop .MuiModal-backdrop {
 	backdrop-filter: blur(7px);
 	background-color: rgba(0, 0, 0, 0.473);
-}
-
-.login-and-slideshow-modal {
-	/* border: 2px solid red; */
-	background: url(../../public/assests/images/login/background.png);
-	display: flex;
-	flex-direction: row;
-	height: 280px;
-	z-index: 32;
-	width: 750px;
-	border-radius: 20px;
-	position: relative;
-}
-
-.signup-form-main-box {
-	width: 375px;
-	/* border-radius: 20px 20px 20px 0px; */
-	border-radius: 20px;
-	height: 150%;
-	z-index: 33;
-	position: absolute;
-	right: 0px;
-	bottom: -70px;
-	background-color: rgb(233, 252, 252);
-	color: black;
-}
-
-.login-form-main-box {
-	width: 375px;
-	/* border-radius: 20px 20px 20px 0px; */
-	border-radius: 20px;
-	height: 120%;
-	z-index: 33;
-	position: absolute;
-	right: 0px;
-	bottom: -28px;
-	background-color: rgb(233, 252, 252);
-	color: black;
 }
 
 .login-form,
@@ -216,6 +169,7 @@ nav a {
 	transform: translate(-50%, -50%);
 
 	width: 90%;
+	/* background-color: white; */
 }
 .login-form .close-modal-button,
 .signup-form .close-modal-button {
@@ -292,65 +246,6 @@ nav a {
 	/* border: 1px solid rgb(46, 105, 255); */
 }
 
-.login-signup-div {
-	/* float: inline-end; */
-	/* display: flex;
-	justify-content: flex-end;
-	flex-direction: column; */
-	/* align-items: center; */
-	/* border: 3px solid aqua; */
-	/* width: 80%; */
-	margin: auto auto;
-	float: right;
-
-	/* 3 */
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	/* border: 2px solid aqua; */
-	margin: 5px 0px 8px 0px;
-}
-/* this button calls the login or signup API */
-.api-call-button {
-	display: block;
-	width: fit-content;
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 10px 20px;
-
-	border: none;
-	outline: none;
-	font-size: 0.85rem;
-	font-weight: 600;
-	background-color: rgb(46, 105, 255);
-	color: white;
-	border-radius: 1000px;
-	transition: transform 0.3s ease-in-out;
-}
-
-.api-call-button:hover {
-	transform: scale(1.05);
-	transition: transform 0.3s ease-in-out;
-}
-
-.api-call-button:active {
-	transform: scale(0.95);
-	transition: transform 0.3s ease-in-out;
-}
-.placeholder-login-form {
-	width: 5px;
-	height: 45px;
-}
-
-.login-signup-error-p-tag {
-	padding: 0px 5px;
-	font-size: 0.85rem;
-	color: red;
-	/* border: 2px solid aqua; */
-}
-
 /*  */
 
 /*  */
@@ -412,16 +307,8 @@ align-items: center; */
 	right: 5px;
 }
 
-.login-portal {
-	cursor: pointer;
-	/* position: relative; */
-	/* border: 2px solid red; */
-	/* text-align: center; */
-	height: 55px;
-	width: 190px;
-}
-
 /* profile */
+
 .user-div {
 	text-align: left;
 	/* border: 2px solid aqua; */
@@ -471,73 +358,4 @@ align-items: center; */
 	height: 25px;
 	width: 25px;
 	/* border: 2px solid red; */
-}
-
-.avatar-overlay {
-	/* border: 2px solid black; */
-	height: 100vh;
-	width: 100vw;
-	position: fixed;
-	top: 0;
-
-	z-index: 53;
-	background-color: transparent;
-	/* background-color: aqua; */
-}
-
-/* mobile css */
-.mobile-navigations {
-	position: sticky;
-	background-color: white;
-}
-.icon-login-mobile-div {
-	display: flex;
-	justify-content: space-evenly;
-	justify-content: space-between;
-	flex-direction: row;
-	/* column-gap: 50px; */
-	align-items: flex-start;
-	height: 40px;
-	background-color: white;
-}
-.pages-mobile {
-	/* border: 2px solid orange; */
-	width: 90vw;
-	margin: auto auto;
-	background: white;
-
-	/* backdrop-filter: blur(300px); */
-	/* box-shadow: 0px 0px 300px rgb(227, 228, 237); */
-}
-.pages-mobile-ul {
-	/* margin: auto auto; */
-	background: white;
-	list-style-type: none;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-.pages-mobile-ul li {
-	/* border: 2px solid black; */
-}
-.mobile-nav-c {
-	/* border: 2px solid saddlebrown; */
-	padding: 0;
-	background-size: 30px 30px;
-	height: fit-content;
-	min-height: 40px;
-	width: 50px;
-	margin: 0px 10px;
-}
-
-.mobile-nav-text {
-	margin-top: 10px;
-	font-size: 12px;
-}
-.mobile-blank-space {
-	height: 27px;
-	width: 10px;
-}
-.mobile-nav-text-active {
-	font-weight: 800;
 }

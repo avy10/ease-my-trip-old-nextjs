@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import { AuthorisationProvider } from "@/contexts/AuthorisationContext";
 import "@/styles/globals.css";
 import "@/styles/fonts.css";
@@ -30,13 +30,13 @@ import "@/styles/flightSearch/oneWayStyles/singleFlightDetails/singleFlightDetai
 import "@/styles/flightSearch/quickButtonsFL.css";
 import "@/styles/flightSearch/searchResultsOfferCards.css";
 
-import "@/styles/responsiveness/mobile-flight-pages.css";
+// import "@/styles/responsiveness/mobile-flight-pages.css";
 import "@/styles/flights/review/flightReview.css";
 import "@/styles/flights/review/reviewHome.css";
 import "@/styles/hotels/hotelSearch/hotelSearchHome.css";
 import "@/styles/hotels/hotelSearch/hotelSearchHotelList.css";
 import "@/styles/hotels/hotelData.css";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Custom-User-Components/Footer";
 
 // vercel speed insights
 import { SpeedInsights } from "@vercel/speed-insights/next";

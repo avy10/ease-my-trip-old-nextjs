@@ -4,7 +4,7 @@ import SignUpForm from "./SignupForm";
 import { createPortal } from "react-dom";
 import Snackbar from "@mui/material/Snackbar";
 import Box from "@mui/material/Box";
-
+import styles from "./LoginSignUpForms.module.css";
 const EMAIL_FORMAT = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_FORMAT = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 export default function LoginSignUpForms({ onModalClose }) {
@@ -95,7 +95,7 @@ export default function LoginSignUpForms({ onModalClose }) {
 			</div>
 
 			{loginBox && (
-				<div className="login-form-main-box">
+				<div className={styles.loginFormMainBox}>
 					<LoginForm
 						emailError={emailError}
 						setEmailError={setEmailError}
@@ -124,7 +124,7 @@ export default function LoginSignUpForms({ onModalClose }) {
 				</div>
 			)}
 			{!loginBox && (
-				<div className="signup-form-main-box">
+				<div className={styles.signupFormMainBox}>
 					<SignUpForm
 						emailError={emailError}
 						setEmailError={setEmailError}

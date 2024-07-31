@@ -1,0 +1,191 @@
+.singleSearchComponent {
+	display: flex;
+	flex-direction: column;
+	/* column-gap: 20px; */
+	row-gap: 10px;
+	background-color: white;
+	width: 220px;
+	transition: all 0.5s ease-in-out;
+}
+.labelTextUser {
+	font-size: 0.85rem;
+	/* label-text-user because MUI forms and TextFields also has label tag */
+	color: rgb(122, 122, 122);
+	display: flex;
+	column-gap: 5px;
+	font-weight: 600;
+	transition: all 0.5s ease-in-out;
+}
+
+.selectedAirportName {
+	width: 220px;
+	min-height: 48px;
+	font-size: 0.75rem;
+	/* padding-left: 12px; */
+	padding: 0px 10px;
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	border-radius: 0px 0px 5px 5px;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	transition: all 0.5s ease-in-out;
+}
+
+.selectedAirportError {
+	border-left: 1px solid red;
+	border-right: 1px solid red;
+	border-bottom: 1px solid red;
+}
+
+.selectedAirportName span {
+	/* because I am now using the display flex to align, I have to define min-width or min-height in order to define a shape, else the height : auto of span kicks in */
+	/* border: 2px solid black; */
+	width: 200px;
+	min-height: 48px;
+	display: flex;
+	align-items: center;
+	font-size: 0.85rem;
+}
+
+.airportNameError {
+	color: red;
+	font-size: 1.1rem;
+	font-weight: 500;
+	max-width: 75px;
+}
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.singleSearchComponent {
+		width: 190px;
+	}
+	.selectedAirportName {
+		width: 190px;
+	}
+	.selectedAirportName span {
+		width: 190px;
+	}
+}
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+	.singleSearchComponent {
+		width: 178px;
+	}
+	.selectedAirportName {
+		width: 178px;
+	}
+	.selectedAirportName span {
+		width: 178px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 999px) {
+	.singleSearchComponent {
+		width: 160px;
+	}
+	.selectedAirportName {
+		width: 160px;
+	}
+	.selectedAirportName span {
+		width: 160px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.singleSearchComponent {
+		width: 175px;
+	}
+	.selectedAirportName {
+		width: 175px;
+	}
+	.selectedAirportName span {
+		width: 175px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.singleSearchComponent {
+		width: 322px;
+	}
+	.selectedAirportName {
+		width: 322px;
+	}
+	.selectedAirportName span {
+		width: 322px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.singleSearchComponent {
+		width: 275px;
+	}
+	.selectedAirportName {
+		width: 275px;
+	}
+	.selectedAirportName span {
+		width: 275px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.singleSearchComponent {
+		width: 220px;
+	}
+	.selectedAirportName {
+		width: 220px;
+	}
+	.selectedAirportName span {
+		width: 220px;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.singleSearchComponent {
+		width: 202px;
+	}
+	.selectedAirportName {
+		width: 202px;
+	}
+	.selectedAirportName span {
+		width: 202px;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 449px) {
+	.singleSearchComponent {
+		width: 188px;
+	}
+	.selectedAirportName {
+		width: 188px;
+	}
+	.selectedAirportName span {
+		width: 188px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.singleSearchComponent {
+		width: 178px;
+	}
+	.selectedAirportName {
+		width: 178px;
+	}
+	.selectedAirportName span {
+		width: 178px;
+	}
+}
+
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.singleSearchComponent {
+		width: 168px;
+	}
+	.selectedAirportName {
+		width: 168px;
+	}
+	.selectedAirportName span {
+		width: 168px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.singleSearchComponent {
+		width: 150px;
+	}
+	.selectedAirportName {
+		width: 150px;
+	}
+	.selectedAirportName span {
+		width: 150px;
+	}
+}

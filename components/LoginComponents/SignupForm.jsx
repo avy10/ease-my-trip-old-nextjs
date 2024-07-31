@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import AuthorisationContext from "@/contexts/AuthorisationContext";
 import Divider from "@mui/material/Divider";
-import LoginInputBox from "./LoginComponents/LoginInputBox";
+import LoginInputBox from "./ReusableLoginComponents/LoginInputBox";
 
 import { styled } from "@mui/material/styles";
-import EmailPasswordForms from "./LoginComponents/EmailPasswordForms";
-import LoginButtons from "./LoginComponents/LoginButtons";
+import EmailPasswordForms from "./ReusableLoginComponents/EmailPasswordForms";
+import LoginButtons from "./ReusableLoginComponents/LoginButtons";
 import { CloseModalButton } from "./LoginModal";
 
 import Stack from "@mui/material/Stack";

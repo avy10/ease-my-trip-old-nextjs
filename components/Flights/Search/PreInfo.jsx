@@ -1,9 +1,9 @@
-import RadioButtons from "../../Custom-MUI-Components/RadioButtons";
-
+import RadioButtons from "./RadioButtons";
+import styles from "./PreInfo.module.css";
 import { pink } from "@mui/material/colors";
 export default function PreInfo() {
 	return (
-		<div className="flight-pre-info">
+		<div className={styles.preInfo}>
 			<div className="flight-travel-buttons">
 				<RadioButtons
 					radioStyle={{
@@ -19,7 +19,8 @@ export default function PreInfo() {
 					}}
 				/>
 			</div>
-			<div className="pre-info-box-title poppins-extrabold">
+			<div className={styles.lowestPriceBox + " poppins-extrabold"}>
+				{/* pre-info-box-title */}
 				Search Lowest Price
 			</div>
 		</div>

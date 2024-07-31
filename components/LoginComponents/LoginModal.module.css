@@ -1,0 +1,118 @@
+.loginModal {
+	/* target the box rendered by the MUI */
+	border-radius: 20px;
+	/* background-color: white; */
+	/* border: 2px solid aqua; */
+	position: relative;
+	width: fit-content;
+}
+
+.loginAndSlideshowModal {
+	/* border: 2px solid black; */
+	background: url(../../public/assests/images/login/background.png);
+	display: flex;
+	flex-direction: row;
+	height: 285px;
+	z-index: 32;
+	width: 700px;
+	border-radius: 20px;
+	position: relative;
+	transform: scale(1.1);
+}
+
+/* ImageSlideShow.css */
+.imageSliderBox {
+	position: absolute;
+	/* border: 2px solid black; */
+	/* margin: 0px 10px; */
+	/* max-width: 400px; */
+	/* min-width: 300px; */
+	height: 240px;
+	width: 320px;
+	/* left: 20px; */
+	top: 20px;
+	/* transition: all 0.3s ease-in-out; */
+	animation: slide-animation 5s infinite;
+	animation: slide-animation 2s ease;
+}
+.imageSliderBox .centerThisDiv {
+	/* display: flex;
+justify-content: center;
+align-items: center; */
+	flex-direction: column;
+	text-align: center;
+	/* row-gap: 7px; */
+}
+.imageSliderBox .imgBox {
+	height: 180px;
+	width: 180px;
+	/* border: 2px solid red; */
+}
+.imageSliderBox .imgBox img {
+	height: 100%;
+	width: 100%;
+}
+.textBox h2 {
+	margin: 5px;
+}
+.textBox p {
+	font-size: 14px;
+}
+@keyframes slide-animation {
+	0% {
+		opacity: 0;
+	}
+	/* 50% {
+		opacity: 0.5;
+	} */
+	100% {
+		opacity: 1;
+	}
+}
+/* @keyframes slide-animation {
+	0% {
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	30% {
+		opacity: 1;
+	}
+	35% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+} */
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.loginAndSlideshowModal {
+		transform: scale(1);
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.loginAndSlideshowModal {
+		transform: scale(0.85);
+	}
+}
+@media screen and (min-width: 375px) and (max-width: 599px) {
+	.loginAndSlideshowModal {
+		width: 375px;
+		/* transform: scale(0.01); */
+	}
+	.imageSliderBox {
+		display: none;
+	}
+	.imageSliderBox .imgBox {
+		height: 120px;
+		width: 120px;
+		/* border: 2px solid red; */
+	}
+	.textBox h2 {
+		font-size: 14px;
+	}
+	.textBox p {
+		font-size: 14px;
+	}
+}

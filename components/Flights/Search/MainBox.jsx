@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styles from "./MainBox.module.css";
 
 import FlightSearchContext from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
@@ -180,7 +181,7 @@ export default function MainBox() {
 		</>
 	);
 	return (
-		<div className="main-box">
+		<div className={styles.mainBox}>
 			<Snackbar
 				open={openSnackBar}
 				autoHideDuration={3000}
@@ -200,7 +201,7 @@ export default function MainBox() {
 					keyVal="srcErr"
 					refTarget={sourceInputRef}
 				/>
-				<div className="main-box-swap-button">
+				<div className={styles.swapButton}>
 					<button onClick={swapSourceDestination}>
 						<SwapHorizontalCircleIcon />
 					</button>

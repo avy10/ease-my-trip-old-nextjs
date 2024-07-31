@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import AuthorisationContext from "@/contexts/AuthorisationContext";
 
-import LoginButtons from "./LoginComponents/LoginButtons";
-import EmailPasswordForms from "./LoginComponents/EmailPasswordForms";
+import LoginButtons from "./ReusableLoginComponents/LoginButtons";
+import EmailPasswordForms from "./ReusableLoginComponents/EmailPasswordForms";
 import { CloseModalButton } from "./LoginModal";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";

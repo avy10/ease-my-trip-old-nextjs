@@ -8,18 +8,22 @@
 	/* border-top: 2px solid silver; */
 	padding-top: 1px;
 }
-
+@media screen and (max-width: 649px) {
+	.flight-home-container {
+		top: 100px;
+	}
+}
 .airport-selection {
 	background-color: rgba(255, 255, 255, 0.671);
 }
-.MuiBox-root {
+/* .MuiBox-root {
 	font-size: 0.8rem;
 }
 
 .MuiTextField-root {
 	width: 220px;
 	height: 50px;
-}
+} */
 
 /* InfoBoxes */
 .info-box-main-div {

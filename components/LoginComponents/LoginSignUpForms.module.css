@@ -1,0 +1,26 @@
+.signupFormMainBox {
+	width: 375px;
+	/* border-radius: 20px 20px 20px 0px; */
+	border-radius: 20px;
+	height: 150%;
+	z-index: 33;
+	position: absolute;
+	right: 0px;
+	bottom: -70px;
+	background-color: rgb(233, 252, 252);
+	color: black;
+}
+
+.loginFormMainBox {
+	width: 375px;
+	/* border-radius: 20px 20px 20px 0px; */
+	border-radius: 20px;
+	height: 120%;
+	z-index: 33;
+	position: absolute;
+	right: 0px;
+	bottom: -28px;
+	background-color: rgb(233, 252, 252);
+	color: black;
+	/* border: 2px solid orange; */
+}

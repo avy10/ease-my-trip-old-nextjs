@@ -1,0 +1,130 @@
+.mainBox {
+	background-color: white;
+	background-color: black;
+	min-height: 170px;
+	height: max-content;
+
+	display: flex;
+	padding: 15px;
+	column-gap: 25px;
+	border-radius: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 10px;
+	position: relative;
+	box-shadow: 2px 2px 2px 2px rgb(11, 138, 131);
+}
+
+.swapButton {
+	position: absolute;
+	left: 235px;
+	top: 65px;
+}
+.swapButton button {
+	color: black;
+	border: none;
+	background-color: white;
+	transition: transform 0.25s ease-in-out;
+}
+.swapButton button:hover {
+	transform: scale(1.1);
+}
+.swapButton button:active {
+	transform: scale(0.95);
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.swapButton {
+		left: 206px;
+	}
+}
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+	.mainBox {
+		column-gap: 15px;
+	}
+	.swapButton {
+		left: 193px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 999px) {
+	.mainBox {
+		column-gap: 5px;
+		padding: 8px;
+	}
+	.swapButton {
+		left: 168px;
+		top: 55px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.mainBox {
+		column-gap: 5px;
+		padding: 8px;
+	}
+	.swapButton {
+		left: 183px;
+		top: 55px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	/* .mainBox {
+		column-gap: 5px;
+		padding: 8px;
+	} */
+	.swapButton {
+		left: 337px;
+		top: 65px;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.mainBox {
+		column-gap: 10px;
+		padding: 10px;
+	}
+	.swapButton {
+		left: 285px;
+		top: 59px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.swapButton {
+		left: 235px;
+		top: 63px;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.mainBox {
+		column-gap: 10px;
+		padding: 10px;
+	}
+	.swapButton {
+		left: 214px;
+		top: 59px;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 449px) {
+	.swapButton {
+		left: 204px;
+		top: 62px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.swapButton {
+		left: 194px;
+		top: 62px;
+	}
+}
+
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.swapButton {
+		left: 184px;
+		top: 62px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.swapButton {
+		left: 166px;
+		top: 62px;
+	}
+}

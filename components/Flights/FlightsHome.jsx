@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBox from "./SearchBox";
+import SearchBox from "./Search/SearchBox";
 import ExclusiveOffers from "./ExclusiveOffers/ExclusiveOffers";
 import Refund from "./Refund/Refund";
 import TopFlightRoutes from "./topFlightRoutes/TopFlightRoutes";

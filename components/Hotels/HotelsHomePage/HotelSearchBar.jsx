@@ -1,7 +1,7 @@
 import { useHotelSearchContext } from "@/contexts/HotelSearchContext";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
-
+import styles from "./css/HotelSearchBar.module.css";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HotelCitySelector from "./HotelSearchBar/HotelCitySelector";
 import HotelDateSelector from "./HotelSearchBar/HotelDateSelector";
@@ -173,7 +173,7 @@ export default function HotelSearchBar({ hotelNotFound, setHotelNotFound }) {
 		</>
 	);
 	return (
-		<div className="hotel-search-bar-main-div ">
+		<div className={styles.parentDiv + " " + "hotel-search-bar-main-div "}>
 			<Snackbar
 				open={openSnackBar}
 				autoHideDuration={3000}

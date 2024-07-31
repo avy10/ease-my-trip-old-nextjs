@@ -1,0 +1,50 @@
+.navigationDiv {
+	max-width: 1200px;
+	width: 100vw;
+	height: 75px;
+
+	margin: auto auto;
+	padding: 10px 10px 0px 10px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	background-color: rgba(255, 255, 255, 0.753);
+	backdrop-filter: blur(300px);
+	box-shadow: 0px 0px 300px rgb(227, 228, 237);
+}
+
+.navTabs {
+	list-style-type: none;
+	display: flex;
+	column-gap: 50px;
+}
+.navTabs li {
+	font-weight: 500;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.navTabs {
+		column-gap: 30px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.navTabs {
+		column-gap: 10px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+}
+
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.navTabs {
+		column-gap: 10px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 699px) {
+	.navTabs {
+		column-gap: 20px;
+	}
+}

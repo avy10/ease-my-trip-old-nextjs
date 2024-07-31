@@ -1,0 +1,31 @@
+.preInfo {
+	display: flex;
+	justify-content: space-between;
+	/* justify-content: space-around; */
+	align-items: center;
+	/* border: 2px solid black; */
+	/* background-color: black; */
+}
+
+.lowestPriceBox {
+	text-align: right;
+	padding-right: 10px;
+	color: white;
+	/* margin: 10px; */
+	font-weight: 600;
+	font-size: 1.2rem;
+	/* border: 2px solid black; */
+	/* background-color: blue; */
+	vertical-align: bottom;
+	width: fit-content;
+}
+@media screen and (max-width: 649px) {
+	.lowestPriceBox {
+		font-size: 1.1rem;
+	}
+}
+@media screen and (max-width: 599px) {
+	.lowestPriceBox {
+		display: none;
+	}
+}

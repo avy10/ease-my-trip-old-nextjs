@@ -1,44 +1,6 @@
 /* SearchBox.jsx */
-.flight-search-box {
-	width: 100%;
-	min-height: 300px;
-	max-height: max-content;
-	background-image: linear-gradient(to right, #2f80ed, #56ccf2);
-	/* background: url("https://www.easemytrip.com/images/offer-img/rroyals-hp-main-banner-2.png"); */
-	background-size: 100%;
-	background-color: #2f81ed;
-	/* padding: 10px 20px; */
-	background-repeat: no-repeat;
-	align-content: center;
-}
-.inner-box {
-	/* border: 2px solid red; */
-	/* position: relative; */
-	/* top: 22px; */
-	width: 80%;
-	max-width: 1150px;
-	margin: auto auto;
-	margin-bottom: 10px;
-}
 
 /* PreInfo.jsx */
-.flight-pre-info {
-	/* border: 2px solid black; */
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	/* row-gap: 10px; */
-	/* flex-wrap: wrap; */
-}
-.pre-info-box-title {
-	text-align: right;
-	padding-right: 10px;
-	color: white;
-	/* margin: 10px; */
-	font-weight: 800;
-	font-size: 1.2rem;
-	vertical-align: bottom;
-}
 
 /* RadioButtons.jsx */
 .single-flight-radio-button {
@@ -46,7 +8,7 @@
 	align-items: center;
 	justify-content: flex-start;
 	/* border: 2px solid black; */
-	width: 160px;
+	width: 135px;
 	text-align: left;
 }
 .flight-travel-buttons {
@@ -54,25 +16,17 @@
 	align-items: center;
 	justify-content: flex-start;
 	flex-wrap: wrap;
+	width: 275px;
+	/* border: 2px solid red; */
+	/* background-color: violet; */
+}
+@media screen and (max-width: 556px) {
+	.flight-travel-buttons {
+		width: 100%;
+	}
 }
 
 /* MainBox.jsx */
-.main-box {
-	background-color: white;
-	min-height: 170px;
-	height: max-content;
-
-	display: flex;
-	padding: 15px;
-	column-gap: 25px;
-	border-radius: 10px;
-	display: flex;
-	flex-wrap: wrap;
-	row-gap: 10px;
-	position: relative;
-	box-shadow: 2px 2px 2px 2px rgb(11, 138, 131);
-}
-
 /* AirportSearchBoxes.jsx */
 .airport-search-boxes {
 	display: flex;
@@ -80,11 +34,20 @@
 	/* column-gap: 20px; */
 	column-gap: 25px;
 	justify-content: flex-start;
+	background-color: aqua;
 }
+.label-text-user {
+	font-size: 0.85rem;
+	/* label-text-user because MUI forms and TextFields also has label tag */
+	color: rgb(122, 122, 122);
+	display: flex;
+	column-gap: 5px;
+	font-weight: 600;
+}
+
 .single-search-component {
 	display: flex;
 	flex-direction: column;
-	/* column-gap: 20px; */
 	row-gap: 10px;
 }
 .single-search-component label {
@@ -93,30 +56,17 @@
 .single-search-component input {
 	font-weight: 600;
 }
-.label-text-user {
-	/* label-text-user because MUI forms and TextFields also has label tag */
-	color: rgb(122, 122, 122);
-	display: flex;
-	column-gap: 5px;
-	font-weight: 600;
-}
 .single-search-component .MuiFormControl-root {
-	width: 190px;
-	/* border: 2px solid black; */
+	width: 220px;
 }
 .single-search-component .MuiInputBase-root {
-	/* width: 50px; */
-	/* border: 2px solid aqua; */
 	padding: 9px 4px;
-	/* margin: 0; */
 }
 .single-search-component .MuiAutocomplete-root {
-	width: 190px;
+	width: 220px;
 	/* border: 2px solid black; */
 }
-
 .selected-airport-name {
-	max-width: 190px;
 	min-width: 190px;
 	min-height: 48px;
 	/* border: 2px solid aqua; */
@@ -132,11 +82,13 @@
 	align-items: center;
 	justify-content: flex-start;
 }
+
 .selected-airport-error {
 	border-left: 1px solid red;
 	border-right: 1px solid red;
 	border-bottom: 1px solid red;
 }
+
 .selected-airport-name span {
 	/* because I am now using the display flex to align, I have to define min-width or min-height in order to define a shape, else the height : auto of span kicks in */
 	/* border: 2px solid black; */
@@ -146,13 +98,121 @@
 	align-items: center;
 	font-size: 0.85rem;
 }
-.error-airport-name {
+.input-box-error {
 	color: red;
 	font-size: 1.1rem;
 	font-weight: 500;
 	max-width: 75px;
 }
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.single-search-component .MuiFormControl-root {
+		width: 190px;
+	}
 
+	.single-search-component .MuiAutocomplete-root {
+		width: 190px;
+	}
+}
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+	.single-search-component .MuiFormControl-root {
+		width: 178px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 178px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 999px) {
+	.single-search-component .MuiFormControl-root {
+		width: 160px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 160px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.single-search-component .MuiFormControl-root {
+		width: 175px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 175px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.single-search-component .MuiFormControl-root {
+		width: 322px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 322px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.single-search-component .MuiFormControl-root {
+		width: 275px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 275px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.single-search-component .MuiFormControl-root {
+		width: 220px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 220px;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.single-search-component .MuiFormControl-root {
+		width: 202px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 202px;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 459px) {
+	.single-search-component .MuiFormControl-root {
+		width: 188px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 188px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.single-search-component .MuiFormControl-root {
+		width: 178px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 178px;
+	}
+}
+
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.single-search-component .MuiFormControl-root {
+		width: 168px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 168px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.single-search-component .MuiFormControl-root {
+		width: 150px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 150px;
+	}
+}
 /* DatePicker.jsx */
 .date-container {
 	display: flex;
@@ -201,17 +261,156 @@
 	color: red;
 	background-color: rgb(177, 244, 244);
 }
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.date-container {
+		width: 170px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 170px;
+	}
+}
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+	.date-container {
+		width: 150px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 150px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 999px) {
+	.date-container {
+		width: 145px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 145px;
+	}
+	.airport-search-boxes:nth-child(2) {
+		/* flex-direction: column; */
+		column-gap: 5px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.date-container {
+		width: 160px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 160px;
+	}
+	.airport-search-boxes:nth-child(2) {
+		flex-direction: column;
+		column-gap: 5px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.date-container {
+		width: 160px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 160px;
+	}
+	.airport-search-boxes:nth-child(2) {
+		/* flex-direction: column; */
+		column-gap: 10px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.date-container {
+		width: 220px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 220px;
+	}
+	.airport-search-boxes:nth-child(2) {
+		width: 465px;
+		background-color: azure;
+		/* column-gap: 10px; */
+		justify-content: space-between;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.date-container {
+		width: 202px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 202px;
+	}
+	.airport-search-boxes:nth-child(2) {
+		width: 432px;
+		background-color: azure;
+		/* column-gap: 10px; */
+		justify-content: space-between;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 459px) {
+	.date-container {
+		width: 188px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 188px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.date-container {
+		width: 178px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 178px;
+	}
+}
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.date-container {
+		width: 168px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 168px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.date-container {
+		width: 150px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 150px;
+	}
+}
 /* p tag of .date-container uses the class .label-text-user */
 .airport-search-button-div {
 	display: flex;
 	position: relative;
 	column-gap: 25px;
 	/* margin: auto auto; */
-	/* border: 2px solid seagreen; */
+	border: 2px solid seagreen;
 }
+
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		column-gap: 10px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		column-gap: 15px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		column-gap: 10px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		column-gap: 10px;
+	}
+}
+
 .no-of-travellers {
 	display: flex;
 	flex-direction: column;
+	background-color: white;
 	row-gap: 10px;
 }
 .no-of-travellers p {
@@ -224,8 +423,8 @@
 
 .search-button-div {
 	/* position: absolute; */
-	top: 23px;
-	left: 150px;
+	/* top: 23px; */
+	/* left: 150px; */
 	margin: 10px 0px;
 	/* border: 2px solid seagreen; */
 }
@@ -252,6 +451,117 @@
 	transform: scale(0.9);
 	transition: transform 0.3s ease-in-out;
 }
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		width: 465px;
+
+		column-gap: 25px;
+	}
+	.no-of-travellers {
+		width: 220px;
+	}
+	.search-button-div {
+		width: 220px;
+	}
+	.search-button {
+		width: 220px;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		width: 430px;
+
+		column-gap: 25px;
+	}
+	.no-of-travellers {
+		width: 202px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 202px;
+	}
+	.search-button-div {
+		width: 202px;
+	}
+	.search-button {
+		width: 202px;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 459px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		width: 402px;
+
+		column-gap: 25px;
+	}
+	.no-of-travellers {
+		width: 188px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 188px;
+	}
+	.search-button-div {
+		width: 188px;
+	}
+	.search-button {
+		width: 188px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		width: 395px;
+
+		column-gap: 25px;
+	}
+	.no-of-travellers {
+		width: 178px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 178px;
+	}
+	.search-button-div {
+		width: 178px;
+	}
+	.search-button {
+		width: 178px;
+	}
+}
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.airport-search-button-div {
+		/* background-color: red; */
+		width: 395px;
+
+		column-gap: 25px;
+	}
+	.no-of-travellers {
+		width: 168px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 168px;
+	}
+	.search-button-div {
+		width: 168px;
+	}
+	.search-button {
+		width: 168px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.no-of-travellers {
+		width: 150px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 150px;
+	}
+	.search-button-div {
+		width: 150px;
+	}
+	.search-button {
+		width: 150px;
+	}
+}
 /* swap button */
 .main-box-swap-button {
 	position: absolute;
@@ -260,19 +570,4 @@
 	/* min-height: 25px;
 	min-width: 25px; */
 	/* border: 2px solid black; */
-}
-
-.main-box-swap-button button {
-	/* min-height: 25px;
-	min-width: 25px; */
-	color: black;
-	border: none;
-	background-color: white;
-	transition: transform 0.25s ease-in-out;
-}
-.main-box-swap-button button:hover {
-	transform: scale(1.1);
-}
-.main-box-swap-button button:active {
-	transform: scale(0.95);
 }

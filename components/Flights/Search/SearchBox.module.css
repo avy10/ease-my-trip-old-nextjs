@@ -1,0 +1,99 @@
+.flightSearchBox {
+	width: 100%;
+	min-height: 300px;
+	max-height: max-content;
+	background-image: linear-gradient(to right, #2f80ed, #56ccf2);
+	/* background: url("https://www.easemytrip.com/images/offer-img/rroyals-hp-main-banner-2.png"); */
+	background-size: 100%;
+	background-color: #2f81ed;
+	/* padding: 10px 20px; */
+	background-repeat: no-repeat;
+	align-content: center;
+	/* border: 2px solid red; */
+}
+.innerBox {
+	/* border: 2px solid red; */
+	/* position: relative; */
+	/* top: 22px; */
+	/* width: 100%; */
+	width: 1200px;
+	/* min-width: 402px; */
+	margin: auto auto;
+	margin-bottom: 10px;
+	transition: all 0.5s ease-in-out;
+}
+
+/* @media screen and (min-width: 700px) and (max-width: 799px) {
+	.navTabs {
+		column-gap: 10px;
+	}
+} */
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.innerBox {
+		width: 1100px;
+	}
+}
+@media screen and (min-width: 1000px) and (max-width: 1099px) {
+	.innerBox {
+		width: 1000px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 999px) {
+	.innerBox {
+		width: 900px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.innerBox {
+		width: 800px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.innerBox {
+		width: 700px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.innerBox {
+		width: 600px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.innerBox {
+		width: 500px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 499px) {
+	.innerBox {
+		width: 450px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 420px) and (max-width: 459px) {
+	.innerBox {
+		width: 420px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 419px) {
+	.innerBox {
+		width: 400px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 385px) and (max-width: 399px) {
+	.innerBox {
+		width: 385px;
+		padding-bottom: 15px;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 384px) {
+	.innerBox {
+		width: 350px;
+		/* background-color: red; */
+		padding-bottom: 15px;
+	}
+}
