@@ -1,0 +1,63 @@
+.offerTypeTabDIV {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 50px;
+	font-size: 1.15rem;
+	font-family: "Poppins", sans-serif;
+}
+.offerTypeBTN {
+	padding: 6px 15px;
+	border-radius: 40px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: transform 0.3s ease-in-out;
+}
+
+.offerTypeBTN:hover {
+	cursor: pointer;
+	background: #bddefa;
+	transform: scale(1.03);
+	transition: transform 0.5s ease-in-out;
+}
+.offerTypeBTN:active {
+	transform: scale(0.9);
+	transition: transform 0.5s ease-in-out;
+}
+
+.activeOffer {
+	padding: 6px 15px;
+	border-radius: 40px;
+	font-weight: 500;
+	cursor: pointer;
+	background: #2196f3;
+	color: #fff;
+}
+.activeOffer:hover {
+	cursor: pointer;
+	background: #2196f3;
+	color: #fff;
+	transform: scale(1.03);
+	transition: transform 0.5s ease-in-out;
+}
+.activeOffer:active {
+	transform: scale(0.9);
+	transition: transform 0.5s ease-in-out;
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.offerTypeTabDIV {
+		column-gap: 30px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 499px) {
+	.offerTypeTabDIV {
+		column-gap: 15px;
+		font-size: 14px;
+	}
+}
+@media screen and (min-width: 300px) and (max-width: 399px) {
+	.offerTypeTabDIV {
+		column-gap: 5px;
+		font-size: 12px;
+	}
+}

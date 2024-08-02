@@ -1,0 +1,210 @@
+.mainBox {
+	/* border: 2px solid blue; */
+	position: relative;
+	width: 100%;
+}
+.mainBox button {
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	top: 45%;
+	border: none;
+	color: #2196f3;
+	background: white;
+	z-index: 20;
+}
+.mainBox button:active {
+	transform: scale(0.75);
+	transition: transform 0.2s ease-in-out;
+}
+.leftScrollButton {
+	left: 0px;
+}
+.rightScrollButton {
+	right: 0px;
+}
+.offerCardsDiv {
+	display: flex;
+	flex-direction: row;
+	margin: 20px 50px;
+	overflow-x: scroll;
+	/* max-width: 85vw; */
+	flex-wrap: nowrap;
+	position: relative;
+	scroll-behavior: smooth;
+	transition: scroll-behavior 1s cubic-bezier(0, 0, 0.2, 1);
+	transition: all 0.5s ease-in-out;
+
+	/* border: 2px solid red; */
+}
+
+.offerCardsDiv::-webkit-scrollbar {
+	height: 0px;
+	width: 0px;
+	border-radius: 25px;
+}
+.offerCardsDiv::-webkit-scrollbar-track {
+	background: aqua;
+}
+.offerCardsDiv::-webkit-scrollbar-thumb {
+	background: #ccc;
+	border-radius: 30px;
+}
+.offerCardsDiv::-webkit-scrollbar-thumb:hover {
+	background: #bbb;
+}
+.offerSkeletonDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	column-gap: 25px;
+	transition: all 0.2s ease-in-out;
+}
+.offerCards {
+	width: 450px;
+	height: 330px;
+	border: 1px solid white;
+	/* border: 1px solid rgba(55, 55, 199, 0.63); */
+	background-color: white;
+	background-color: rgba(249, 231, 197, 0.812);
+	box-shadow: 2px 2px 2px 2px rgb(212, 211, 211);
+	margin: 10px;
+	border-radius: 10px;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+	background-color: aquamarine;
+}
+
+.offerCards:hover {
+	transform: scale(1.03);
+	transition: transform 0.5s ease-in-out;
+}
+
+.offerImageDIV {
+	height: 220px;
+	width: 350px;
+	/* padding: 10px; */
+	border-radius: 10px 10px 0px 0px;
+	/* border: 2px solid violet; */
+	transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.offerImageDIV img {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px 10px 0px 0px;
+	transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.offerPersuasion {
+	/* border: 2px solid violet; */
+	position: absolute;
+	top: 0;
+	right: 0;
+	/* background-color: rgb(241, 0, 0); */
+	background-color: aqua;
+	/* color: white; */
+	color: black;
+	font-size: 1rem;
+	padding: 3px 10px;
+	border-radius: 0px 10px 0px 0px;
+	font-family: "poppins";
+	font-weight: 500;
+	transition: all 0.5s ease-in-out;
+}
+.offerTextDIV {
+	padding: 5px 12px;
+	border-radius: 10px;
+	transition: all 0.5s ease-in-out;
+}
+
+/* .offerTextDIV p:first-child {
+	font-weight: 600;
+} */
+.headerOfferText {
+	font-weight: 600;
+	display: inline;
+	transition: all 0.5s ease-in-out;
+}
+.expandedOfferText {
+	display: inline;
+	font-weight: 400;
+	transition: all 0.5s ease-in-out;
+}
+
+.offerTextDIV span:nth-child(1) {
+	font-weight: 800;
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+	.offerCardsDiv {
+		margin: 20px 30px;
+	}
+	.offerCards {
+		width: 370px;
+		height: 300px;
+	}
+	.offerImageDIV {
+		height: 190px;
+		width: 310px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.offerCardsDiv {
+		margin: 20px 20px;
+	}
+	.offerCards {
+		/* width: 370px; */
+		height: 280px;
+	}
+	.offerImageDIV {
+		height: 170px;
+		width: 270px;
+	}
+	.offerTextDIV {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 599px) {
+	.offerCardsDiv {
+		margin: 20px 10px;
+	}
+	.mainBox button {
+		height: 30px;
+		width: 30px;
+		/* background-color: rgb(26, 16, 16); */
+	}
+}
+@media screen and (min-width: 450px) and (max-width: 599px) {
+	/* .offerCardsDiv {
+		margin: 20px 10px;
+	} */
+	.offerCards {
+		/* width: 370px; */
+		height: 260px;
+	}
+	.offerImageDIV {
+		height: 140px;
+		width: 220px;
+	}
+	.offerTextDIV {
+		font-size: 14px;
+	}
+}
+@media screen and (max-width: 449px) {
+	.offerCards {
+		/* width: 370px; */
+		height: 250px;
+	}
+	.offerImageDIV {
+		height: 130px;
+		width: 200px;
+	}
+	.offerTextDIV {
+		font-size: 14px;
+	}
+}

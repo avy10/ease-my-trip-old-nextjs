@@ -3,3 +3,4 @@ AirportSearchBoxes.module.css
 searchBox.css
 Navigation.module.css
 MainBox.module.css
+SearchBox.module.css

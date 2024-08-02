@@ -128,3 +128,9 @@
 		top: 62px;
 	}
 }
+@media screen and (min-width: 310px) and (max-width: 349px) {
+	.swapButton {
+		left: 150px;
+		top: 175px;
+	}
+}

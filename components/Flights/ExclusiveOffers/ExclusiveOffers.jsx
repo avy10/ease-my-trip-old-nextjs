@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import OfferTypeTab from "./OfferTypeTab";
 import { domain, offersURL } from "@/public/utils/apiFetch";
 import OfferCards from "./OfferCards";
-import Skeleton from "@mui/material/Skeleton";
+import styles from "./ExclusiveOffers.module.css";
 export default function ExclusiveOffers({ activeTabCustomisation = 0 }) {
 	const [offers, setOffers] = useState([]);
 	const [activeTab, setActiveTab] = useState(activeTabCustomisation);
@@ -42,44 +42,18 @@ export default function ExclusiveOffers({ activeTabCustomisation = 0 }) {
 	}, [activeTab]);
 	return (
 		<>
-			<div className="offersContainerMINI">
-				<div className="titleDiv">
-					<h1 className="title-EO">EXCLUSIVE OFFERS</h1>
+			<div className={styles.offersContainerMINI}>
+				<div className={styles.titleDiv}>
+					<h1 className={styles.titleEO}>EXCLUSIVE OFFERS</h1>
 				</div>
 				<OfferTypeTab
 					activeTab={activeTab}
 					setActiveTab={setActiveTab}
 				/>
-				{/* {!isloading && (
-					<OfferCards offers={offers} isloading={isloading} />
-				)} */}
 
 				<OfferCards offers={offers} isloading={isloading} />
-				{/* {isloading && (
-					<div className="offerSkeletonDiv">
-						<Skeleton
-							variant="rectangular"
-							width={210}
-							height={118}
-						/>
-						<Skeleton
-							variant="rectangular"
-							width={210}
-							height={118}
-						/>
-						<Skeleton
-							variant="rectangular"
-							width={210}
-							height={118}
-						/>
-						<Skeleton
-							variant="rectangular"
-							width={210}
-							height={118}
-						/>
-					</div>
-				)} */}
-				<div className="showAllOffersBTN ">View All Offers</div>
+
+				<div className={styles.showAllOffersBTN}>View All Offers</div>
 			</div>
 		</>
 	);

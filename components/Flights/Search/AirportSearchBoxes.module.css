@@ -189,3 +189,14 @@
 		width: 150px;
 	}
 }
+@media screen and (min-width: 310px) and (max-width: 349px) {
+	.singleSearchComponent {
+		width: 280px;
+	}
+	.selectedAirportName {
+		width: 280px;
+	}
+	.selectedAirportName span {
+		width: 280px;
+	}
+}

@@ -213,6 +213,22 @@
 		width: 150px;
 	}
 }
+@media screen and (min-width: 310px) and (max-width: 349px) {
+	.airport-search-boxes {
+		flex-direction: column;
+	}
+	.airport-search-boxes:first-child {
+		row-gap: 20px;
+	}
+
+	.single-search-component .MuiFormControl-root {
+		width: 280px;
+	}
+
+	.single-search-component .MuiAutocomplete-root {
+		width: 280px;
+	}
+}
 /* DatePicker.jsx */
 .date-container {
 	display: flex;
@@ -371,6 +387,14 @@
 	}
 	.date-container .MuiFormControl-root {
 		width: 150px;
+	}
+}
+@media screen and (min-width: 310px) and (max-width: 349px) {
+	.date-container {
+		width: 280px;
+	}
+	.date-container .MuiFormControl-root {
+		width: 280px;
 	}
 }
 /* p tag of .date-container uses the class .label-text-user */
@@ -560,6 +584,20 @@
 	}
 	.search-button {
 		width: 150px;
+	}
+}
+@media screen and (min-width: 310px) and (max-width: 349px) {
+	.no-of-travellers {
+		width: 130px;
+	}
+	.no-of-travellers .MuiBox-root {
+		width: 130px;
+	}
+	.search-button-div {
+		width: 130px;
+	}
+	.search-button {
+		width: 130px;
 	}
 }
 /* swap button */

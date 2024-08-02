@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import styles from "./OfferCards.module.css";
 export default function OfferCards({ offers, isloading }) {
 	const containerRef = useRef();
 	const [disableLeftButton, setDisableLeftButton] = useState(false);
@@ -39,16 +40,16 @@ export default function OfferCards({ offers, isloading }) {
 	// 	toggleButtons();
 	// }, [scrollDistance]);
 	return (
-		<div className="offer-cards-div-main-box">
+		<div className={styles.mainBox}>
 			<button
-				className="left-scroll-button flex-center-center"
+				className={`${styles.leftScrollButton} flex-center-center`}
 				onClick={() => (containerRef.current.scrollLeft -= 500)}
 			>
 				<ArrowBackIosNewIcon />
 			</button>
-			<div className="offerCardsDiv" ref={containerRef}>
+			<div className={styles.offerCardsDiv} ref={containerRef}>
 				{isloading && (
-					<div className="offerSkeletonDiv">
+					<div className={styles.offerSkeletonDiv}>
 						{[0, 1, 2, 3, 4, 5].map((ele) => (
 							<Box
 								sx={{
@@ -85,7 +86,7 @@ export default function OfferCards({ offers, isloading }) {
 				{/* <OfferCard data={data} /> */}
 			</div>
 			<button
-				className="right-scroll-button flex-center-center"
+				className={`${styles.rightScrollButton} flex-center-center`}
 				onClick={() => (containerRef.current.scrollLeft += 500)}
 			>
 				<ArrowForwardIosIcon />
@@ -98,20 +99,20 @@ function OfferCard({ data }) {
 	const [expandText, setExpandText] = useState(true);
 
 	return (
-		<div className="offerCards">
-			<div className="offerImageDIV">
+		<div className={styles.offerCards}>
+			<div className={styles.offerImageDIV}>
 				{/* <img src={data.newHeroUrl} /> */}
 				<img src={data.heroUrl} />
 			</div>
-			<div className="offerTextDIV">
+			<div className={styles.offerTextDIV}>
 				<p
-					className="headerOfferText"
+					className={styles.headerOfferText}
 					onClick={() => setExpandText(true)}
 				>
 					{data.pTl}
 					{!expandText && (
 						<span
-							className="offerTextExpand"
+							className={styles.offerTextExpand}
 							onClick={() => setExpandText(true)}
 						>
 							&nbsp;&nbsp;...
@@ -119,12 +120,12 @@ function OfferCard({ data }) {
 					)}
 				</p>
 				{expandText && (
-					<p className="expandedOfferText">
+					<p className={styles.expandedOfferText}>
 						{" "}
 						{data.pTx}{" "}
 						{expandText && (
 							<span
-								className="offerTextExpand"
+								className={styles.offerTextExpand}
 								onClick={() => setExpandText(false)}
 							>
 								.....
@@ -136,7 +137,7 @@ function OfferCard({ data }) {
 			{(data?.tncCtaText?.toLowerCase() == "book now" ||
 				data?.tncCtaText?.toLowerCase() == "explore offers" ||
 				data?.tncCtaText?.toLowerCase() == "explore now") && (
-				<p className="offerPersuasion">
+				<p className={styles.offerPersuasion}>
 					{data.tncCtaText.toUpperCase()}
 				</p>
 			)}

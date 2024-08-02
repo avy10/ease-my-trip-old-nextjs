@@ -16,12 +16,14 @@
 	margin: 15px 0;
 	flex-direction: column;
 	justify-content: center;
+	/* color: aqua; */
 }
-.title-EO {
+.titleEO {
 	font-size: 2rem;
 	position: relative;
+	/* border: 2px solid red; */
 }
-.title-EO:before {
+.titleEO:before {
 	content: "";
 	background: url("https://www.easemytrip.com/images/offer-img/triwings-left.svg");
 	width: 37px;
@@ -31,9 +33,10 @@
 	top: 15px;
 	height: 12px;
 	background-size: 100%;
+	/* border: 2px solid red; */
 }
 
-.title-EO:after {
+.titleEO:after {
 	content: "";
 	background: url(https://www.easemytrip.com/images/offer-img/triwings.svg);
 	width: 37px;
@@ -42,15 +45,9 @@
 	top: 15px;
 	height: 12px;
 	background-size: 100%;
+	/* border: 2px solid red; */
 }
 
-.offerSkeletonDiv {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row;
-	column-gap: 25px;
-}
 .showAllOffersBTN {
 	/* border: 2px solid saddlebrown; */
 	padding: 6px 15px;
@@ -70,4 +67,15 @@
 .showAllOffersBTN:active {
 	transform: scale(0.9);
 	transition: transform 0.5s ease-in-out;
+}
+@media screen and (max-width: 499px) {
+	.titleDiv h1 {
+		font-size: 28px;
+	}
+}
+
+@media screen and (max-width: 699px) {
+	.offersContainerMINI {
+		margin: 20px 5px;
+	}
 }
