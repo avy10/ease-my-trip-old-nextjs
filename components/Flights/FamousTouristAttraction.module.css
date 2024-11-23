@@ -1,0 +1,89 @@
+.famousTaDiv {
+	margin: 20px 0px;
+	/* border: 2px solid green; */
+}
+
+.taListFlexbox {
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 130px;
+	row-gap: 60px;
+	justify-content: center;
+}
+
+.singleTaDiv {
+	flex-direction: column;
+}
+.singleTaDiv :hover {
+	cursor: pointer;
+	color: #007aff;
+}
+
+.imgBox {
+	height: 112px;
+	width: 112px;
+}
+.imgBox img {
+	height: 100%;
+	width: 100%;
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.taListFlexbox {
+		column-gap: 100px;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 1099px) {
+	.taListFlexbox {
+		column-gap: 50px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.taListFlexbox {
+		column-gap: 30px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.imgBox {
+		height: 94px;
+		width: 94px;
+	}
+	.taListFlexbox {
+		column-gap: 30px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.imgBox {
+		height: 80px;
+		width: 80px;
+	}
+	.taListFlexbox {
+		column-gap: 15px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.imgBox {
+		height: 94px;
+		width: 94px;
+	}
+	.taListFlexbox {
+		column-gap: 35px;
+	}
+	.famousTaDiv h1 {
+		font-size: 26px;
+	}
+}
+@media screen and (min-width: 300px) and (max-width: 499px) {
+	.imgBox {
+		height: 80px;
+		width: 80px;
+	}
+	.taListFlexbox {
+		column-gap: 35px;
+	}
+	.famousTaDiv h1 {
+		font-size: 18px;
+	}
+}

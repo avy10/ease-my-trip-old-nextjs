@@ -3,18 +3,19 @@ import Container from "@mui/material/Container";
 import { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-// css in flightsHome
+// css in flightsHome. UPDATE : moved to module file
+import styles from "./FamousTouristAttraction.module.css";
 export default function FamousTouristAttraction() {
 	// useEffect(() => {
 	// 	console.log(FAMOUS_TOURIST_DESTINATION_ARRAY[0].iconsFullDetails);
 	// }, []);
 	return (
-		<div className="famous-ta-div">
+		<div className={styles.famousTaDiv}>
 			<div className="titleDiv">
-				<h1 className="title-EO">Famous Tourist Attraction</h1>
+				<h1 className="titleEO">Famous Tourist Attraction</h1>
 			</div>
 			<Container maxWidth="lg">
-				<div className="ta-list-flexbox">
+				<div className={styles.taListFlexbox}>
 					{FAMOUS_TOURIST_DESTINATION_ARRAY.map((element, index) => (
 						<SingleDestinationBox element={element} key={index} />
 					))}
@@ -66,18 +67,14 @@ function SingleDestinationBox({ element }) {
 	return (
 		<BootstrapTooltip title="COMING SOON" arrow>
 			<div
-				className="single-ta-div flex-center-center"
+				className={`${styles.singleTaDiv} flex-center-center`}
 				onClick={() => setOpenToolTip(true)}
 			>
 				<div
-					className="img-box"
-					style={{ height: "112px", width: "112px" }}
+					className={styles.imgBox}
 					onClick={() => setOpenToolTip(true)}
 				>
-					<img
-						src={element.iconSource}
-						style={{ height: "112px", width: "112px" }}
-					/>
+					<img src={element.iconSource} />
 				</div>
 				<h4>{element.destinationName}</h4>
 			</div>

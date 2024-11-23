@@ -8,6 +8,8 @@
 	margin: 20px;
 	/* width: 90vw; */
 }
+/* 
+these classes are present in globals.css
 .titleDiv {
 	font-family: "Poppins", sans-serif;
 	display: flex;
@@ -16,12 +18,10 @@
 	margin: 15px 0;
 	flex-direction: column;
 	justify-content: center;
-	/* color: aqua; */
 }
 .titleEO {
 	font-size: 2rem;
 	position: relative;
-	/* border: 2px solid red; */
 }
 .titleEO:before {
 	content: "";
@@ -33,7 +33,6 @@
 	top: 15px;
 	height: 12px;
 	background-size: 100%;
-	/* border: 2px solid red; */
 }
 
 .titleEO:after {
@@ -45,8 +44,7 @@
 	top: 15px;
 	height: 12px;
 	background-size: 100%;
-	/* border: 2px solid red; */
-}
+} */
 
 .showAllOffersBTN {
 	/* border: 2px solid saddlebrown; */
@@ -69,8 +67,8 @@
 	transition: transform 0.5s ease-in-out;
 }
 @media screen and (max-width: 499px) {
-	.titleDiv h1 {
-		font-size: 28px;
+	.offersContainerMINI h1 {
+		font-size: 26px;
 	}
 }
 

@@ -7,6 +7,15 @@ import Box from "@mui/material/Box";
 import styles from "./LoginSignUpForms.module.css";
 const EMAIL_FORMAT = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_FORMAT = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+/* 
+In summary, the password must:
+
+    Be at least 8 characters in length.
+    Include at least one digit.
+    Include at least one lowercase letter.
+    Include at least one uppercase letter.
+    Include at least one special character from !@#$%^&*.
+*/
 export default function LoginSignUpForms({ onModalClose }) {
 	const [loginBox, setLoginBox] = useState(true); // state to display login box or signup box
 

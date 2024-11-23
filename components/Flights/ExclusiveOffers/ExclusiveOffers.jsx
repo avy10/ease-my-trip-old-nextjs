@@ -43,8 +43,8 @@ export default function ExclusiveOffers({ activeTabCustomisation = 0 }) {
 	return (
 		<>
 			<div className={styles.offersContainerMINI}>
-				<div className={styles.titleDiv}>
-					<h1 className={styles.titleEO}>EXCLUSIVE OFFERS</h1>
+				<div className="titleDiv">
+					<h1 className="titleEO">EXCLUSIVE OFFERS</h1>
 				</div>
 				<OfferTypeTab
 					activeTab={activeTab}

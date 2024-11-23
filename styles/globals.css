@@ -55,3 +55,62 @@ body::-webkit-scrollbar-thumb:hover {
 	justify-content: flex-start;
 	align-items: center;
 }
+.showAllOffersBTN {
+	/* border: 2px solid saddlebrown; */
+	padding: 6px 15px;
+	border-radius: 40px;
+	font-weight: 500;
+	cursor: pointer;
+	background: #2196f3;
+	color: #fff;
+	transition: transform 0.5s ease-in-out;
+}
+
+.showAllOffersBTN:hover {
+	transform: scale(1.03);
+	transition: transform 0.5s ease-in-out;
+}
+
+.showAllOffersBTN:active {
+	transform: scale(0.9);
+	transition: transform 0.5s ease-in-out;
+}
+.titleDiv {
+	font-family: "Poppins", sans-serif;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin: 15px 0;
+	flex-direction: column;
+	justify-content: center;
+	/* color: aqua; */
+}
+.titleEO {
+	font-size: 2rem;
+	position: relative;
+	/* border: 2px solid red; */
+}
+.titleEO:before {
+	content: "";
+	background: url("https://www.easemytrip.com/images/offer-img/triwings-left.svg");
+	width: 37px;
+	height: 37px;
+	position: absolute;
+	left: -44px;
+	top: 15px;
+	height: 12px;
+	background-size: 100%;
+	/* border: 2px solid red; */
+}
+
+.titleEO:after {
+	content: "";
+	background: url(https://www.easemytrip.com/images/offer-img/triwings.svg);
+	width: 37px;
+	position: absolute;
+	right: -44px;
+	top: 15px;
+	height: 12px;
+	background-size: 100%;
+	/* border: 2px solid red; */
+}

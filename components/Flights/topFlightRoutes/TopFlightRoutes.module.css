@@ -1,0 +1,161 @@
+.topFlightsDIV {
+	background: url(https://www.easemytrip.com/images/desk-img/bg-world-map.jpg);
+	width: 100%;
+	background-size: 90%;
+	background-position: top;
+	background-repeat: no-repeat;
+	padding: 20px 0;
+	/* border: 2px solid blueviolet; */
+}
+
+.topFlightGRID {
+	/* display: grid; */
+	/* grid-template-columns: repeat(3, 1fr); */
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 20px;
+	position: relative;
+	/* border: 2px solid blueviolet; */
+}
+
+.topFlightELEMENT {
+	display: flex;
+	align-items: center;
+	/* border: 2px solid black; */
+	/* width: max-content; */
+	width: 380px;
+	cursor: pointer;
+}
+.topFlightTEXT {
+	/* margin: 5px 15px; */
+	padding: 5px 10px;
+	/* margin-top: 10px; */
+}
+.topFlightTEXT p {
+	font-size: 1.35rem;
+	font-weight: 600;
+}
+.topFlightTEXT p:nth-child(2) {
+	/* color: aqua; */
+	color: #2196f3;
+}
+
+.topFlightAirportsICON {
+	font-size: 30px;
+	margin: 0px 5px;
+	font-weight: 600;
+	color: blueviolet;
+	position: relative;
+	top: 8px;
+}
+
+.topFlightICON {
+	font-size: 50px;
+	color: #0166b8;
+}
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.topFlightELEMENT {
+		width: 345px;
+	}
+	.topFlightTEXT p {
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 899px) {
+	.topFlightELEMENT {
+		width: 340px;
+	}
+	.topFlightTEXT p {
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 799px) {
+	.topFlightELEMENT {
+		width: 322px;
+	}
+	.topFlightTEXT p {
+		font-size: 18px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.topFlightELEMENT {
+		width: 274px;
+	}
+	.topFlightTEXT p {
+		font-size: 14px;
+	}
+	.topFlightAirportsICON {
+		font-size: 20px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.topFlightELEMENT {
+		width: 230px;
+	}
+	.topFlightTEXT p {
+		font-size: 13px;
+	}
+	.topFlightICON {
+		font-size: 30px;
+	}
+	.topFlightAirportsICON {
+		font-size: 20px;
+	}
+}
+@media screen and (max-width: 499px) {
+	.topFlightsDIV h1 {
+		font-size: 26px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 499px) {
+	.topFlightELEMENT {
+		width: 180px;
+	}
+	.topFlightTEXT {
+		padding: 0px;
+	}
+	.topFlightTEXT p {
+		font-size: 13px;
+	}
+	.topFlightTEXT p:first-child {
+		font-size: 10px;
+		/* display: none; */
+	}
+	.topFlightICON {
+		font-size: 30px;
+	}
+	.topFlightAirportsICON {
+		font-size: 20px;
+	}
+	.topFlightGRID {
+		row-gap: 10px;
+	}
+}
+@media screen and (max-width: 399px) {
+	.topFlightGRID {
+		column-gap: 10px;
+	}
+	.topFlightELEMENT {
+		width: fit-content;
+		min-width: 140px;
+	}
+	.topFlightTEXT {
+		padding: 0px;
+	}
+	.topFlightTEXT p {
+		font-size: 13px;
+	}
+	.topFlightTEXT p:first-child {
+		font-size: 10px;
+		display: none;
+	}
+	.topFlightICON {
+		font-size: 30px;
+	}
+	.topFlightAirportsICON {
+		font-size: 20px;
+	}
+	.topFlightGRID {
+		row-gap: 5px;
+	}
+}

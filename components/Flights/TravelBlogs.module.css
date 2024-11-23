@@ -1,0 +1,134 @@
+/* TravelBlogs */
+.travelBlogs {
+	margin: 20px 0px;
+}
+.blogCards {
+	/* border: 2px solid green; */
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	row-gap: 50px;
+}
+.singleTravelDiv {
+	height: 220px;
+	width: 275px;
+	/* border: 2px solid black; */
+	border-radius: 15px;
+	position: relative;
+}
+.backgroundImageDiv,
+.backgroundImageDiv img,
+.blurOverlay {
+	height: 100%;
+	width: 100%;
+	border-radius: 15px;
+}
+
+.topContent {
+	position: absolute;
+	width: auto;
+	top: 10px;
+	left: 15px;
+	background: #2196f3;
+	padding: 3px 12px;
+	font-size: 12px;
+	font-weight: 500;
+	border-radius: 26px;
+	z-index: 2;
+	color: #fff;
+}
+
+.blurOverlay {
+	position: absolute;
+	top: 0;
+
+	background: #0000004d;
+}
+.blogTitle {
+	position: absolute;
+	top: 120px;
+	left: 15px;
+	color: white;
+	font-weight: 600;
+	font-size: 15px;
+	width: 90%;
+	z-index: 2;
+}
+.readMore {
+	background: #5a55558e;
+	background: #0000002c;
+
+	backdrop-filter: blur(15px);
+	display: flex;
+	justify-content: space-around;
+	column-gap: 100px;
+	align-items: center;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	color: white;
+	font-weight: 500;
+	font-size: 14px;
+	/* border: 2px solid black; */
+	height: 40px;
+	border-radius: 0px 0px 15px 15px;
+}
+
+.readMore p {
+	margin: -7px;
+}
+@media screen and (min-width: 1100px) and (max-width: 1199px) {
+	.blogCards {
+		column-gap: 15px;
+		/* border: 2px solid blue; */
+		justify-content: center;
+		.singleTravelDiv {
+			height: 220px;
+			width: 250px;
+		}
+	}
+}
+@media screen and (min-width: 800px) and (max-width: 1099px) {
+	.blogCards {
+		justify-content: center;
+		column-gap: 140px;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+	.blogCards {
+		justify-content: space-between;
+		row-gap: 20px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 599px) {
+	.blogCards {
+		justify-content: space-between;
+		row-gap: 20px;
+	}
+	.singleTravelDiv {
+		height: 190px;
+		width: 230px;
+	}
+	.blogTitle {
+		font-size: 12px;
+		top: 110px;
+	}
+	.readMore {
+		font-size: 12px;
+	}
+}
+@media screen and (max-width: 499px) {
+	.travelBlogs h1 {
+		font-size: 22px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 499px) {
+	.travelBlogs h1 {
+		font-size: 24px;
+	}
+
+	.blogCards {
+		justify-content: center;
+		row-gap: 20px;
+	}
+}

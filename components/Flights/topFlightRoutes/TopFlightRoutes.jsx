@@ -5,7 +5,7 @@ import { useFlightSearch } from "@/contexts/FlightSearchContext";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import Container from "@mui/material/Container";
-
+import styles from "./TopFlightRoutes.module.css";
 export default function TopFlightRoutes() {
 	const router = useRouter();
 	const flightSearchData = useFlightSearch();
@@ -22,15 +22,15 @@ export default function TopFlightRoutes() {
 		);
 	}
 	return (
-		<Container maxWidth="lg">
-			<div className="topFlightsDIV">
+		<Container maxWidth="xl">
+			<div className={styles.topFlightsDIV}>
 				<div className="titleDiv">
-					<h1 className="title-EO">Top Flights Routes</h1>
+					<h1 className="titleEO">Top Flights Routes</h1>
 				</div>
-				<div className="topFlightGRID flex-center-center">
+				<div className={`${styles.topFlightGRID} flex-center-center`}>
 					{topFlightsARR.map((ele, index) => (
 						<div
-							className="topFlightELEMENT"
+							className={styles.topFlightELEMENT}
 							key={index}
 							onClick={() =>
 								handleClickNavigation(
@@ -40,15 +40,13 @@ export default function TopFlightRoutes() {
 							}
 						>
 							<AirplaneTicketIcon
-								className="topFlightICON"
-								fontSize="large"
+								className={styles.topFlightICON}
 							/>
-							<div className="topFlightTEXT">
+							<div className={styles.topFlightTEXT}>
 								<p>
 									{ele.from}
 									<ConnectingAirportsIcon
-										fontSize="large"
-										className="topFlightAirportsICON"
+										className={styles.topFlightAirportsICON}
 									/>
 									{ele.to}
 								</p>

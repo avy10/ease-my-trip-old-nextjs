@@ -7,7 +7,8 @@ import vibrantFestivals from "@/public/assests/images/icons/travelBlogs/vibrant-
 import travelWithKids from "@/public/assests/images/icons/travelBlogs/booking-flights-with-kids-hp.webp";
 import bahrain from "@/public/assests/images/icons/travelBlogs/travelers-to-bahrain-hp.webp";
 import EastIcon from "@mui/icons-material/East";
-// css in flightsHome.css
+// css in flightsHome.css. UPDATE : css moved into module
+import styles from "./TravelBlogs.module.css";
 const TRAVEL_BLOGS_TITLE = [
 	{
 		blogTitle: "Things you need to know before you book a trip to Thailand",
@@ -28,12 +29,12 @@ const TRAVEL_BLOGS_TITLE = [
 ];
 export default function TravelBlogs() {
 	return (
-		<div className="travel-blogs-div">
+		<div className={styles.travelBlogs}>
 			<div className="titleDiv">
-				<h1 className="title-EO">Enjoy Fresh Travel Blogs</h1>
+				<h1 className="titleEO">Enjoy Fresh Travel Blogs</h1>
 			</div>
 			<Container maxWidth="lg">
-				<div className="tb-cards-flexbox">
+				<div className={styles.blogCards}>
 					{TRAVEL_BLOGS_TITLE.map((element, index) => (
 						<SingleTravelBlog element={element} key={index} />
 					))}
@@ -72,16 +73,16 @@ function SingleTravelBlog({ element }) {
 	return (
 		<BootstrapTooltip title="COMING SOON" arrow>
 			<div
-				className="single-travel-div"
+				className={styles.singleTravelDiv}
 				onClick={() => setOpenToolTip(true)}
 			>
-				<div className="background-image-div">
+				<div className={styles.backgroundImageDiv}>
 					<img src={element.iconSource} />
 				</div>
-				<div className="blur-overlay"></div>
-				<div className="top-content">Holiday Destinations</div>
-				<div className="blog-title">{element.blogTitle}</div>
-				<div className="read-more">
+				<div className={styles.blurOverlay}></div>
+				<div className={styles.topContent}>Holiday Destinations</div>
+				<div className={styles.blogTitle}>{element.blogTitle}</div>
+				<div className={styles.readMore}>
 					<p>Read More</p>
 					<EastIcon />
 				</div>
